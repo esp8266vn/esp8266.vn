@@ -1,0 +1,21 @@
+site_name: ESP8266
+site_url: https://8266.vn
+site_description: ESP8266 Document
+site_author: Tuan PM
+theme: readthedocs
+copyright: Copyright &copy; 2016 <a href="https://twitter.com/tuanpmt">Tuan PM</a>
+markdown_extensions:
+    - toc:
+        permalink: '#'
+    - codehilite(css_class=code)
+    - admonition
+    - smarty
+repo_name: GitHub
+repo_url: https://github.com/esp8266vn/esp8266.vn
+
+# Page tree
+#pages:
+#  - Intro: index.md
+#  - Getting started: getting-started.md
+#  - Customization: customization.md
+#  - License: license.md
