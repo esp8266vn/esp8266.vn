@@ -14,8 +14,8 @@ repo_name: GitHub
 repo_url: https://github.com/esp8266vn/esp8266.vn
 
 # Page tree
-#pages:
-#  - Intro: index.md
+pages:
+  - Giới thiệu chung: index.md
 #  - Getting started: getting-started.md
 #  - Customization: customization.md
 #  - License: license.md
