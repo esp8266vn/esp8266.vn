@@ -52,13 +52,123 @@
         }, 
         {
             "location": "/00-introduction/", 
-            "text": "Gi\u1edbi thi\u1ec7u\n#", 
+            "text": "Chu\u1ea9n b\u1ecb\n#\n\n\nPh\u1ea7n c\u1ee9ng v\u00e0 ki\u1ebfn th\u1ee9c c\u1ea7n chu\u1ea9n b\u1ecb\n#\n\n\nGi\u1ed1ng nh\u01b0 t\u1ea5t c\u1ea3 c\u00e1c Vi \u0111i\u1ec1u khi\u1ec3n kh\u00e1c, vi\u1ec7c l\u1eadp tr\u00ecnh cho ESP8266 c\u1ea7n nh\u1eefng ki\u1ebfn th\u1ee9c v\u1ec1 l\u1eadp tr\u00ecnh \nC\n c\u0169ng nh\u01b0 ph\u1ea7n c\u1ee9ng \u0111\u1ec3 th\u1ef1c h\u00e0nh. Trong s\u00e1ch n\u00e0y ch\u00fang ta s\u1ebd s\u1eed d\u1ee5ng m\u1ea1ch ph\u00e1t tri\u1ec3n NodeMCU \u0111\u1ec3 th\u1eed nghi\u1ec7m t\u1ea5t c\u1ea3 c\u00e1c v\u00ed d\u1ee5 m\u1eabu.\n\n\nM\u1ea1ch ph\u00e1t tri\u1ec3n NodeMCU\n#\n\n\nM\u1ea1ch n\u00e0y c\u00f3 b\u00e1n r\u1ed9ng r\u00e3i tr\u00ean th\u1ecb tr\u01b0\u1eddng, ti\u1ec7n l\u1ee3i khi ph\u00e1t tri\u1ec3n, v\u00e0 \u0111\u01b0\u1ee3c cung c\u1ea5p \u0111\u1ea7y \u0111\u1ee7 m\u1ea1ch nguy\u00ean l\u00fd, m\u1edf v\u1ec1 ph\u1ea7n c\u1ee9ng. Chip USB-TTL h\u1ed7 tr\u1ee3 DTR v\u00e0 RTS cho ph\u00e9p ph\u1ea7n m\u1ec1m n\u1ea1p \nesptool.py\n c\u00f3 th\u1ec3 \u0111i\u1ec1u khi\u1ec3n ESP8266 v\u00e0o ch\u1ebf \u0111\u1ed9 n\u1ea1p lu\u00f4n m\u00e0 kh\u00f4ng c\u1ea7n thao t\u00e1c ph\u1ea7n c\u1ee9ng n\u00e0o.\n\n\nCh\u00fa \u00fd\n#\n\n\nT\u1edbi th\u1eddi \u0111i\u1ec3m hi\u1ec7n nay, c\u00f4ng c\u1ee5 n\u1ea1p cho ESP8266 c\u00f3 th\u1ec3 \u0111\u1ea1t t\u1ed1c \u0111\u1ed9 921600 baud. Tuy nhi\u00ean, c\u00e1c m\u1ea1ch NodeMCU hi\u1ec7n tr\u00ean th\u1ecb tr\u01b0\u1eddng s\u1eed d\u1ee5ng nhi\u1ec1u lo\u1ea1i chip USB-TTL kh\u00e1c nhau, n\u00ean c\u1ea7n ki\u1ec3m tra t\u1ed1c \u0111\u1ed9 h\u1ed7 tr\u1ee3 tr\u01b0\u1edbc khi mua. N\u1ebfu t\u1ed1c \u0111\u1ed9 th\u1ea5p, th\u00ec vi\u1ec7c n\u1ea1p \u1ee9ng d\u1ee5ng cho ESP8266 kh\u00e1 l\u00e2u cho nh\u1eefng \u1ee9ng d\u1ee5ng l\u1edbn.\n\n\nhttps://github.com/nodemcu/nodemcu-devkit-v1.0\n\n\nS\u01a1 \u0111\u1ed3 ch\u00e2n \n s\u01a1 \u0111\u1ed3 kh\u1ed1i ESP8266EX\n\n\n\nM\u1ea1ch nguy\u00ean l\u00fd\n#\n\n\n// S\u01a1 \u0111\u1ed3 nguy\u00ean l\u00fd -\n SVG\n//image::nodemcu_devkit_1.0.svg[NodeMCU schematic]\n\n\nNh\u1eefng l\u1ef1a ch\u1ecdn kh\u00e1c\n#\n\n\n// C\u00e1c m\u1ea1ch ph\u00e1t tri\u1ec3n kh\u00e1c..\n\n\nC\u00e0i \u0111\u1eb7t tr\u00ecnh so\u1ea1n th\u1ea3o \n c\u00e0i \u0111\u1eb7t ban \u0111\u1ea7u\n#\n\n\nSublime Text\n#\n\n\nEclipse\n#\n\n\nNotepad++\n#\n\n\nNg\u00f4n ng\u1eef l\u1eadp tr\u00ecnh C\n#\n\n\nT\u1ea5t nhi\u00ean vi\u1ec7c ph\u00e1t tri\u1ec3n \u1ee9ng d\u1ee5ng cho nh\u1eefng Vi \u0111i\u1ec1u khi\u1ec3n \u00edt t\u00e0i nguy\u00ean, dung l\u01b0\u1ee3ng b\u1ed9 nh\u1edb c\u00f2n v\u00e0i ch\u1ee5c KiB th\u00ec hi\u1ebfm c\u00f3 s\u1ef1 l\u1ef1a ch\u1ecdn n\u00e0o kh\u00e1c ngo\u00e0i ng\u00f4n ng\u1eef l\u1eadp tr\u00ecnh \nC/C++\n. Nh\u1eefng ng\u00f4n ng\u1eef kh\u00e1c nh\u01b0: \nLua\n, \nPython\n c\u0169ng \u0111\u01b0\u1ee3c ph\u00e1t tri\u1ec3n cho ESP8266, nh\u01b0ng \u0111\u1ec3 ho\u00e0n th\u00e0nh c\u00f4ng vi\u1ec7c c\u00e0ng d\u1ec5 d\u00e0ng, th\u00ec \u0111\u00f2i h\u1ecfi t\u00e0i nguy\u00ean c\u00e0ng nhi\u1ec1u. V\u00e0 s\u1ef1 \u1ed5n \u0111\u1ecbnh c\u1ee7a \u1ee9ng d\u1ee5ng s\u1ebd ph\u1ee5 thu\u1ed9c r\u1ea5t nhi\u1ec1u v\u00e0o vi\u1ec7c d\u01b0 gi\u1ea3 t\u00e0i nguy\u00ean. Chip ESP8266 kh\u00f4ng \u0111\u01b0\u1ee3c thi\u1ebft k\u1ebf \u0111\u1ec3 \u0111\u1ee7 t\u00e0i nguy\u00ean ch\u1ea1y \u1ed5n \u0111\u1ecbnh cho c\u00e1c tr\u00ecnh th\u00f4ng d\u1ecbch (Interpreter) n\u00e0y.\n\n\nMakefile\n#\n\n\n\u0110\u1ec3 bi\u00ean d\u1ecbch \u0111\u01b0\u1ee3c ch\u00fang ta c\u1ea7n ho\u00e0n th\u00e0nh vi\u1ec7c c\u00e0i \u0111\u1eb7t tr\u00ecnh bi\u00ean d\u1ecbch b\u00ean tr\u00ean, v\u00e0 t\u00ecm hi\u1ec3u m\u1ed9t ch\u00fat v\u1ec1 k\u1ecbch b\u1ea3n \nMakefile\n. C\u00e1c ki\u1ebfn th\u1ee9c n\u00e0y th\u00f4ng th\u01b0\u1eddng c\u00e1c b\u1ea1n \u0111\u1ec1u ph\u1ea3i bi\u1ebft khi h\u1ecdc v\u1ec1 ng\u00f4n ng\u1eef \nC\n. N\u1ed9i dung ph\u1ea7n n\u00e0y ch\u1ec9 n\u00f3i ng\u1eafn g\u1ecdn, x\u00fac t\u00edch nh\u1eefng g\u00ec c\u1ea7n thi\u1ebft nh\u1ea5t.\n\n\nMakefile\n l\u00e0 c\u00f4ng c\u1ee5 k\u1ecbch b\u1ea3n h\u00f3a qu\u00e1 tr\u00ecnh bi\u00ean d\u1ecbch th\u01b0\u1eddng \u0111\u01b0\u1ee3c s\u1eed d\u1ee5ng trong h\u1ec7 \u0111i\u1ec1u h\u00e0nh Unix, Linux, t\u1ea5t nhi\u00ean c\u00f3 c\u1ea3 tr\u00ean Windows nh\u01b0ng kh\u00f4ng ph\u1ed5 bi\u1ebfn. N\u00f3 \u0111\u01a1n gi\u1ea3n qu\u00e1 h\u00f3a tr\u00ecnh th\u1ef1c hi\u1ec7n bi\u00ean d\u1ecbch b\u1eb1ng c\u00e1ch s\u1eed d\u1ee5ng c\u00e1c module c\u00f3 s\u1eb5n trong h\u1ec7 \u0111i\u1ec1u h\u00e0nh.\n\n\nVi\u1ec7c s\u1eed d\u1ee5ng Makefile trong c\u00e1c d\u1ef1 \u00e1n \nC\n \u00edt th\u01b0\u1eddng xuy\u00ean v\u00e0 th\u01b0\u1eddng \u0111\u01b0\u1ee3c thi\u1ebft k\u1ebf s\u1eb5n b\u1edfi ng\u01b0\u1eddi t\u1ea1o n\u00ean d\u1ef1 \u00e1n \u0111\u00f3. Do v\u1eady, b\u1ea1n ch\u1ec9 c\u1ea7n hi\u1ec3u s\u01a1 v\u1ec1 \nMakefile\n \u0111\u1ec3 c\u00f3 th\u1ec3 d\u1ec5 d\u00e0ng s\u1eeda ch\u1eefa theo \u00fd m\u00ecnh, n\u1ebfu kh\u00f4ng mu\u1ed1n chuy\u00ean s\u00e2u. M\u1ed9t s\u1ed1 t\u1eeb kh\u00f3a google \u0111\u1ec3 d\u1ec5 d\u00e0ng t\u00ecm hi\u1ec3u v\u1ec1 \nMakefile\n: \nMakefile basics\n, \nMakefile tutorial\n.\n\n\n\u0110\u1ec3 bi\u00ean d\u1ecbch, b\u1ea1n g\u00f5 \nmake\n t\u1eeb c\u1eeda s\u1ed5 terminal, ch\u01b0\u01a1ng tr\u00ecnh \nmake\n s\u1ebd t\u00ecm v\u00e0 \u0111\u1ecdc file m\u1eb7c \u0111\u1ecbnh c\u00f3 t\u00ean \nMakefile\n \u1edf th\u01b0 m\u1ee5c hi\u1ec7n h\u00e0nh v\u00e0 th\u1ef1c thi n\u00f3.\n\n\nC\u00e0i \u0111\u1eb7t c\u00f4ng c\u1ee5 c\u1ea7n thi\u1ebft\n#\n\n\n\n\nTr\u00ecnh so\u1ea1n th\u1ea3o tr\u00ean m\u00e1y t\u00ednh, \u0111\u1ec3 vi\u1ebft m\u00e3 ngu\u1ed3n \nC\n\n\nTr\u00ecnh bi\u00ean d\u1ecbch, nh\u1eb1m m\u1ee5c \u0111\u1ecbch bi\u00ean d\u1ecbch m\u00e3 ngu\u1ed3n \nC\n sang m\u00e3 m\u00e1y\n\n\nTr\u00ecnh n\u1ea1p, n\u1ea1p m\u00e3 m\u00e1y \u0111\u00e3 bi\u00ean d\u1ecbch xu\u1ed1ng Flash c\u1ee7a ESP8266\n\n\nSDK\n\n\n\n\nC\u00e0i \u0111\u1eb7t Git\n#\n\n\nC\u00e0i \u0111\u1eb7t tr\u00ecnh bi\u00ean d\u1ecbch \n c\u00e1c th\u01b0 vi\u1ec7n c\u01a1 b\u1ea3n\n#\n\n\nMacOS/OSX\n#\n\n\nB\u1ea1n c\u00f3 \u00edt nh\u1ea5t 2 c\u00e1ch \u0111\u1ec3 c\u00f3 tr\u00ecnh bi\u00ean d\u1ecbch, \u0111\u01a1n gi\u1ea3n nh\u1ea5t l\u00e0 t\u1ea3i v\u1ec1 t\u1eeb 1 trong c\u00e1c link sau:\n\n\n\n\nhttps://esp8266.vn/esp8266-compiler-osx.zip\n\n\nhttp://esp8266vn.github.io/esp8266.vn/esp8266-compiler-osx.zip\n\n\n\n\nv\u00e0 gi\u1ea3i n\u00e9n v\u00e0o th\u01b0 m\u1ee5c: \n/tools/esp8266/compiler/\n\n\nC\u00e1ch 2\n ph\u1ee9c t\u1ea1p h\u01a1n, nh\u01b0ng s\u1ebd ph\u00f9 h\u1ee3p v\u1edbi t\u1ea5t c\u1ea3 phi\u00ean b\u1ea3n h\u1ec7 \u0111i\u1ec1u h\u00e0nh c\u1ee7a b\u1ea1n. Bi\u00ean d\u1ecbch Tr\u00ecnh bi\u00ean d\u1ecbch t\u1eeb m\u00e3 ngu\u1ed3n:\n\n\nsudo port install git gsed gawk binutils gperf grep gettext py-serial wget libtool autoconf automake \n\nhdiutil create -size 5g -fs \nCase-sensitive HFS+\n -volname ESPTools ESPTools.sparsebundle \nhdiutil attach ESPTools.sparsebundle \n3\n\nsudo ln -s /Volumes/ESPTools/ /tools \n3\n\nmkdir /tools/esp8266 \n4\n\nmkdir /tools/esp8266/sdk \n4\n\nmkdir /tools/esp8266/compiler \n4\n\ncd /tools/esp8266/compiler\n\ngit clone -b lx106 git://github.com/jcmvbkbc/crosstool-NG.git \n5\n\ncd crosstool-NG\nsed -i.bak '1s/^/gettext=\\'$'\\n/' crosstool-NG/kconfig/Makefile\n./bootstrap \n ./configure --prefix=`pwd` \n make \n make install\n./ct-ng xtensa-lx106-elf\n./ct-ng build\n\n\n\n\n\n\nC\u00e1c th\u01b0 vi\u1ec7n c\u1ea7n thi\u1ebft \u0111\u1ec3 bi\u00ean d\u1ecbch crosstool-NG, s\u1eed d\u1ee5ng MacPorts \u0111\u1ec3 c\u00e0i \u0111\u1eb7t. N\u1ebfu ch\u01b0a c\u00e0i \u0111\u1eb7t MacPorts c\u00f3 th\u1ebb t\u1ea3i t\u1ea1i \u0111\u00e2y: https://www.macports.org/\n\n\nBi\u00ean d\u1ecbch \ncrosstool-NG\n c\u1ea7n \u0111\u1ecbnh d\u1ea1ng \u1ed5 c\u1ee9ng h\u1ed7 tr\u1ee3 ph\u00e2n bi\u1ec7t \u0111\u01b0\u1eddng d\u1eabn ch\u1eef Hoa v\u00e0 ch\u1eef th\u01b0\u1eddng, n\u00ean c\u1ea7n t\u1ea1o m\u1ed9t \u1ed5 \u0111\u0129a \u1ea3o nh\u01b0 v\u1eady.\n\n\nMount \u1ed5 \u0111\u0129a \nESPTools ESPTools.sparsebundle\n t\u1edbi th\u01b0 m\u1ee5c \n/tools/\n\n\nT\u1ea1o c\u00e1c th\u01b0 m\u1ee5c cho \u0111\u1ec3 ch\u1ee9a SDK, tr\u00ecnh bi\u00ean d\u1ecbch v\u00e0 c\u00f4ng c\u1ee5 n\u1ea1p\n\n\nClone d\u1ef1 \u00e1n crosstool-NG, nh\u00e1nh \nlx106\n v\u1ec1, ti\u1ebfn h\u00e0nh c\u00e1c thao t\u00e1c bi\u00ean d\u1ecbch\n\n\n\n\nL\u01b0u \u00fd\n#\n\n\nL\u01b0u \u00fd r\u1eb1ng, qu\u00e1 tr\u00ecnh bi\u00ean d\u1ecbch c\u1ea7n kho\u1ea3ng 1 gi\u1edd (t\u00f9y c\u1ea5u h\u00ecnh m\u00e1y) v\u00e0 1.5GiB dung l\u01b0\u1ee3ng \u1ed5 c\u1ee9ng tr\u1ed1ng\n\n\nTi\u1ebfp theo, c\u1ea7n ph\u1ea3i th\u00eam \u0111\u01b0\u1eddng d\u1eabn c\u1ee7a compiler v\u00e0o bi\u1ebfn m\u00f4i tr\u01b0\u1eddng \nPATH\n c\u1ee7a h\u1ec7 \u0111i\u1ec1u h\u00e0nh\n\n\necho \nexport PATH=$PATH:/tools/esp8266/compiler/crosstool-NG/builds/xtensa-lx106-elf/bin\n \n  ~/.bash_profile \n1\n\nsource ~/.bash_profile \n\n\n\n\n\n\nTh\u00eam d\u00f2ng \nexport\n v\u00e0o cu\u1ed1i file \n~/.bash_profile\n b\u1eb1ng \necho\n\n\nsource\n \u0111\u1ec3 t\u1ea3i l\u1ea1i bi\u1ebfn m\u00f4i tr\u01b0\u1eddng\n\n\n\n\nKi\u1ec3m tra vi\u1ec7c c\u00e0i \u0111\u1eb7t, C\u00f3 d\u00f2ng n\u00e0y hi\u1ec3n th\u1ecb \u1edf cu\u1ed1i c\u00f9ng th\u00ec vi\u1ec7c c\u00e0i \u0111\u1eb7t d\u00e3 th\u00e0nh c\u00f4ng\n\n\nxtensa-lx106-elf-gcc -v\ngcc version 4.8.2 (crosstool-NG 1.20.0) \n\n\n\n\nWindows\n#\n\n\nC\u00e0i \u0111\u1eb7t Git\n\n\nT\u1ea3i v\u1ec1 t\u1ea1i m\u1ed9t trong c\u00e1c \u0111\u1ecba ch\u1ec9 sau:\n\n\n\n\nhttp://*.ru\n\n\nhttps://esp8266.vn/esp8266-compiler-windows.zip\n\n\nhttp://esp8266vn.github.io/esp8266.vn/esp8266-compiler-windows.zip\n\n\n\n\nLinux\n#\n\n\nT\u1ea3i c\u00f4ng c\u1ee5 n\u1ea1p esptool.py, SDK v\u00e0 c\u00e0i \u0111\u1eb7t ENV\n#\n\n\nC\u00f4ng c\u1ee5 COM Terminal\n#\n\n\nT\u1ea3i t\u00e0i li\u1ec7u t\u1eeb Espressif\n#\n\n\n//https://espressif.com/sites/default/files/documentation/esp8266-technical_reference_en.pdf\n\n\nC\u1ea5u h\u00ecnh ch\u00e2n n\u1ea1p\n#", 
             "title": "H\u01b0\u1edbng d\u1eabn b\u1eaft \u0111\u1ea7u & c\u00e0i \u0111\u1eb7t"
         }, 
         {
-            "location": "/00-introduction/#gioi-thieu", 
+            "location": "/00-introduction/#chuan-bi", 
             "text": "", 
-            "title": "Gi\u1edbi thi\u1ec7u"
+            "title": "Chu\u1ea9n b\u1ecb"
+        }, 
+        {
+            "location": "/00-introduction/#phan-cung-va-kien-thuc-can-chuan-bi", 
+            "text": "Gi\u1ed1ng nh\u01b0 t\u1ea5t c\u1ea3 c\u00e1c Vi \u0111i\u1ec1u khi\u1ec3n kh\u00e1c, vi\u1ec7c l\u1eadp tr\u00ecnh cho ESP8266 c\u1ea7n nh\u1eefng ki\u1ebfn th\u1ee9c v\u1ec1 l\u1eadp tr\u00ecnh  C  c\u0169ng nh\u01b0 ph\u1ea7n c\u1ee9ng \u0111\u1ec3 th\u1ef1c h\u00e0nh. Trong s\u00e1ch n\u00e0y ch\u00fang ta s\u1ebd s\u1eed d\u1ee5ng m\u1ea1ch ph\u00e1t tri\u1ec3n NodeMCU \u0111\u1ec3 th\u1eed nghi\u1ec7m t\u1ea5t c\u1ea3 c\u00e1c v\u00ed d\u1ee5 m\u1eabu.", 
+            "title": "Ph\u1ea7n c\u1ee9ng v\u00e0 ki\u1ebfn th\u1ee9c c\u1ea7n chu\u1ea9n b\u1ecb"
+        }, 
+        {
+            "location": "/00-introduction/#mach-phat-trien-nodemcu", 
+            "text": "M\u1ea1ch n\u00e0y c\u00f3 b\u00e1n r\u1ed9ng r\u00e3i tr\u00ean th\u1ecb tr\u01b0\u1eddng, ti\u1ec7n l\u1ee3i khi ph\u00e1t tri\u1ec3n, v\u00e0 \u0111\u01b0\u1ee3c cung c\u1ea5p \u0111\u1ea7y \u0111\u1ee7 m\u1ea1ch nguy\u00ean l\u00fd, m\u1edf v\u1ec1 ph\u1ea7n c\u1ee9ng. Chip USB-TTL h\u1ed7 tr\u1ee3 DTR v\u00e0 RTS cho ph\u00e9p ph\u1ea7n m\u1ec1m n\u1ea1p  esptool.py  c\u00f3 th\u1ec3 \u0111i\u1ec1u khi\u1ec3n ESP8266 v\u00e0o ch\u1ebf \u0111\u1ed9 n\u1ea1p lu\u00f4n m\u00e0 kh\u00f4ng c\u1ea7n thao t\u00e1c ph\u1ea7n c\u1ee9ng n\u00e0o.", 
+            "title": "M\u1ea1ch ph\u00e1t tri\u1ec3n NodeMCU"
+        }, 
+        {
+            "location": "/00-introduction/#chu-y", 
+            "text": "T\u1edbi th\u1eddi \u0111i\u1ec3m hi\u1ec7n nay, c\u00f4ng c\u1ee5 n\u1ea1p cho ESP8266 c\u00f3 th\u1ec3 \u0111\u1ea1t t\u1ed1c \u0111\u1ed9 921600 baud. Tuy nhi\u00ean, c\u00e1c m\u1ea1ch NodeMCU hi\u1ec7n tr\u00ean th\u1ecb tr\u01b0\u1eddng s\u1eed d\u1ee5ng nhi\u1ec1u lo\u1ea1i chip USB-TTL kh\u00e1c nhau, n\u00ean c\u1ea7n ki\u1ec3m tra t\u1ed1c \u0111\u1ed9 h\u1ed7 tr\u1ee3 tr\u01b0\u1edbc khi mua. N\u1ebfu t\u1ed1c \u0111\u1ed9 th\u1ea5p, th\u00ec vi\u1ec7c n\u1ea1p \u1ee9ng d\u1ee5ng cho ESP8266 kh\u00e1 l\u00e2u cho nh\u1eefng \u1ee9ng d\u1ee5ng l\u1edbn.  https://github.com/nodemcu/nodemcu-devkit-v1.0  S\u01a1 \u0111\u1ed3 ch\u00e2n   s\u01a1 \u0111\u1ed3 kh\u1ed1i ESP8266EX", 
+            "title": "Ch\u00fa \u00fd"
+        }, 
+        {
+            "location": "/00-introduction/#mach-nguyen-ly", 
+            "text": "// S\u01a1 \u0111\u1ed3 nguy\u00ean l\u00fd -  SVG\n//image::nodemcu_devkit_1.0.svg[NodeMCU schematic]", 
+            "title": "M\u1ea1ch nguy\u00ean l\u00fd"
+        }, 
+        {
+            "location": "/00-introduction/#nhung-lua-chon-khac", 
+            "text": "// C\u00e1c m\u1ea1ch ph\u00e1t tri\u1ec3n kh\u00e1c..", 
+            "title": "Nh\u1eefng l\u1ef1a ch\u1ecdn kh\u00e1c"
+        }, 
+        {
+            "location": "/00-introduction/#cai-at-trinh-soan-thao-cai-at-ban-au", 
+            "text": "", 
+            "title": "C\u00e0i \u0111\u1eb7t tr\u00ecnh so\u1ea1n th\u1ea3o &amp; c\u00e0i \u0111\u1eb7t ban \u0111\u1ea7u"
+        }, 
+        {
+            "location": "/00-introduction/#sublime-text", 
+            "text": "", 
+            "title": "Sublime Text"
+        }, 
+        {
+            "location": "/00-introduction/#eclipse", 
+            "text": "", 
+            "title": "Eclipse"
+        }, 
+        {
+            "location": "/00-introduction/#notepad", 
+            "text": "", 
+            "title": "Notepad++"
+        }, 
+        {
+            "location": "/00-introduction/#ngon-ngu-lap-trinh-c", 
+            "text": "T\u1ea5t nhi\u00ean vi\u1ec7c ph\u00e1t tri\u1ec3n \u1ee9ng d\u1ee5ng cho nh\u1eefng Vi \u0111i\u1ec1u khi\u1ec3n \u00edt t\u00e0i nguy\u00ean, dung l\u01b0\u1ee3ng b\u1ed9 nh\u1edb c\u00f2n v\u00e0i ch\u1ee5c KiB th\u00ec hi\u1ebfm c\u00f3 s\u1ef1 l\u1ef1a ch\u1ecdn n\u00e0o kh\u00e1c ngo\u00e0i ng\u00f4n ng\u1eef l\u1eadp tr\u00ecnh  C/C++ . Nh\u1eefng ng\u00f4n ng\u1eef kh\u00e1c nh\u01b0:  Lua ,  Python  c\u0169ng \u0111\u01b0\u1ee3c ph\u00e1t tri\u1ec3n cho ESP8266, nh\u01b0ng \u0111\u1ec3 ho\u00e0n th\u00e0nh c\u00f4ng vi\u1ec7c c\u00e0ng d\u1ec5 d\u00e0ng, th\u00ec \u0111\u00f2i h\u1ecfi t\u00e0i nguy\u00ean c\u00e0ng nhi\u1ec1u. V\u00e0 s\u1ef1 \u1ed5n \u0111\u1ecbnh c\u1ee7a \u1ee9ng d\u1ee5ng s\u1ebd ph\u1ee5 thu\u1ed9c r\u1ea5t nhi\u1ec1u v\u00e0o vi\u1ec7c d\u01b0 gi\u1ea3 t\u00e0i nguy\u00ean. Chip ESP8266 kh\u00f4ng \u0111\u01b0\u1ee3c thi\u1ebft k\u1ebf \u0111\u1ec3 \u0111\u1ee7 t\u00e0i nguy\u00ean ch\u1ea1y \u1ed5n \u0111\u1ecbnh cho c\u00e1c tr\u00ecnh th\u00f4ng d\u1ecbch (Interpreter) n\u00e0y.", 
+            "title": "Ng\u00f4n ng\u1eef l\u1eadp tr\u00ecnh C"
+        }, 
+        {
+            "location": "/00-introduction/#makefile", 
+            "text": "\u0110\u1ec3 bi\u00ean d\u1ecbch \u0111\u01b0\u1ee3c ch\u00fang ta c\u1ea7n ho\u00e0n th\u00e0nh vi\u1ec7c c\u00e0i \u0111\u1eb7t tr\u00ecnh bi\u00ean d\u1ecbch b\u00ean tr\u00ean, v\u00e0 t\u00ecm hi\u1ec3u m\u1ed9t ch\u00fat v\u1ec1 k\u1ecbch b\u1ea3n  Makefile . C\u00e1c ki\u1ebfn th\u1ee9c n\u00e0y th\u00f4ng th\u01b0\u1eddng c\u00e1c b\u1ea1n \u0111\u1ec1u ph\u1ea3i bi\u1ebft khi h\u1ecdc v\u1ec1 ng\u00f4n ng\u1eef  C . N\u1ed9i dung ph\u1ea7n n\u00e0y ch\u1ec9 n\u00f3i ng\u1eafn g\u1ecdn, x\u00fac t\u00edch nh\u1eefng g\u00ec c\u1ea7n thi\u1ebft nh\u1ea5t.  Makefile  l\u00e0 c\u00f4ng c\u1ee5 k\u1ecbch b\u1ea3n h\u00f3a qu\u00e1 tr\u00ecnh bi\u00ean d\u1ecbch th\u01b0\u1eddng \u0111\u01b0\u1ee3c s\u1eed d\u1ee5ng trong h\u1ec7 \u0111i\u1ec1u h\u00e0nh Unix, Linux, t\u1ea5t nhi\u00ean c\u00f3 c\u1ea3 tr\u00ean Windows nh\u01b0ng kh\u00f4ng ph\u1ed5 bi\u1ebfn. N\u00f3 \u0111\u01a1n gi\u1ea3n qu\u00e1 h\u00f3a tr\u00ecnh th\u1ef1c hi\u1ec7n bi\u00ean d\u1ecbch b\u1eb1ng c\u00e1ch s\u1eed d\u1ee5ng c\u00e1c module c\u00f3 s\u1eb5n trong h\u1ec7 \u0111i\u1ec1u h\u00e0nh.  Vi\u1ec7c s\u1eed d\u1ee5ng Makefile trong c\u00e1c d\u1ef1 \u00e1n  C  \u00edt th\u01b0\u1eddng xuy\u00ean v\u00e0 th\u01b0\u1eddng \u0111\u01b0\u1ee3c thi\u1ebft k\u1ebf s\u1eb5n b\u1edfi ng\u01b0\u1eddi t\u1ea1o n\u00ean d\u1ef1 \u00e1n \u0111\u00f3. Do v\u1eady, b\u1ea1n ch\u1ec9 c\u1ea7n hi\u1ec3u s\u01a1 v\u1ec1  Makefile  \u0111\u1ec3 c\u00f3 th\u1ec3 d\u1ec5 d\u00e0ng s\u1eeda ch\u1eefa theo \u00fd m\u00ecnh, n\u1ebfu kh\u00f4ng mu\u1ed1n chuy\u00ean s\u00e2u. M\u1ed9t s\u1ed1 t\u1eeb kh\u00f3a google \u0111\u1ec3 d\u1ec5 d\u00e0ng t\u00ecm hi\u1ec3u v\u1ec1  Makefile :  Makefile basics ,  Makefile tutorial .  \u0110\u1ec3 bi\u00ean d\u1ecbch, b\u1ea1n g\u00f5  make  t\u1eeb c\u1eeda s\u1ed5 terminal, ch\u01b0\u01a1ng tr\u00ecnh  make  s\u1ebd t\u00ecm v\u00e0 \u0111\u1ecdc file m\u1eb7c \u0111\u1ecbnh c\u00f3 t\u00ean  Makefile  \u1edf th\u01b0 m\u1ee5c hi\u1ec7n h\u00e0nh v\u00e0 th\u1ef1c thi n\u00f3.", 
+            "title": "Makefile"
+        }, 
+        {
+            "location": "/00-introduction/#cai-at-cong-cu-can-thiet", 
+            "text": "Tr\u00ecnh so\u1ea1n th\u1ea3o tr\u00ean m\u00e1y t\u00ednh, \u0111\u1ec3 vi\u1ebft m\u00e3 ngu\u1ed3n  C  Tr\u00ecnh bi\u00ean d\u1ecbch, nh\u1eb1m m\u1ee5c \u0111\u1ecbch bi\u00ean d\u1ecbch m\u00e3 ngu\u1ed3n  C  sang m\u00e3 m\u00e1y  Tr\u00ecnh n\u1ea1p, n\u1ea1p m\u00e3 m\u00e1y \u0111\u00e3 bi\u00ean d\u1ecbch xu\u1ed1ng Flash c\u1ee7a ESP8266  SDK", 
+            "title": "C\u00e0i \u0111\u1eb7t c\u00f4ng c\u1ee5 c\u1ea7n thi\u1ebft"
+        }, 
+        {
+            "location": "/00-introduction/#cai-at-git", 
+            "text": "", 
+            "title": "C\u00e0i \u0111\u1eb7t Git"
+        }, 
+        {
+            "location": "/00-introduction/#cai-at-trinh-bien-dich-cac-thu-vien-co-ban", 
+            "text": "", 
+            "title": "C\u00e0i \u0111\u1eb7t tr\u00ecnh bi\u00ean d\u1ecbch &amp; c\u00e1c th\u01b0 vi\u1ec7n c\u01a1 b\u1ea3n"
+        }, 
+        {
+            "location": "/00-introduction/#macososx", 
+            "text": "B\u1ea1n c\u00f3 \u00edt nh\u1ea5t 2 c\u00e1ch \u0111\u1ec3 c\u00f3 tr\u00ecnh bi\u00ean d\u1ecbch, \u0111\u01a1n gi\u1ea3n nh\u1ea5t l\u00e0 t\u1ea3i v\u1ec1 t\u1eeb 1 trong c\u00e1c link sau:   https://esp8266.vn/esp8266-compiler-osx.zip  http://esp8266vn.github.io/esp8266.vn/esp8266-compiler-osx.zip   v\u00e0 gi\u1ea3i n\u00e9n v\u00e0o th\u01b0 m\u1ee5c:  /tools/esp8266/compiler/  C\u00e1ch 2  ph\u1ee9c t\u1ea1p h\u01a1n, nh\u01b0ng s\u1ebd ph\u00f9 h\u1ee3p v\u1edbi t\u1ea5t c\u1ea3 phi\u00ean b\u1ea3n h\u1ec7 \u0111i\u1ec1u h\u00e0nh c\u1ee7a b\u1ea1n. Bi\u00ean d\u1ecbch Tr\u00ecnh bi\u00ean d\u1ecbch t\u1eeb m\u00e3 ngu\u1ed3n:  sudo port install git gsed gawk binutils gperf grep gettext py-serial wget libtool autoconf automake \n\nhdiutil create -size 5g -fs  Case-sensitive HFS+  -volname ESPTools ESPTools.sparsebundle \nhdiutil attach ESPTools.sparsebundle  3 \nsudo ln -s /Volumes/ESPTools/ /tools  3 \nmkdir /tools/esp8266  4 \nmkdir /tools/esp8266/sdk  4 \nmkdir /tools/esp8266/compiler  4 \ncd /tools/esp8266/compiler\n\ngit clone -b lx106 git://github.com/jcmvbkbc/crosstool-NG.git  5 \ncd crosstool-NG\nsed -i.bak '1s/^/gettext=\\'$'\\n/' crosstool-NG/kconfig/Makefile\n./bootstrap   ./configure --prefix=`pwd`   make   make install\n./ct-ng xtensa-lx106-elf\n./ct-ng build   C\u00e1c th\u01b0 vi\u1ec7n c\u1ea7n thi\u1ebft \u0111\u1ec3 bi\u00ean d\u1ecbch crosstool-NG, s\u1eed d\u1ee5ng MacPorts \u0111\u1ec3 c\u00e0i \u0111\u1eb7t. N\u1ebfu ch\u01b0a c\u00e0i \u0111\u1eb7t MacPorts c\u00f3 th\u1ebb t\u1ea3i t\u1ea1i \u0111\u00e2y: https://www.macports.org/  Bi\u00ean d\u1ecbch  crosstool-NG  c\u1ea7n \u0111\u1ecbnh d\u1ea1ng \u1ed5 c\u1ee9ng h\u1ed7 tr\u1ee3 ph\u00e2n bi\u1ec7t \u0111\u01b0\u1eddng d\u1eabn ch\u1eef Hoa v\u00e0 ch\u1eef th\u01b0\u1eddng, n\u00ean c\u1ea7n t\u1ea1o m\u1ed9t \u1ed5 \u0111\u0129a \u1ea3o nh\u01b0 v\u1eady.  Mount \u1ed5 \u0111\u0129a  ESPTools ESPTools.sparsebundle  t\u1edbi th\u01b0 m\u1ee5c  /tools/  T\u1ea1o c\u00e1c th\u01b0 m\u1ee5c cho \u0111\u1ec3 ch\u1ee9a SDK, tr\u00ecnh bi\u00ean d\u1ecbch v\u00e0 c\u00f4ng c\u1ee5 n\u1ea1p  Clone d\u1ef1 \u00e1n crosstool-NG, nh\u00e1nh  lx106  v\u1ec1, ti\u1ebfn h\u00e0nh c\u00e1c thao t\u00e1c bi\u00ean d\u1ecbch", 
+            "title": "MacOS/OSX"
+        }, 
+        {
+            "location": "/00-introduction/#luu-y", 
+            "text": "L\u01b0u \u00fd r\u1eb1ng, qu\u00e1 tr\u00ecnh bi\u00ean d\u1ecbch c\u1ea7n kho\u1ea3ng 1 gi\u1edd (t\u00f9y c\u1ea5u h\u00ecnh m\u00e1y) v\u00e0 1.5GiB dung l\u01b0\u1ee3ng \u1ed5 c\u1ee9ng tr\u1ed1ng  Ti\u1ebfp theo, c\u1ea7n ph\u1ea3i th\u00eam \u0111\u01b0\u1eddng d\u1eabn c\u1ee7a compiler v\u00e0o bi\u1ebfn m\u00f4i tr\u01b0\u1eddng  PATH  c\u1ee7a h\u1ec7 \u0111i\u1ec1u h\u00e0nh  echo  export PATH=$PATH:/tools/esp8266/compiler/crosstool-NG/builds/xtensa-lx106-elf/bin     ~/.bash_profile  1 \nsource ~/.bash_profile    Th\u00eam d\u00f2ng  export  v\u00e0o cu\u1ed1i file  ~/.bash_profile  b\u1eb1ng  echo  source  \u0111\u1ec3 t\u1ea3i l\u1ea1i bi\u1ebfn m\u00f4i tr\u01b0\u1eddng   Ki\u1ec3m tra vi\u1ec7c c\u00e0i \u0111\u1eb7t, C\u00f3 d\u00f2ng n\u00e0y hi\u1ec3n th\u1ecb \u1edf cu\u1ed1i c\u00f9ng th\u00ec vi\u1ec7c c\u00e0i \u0111\u1eb7t d\u00e3 th\u00e0nh c\u00f4ng  xtensa-lx106-elf-gcc -v\ngcc version 4.8.2 (crosstool-NG 1.20.0)", 
+            "title": "L\u01b0u \u00fd"
+        }, 
+        {
+            "location": "/00-introduction/#windows", 
+            "text": "C\u00e0i \u0111\u1eb7t Git  T\u1ea3i v\u1ec1 t\u1ea1i m\u1ed9t trong c\u00e1c \u0111\u1ecba ch\u1ec9 sau:   http://*.ru  https://esp8266.vn/esp8266-compiler-windows.zip  http://esp8266vn.github.io/esp8266.vn/esp8266-compiler-windows.zip", 
+            "title": "Windows"
+        }, 
+        {
+            "location": "/00-introduction/#linux", 
+            "text": "", 
+            "title": "Linux"
+        }, 
+        {
+            "location": "/00-introduction/#tai-cong-cu-nap-esptoolpy-sdk-va-cai-at-env", 
+            "text": "", 
+            "title": "T\u1ea3i c\u00f4ng c\u1ee5 n\u1ea1p esptool.py, SDK v\u00e0 c\u00e0i \u0111\u1eb7t ENV"
+        }, 
+        {
+            "location": "/00-introduction/#cong-cu-com-terminal", 
+            "text": "", 
+            "title": "C\u00f4ng c\u1ee5 COM Terminal"
+        }, 
+        {
+            "location": "/00-introduction/#tai-tai-lieu-tu-espressif", 
+            "text": "//https://espressif.com/sites/default/files/documentation/esp8266-technical_reference_en.pdf", 
+            "title": "T\u1ea3i t\u00e0i li\u1ec7u t\u1eeb Espressif"
+        }, 
+        {
+            "location": "/00-introduction/#cau-hinh-chan-nap", 
+            "text": "", 
+            "title": "C\u1ea5u h\u00ecnh ch\u00e2n n\u1ea1p"
         }, 
         {
             "location": "/01-esp-basic/", 

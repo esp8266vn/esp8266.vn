@@ -67,7 +67,34 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#gioi-thieu">Giới thiệu</a></li>
+                <li class="toctree-l3"><a href="#chuan-bi">Chuẩn bị</a></li>
+                
+                    <li><a class="toctree-l4" href="#phan-cung-va-kien-thuc-can-chuan-bi">Phần cứng và kiến thức cần chuẩn bị</a></li>
+                
+                    <li><a class="toctree-l4" href="#mach-phat-trien-nodemcu">Mạch phát triển NodeMCU</a></li>
+                
+                    <li><a class="toctree-l4" href="#nhung-lua-chon-khac">Những lựa chọn khác</a></li>
+                
+                    <li><a class="toctree-l4" href="#cai-at-trinh-soan-thao-cai-at-ban-au">Cài đặt trình soạn thảo &amp; cài đặt ban đầu</a></li>
+                
+                    <li><a class="toctree-l4" href="#ngon-ngu-lap-trinh-c">Ngôn ngữ lập trình C</a></li>
+                
+                    <li><a class="toctree-l4" href="#makefile">Makefile</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#cai-at-cong-cu-can-thiet">Cài đặt công cụ cần thiết</a></li>
+                
+                    <li><a class="toctree-l4" href="#cai-at-git">Cài đặt Git</a></li>
+                
+                    <li><a class="toctree-l4" href="#cai-at-trinh-bien-dich-cac-thu-vien-co-ban">Cài đặt trình biên dịch &amp; các thư viện cơ bản</a></li>
+                
+                    <li><a class="toctree-l4" href="#tai-cong-cu-nap-esptoolpy-sdk-va-cai-at-env">Tải công cụ nạp esptool.py, SDK và cài đặt ENV</a></li>
+                
+                    <li><a class="toctree-l4" href="#cong-cu-com-terminal">Công cụ COM Terminal</a></li>
+                
+                    <li><a class="toctree-l4" href="#tai-tai-lieu-tu-espressif">Tải tài liệu từ Espressif</a></li>
+                
+                    <li><a class="toctree-l4" href="#cau-hinh-chan-nap">Cấu hình chân nạp</a></li>
                 
             
             </ul>
@@ -125,7 +152,104 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="gioi-thieu">Giới thiệu<a class="headerlink" href="#gioi-thieu" title="Permanent link">#</a></h1>
+                <h1 id="chuan-bi">Chuẩn bị<a class="headerlink" href="#chuan-bi" title="Permanent link">#</a></h1>
+<h2 id="phan-cung-va-kien-thuc-can-chuan-bi">Phần cứng và kiến thức cần chuẩn bị<a class="headerlink" href="#phan-cung-va-kien-thuc-can-chuan-bi" title="Permanent link">#</a></h2>
+<p>Giống như tất cả các Vi điều khiển khác, việc lập trình cho ESP8266 cần những kiến thức về lập trình <strong>C</strong> cũng như phần cứng để thực hành. Trong sách này chúng ta sẽ sử dụng mạch phát triển NodeMCU để thử nghiệm tất cả các ví dụ mẫu.</p>
+<h2 id="mach-phat-trien-nodemcu">Mạch phát triển NodeMCU<a class="headerlink" href="#mach-phat-trien-nodemcu" title="Permanent link">#</a></h2>
+<p>Mạch này có bán rộng rãi trên thị trường, tiện lợi khi phát triển, và được cung cấp đầy đủ mạch nguyên lý, mở về phần cứng. Chip USB-TTL hỗ trợ DTR và RTS cho phép phần mềm nạp <code>esptool.py</code> có thể điều khiển ESP8266 vào chế độ nạp luôn mà không cần thao tác phần cứng nào.</p>
+<h3 id="chu-y">Chú ý<a class="headerlink" href="#chu-y" title="Permanent link">#</a></h3>
+<p>Tới thời điểm hiện nay, công cụ nạp cho ESP8266 có thể đạt tốc độ 921600 baud. Tuy nhiên, các mạch NodeMCU hiện trên thị trường sử dụng nhiều loại chip USB-TTL khác nhau, nên cần kiểm tra tốc độ hỗ trợ trước khi mua. Nếu tốc độ thấp, thì việc nạp ứng dụng cho ESP8266 khá lâu cho những ứng dụng lớn.</p>
+<p>https://github.com/nodemcu/nodemcu-devkit-v1.0</p>
+<p>Sơ đồ chân &amp; sơ đồ khối ESP8266EX
+<img alt="Sơ đồ chân ESP8266EX" src="../images/esp8266_devkit.svg" /></p>
+<h3 id="mach-nguyen-ly">Mạch nguyên lý<a class="headerlink" href="#mach-nguyen-ly" title="Permanent link">#</a></h3>
+<p>// Sơ đồ nguyên lý -&gt; SVG
+//image::nodemcu_devkit_1.0.svg[NodeMCU schematic]</p>
+<h2 id="nhung-lua-chon-khac">Những lựa chọn khác<a class="headerlink" href="#nhung-lua-chon-khac" title="Permanent link">#</a></h2>
+<p>// Các mạch phát triển khác..</p>
+<h2 id="cai-at-trinh-soan-thao-cai-at-ban-au">Cài đặt trình soạn thảo &amp; cài đặt ban đầu<a class="headerlink" href="#cai-at-trinh-soan-thao-cai-at-ban-au" title="Permanent link">#</a></h2>
+<h3 id="sublime-text">Sublime Text<a class="headerlink" href="#sublime-text" title="Permanent link">#</a></h3>
+<h3 id="eclipse">Eclipse<a class="headerlink" href="#eclipse" title="Permanent link">#</a></h3>
+<h3 id="notepad">Notepad++<a class="headerlink" href="#notepad" title="Permanent link">#</a></h3>
+<h2 id="ngon-ngu-lap-trinh-c">Ngôn ngữ lập trình C<a class="headerlink" href="#ngon-ngu-lap-trinh-c" title="Permanent link">#</a></h2>
+<p>Tất nhiên việc phát triển ứng dụng cho những Vi điều khiển ít tài nguyên, dung lượng bộ nhớ còn vài chục KiB thì hiếm có sự lựa chọn nào khác ngoài ngôn ngữ lập trình <strong>C/C++</strong>. Những ngôn ngữ khác như: <strong>Lua</strong>, <strong>Python</strong> cũng được phát triển cho ESP8266, nhưng để hoàn thành công việc càng dễ dàng, thì đòi hỏi tài nguyên càng nhiều. Và sự ổn định của ứng dụng sẽ phụ thuộc rất nhiều vào việc dư giả tài nguyên. Chip ESP8266 không được thiết kế để đủ tài nguyên chạy ổn định cho các trình thông dịch (Interpreter) này.</p>
+<h2 id="makefile">Makefile<a class="headerlink" href="#makefile" title="Permanent link">#</a></h2>
+<p>Để biên dịch được chúng ta cần hoàn thành việc cài đặt trình biên dịch bên trên, và tìm hiểu một chút về kịch bản <strong>Makefile</strong>. Các kiến thức này thông thường các bạn đều phải biết khi học về ngôn ngữ <strong>C</strong>. Nội dung phần này chỉ nói ngắn gọn, xúc tích những gì cần thiết nhất.</p>
+<p><code>Makefile</code> là công cụ kịch bản hóa quá trình biên dịch thường được sử dụng trong hệ điều hành Unix, Linux, tất nhiên có cả trên Windows nhưng không phổ biến. Nó đơn giản quá hóa trình thực hiện biên dịch bằng cách sử dụng các module có sẵn trong hệ điều hành.</p>
+<p>Việc sử dụng Makefile trong các dự án <strong>C</strong> ít thường xuyên và thường được thiết kế sẵn bởi người tạo nên dự án đó. Do vậy, bạn chỉ cần hiểu sơ về <code>Makefile</code> để có thể dễ dàng sửa chữa theo ý mình, nếu không muốn chuyên sâu. Một số từ khóa google để dễ dàng tìm hiểu về <code>Makefile</code>: &ldquo;Makefile basics&rdquo;, &ldquo;Makefile tutorial&rdquo;.</p>
+<p>Để biên dịch, bạn gõ <code>make</code> từ cửa sổ terminal, chương trình <code>make</code> sẽ tìm và đọc file mặc định có tên <code>Makefile</code> ở thư mục hiện hành và thực thi nó.</p>
+<h1 id="cai-at-cong-cu-can-thiet">Cài đặt công cụ cần thiết<a class="headerlink" href="#cai-at-cong-cu-can-thiet" title="Permanent link">#</a></h1>
+<ul>
+<li>Trình soạn thảo trên máy tính, để viết mã nguồn <strong>C</strong></li>
+<li>Trình biên dịch, nhằm mục địch biên dịch mã nguồn <strong>C</strong> sang mã máy</li>
+<li>Trình nạp, nạp mã máy đã biên dịch xuống Flash của ESP8266</li>
+<li>SDK</li>
+</ul>
+<h2 id="cai-at-git">Cài đặt Git<a class="headerlink" href="#cai-at-git" title="Permanent link">#</a></h2>
+<h2 id="cai-at-trinh-bien-dich-cac-thu-vien-co-ban">Cài đặt trình biên dịch &amp; các thư viện cơ bản<a class="headerlink" href="#cai-at-trinh-bien-dich-cac-thu-vien-co-ban" title="Permanent link">#</a></h2>
+<h3 id="macososx">MacOS/OSX<a class="headerlink" href="#macososx" title="Permanent link">#</a></h3>
+<p>Bạn có ít nhất 2 cách để có trình biên dịch, đơn giản nhất là tải về từ 1 trong các link sau:</p>
+<ul>
+<li>https://esp8266.vn/esp8266-compiler-osx.zip</li>
+<li>http://esp8266vn.github.io/esp8266.vn/esp8266-compiler-osx.zip</li>
+</ul>
+<p>và giải nén vào thư mục: <code>/tools/esp8266/compiler/</code></p>
+<p><strong>Cách 2</strong> phức tạp hơn, nhưng sẽ phù hợp với tất cả phiên bản hệ điều hành của bạn. Biên dịch Trình biên dịch từ mã nguồn:</p>
+<pre class="code"><code class="language-bash">sudo port install git gsed gawk binutils gperf grep gettext py-serial wget libtool autoconf automake 
+
+hdiutil create -size 5g -fs &quot;Case-sensitive HFS+&quot; -volname ESPTools ESPTools.sparsebundle 
+hdiutil attach ESPTools.sparsebundle &lt;3&gt;
+sudo ln -s /Volumes/ESPTools/ /tools &lt;3&gt;
+mkdir /tools/esp8266 &lt;4&gt;
+mkdir /tools/esp8266/sdk &lt;4&gt;
+mkdir /tools/esp8266/compiler &lt;4&gt;
+cd /tools/esp8266/compiler
+
+git clone -b lx106 git://github.com/jcmvbkbc/crosstool-NG.git &lt;5&gt;
+cd crosstool-NG
+sed -i.bak '1s/^/gettext=\'$'\n/' crosstool-NG/kconfig/Makefile
+./bootstrap &amp;&amp; ./configure --prefix=`pwd` &amp;&amp; make &amp;&amp; make install
+./ct-ng xtensa-lx106-elf
+./ct-ng build</code></pre>
+
+
+<ul>
+<li>Các thư viện cần thiết để biên dịch crosstool-NG, sử dụng MacPorts để cài đặt. Nếu chưa cài đặt MacPorts có thẻ tải tại đây: https://www.macports.org/</li>
+<li>Biên dịch <code>crosstool-NG</code> cần định dạng ổ cứng hỗ trợ phân biệt đường dẫn chữ Hoa và chữ thường, nên cần tạo một ổ đĩa ảo như vậy.</li>
+<li>Mount ổ đĩa <code>ESPTools ESPTools.sparsebundle</code> tới thư mục <code>/tools/</code></li>
+<li>Tạo các thư mục cho để chứa SDK, trình biên dịch và công cụ nạp</li>
+<li>Clone dự án crosstool-NG, nhánh <code>lx106</code> về, tiến hành các thao tác biên dịch</li>
+</ul>
+<h4 id="luu-y">Lưu ý<a class="headerlink" href="#luu-y" title="Permanent link">#</a></h4>
+<p>Lưu ý rằng, quá trình biên dịch cần khoảng 1 giờ (tùy cấu hình máy) và 1.5GiB dung lượng ổ cứng trống</p>
+<p>Tiếp theo, cần phải thêm đường dẫn của compiler vào biến môi trường <code>PATH</code> của hệ điều hành</p>
+<pre class="code"><code class="language-bash">echo &quot;export PATH=$PATH:/tools/esp8266/compiler/crosstool-NG/builds/xtensa-lx106-elf/bin&quot; &gt;&gt;  ~/.bash_profile &lt;1&gt;
+source ~/.bash_profile </code></pre>
+
+
+<ul>
+<li>Thêm dòng <code>export</code> vào cuối file <code>~/.bash_profile</code> bằng <code>echo</code></li>
+<li><code>source</code> để tải lại biến môi trường</li>
+</ul>
+<p>Kiểm tra việc cài đặt, Có dòng này hiển thị ở cuối cùng thì việc cài đặt dã thành công</p>
+<pre class="code"><code class="language-bash">xtensa-lx106-elf-gcc -v
+gcc version 4.8.2 (crosstool-NG 1.20.0) </code></pre>
+
+
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">#</a></h3>
+<p>Cài đặt Git</p>
+<p>Tải về tại một trong các địa chỉ sau:</p>
+<ul>
+<li>http://*.ru</li>
+<li>https://esp8266.vn/esp8266-compiler-windows.zip</li>
+<li>http://esp8266vn.github.io/esp8266.vn/esp8266-compiler-windows.zip</li>
+</ul>
+<h3 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">#</a></h3>
+<h2 id="tai-cong-cu-nap-esptoolpy-sdk-va-cai-at-env">Tải công cụ nạp esptool.py, SDK và cài đặt ENV<a class="headerlink" href="#tai-cong-cu-nap-esptoolpy-sdk-va-cai-at-env" title="Permanent link">#</a></h2>
+<h2 id="cong-cu-com-terminal">Công cụ COM Terminal<a class="headerlink" href="#cong-cu-com-terminal" title="Permanent link">#</a></h2>
+<h2 id="tai-tai-lieu-tu-espressif">Tải tài liệu từ Espressif<a class="headerlink" href="#tai-tai-lieu-tu-espressif" title="Permanent link">#</a></h2>
+<p>//https://espressif.com/sites/default/files/documentation/esp8266-technical_reference_en.pdf</p>
+<h2 id="cau-hinh-chan-nap">Cấu hình chân nạp<a class="headerlink" href="#cau-hinh-chan-nap" title="Permanent link">#</a></h2>
               
             </div>
           </div>
