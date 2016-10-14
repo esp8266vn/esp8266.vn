@@ -1,9 +1,9 @@
 site_name: ESP8266
-site_url: https://8266.vn
+site_url: https://esp8266.vn
 site_description: ESP8266 Document
-site_author: IoT Maker Việt Nam
+site_author: Tuan PM
 theme: readthedocs
-copyright: Copyright &copy; 2016 <a href="https://iotmaker.vn/">IoT Maker Việt Nam</a>
+copyright: Copyright &copy; 2016 <a href="https://esp8266.vn">ESP8266 Viet Nam</a>
 markdown_extensions:
     - toc:
         permalink: '#'
