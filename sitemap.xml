@@ -4,7 +4,31 @@
     
     <url>
      <loc>https://8266.vn/</loc>
-     <lastmod>2016-10-08</lastmod>
+     <lastmod>2016-10-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://8266.vn/00-introduction/</loc>
+     <lastmod>2016-10-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://8266.vn/01-esp-basic/</loc>
+     <lastmod>2016-10-14</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://8266.vn/02-esp-led/</loc>
+     <lastmod>2016-10-14</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
