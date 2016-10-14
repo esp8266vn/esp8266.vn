@@ -16,6 +16,9 @@ repo_url: https://github.com/esp8266vn/esp8266.vn
 # Page tree
 pages:
   - Giới thiệu chung: index.md
+  - Hướng dẫn bắt đầu & cài đặt: 00-introduction.md
+  - ESP8266 Cơ bản: 01-esp-basic.md
+  - Bật tắt LED: 02-esp-led.md
 #  - Getting started: getting-started.md
 #  - Customization: customization.md
 #  - License: license.md
