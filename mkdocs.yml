@@ -28,13 +28,13 @@ pages:
     - Biên dịch dự án mẫu:        01-esp-basic/01-compile-first-time.md
     - Bật tắt LED:                01-esp-basic/02-blink-led.md 
     - Nút nhấn:                   01-esp-basic/03-button.md
-    - UART:                       01-esp-basic/03-button.md
-    - Task:                       01-esp-basic/03-button.md
-    - Wifi:                       01-esp-basic/03-button.md
-    - ESPCONN:                    01-esp-basic/03-button.md
-    - MDNS:                       01-esp-basic/03-button.md
-    - NTP:                        01-esp-basic/03-button.md
-    - Lưu dữ liệu vào Flash:      01-esp-basic/03-button.md
+    - UART:                       01-esp-basic/04-uart.md
+    - Task:                       01-esp-basic/05-task.md
+    - Wifi:                       01-esp-basic/06-wifi.md
+    - ESPCONN:                    01-esp-basic/07-espconn.md
+    - MDNS:                       01-esp-basic/08-mdns.md
+    - NTP:                        01-esp-basic/09-ntp.md
+    - Lưu dữ liệu vào Flash:      01-esp-basic/10-save-to-flash.md
   - Smartconfig:
     - ESP8266 Smartconfig:        02-esp-smartconfig/00-esp-smartconfig.md
     - Tại sao cần Smartconfig:    02-esp-smartconfig/01-why-smartconfig.md
