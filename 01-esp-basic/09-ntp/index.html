@@ -8,7 +8,7 @@
   
   <meta name="author" content="Tuan PM">
   
-  <title>Bật tắt LED - ESP8266</title>
+  <title>NTP - ESP8266</title>
   
 
   <link rel="shortcut icon" href="../../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Bật tắt LED";
-    var mkdocs_page_input_path = "01-esp-basic/02-blink-led.md";
-    var mkdocs_page_url = "/01-esp-basic/02-blink-led/";
+    var mkdocs_page_name = "NTP";
+    var mkdocs_page_input_path = "01-esp-basic/09-ntp.md";
+    var mkdocs_page_url = "/01-esp-basic/09-ntp/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -141,19 +141,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Bật tắt LED</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#bat-tat-led">Bật tắt LED</a></li>
-                
-                    <li><a class="toctree-l4" href="#goi-y">Gợi ý</a></li>
-                
-                    <li><a class="toctree-l4" href="#canh-bao">Cảnh báo</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../02-blink-led/">Bật tắt LED</a>
         
     </li>
 
@@ -201,8 +190,12 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../09-ntp/">NTP</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">NTP</a>
+        
+            <ul>
+            
+            </ul>
         
     </li>
 
@@ -376,7 +369,7 @@
         
       
     
-    <li>Bật tắt LED</li>
+    <li>NTP</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -390,52 +383,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="bat-tat-led">Bật tắt LED<a class="headerlink" href="#bat-tat-led" title="Permanent link">#</a></h1>
-<p>Tương tự như việc biên dịch dự án mẫu trong phần trước, toàn bộ cấu trúc file, <strong>Makefile, user_config.h, rf_init.c</strong> giữ nguyên, chỉ thay đổi nội dung file <code>main.c</code>. Mục đích: Chớp tắt đèn LED mỗi 1 giây.</p>
-<pre class="code"><code class="language-c">//esp-led/main.c
-#include &lt;stdio.h&gt;
-#include &quot;osapi.h&quot;
-#include &quot;user_interface.h&quot;
-static os_timer_t led_timer;
-static int led_value = 0;
-void led_service_cb(void *args) //Hàm này sẽ được gọi khi soft timer `led_timer` hoàn thành việc đếm 
-{
-    led_value ^= 0x01;
-    WRITE_PERI_REG(RTC_GPIO_OUT, (READ_PERI_REG(RTC_GPIO_OUT) &amp; (uint32_t)0xfffffffe)| (uint32_t)(led_value &amp; 1)); //Ghi giá trị ra LED IO, `led_value` khi thực hiện **XOR** với 1 sẽ đảo giá trị giữa 1 và 0
-    os_printf(&quot;Blink\r\n&quot;);
-}
-void app_init()
-{
-    //Cấu hình ngõ ra UART 115200 baud
-    uart_div_modify(0, UART_CLK_FREQ / 115200); 
-
-    //Cấu hình chân LED là chức năng chính GPIO, ngõ ra 
-    WRITE_PERI_REG(PAD_XPD_DCDC_CONF, (READ_PERI_REG(PAD_XPD_DCDC_CONF) &amp; 0xffffffbc)| (uint32_t)0x1);  
-    WRITE_PERI_REG(RTC_GPIO_CONF, (READ_PERI_REG(RTC_GPIO_CONF) &amp; (uint32_t)0xfffffffe)| (uint32_t)0x0); 
-    WRITE_PERI_REG(RTC_GPIO_ENABLE, (READ_PERI_REG(RTC_GPIO_ENABLE) &amp; (uint32_t)0xfffffffe)| (uint32_t)0x1); 
-
-    //Cấu hình địa chỉ hàm gọi khi timer `led_timer` đếm xong 
-    os_timer_setfn(&amp;led_timer, (os_timer_func_t *)led_service_cb, NULL); 
-
-    //Cấu hình `led_timer` tới hạn trong 1000 mili giây và khởi động lại khi tới hạn
-    os_timer_arm(&amp;led_timer, 1000, 1); 
-}
-
-void user_init(void)
-{
-    system_init_done_cb(app_init);
-}</code></pre>
-
-
-<p>Ở phần này chúng ta sẽ biết thêm về cách thức đọc/ghi thanh ghi của ESP8266, đồng thời sử dụng Software Timer:</p>
-<ul>
-<li>Để ghi vào thanh ghi, chúng ta dùng định nghĩa: <code>WRITE_PERI_REG</code> với tham số đầu tiên là địa chỉ thanh ghi, thông số thứ 2 là giá trị. Tương tự với việc đọc, định nghĩa <code>READ_PERI_REG</code> chỉ cần 1 tham số là địa chỉ thanh ghi, và trả về giá trị của thanh ghi.</li>
-<li>Trước khi sử dụng Software Timer, cần định nghĩa trước biến chưa thông tin là <code>os_timer_t led_timer</code>, khởi tạo hàm sẽ gọi khi Timer đến tới hạn với <code>os_timer_setfn</code> và <code>os_timer_arm</code> với tham số thứ 3 = 1 đảm bảo sẽ lặp lại việc đếm liên tục.</li>
-</ul>
-<h2 id="goi-y">Gợi ý<a class="headerlink" href="#goi-y" title="Permanent link">#</a></h2>
-<p>Có thể tìm thấy định nghĩa các địa chỉ thanh ghi tại thư mục chứa SDK <code>$SDK_BASE\include\eagle_soc.h</code>. Ngoài ra, bạn có thể tham khảo việc cấu hình GPIO16 tại <code>$SDK_BASE\driver_lib\gpio16.c</code> </p>
-<h2 id="canh-bao">Cảnh báo<a class="headerlink" href="#canh-bao" title="Permanent link">#</a></h2>
-<p>Chân <code>GPIO16</code> của ESP8266 là chân khá đặc biệt, sử dụng chung với RTC OUTPUT, dùng ở chế độ DEEPSLEEP, khi RTC tới hạn và khởi động Chip bằng cách hạ mức thấp chân này. Nếu bạn thiết kế ứng dụng cần sử dụng chế độ ngủ DEEPSLEEP thì đừng sử dụng chân GPIO16 cho mục đích khác, ngoại trừ việc nối thẳng vào chân nRST (chân <strong>32</strong> của ESP8266)</p>
+                
               
             </div>
           </div>
@@ -443,10 +391,10 @@ void user_init(void)
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../03-button/" class="btn btn-neutral float-right" title="Nút nhấn">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../10-save-to-flash/" class="btn btn-neutral float-right" title="Lưu dữ liệu vào Flash">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../01-compile-first-time/" class="btn btn-neutral" title="Biên dịch dự án mẫu"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../08-mdns/" class="btn btn-neutral" title="MDNS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -476,10 +424,10 @@ void user_init(void)
           <a href="https://github.com/esp8266vn/esp8266.vn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../01-compile-first-time/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../08-mdns/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../03-button/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../10-save-to-flash/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

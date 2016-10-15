@@ -386,74 +386,49 @@
             "title": "N\u00fat nh\u1ea5n"
         }, 
         {
-            "location": "/01-esp-basic/03-button/", 
-            "text": "N\u00fat nh\u1ea5n\n#", 
+            "location": "/01-esp-basic/04-uart/", 
+            "text": "UART\n#", 
             "title": "UART"
         }, 
         {
-            "location": "/01-esp-basic/03-button/#nut-nhan", 
+            "location": "/01-esp-basic/04-uart/#uart", 
             "text": "", 
-            "title": "N\u00fat nh\u1ea5n"
+            "title": "UART"
         }, 
         {
-            "location": "/01-esp-basic/03-button/", 
-            "text": "N\u00fat nh\u1ea5n\n#", 
+            "location": "/01-esp-basic/05-task/", 
+            "text": "Task\n#", 
             "title": "Task"
         }, 
         {
-            "location": "/01-esp-basic/03-button/#nut-nhan", 
+            "location": "/01-esp-basic/05-task/#task", 
             "text": "", 
-            "title": "N\u00fat nh\u1ea5n"
+            "title": "Task"
         }, 
         {
-            "location": "/01-esp-basic/03-button/", 
-            "text": "N\u00fat nh\u1ea5n\n#", 
+            "location": "/01-esp-basic/06-wifi/", 
+            "text": "", 
             "title": "Wifi"
         }, 
         {
-            "location": "/01-esp-basic/03-button/#nut-nhan", 
+            "location": "/01-esp-basic/07-espconn/", 
             "text": "", 
-            "title": "N\u00fat nh\u1ea5n"
-        }, 
-        {
-            "location": "/01-esp-basic/03-button/", 
-            "text": "N\u00fat nh\u1ea5n\n#", 
             "title": "ESPCONN"
         }, 
         {
-            "location": "/01-esp-basic/03-button/#nut-nhan", 
+            "location": "/01-esp-basic/08-mdns/", 
             "text": "", 
-            "title": "N\u00fat nh\u1ea5n"
-        }, 
-        {
-            "location": "/01-esp-basic/03-button/", 
-            "text": "N\u00fat nh\u1ea5n\n#", 
             "title": "MDNS"
         }, 
         {
-            "location": "/01-esp-basic/03-button/#nut-nhan", 
+            "location": "/01-esp-basic/09-ntp/", 
             "text": "", 
-            "title": "N\u00fat nh\u1ea5n"
-        }, 
-        {
-            "location": "/01-esp-basic/03-button/", 
-            "text": "N\u00fat nh\u1ea5n\n#", 
             "title": "NTP"
         }, 
         {
-            "location": "/01-esp-basic/03-button/#nut-nhan", 
+            "location": "/01-esp-basic/10-save-to-flash/", 
             "text": "", 
-            "title": "N\u00fat nh\u1ea5n"
-        }, 
-        {
-            "location": "/01-esp-basic/03-button/", 
-            "text": "N\u00fat nh\u1ea5n\n#", 
             "title": "L\u01b0u d\u1eef li\u1ec7u v\u00e0o Flash"
-        }, 
-        {
-            "location": "/01-esp-basic/03-button/#nut-nhan", 
-            "text": "", 
-            "title": "N\u00fat nh\u1ea5n"
         }, 
         {
             "location": "/02-esp-smartconfig/00-esp-smartconfig/", 
