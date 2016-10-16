@@ -52,7 +52,7 @@ pages:
     - ESP Now:                    07-esp-now/00-esp-now.md
   - ESP Mesh:
     - ESP Mesh:                   08-esp-mesh/00-esp-mesh.md
-  
   - Bản quyền: license.md
+  - Đóng góp: contributor.md
 
 google_analytics: ['UA-60470603-4', 'esp8266.vn']
