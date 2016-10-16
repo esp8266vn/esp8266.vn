@@ -25,7 +25,6 @@ Giấy phép này cho phép người khác phối lại, tùy chỉnh, v
 
 Bất kỳ mục đích sử dụng nào liên quan tới thương mại hóa, bao gồm, sử dụng với mục đích giảng dạy, đào tạo thu tiền học viên bắt buộc phải có sự đồng ý bằng văn bản từ tác giả.
 
-Vui lòng liên hệ: tuanpm [at] live [dot] com
 
 ![](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc.eu.svg)
 
