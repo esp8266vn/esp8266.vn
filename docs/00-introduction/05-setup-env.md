@@ -14,8 +14,8 @@
 
 Bạn có ít nhất 2 cách để có trình biên dịch, đơn giản nhất là tải về từ 1 trong các link sau:
 
-- https://esp8266.vn/esp8266-compiler-osx.zip
-- http://esp8266vn.github.io/esp8266.vn/esp8266-compiler-osx.zip
+- [xtensa-lx106-elf.zip](https://www.dropbox.com/s/wavfbh7v7k3lh15/xtensa-lx106-elf.zip?dl=0)
+
 
 và giải nén vào thư mục: `/tools/esp8266/compiler/`
 
