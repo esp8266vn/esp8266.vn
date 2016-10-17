@@ -105,6 +105,8 @@
             
                 <li class="toctree-l3"><a href="#module-va-board-mach-phat-trien">Module và Board mạch phát triển</a></li>
                 
+                    <li><a class="toctree-l4" href="#bang-so-sanh-cac-thong-so">Bảng so sánh các thông số</a></li>
+                
                     <li><a class="toctree-l4" href="#mot-so-module-esp8266-tren-thi-truong">Một số module ESP8266 trên thị trường</a></li>
                 
             
@@ -395,23 +397,465 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="module-va-board-mach-phat-trien">Module và Board mạch phát triển<a class="headerlink" href="#module-va-board-mach-phat-trien" title="Permanent link">#</a></h2>
+                <h1 id="module-va-board-mach-phat-trien">Module và Board mạch phát triển<a class="headerlink" href="#module-va-board-mach-phat-trien" title="Permanent link">#</a></h1>
 <p>ESP8266 cần ít nhất thêm 7 linh kiện nữa mới có thể hoạt động, trong đó phần khó nhất là Antena. Đòi hỏi phải được sản xuất, kiểm tra với các thiết bị hiện đại. Do đó, trên thị trường xuất hiện nhiều Module và Board mạch phát triển đảm đương hết để người dùng đơn giản nhất trong việc phát triển ứng dụng. Một số Module và Board phát triển phổ biến:</p>
-<h3 id="mot-so-module-esp8266-tren-thi-truong">Một số module ESP8266 trên thị trường<a class="headerlink" href="#mot-so-module-esp8266-tren-thi-truong" title="Permanent link">#</a></h3>
-<h4 id="esp-01">ESP-01<a class="headerlink" href="#esp-01" title="Permanent link">#</a></h4>
-<h4 id="esp-02">ESP-02<a class="headerlink" href="#esp-02" title="Permanent link">#</a></h4>
-<h4 id="esp-03">ESP-03<a class="headerlink" href="#esp-03" title="Permanent link">#</a></h4>
-<h4 id="esp-04">ESP-04<a class="headerlink" href="#esp-04" title="Permanent link">#</a></h4>
-<h4 id="esp-05">ESP-05<a class="headerlink" href="#esp-05" title="Permanent link">#</a></h4>
-<h4 id="esp-06">ESP-06<a class="headerlink" href="#esp-06" title="Permanent link">#</a></h4>
-<h4 id="esp-07">ESP-07<a class="headerlink" href="#esp-07" title="Permanent link">#</a></h4>
-<h4 id="esp-08">ESP-08<a class="headerlink" href="#esp-08" title="Permanent link">#</a></h4>
-<h4 id="esp-09">ESP-09<a class="headerlink" href="#esp-09" title="Permanent link">#</a></h4>
-<h4 id="esp-10">ESP-10<a class="headerlink" href="#esp-10" title="Permanent link">#</a></h4>
-<h4 id="esp-11">ESP-11<a class="headerlink" href="#esp-11" title="Permanent link">#</a></h4>
-<h4 id="esp-12">ESP-12<a class="headerlink" href="#esp-12" title="Permanent link">#</a></h4>
-<h4 id="esp-12a">ESP-12A<a class="headerlink" href="#esp-12a" title="Permanent link">#</a></h4>
-<h4 id="esp-wroom">ESP-WROOM<a class="headerlink" href="#esp-wroom" title="Permanent link">#</a></h4>
+<h2 id="bang-so-sanh-cac-thong-so">Bảng so sánh các thông số<a class="headerlink" href="#bang-so-sanh-cac-thong-so" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Phiên bản</th>
+<th>Số chân</th>
+<th>pitch</th>
+<th>form factor</th>
+<th>LEDs</th>
+<th>Antenna</th>
+<th>Ant.Socket</th>
+<th>Shielded</th>
+<th>dài mm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESP-01</td>
+<td>8</td>
+<td>.1“</td>
+<td>2×4 DIL</td>
+<td>Yes</td>
+<td>Etched-on PCB</td>
+<td>No</td>
+<td>No</td>
+<td>14.3 x 24.8</td>
+</tr>
+<tr>
+<td>ESP-02</td>
+<td>8</td>
+<td>.1”</td>
+<td>2×4 notch</td>
+<td>No?</td>
+<td>None</td>
+<td>Yes</td>
+<td>No</td>
+<td>14.2 x 14.2</td>
+</tr>
+<tr>
+<td>ESP-03</td>
+<td>14</td>
+<td>2mm</td>
+<td>2×7 notch</td>
+<td>No</td>
+<td>Ceramic</td>
+<td>No</td>
+<td>No</td>
+<td>17.3 x 12.1</td>
+</tr>
+<tr>
+<td>ESP-04</td>
+<td>14</td>
+<td>2mm</td>
+<td>2×4 notch</td>
+<td>No?</td>
+<td>None</td>
+<td>No</td>
+<td>No</td>
+<td>14.7 x 12.1</td>
+</tr>
+<tr>
+<td>ESP-05</td>
+<td>5</td>
+<td>.1“</td>
+<td>1×5 SIL</td>
+<td>No</td>
+<td>None</td>
+<td>Yes</td>
+<td>No</td>
+<td>14.2 x 14.2</td>
+</tr>
+<tr>
+<td>ESP-06</td>
+<td>12+GND</td>
+<td>misc</td>
+<td>4×3 dice</td>
+<td>No</td>
+<td>None</td>
+<td>No</td>
+<td>Yes</td>
+<td>16.3 x 13.1</td>
+</tr>
+<tr>
+<td>ESP-07</td>
+<td>16</td>
+<td>2mm</td>
+<td>2×8 pinhole</td>
+<td>Yes</td>
+<td>Ceramic</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>20.0 x 16.0</td>
+</tr>
+<tr>
+<td>ESP-08</td>
+<td>14</td>
+<td>2mm</td>
+<td>2×7 notch</td>
+<td>No</td>
+<td>None</td>
+<td>No</td>
+<td>Yes</td>
+<td>17.0 x 16.0</td>
+</tr>
+<tr>
+<td>ESP-08 New</td>
+<td>16</td>
+<td>2mm</td>
+<td>2×8 notch</td>
+<td>No</td>
+<td>None</td>
+<td>No</td>
+<td>Yes</td>
+<td>18.0 x 16.0</td>
+</tr>
+<tr>
+<td>ESP-09</td>
+<td>12+GND</td>
+<td>misc</td>
+<td>4×3 dice</td>
+<td>No</td>
+<td>None</td>
+<td>No</td>
+<td>No</td>
+<td>10.0 x 10.0</td>
+</tr>
+<tr>
+<td>ESP-10</td>
+<td>5</td>
+<td>2mmm?</td>
+<td>1×5 notch</td>
+<td>No</td>
+<td>None</td>
+<td>No</td>
+<td>No</td>
+<td>14.2 x 10.0</td>
+</tr>
+<tr>
+<td>ESP-11</td>
+<td>8</td>
+<td>1.27mm</td>
+<td>1×8 pinhole</td>
+<td>No?</td>
+<td>Ceramic</td>
+<td>No</td>
+<td>No</td>
+<td>17.3 x 12.1</td>
+</tr>
+<tr>
+<td>ESP-12</td>
+<td>16</td>
+<td>2mm</td>
+<td>2×8 notch</td>
+<td>Yes</td>
+<td>Etched-on PCB</td>
+<td>No</td>
+<td>Yes</td>
+<td>24.0 x 16.0</td>
+</tr>
+<tr>
+<td>ESP-12-E</td>
+<td>22</td>
+<td>2mm</td>
+<td>2×8 notch</td>
+<td>Yes</td>
+<td>Etched-on PCB</td>
+<td>No</td>
+<td>Yes</td>
+<td>24.0 x 16.0</td>
+</tr>
+<tr>
+<td>ESP-13</td>
+<td>18</td>
+<td>1.5mm</td>
+<td>2×9</td>
+<td>?</td>
+<td>Etched-on PCB</td>
+<td>No</td>
+<td>Yes</td>
+<td>? x ?</td>
+</tr>
+<tr>
+<td>ESP-14</td>
+<td>22</td>
+<td>2mm</td>
+<td>2×8 + 6</td>
+<td>1</td>
+<td>Etched-on PCB</td>
+<td>No</td>
+<td>Yes</td>
+<td>24.3 x 16.2</td>
+</tr>
+<tr>
+<td>WROOM-02</td>
+<td>18</td>
+<td>1.5mm</td>
+<td>2×9</td>
+<td>No</td>
+<td>Etched on PCB</td>
+<td>No</td>
+<td>Yes</td>
+<td>20.0 x 18.0</td>
+</tr>
+<tr>
+<td>WT8266-S1</td>
+<td>18</td>
+<td>1.5mm</td>
+<td>3×6</td>
+<td>1</td>
+<td>Etched on PCB</td>
+<td>No</td>
+<td>Yes</td>
+<td>15.0 x 18.6</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mot-so-module-esp8266-tren-thi-truong">Một số module ESP8266 trên thị trường<a class="headerlink" href="#mot-so-module-esp8266-tren-thi-truong" title="Permanent link">#</a></h2>
+<h3 id="esp-wroom-02">ESP-WROOM-02<a class="headerlink" href="#esp-wroom-02" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-WROOM-02.jpg" /></p>
+<h4 id="tinh-nang">Tính năng<a class="headerlink" href="#tinh-nang" title="Permanent link">#</a></h4>
+<ul>
+<li>ESP-WROOM-02 là một module MCU Wifi 32-bit tiết kiệm năng lượng dựa trên chip ESP8266.</li>
+<li>Hổ trợ các chuẩn mạng không dây 802.11 b/g/n</li>
+<li>Tích hợp sẳn giao thức TCP/IP, 10-bit ADC, TR switch, balun, LNA, và các chuẩn giao tiếp HSPI/UART/PWM/I2C/I2S.</li>
+<li>Hổ trợ Wi-Fi Alliance, SRRC, FCC, CE, TELEC, IC &amp; KCC Certified, RoHS, Halogen Free, REACH &amp; CFSI Compliant, HTOL, ESD-HM, MSL, μHAST, HTSL</li>
+<li>Hổ trợ Cloud Server Development</li>
+<li>Custom firmware development qua SDK</li>
+<li>Cấu hình người dùng qua AT Instruction Set, Cloud Server và ứng dụng Afdroid/iOS</li>
+<li>Khoảng cách giữa các chân 2.54mm</li>
+</ul>
+<h4 id="so-o-chan">Sơ đồ chân<a class="headerlink" href="#so-o-chan" title="Permanent link">#</a></h4>
+<p><a href="https://qiita-image-store.s3.amazonaws.com/0/55103/56eec04e-f231-8f4f-d792-840d36d791d7.png"><img alt="" src="../images/modules/ESP-WROOM-02-pin.png" /></a></p>
+<hr />
+<h3 id="esp-01">ESP-01<a class="headerlink" href="#esp-01" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-01.jpg" /></p>
+<h4 id="tinh-nang_1">Tính năng<a class="headerlink" href="#tinh-nang_1" title="Permanent link">#</a></h4>
+<ul>
+<li>Mạch nhỏ, gọn (24.75mm x 14.5mm)</li>
+<li>Điện áp làm việc 3.3v</li>
+<li>Tích hợp sẳn anten PCB trace trên module </li>
+<li>Có hai led báo hiệu : led nguồn, led TXD</li>
+<li>Có các chế độ: AP, STA, AT + STA</li>
+<li>Lệnh AT rất đơn giản, dễ dàng sử dụng</li>
+<li>Khoảng cách giữa các chân 2.54mm</li>
+</ul>
+<h4 id="so-o-chan_1">Sơ đồ chân<a class="headerlink" href="#so-o-chan_1" title="Permanent link">#</a></h4>
+<p><a href="https://github.com/acrobotic/Ai_Docs/blob/master/pinouts/esp8266_esp01/esp8266_esp01.pdf"><img alt="" src="../images/modules/ESP-01-pin.png" /></a></p>
+<hr />
+<h3 id="esp-02">ESP-02<a class="headerlink" href="#esp-02" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-02.png" /></p>
+<h4 id="tinh-nang_2">Tính năng<a class="headerlink" href="#tinh-nang_2" title="Permanent link">#</a></h4>
+<ul>
+<li>Sử dụng nguồn 3.3v</li>
+<li>Sử dụng anten ngoài - U.FL</li>
+<li>Wireless network mode : station, softAP, softAP + station</li>
+<li>Tần số wifi hoạt động 2.4GHz, và hổ trợ bảo mật WPA/WPA2</li>
+<li>Dễ dàng phát triển các dự án với lệnh AT</li>
+<li>Khoảng cách giữa các chân 2.54mm</li>
+</ul>
+<h4 id="so-o-chan_2">Sơ đồ chân<a class="headerlink" href="#so-o-chan_2" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/modules/ESP-02-pinout.jpg" /></p>
+<hr />
+<h3 id="esp-03">ESP-03<a class="headerlink" href="#esp-03" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-03.jpg" /></p>
+<h4 id="tinh-nang_3">Tính năng<a class="headerlink" href="#tinh-nang_3" title="Permanent link">#</a></h4>
+<ul>
+<li>Sử dụng nguồn 3.3v</li>
+<li>Tích hợp sẳn anten ceramic trên module và 1 pin</li>
+<li>Tiêu chuẩn wifi : 802.11b/g/n, 2.4GHz</li>
+<li>Wireless network mode : station, softAP, softAP + station</li>
+<li>Hổ trợ bảo mật WPA/WPA2</li>
+<li>Dễ dáng sử dụng với lệnh AT</li>
+<li>Khoảng cách giữa các chân 2mm</li>
+</ul>
+<h4 id="so-o-chan_3">Sơ đồ chân<a class="headerlink" href="#so-o-chan_3" title="Permanent link">#</a></h4>
+<p><a href="http://tech.scargill.net/wp-content/uploads/2014/12/esp03.jpg"><img alt="" src="../images/modules/ESP-03-pinout.png" /></a></p>
+<hr />
+<h3 id="esp-04">ESP-04<a class="headerlink" href="#esp-04" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-04.jpg" /></p>
+<h4 id="tinh-nang_4">Tính năng<a class="headerlink" href="#tinh-nang_4" title="Permanent link">#</a></h4>
+<ul>
+<li>Sử dụng nguồn 3.3v</li>
+<li>Wireless network mode : station, softAP, softAP + station</li>
+<li>Tiêu chuẩn wifi : 802.11b/g/n, với tần số 2.4GHz,và hổ trợ bảo mật WPA/WPA2</li>
+<li>Dễ dáng sử dụng với lệnh AT</li>
+<li>Khoảng cách giữa các chân 2mm</li>
+</ul>
+<h4 id="so-o-chan_4">Sơ đồ chân<a class="headerlink" href="#so-o-chan_4" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/modules/ESP-04-pinout.jpg" /></p>
+<hr />
+<h3 id="esp-05">ESP-05<a class="headerlink" href="#esp-05" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-05.jpg" /></p>
+<h4 id="tinh-nang_5">Tính năng<a class="headerlink" href="#tinh-nang_5" title="Permanent link">#</a></h4>
+<ul>
+<li>Sử dụng nguồn 3.3v</li>
+<li>Sử dụng anten ngoài - U.FL</li>
+<li>Wireless network mode : station, softAP, softAP + station</li>
+<li>Tiêu chuẩn wifi : 802.11b/g/n, với tần số 2.4GHz và hổ trợ bảo mật WPA/WPA2</li>
+<li>Dễ dáng sử dụng với lệnh AT</li>
+<li>Khoảng cách giữa các chân 2.54mm</li>
+</ul>
+<h4 id="so-o-chan_5">Sơ đồ chân<a class="headerlink" href="#so-o-chan_5" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/modules/ESP-05-pinout.jpg" /></p>
+<hr />
+<h3 id="esp-06">ESP-06<a class="headerlink" href="#esp-06" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-06.jpg" /></p>
+<h4 id="tinh-nang_6">Tính năng<a class="headerlink" href="#tinh-nang_6" title="Permanent link">#</a></h4>
+<ul>
+<li>Sử dụng nguồn 3.3v</li>
+<li>Wireless network mode : station, softAP, softAP + station</li>
+<li>Tiêu chuẩn wifi : 802.11b/g/n, với tần số 2.4GHz và hổ trợ bảo mật WPA/WPA2</li>
+<li>Hổ trợ TCP/UDP</li>
+<li>Dễ dáng sử dụng với lệnh AT</li>
+</ul>
+<h4 id="so-o-chan_6">Sơ đồ chân<a class="headerlink" href="#so-o-chan_6" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/modules/ESP-06-pinout.png" /></p>
+<hr />
+<h3 id="esp-07">ESP-07<a class="headerlink" href="#esp-07" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-07.jpg" /></p>
+<h4 id="tinh-nang_7">Tính năng<a class="headerlink" href="#tinh-nang_7" title="Permanent link">#</a></h4>
+<ul>
+<li>Sử dụng nguồn 3.3v</li>
+<li>Tích hợp sẳn anten ceramic và anten ngoài U.FL</li>
+<li>Tiêu chuẩn wifi : 802.11b/g/n, với tần số 2.4GHz và hổ trợ bảo mật WPA/WPA2</li>
+<li>Hổ trợ TCP/UDP</li>
+<li>Dễ dáng sử dụng với lệnh AT</li>
+<li>Khoảng cách giữa các chân 2mm</li>
+</ul>
+<h4 id="so-o-chan_7">Sơ đồ chân<a class="headerlink" href="#so-o-chan_7" title="Permanent link">#</a></h4>
+<p><a href="../images/modules/ESP-07-pinout.png"><img alt="" src="../images/modules/ESP-07-pinout.png" /></a></p>
+<hr />
+<h3 id="esp-08">ESP-08<a class="headerlink" href="#esp-08" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-08.jpg" /></p>
+<h4 id="tinh-nang_8">Tính năng<a class="headerlink" href="#tinh-nang_8" title="Permanent link">#</a></h4>
+<ul>
+<li>Sử dụng nguồn 3.3v</li>
+<li>Tiêu chuẩn wifi : 802.11b/g/n, với tần số 2.4GHz và hổ trợ bảo mật WPA/WPA2</li>
+<li>Hổ trợ TCP/UDP</li>
+<li>Có các chế độ: AP, STA, AT + STA</li>
+<li>Khoảng cách giữa các chân 2mm</li>
+</ul>
+<h4 id="so-o-chan_8">Sơ đồ chân<a class="headerlink" href="#so-o-chan_8" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/modules/ESP-08-pinout.png" /></p>
+<hr />
+<h3 id="esp-09">ESP-09<a class="headerlink" href="#esp-09" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-09.jpg" /></p>
+<h4 id="tinh-nang_9">Tính năng<a class="headerlink" href="#tinh-nang_9" title="Permanent link">#</a></h4>
+<ul>
+<li>Sử dụng nguồn 3.3v</li>
+<li>Kích thước mạch nhỏ (10mmx10mm)</li>
+<li>Hổ trợ LWIP</li>
+<li>Tiêu chuẩn wifi : 802.11b/g/n, với tần số 2.4GHz</li>
+</ul>
+<h4 id="so-o-chan_9">Sơ đồ chân<a class="headerlink" href="#so-o-chan_9" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/modules/ESP-09-pinout.png" /></p>
+<hr />
+<h3 id="esp-10">ESP-10<a class="headerlink" href="#esp-10" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-10.jpg" /></p>
+<h4 id="tinh-nang_10">Tính năng<a class="headerlink" href="#tinh-nang_10" title="Permanent link">#</a></h4>
+<ul>
+<li>Sử dụng nguồn 3.3v</li>
+<li>Tiêu chuẩn wifi : 802.11b/g/n, với tần số 2.4GHz và hổ trợ bảo mật WPA/WPA2</li>
+<li>Hổ trợ TCP/UDP</li>
+<li>Có các chế độ: AP, STA, AT + STA</li>
+<li>Khoảng cách giữa các chân 2mm</li>
+</ul>
+<h4 id="so-o-chan_10">Sơ đồ chân<a class="headerlink" href="#so-o-chan_10" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/modules/ESP-10-pinout.png" /></p>
+<hr />
+<h3 id="esp-11">ESP-11<a class="headerlink" href="#esp-11" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-11.jpg" /></p>
+<h4 id="tinh-nang_11">Tính năng<a class="headerlink" href="#tinh-nang_11" title="Permanent link">#</a></h4>
+<ul>
+<li>Sử dụng nguồn 3.3v</li>
+<li>Tích hợp sẳn anten ceramic trên module</li>
+<li>Tiêu chuẩn wifi : 802.11b/g/n, với tần số 2.4GHz và hổ trợ bảo mật WPA/WPA2</li>
+<li>Dễ dáng sử dụng với lệnh AT</li>
+<li>Khoảng cách giữa các chân 1.27mm</li>
+</ul>
+<h4 id="so-o-chan_11">Sơ đồ chân<a class="headerlink" href="#so-o-chan_11" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/modules/ESP-11-pinout.jpg" /></p>
+<hr />
+<h3 id="esp-12">ESP-12<a class="headerlink" href="#esp-12" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-12.jpeg" /></p>
+<h4 id="tinh-nang_12">Tính năng<a class="headerlink" href="#tinh-nang_12" title="Permanent link">#</a></h4>
+<ul>
+<li>Sử dụng nguồn 3.3v</li>
+<li>Tích hợp anten PCB trace trên module</li>
+<li>Tiêu chuẩn wifi : 802.11b/g/n, với tần số 2.4GHz và hổ trợ bảo mật WPA/WPA2</li>
+<li>Khoảng cách giữa các chân 2mm</li>
+</ul>
+<h4 id="so-o-chan_12">Sơ đồ chân<a class="headerlink" href="#so-o-chan_12" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/modules/ESP-12-pinout.jpeg" /></p>
+<hr />
+<h3 id="esp-12e">ESP-12E<a class="headerlink" href="#esp-12e" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-12E.jpg" /></p>
+<h4 id="tinh-nang_13">Tính năng<a class="headerlink" href="#tinh-nang_13" title="Permanent link">#</a></h4>
+<ul>
+<li>Sử dụng nguồn 3.3v</li>
+<li>Tích hợp anten PCB trace trên module</li>
+<li>4MB flash</li>
+<li>Tiêu chuẩn wifi : 802.11b/g/n, với tần số 2.4GHz và hổ trợ bảo mật WPA/WPA2</li>
+<li>Khoảng cách giữa các chân 2mm</li>
+</ul>
+<h4 id="so-o-chan_13">Sơ đồ chân<a class="headerlink" href="#so-o-chan_13" title="Permanent link">#</a></h4>
+<p><a href="../images/modules/esp8266_esp12e.pdf"><img alt="" src="../images/modules/ESP-12E-pinout.png" /></a></p>
+<hr />
+<h3 id="esp-13">ESP-13<a class="headerlink" href="#esp-13" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-13.jpg" /></p>
+<h4 id="tinh-nang_14">Tính năng<a class="headerlink" href="#tinh-nang_14" title="Permanent link">#</a></h4>
+<ul>
+<li>Sử dụng nguồn 3.3v</li>
+<li>Tích hợp anten PCB trace trên module</li>
+<li>Tiêu chuẩn wifi : 802.11b/g/n, với tần số 2.4GHz và hổ trợ bảo mật WPA/WPA2</li>
+<li>Khoảng cách giữa các chân 1.5mm</li>
+</ul>
+<h4 id="so-o-chan_14">Sơ đồ chân<a class="headerlink" href="#so-o-chan_14" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/modules/ESP-13-pinout.png" /></p>
+<hr />
+<h3 id="esp-14">ESP-14<a class="headerlink" href="#esp-14" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/ESP-14.jpg" /></p>
+<h4 id="tinh-nang_15">Tính năng<a class="headerlink" href="#tinh-nang_15" title="Permanent link">#</a></h4>
+<ul>
+<li>Sử dụng nguồn 3.3v</li>
+<li>Tích hợp anten PCB trace trên module</li>
+<li>Tích hợp thêm STM8S003F3P6, STM8S có thể điều khiển ESP8266 bằng lệnh AT</li>
+<li>Tiêu chuẩn wifi : 802.11b/g/n, với tần số 2.4GHz và hổ trợ bảo mật WPA/WPA2</li>
+<li>Khoảng cách giữa các chân 2mm</li>
+</ul>
+<h4 id="so-o-chan_15">Sơ đồ chân<a class="headerlink" href="#so-o-chan_15" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/modules/ESP-14-pinout.png" /></p>
+<hr />
+<h3 id="wt8266-s1">WT8266-S1<a class="headerlink" href="#wt8266-s1" title="Permanent link">#</a></h3>
+<p><img alt="" src="../images/modules/WT8266-S1.jpg" /></p>
+<h4 id="tinh-nang_16">Tính năng<a class="headerlink" href="#tinh-nang_16" title="Permanent link">#</a></h4>
+<ul>
+<li>Sử dụng nguồn 3.3v</li>
+<li>Nhiệt độ hoạt động  : -20°C - 70°C</li>
+<li>Chip Tensilica L106<ul>
+<li>RAM 36KB</li>
+<li>Flash 16Mbit</li>
+</ul>
+</li>
+<li>Hệ thống <ul>
+<li>Hổ trợ các chuẩn wifi 802.11 b/g/n </li>
+<li>Tần số hoạt động hổ trợ từ 80MHz đến 160 MHz, hổ trợ RTOS</li>
+<li>WIFI 2.4 GHz, hổ trợ WPA/WPA2 </li>
+<li>Tích hợp 10-bit ADC độ chính xác cao</li>
+<li>Hổ trợ TCP/IP stack</li>
+<li>Tích hợp TR Switch/balun/LNA/bộ khuếch đại công suất và matching network</li>
+<li>Tích hợp anten PCB trace trên module</li>
+<li>Hổ trợ nâng cấp AT từ xa và cloud OTA</li>
+</ul>
+</li>
+</ul>
+<h4 id="so-o-chan_16">Sơ đồ chân<a class="headerlink" href="#so-o-chan_16" title="Permanent link">#</a></h4>
+<p><img alt="" src="../images/modules/WT8266-S1-pinout.jpg" /></p>
               
             </div>
           </div>

@@ -4,7 +4,7 @@
     
     <url>
      <loc>https://esp8266.vn/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,37 +13,37 @@
         
     <url>
      <loc>https://esp8266.vn/00-introduction/00-introduction/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/00-introduction/01-about-iot/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/00-introduction/02-about-esp8266/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/00-introduction/03-esp-module/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/00-introduction/04-prepare/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/00-introduction/05-setup-env/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -53,67 +53,67 @@
         
     <url>
      <loc>https://esp8266.vn/01-esp-basic/00-esp-basic/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/01-esp-basic/01-compile-first-time/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/01-esp-basic/02-blink-led/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/01-esp-basic/03-button/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/01-esp-basic/04-uart/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/01-esp-basic/05-task/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/01-esp-basic/06-wifi/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/01-esp-basic/07-espconn/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/01-esp-basic/08-mdns/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/01-esp-basic/09-ntp/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/01-esp-basic/10-save-to-flash/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -123,25 +123,25 @@
         
     <url>
      <loc>https://esp8266.vn/02-esp-smartconfig/00-esp-smartconfig/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/02-esp-smartconfig/01-why-smartconfig/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/02-esp-smartconfig/02-esptouch/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://esp8266.vn/02-esp-smartconfig/03-wps/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -151,7 +151,7 @@
         
     <url>
      <loc>https://esp8266.vn/03-esp-mqtt/00-esp-mqtt/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -161,7 +161,7 @@
         
     <url>
      <loc>https://esp8266.vn/04-esp-http-client/00-esp-http-client/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -171,7 +171,7 @@
         
     <url>
      <loc>https://esp8266.vn/05-esp-http-server/00-esp-http-server/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -181,7 +181,7 @@
         
     <url>
      <loc>https://esp8266.vn/06-esp-fota/00-esp-fota/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -191,7 +191,7 @@
         
     <url>
      <loc>https://esp8266.vn/07-esp-now/00-esp-now/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -201,7 +201,7 @@
         
     <url>
      <loc>https://esp8266.vn/08-esp-mesh/00-esp-mesh/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -210,7 +210,7 @@
     
     <url>
      <loc>https://esp8266.vn/license/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -218,7 +218,7 @@
     
     <url>
      <loc>https://esp8266.vn/contributor/</loc>
-     <lastmod>2016-10-16</lastmod>
+     <lastmod>2016-10-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
