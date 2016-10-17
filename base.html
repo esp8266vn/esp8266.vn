@@ -20,9 +20,12 @@
   <link rel="stylesheet" href="{{ base_url }}/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="{{ base_url }}/css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="{{ base_url }}/css/highlight.css">
+
   {%- for path in extra_css %}
   <link href="{{ path }}" rel="stylesheet">
   {%- endfor %}
+
+  <link rel="stylesheet" href="{{ base_url }}/css/custom.css">
 
   {% if current_page %}
   <script>
@@ -36,6 +39,8 @@
   <script src="{{ base_url }}/js/modernizr-2.8.3.min.js"></script>
   <script type="text/javascript" src="{{ base_url }}/js/highlight.pack.js"></script>
   <script src="{{ base_url }}/js/theme.js"></script>
+  <script src="{{ base_url }}/js/jquery.cookie-1.4.1.min.js"></script>
+  <script src="{{ base_url }}/js/nav.js"></script>
 
   {%- block extrahead %} {% endblock %}
 
@@ -106,13 +111,20 @@
 
   </div>
 
-{% include "versions.html" %}
+<!-- {% include "versions.html" %} -->
+
+<script type="text/javascript">
+  // If cookie is defined toggle the id
+  if (typeof $.cookie('docToggle') !== 'undefined') {
+      // Parse cookie which is an array
+      var _parsed_cookie = JSON.parse($.cookie('docToggle'));
+      // Loop over array and show hidden divs
+      $.each(_parsed_cookie, function(index, value) {
+          // Toggle
+          $("[id='hidden_" + value + "']").css('display','');
+      })
+  }
+</script>
 
 </body>
 </html>
-{% if current_page and current_page.is_homepage %}
-<!--
-MkDocs version : {{ mkdocs_version }}
-Build Date UTC : {{ build_date_utc }}
--->
-{% endif %}
