@@ -74,6 +74,7 @@ gcc version 4.8.2 (crosstool-NG 1.20.0)
 ### Windows
 
 Cài đặt Git
+- https://desktop.github.com/
 
 Tải về tại một trong các địa chỉ sau:
 
@@ -82,6 +83,11 @@ Tải về tại một trong các địa chỉ sau:
 - http://esp8266vn.github.io/esp8266.vn/esp8266-compiler-windows.zip
 
 ### Linux
+Cài đặt Git
+```
+sudo apt-get update
+sudo apt-get install git
+```
 
 ## Tải công cụ nạp esptool.py, SDK và cài đặt ENV
 
