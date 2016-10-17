@@ -19,6 +19,14 @@ Quyền lợi bạn nhận được khi tham gia contribute cho dự án này:
 - Fork dự án và clone về 
 - `cd esp8266.vn && mkdocs serve`
 
+## Hướng dẫn sửa file md
+- Tải sublime [Sublime](https://www.sublimetext.com/3)
+- Cài [Package Control](https://packagecontrol.io/installation)
+- Cài [Markdown Editing] (https://github.com/SublimeText-Markdown/MarkdownEditing)
+- Cài [Markdown Preview] (https://github.com/revolunet/sublimetext-markdown-preview) để review lại trước khi commit. Để xem ấn Ctrl + Shift + P, gõ Preview in browser hoặc tạo phím tắt.
+- Tra cứu cách viết Markdown với [Markdown Cheatsheet] (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links)
+- Luyện thêm vài tutorial Markdown để thực hành [Tut md](http://www.markdowntutorial.com/)
+
 ## Hướng dẫn Contribute 
 
 Nếu bạn chưa từng làm về git và github vui lòng xem qua mô hình git flow với github: 
