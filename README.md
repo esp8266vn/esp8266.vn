@@ -13,8 +13,15 @@ Quyền lợi bạn nhận được khi tham gia contribute cho dự án này:
 - Nếu bạn là giảng viên và có tên trong danh sách Contributor, bạn toàn quyền sử dụng nội dung trên vào mục đích giảng dạy, giảng dạy thu phí - và được chứng thực.
 - Bạn sẽ được đào tạo làm sao để contribute một dự án mở chất lượng, và hỗ trợ đào tạo trực tuyến 1 tuần 1 buổi cho các vấn đề liên quan tới nội dung tài liệu.
 
-## Hướng dẫn Contribute 
+## Cài đặt công cụ cần thiết
 
 - Cài đặt mkdocs tại: http://www.mkdocs.org/#installation
 - Fork dự án và clone về 
 - `cd esp8266.vn && mkdocs serve`
+
+## Hướng dẫn Contribute 
+
+Nếu bạn chưa từng làm về git và github vui lòng xem qua mô hình git flow với github: 
+- https://guides.github.com/introduction/flow/
+- http://nvie.com/posts/a-successful-git-branching-model/
+- Cập nhật Upstream: https://help.github.com/articles/syncing-a-fork/
