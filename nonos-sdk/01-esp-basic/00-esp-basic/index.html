@@ -468,13 +468,54 @@ gcc version 4.8.2 (crosstool-NG 1.20.0) </code></pre>
 
 
 <h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">#</a></h3>
-<p>Cài đặt Git</p>
+<p>Cài đặt Git
+- https://desktop.github.com/</p>
 <p>Tải về tại một trong các địa chỉ sau:</p>
 <ul>
 <li><a href="http://programs74.ru/udkew-en.html">http://programs74.ru/udkew-en.html</a></li>
 <li>link dropbox (later)</li>
 </ul>
 <h3 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">#</a></h3>
+<p>Cài đặt Git</p>
+<pre class="code"><code>sudo apt-get update
+sudo apt-get install git</code></pre>
+
+
+<p>Cài đặt complier</p>
+<pre class="code"><code>git clone https://github.com/pfalcon/esp-open-sdk.git
+
+sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf \
+    flex bison texinfo gawk ncurses-dev libexpat-dev python sed
+
+cd esp-open-sdk
+unset LD_LIBRARY_PATH
+make</code></pre>
+
+
+<p>Trường hợp gặp lỗi help2man update bằng lệnh sau</p>
+<pre class="code"><code>sudo apt-get update
+sudo apt-get install help2man</code></pre>
+
+
+<p>Trường hợp lỗi configure: error: could not find GNU libtool &gt;= 1.5.26 fix bằng lệnh</p>
+<pre class="code"><code>apt-get install libtool-bin</code></pre>
+
+
+<p>Sau khi chạy <code>make</code> xong (mất khoảng hơn 30ph) thì sẽ có thông báo như sau</p>
+<pre class="code"><code>Xtensa toolchain is built, to use it:
+
+export PATH=/home/hocarm/esp-open-sdk/xtensa-lx106-elf/bin:$PATH</code></pre>
+
+
+<p>Chạy lệnh export để sử dụng eXtnsa</p>
+<p>Kiểm tra việc cài đặt bằng lệnh</p>
+<p><code>xtensa-lx106-elf-gcc -v</code></p>
+<p>Có dòng này hiển thị ở cuối cùng thì việc cài đặt dã thành công</p>
+<pre class="code"><code>Thread model: single
+gcc version 4.8.5 (crosstool-NG crosstool-ng-1.22.0-55-gecfc19a) </code></pre>
+
+
+<p>Có thể xem thêm <a href="http://pastebin.com/3SEJTNqT">log</a> cài đặt tham khảo</p>
 <h2 id="tai-cong-cu-nap-esptoolpy-sdk-va-cai-at-env">Tải công cụ nạp esptool.py, SDK và cài đặt ENV<a class="headerlink" href="#tai-cong-cu-nap-esptoolpy-sdk-va-cai-at-env" title="Permanent link">#</a></h2>
 <h2 id="cong-cu-com-terminal">Công cụ COM Terminal<a class="headerlink" href="#cong-cu-com-terminal" title="Permanent link">#</a></h2>
 <ul>
