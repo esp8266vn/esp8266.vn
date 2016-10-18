@@ -137,7 +137,22 @@ gcc version 4.8.5 (crosstool-NG crosstool-ng-1.22.0-55-gecfc19a)
 Có thể xem thêm [log](http://pastebin.com/3SEJTNqT) cài đặt tham khảo
 
 
-## Tải công cụ nạp esptool.py, SDK và cài đặt ENV
+## Tải SDK
+
+Tải ESP8266-NONOS-SDK 2.0 từ một trong các nguồn sau: 
+
+- [http://bbs.espressif.com/viewtopic.php?f=46&t=2451](http://bbs.espressif.com/viewtopic.php?f=46&t=2451)
+- [Dropbox ESP8266-NONOS-SDK](https://www.dropbox.com/s/vgq9pvy3333am24/ESP8266_NONOS_SDK_V2.0.0_16_08_10.zip?dl=0)
+
+Giải nén ra (ví dụ tại thư mục: `/tools/esp8266/sdk/ESP8266_NONOS_SDK`)
+
+## Tải **esptool.py**
+
+`git clone https://github.com/themadinventor/esptool.git` tại thư mục `/tools/esp8266/`
+
+Hoặc Download từ [Dropbox](https://www.dropbox.com/s/u3sihwbmjmx7xl3/esptool.zip?dl=0) và giải nén vào thư mục `/tools/esp8266/`
+
+
 
 ## Công cụ COM Terminal
 
