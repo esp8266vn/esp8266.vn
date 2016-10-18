@@ -56,9 +56,13 @@ pages:
       - ESP Mesh:
         - ESP Mesh:                   nonos-sdk/08-esp-mesh/00-esp-mesh.md
     - FreeRTOS-SDK:
-      - Cơ bản:                       freertos-sdk/freertos-sdk.md
+      - Cơ bản:                       
+        - Giới thiệu:                 freertos-sdk/freertos-sdk.md
+        - Cài đặt công cụ cần thiết:  freertos-sdk/00-freertos-basic/00-basic.md
     - Arduino:
-      - Cài đặt:                      arduino/arduino.md
+      - Cơ bản:
+        - Giới thiệu:                 arduino/arduino.md
+        - Cài đặt công cụ cần thiết:  arduino/00-arduino-basic/00-basic.md
 
   - Các dự án:                      projects/projects.md
   - Bản quyền:                      license.md
