@@ -683,7 +683,7 @@
         {
             "location": "/freertos-sdk/freertos-sdk/",
             "text": "FreeRTOS SDK\n#",
-            "title": "C\u01a1 b\u1ea3n"
+            "title": "Gi\u1edbi thi\u1ec7u"
         },
         {
             "location": "/freertos-sdk/freertos-sdk/#freertos-sdk",
@@ -691,14 +691,39 @@
             "title": "FreeRTOS SDK"
         },
         {
+            "location": "/freertos-sdk/00-freertos-basic/00-basic/",
+            "text": "FreeRTOS SDK c\u01a1 b\u1ea3n\n#",
+            "title": "C\u00e0i \u0111\u1eb7t c\u00f4ng c\u1ee5 c\u1ea7n thi\u1ebft"
+        },
+        {
+            "location": "/freertos-sdk/00-freertos-basic/00-basic/#freertos-sdk-co-ban",
+            "text": "",
+            "title": "FreeRTOS SDK c\u01a1 b\u1ea3n"
+        },
+        {
             "location": "/arduino/arduino/",
             "text": "ARDUINO\n#",
-            "title": "C\u00e0i \u0111\u1eb7t"
+            "title": "Gi\u1edbi thi\u1ec7u"
         },
         {
             "location": "/arduino/arduino/#arduino",
             "text": "",
             "title": "ARDUINO"
+        },
+        {
+            "location": "/arduino/00-arduino-basic/00-basic/",
+            "text": "Arduino c\u01a1 b\u1ea3n\n#\n\n\nC\u00e0i \u0111\u1eb7t\n#",
+            "title": "C\u00e0i \u0111\u1eb7t c\u00f4ng c\u1ee5 c\u1ea7n thi\u1ebft"
+        },
+        {
+            "location": "/arduino/00-arduino-basic/00-basic/#arduino-co-ban",
+            "text": "",
+            "title": "Arduino c\u01a1 b\u1ea3n"
+        },
+        {
+            "location": "/arduino/00-arduino-basic/00-basic/#cai-at",
+            "text": "",
+            "title": "C\u00e0i \u0111\u1eb7t"
         },
         {
             "location": "/projects/projects/",
