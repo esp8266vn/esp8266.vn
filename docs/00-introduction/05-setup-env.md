@@ -89,6 +89,52 @@ sudo apt-get update
 sudo apt-get install git
 ```
 
+Cài đặt complier
+```
+git clone https://github.com/pfalcon/esp-open-sdk.git
+
+sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf \
+    flex bison texinfo gawk ncurses-dev libexpat-dev python sed
+
+cd esp-open-sdk
+unset LD_LIBRARY_PATH
+make
+```
+
+Trường hợp gặp lỗi help2man update bằng lệnh sau
+```
+sudo apt-get update
+sudo apt-get install help2man
+```
+
+Trường hợp lỗi configure: error: could not find GNU libtool >= 1.5.26 fix bằng lệnh
+```
+apt-get install libtool-bin
+```
+
+Sau khi chạy `make` xong (mất khoảng hơn 30ph) thì sẽ có thông báo như sau
+```
+Xtensa toolchain is built, to use it:
+ 
+export PATH=/home/hocarm/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
+```
+
+Chạy lệnh export để sử dụng eXtnsa
+
+Kiểm tra việc cài đặt bằng lệnh
+
+`xtensa-lx106-elf-gcc -v`
+
+Có dòng này hiển thị ở cuối cùng thì việc cài đặt dã thành công
+
+```
+Thread model: single
+gcc version 4.8.5 (crosstool-NG crosstool-ng-1.22.0-55-gecfc19a) 
+```
+
+Có thể xem thêm [log](http://pastebin.com/3SEJTNqT) cài đặt tham khảo
+
+
 ## Tải công cụ nạp esptool.py, SDK và cài đặt ENV
 
 ## Công cụ COM Terminal
