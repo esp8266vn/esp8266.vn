@@ -3,6 +3,7 @@
 
 Giống như tất cả các Vi điều khiển khác, việc lập trình cho ESP8266 cần những kiến thức về lập trình **C** cũng như phần cứng để thực hành. Trong sách này chúng ta sẽ sử dụng mạch phát triển NodeMCU để thử nghiệm tất cả các ví dụ mẫu.
 
+## Cài đặt Git
 
 ## Mạch phát triển NodeMCU
 

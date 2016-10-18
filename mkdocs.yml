@@ -25,10 +25,9 @@ pages:
       - ESP8266 & ESP8285:          00-introduction/02-about-esp8266.md
       - Module & Board phát triển:  00-introduction/03-esp-module.md
       - Các kiến thức cơ bản:       00-introduction/04-prepare.md 
-      - Cài đặt công cụ cần thiết:  00-introduction/05-setup-env.md 
     - NONOS-SDK:
       - Cơ bản:               
-        - ESP8266 cơ bản:             nonos-sdk/01-esp-basic/00-esp-basic.md
+        - Cài đặt công cụ cần thiết:  nonos-sdk/01-esp-basic/00-esp-basic.md
         - Biên dịch dự án mẫu:        nonos-sdk/01-esp-basic/01-compile-first-time.md
         - Bật tắt LED:                nonos-sdk/01-esp-basic/02-blink-led.md 
         - Nút nhấn:                   nonos-sdk/01-esp-basic/03-button.md
