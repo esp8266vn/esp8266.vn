@@ -10,12 +10,6 @@ script:
 matrix:
   fast_finish: true
 deploy:
-  provider: pypi
-  user: mkdocsdeploy
-  distributions: sdist bdist_wheel
-  on:
-    repo: esp8266vn/esp8266.vn
-after_deploy:
 - git config user.name "tuanpmt"
 - git config user.email "tuanpm@live.com"
 - git remote add gh-token "https://${GH_TOKEN}@github.com/esp8266vn/esp8266.vn.git";
