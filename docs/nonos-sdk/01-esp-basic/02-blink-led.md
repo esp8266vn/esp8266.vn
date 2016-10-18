@@ -3,6 +3,15 @@
 
 Tương tự như việc biên dịch dự án mẫu trong phần trước, toàn bộ cấu trúc file, **Makefile, user_config.h, rf_init.c** giữ nguyên, chỉ thay đổi nội dung file `main.c`. Mục đích: Chớp tắt đèn LED mỗi 1 giây.
 
+## Lấy dự án về từ Github: 
+
+```bash
+git clone https://github.com/esp8266vn/esp-iot-led-blink.git
+cd esp-iot-led-blink && make
+```
+
+## Mã nguồn
+
 ```c
 //esp-led/main.c
 #include <stdio.h>

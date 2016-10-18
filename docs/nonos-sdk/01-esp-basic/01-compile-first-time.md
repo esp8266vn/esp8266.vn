@@ -6,7 +6,7 @@ Trong phần này sẽ trình bày rất chi tiết để biên dịch một d�
 
 ## Lấy dự án mẫu từ Github: 
 
-Bạn có thẻ lấy dự án mẫu từ github và biên dịch ngay:
+Bạn có thể lấy dự án mẫu từ github và biên dịch ngay:
 
 ```bash
 git clone https://github.com/esp8266vn/esp-iot-basic.git
