@@ -26,35 +26,41 @@ pages:
       - Module & Board phát triển:  00-introduction/03-esp-module.md
       - Các kiến thức cơ bản:       00-introduction/04-prepare.md 
       - Cài đặt công cụ cần thiết:  00-introduction/05-setup-env.md 
-    - ESP8266 cơ bản:               
-      - ESP8266 cơ bản:             01-esp-basic/00-esp-basic.md
-      - Biên dịch dự án mẫu:        01-esp-basic/01-compile-first-time.md
-      - Bật tắt LED:                01-esp-basic/02-blink-led.md 
-      - Nút nhấn:                   01-esp-basic/03-button.md
-      - UART:                       01-esp-basic/04-uart.md
-      - Task:                       01-esp-basic/05-task.md
-      - Wifi:                       01-esp-basic/06-wifi.md
-      - ESPCONN:                    01-esp-basic/07-espconn.md
-      - MDNS:                       01-esp-basic/08-mdns.md
-      - NTP:                        01-esp-basic/09-ntp.md
-      - Lưu dữ liệu vào Flash:      01-esp-basic/10-save-to-flash.md
-    - Smartconfig:
-      - ESP8266 Smartconfig:        02-esp-smartconfig/00-esp-smartconfig.md
-      - Tại sao cần Smartconfig:    02-esp-smartconfig/01-why-smartconfig.md
-      - ESPTOUCH & AIRKISS:         02-esp-smartconfig/02-esptouch.md
-      - WPS:                        02-esp-smartconfig/03-wps.md
-    - MQTT:
-      - ESP8266 MQTT:               03-esp-mqtt/00-esp-mqtt.md
-    - HTTP Client:
-      - ESP8266 HTTP Client:        04-esp-http-client/00-esp-http-client.md
-    - HTTP Server:
-      - ESP8266 HTTP Server:        05-esp-http-server/00-esp-http-server.md
-    - Firmware Over The Air:
-      - FOTA:                       06-esp-fota/00-esp-fota.md 
-    - ESP Now:
-      - ESP Now:                    07-esp-now/00-esp-now.md
-    - ESP Mesh:
-      - ESP Mesh:                   08-esp-mesh/00-esp-mesh.md
+    - NONOS-SDK:
+      - Cơ bản:               
+        - ESP8266 cơ bản:             nonos-sdk/01-esp-basic/00-esp-basic.md
+        - Biên dịch dự án mẫu:        nonos-sdk/01-esp-basic/01-compile-first-time.md
+        - Bật tắt LED:                nonos-sdk/01-esp-basic/02-blink-led.md 
+        - Nút nhấn:                   nonos-sdk/01-esp-basic/03-button.md
+        - UART:                       nonos-sdk/01-esp-basic/04-uart.md
+        - Task:                       nonos-sdk/01-esp-basic/05-task.md
+        - Wifi:                       nonos-sdk/01-esp-basic/06-wifi.md
+        - ESPCONN:                    nonos-sdk/01-esp-basic/07-espconn.md
+        - MDNS:                       nonos-sdk/01-esp-basic/08-mdns.md
+        - NTP:                        nonos-sdk/01-esp-basic/09-ntp.md
+        - Lưu dữ liệu vào Flash:      nonos-sdk/01-esp-basic/10-save-to-flash.md
+      - Smartconfig:
+        - ESP8266 Smartconfig:        nonos-sdk/02-esp-smartconfig/00-esp-smartconfig.md
+        - Tại sao cần Smartconfig:    nonos-sdk/02-esp-smartconfig/01-why-smartconfig.md
+        - ESPTOUCH & AIRKISS:         nonos-sdk/02-esp-smartconfig/02-esptouch.md
+        - WPS:                        nonos-sdk/02-esp-smartconfig/03-wps.md
+      - MQTT:
+        - ESP8266 MQTT:               nonos-sdk/03-esp-mqtt/00-esp-mqtt.md
+      - HTTP Client:
+        - ESP8266 HTTP Client:        nonos-sdk/04-esp-http-client/00-esp-http-client.md
+      - HTTP Server:
+        - ESP8266 HTTP Server:        nonos-sdk/05-esp-http-server/00-esp-http-server.md
+      - Firmware Over The Air:
+        - FOTA:                       nonos-sdk/06-esp-fota/00-esp-fota.md 
+      - ESP Now:
+        - ESP Now:                    nonos-sdk/07-esp-now/00-esp-now.md
+      - ESP Mesh:
+        - ESP Mesh:                   nonos-sdk/08-esp-mesh/00-esp-mesh.md
+    - FreeRTOS-SDK:
+      - Cơ bản:                       freertos-sdk/freertos-sdk.md
+    - Arduino:
+      - Cài đặt:                      arduino/arduino.md
+
   - Các dự án:                      projects/projects.md
   - Bản quyền:                      license.md
   - Đóng góp:                       contributor.md
