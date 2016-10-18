@@ -647,7 +647,12 @@
         },
         {
             "location": "/nonos-sdk/02-esp-smartconfig/01-why-smartconfig/",
-            "text": "01-why-smartconfig",
+            "text": "T\u1ea1i sao c\u1ea7n Smartconfig\n#",
+            "title": "T\u1ea1i sao c\u1ea7n Smartconfig"
+        },
+        {
+            "location": "/nonos-sdk/02-esp-smartconfig/01-why-smartconfig/#tai-sao-can-smartconfig",
+            "text": "",
             "title": "T\u1ea1i sao c\u1ea7n Smartconfig"
         },
         {
