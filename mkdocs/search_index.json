@@ -637,8 +637,13 @@
         },
         {
             "location": "/nonos-sdk/02-esp-smartconfig/00-esp-smartconfig/",
-            "text": "",
+            "text": "ESP8266 Smart config\n#",
             "title": "ESP8266 Smartconfig"
+        },
+        {
+            "location": "/nonos-sdk/02-esp-smartconfig/00-esp-smartconfig/#esp8266-smart-config",
+            "text": "",
+            "title": "ESP8266 Smart config"
         },
         {
             "location": "/nonos-sdk/02-esp-smartconfig/01-why-smartconfig/",
