@@ -1,1 +1,1 @@
-01-why-smartconfig
+# Tại sao cần Smartconfig
