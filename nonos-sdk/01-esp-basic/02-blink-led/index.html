@@ -395,6 +395,12 @@
               
                 <h1 id="bat-tat-led">Bật tắt LED<a class="headerlink" href="#bat-tat-led" title="Permanent link">#</a></h1>
 <p>Tương tự như việc biên dịch dự án mẫu trong phần trước, toàn bộ cấu trúc file, <strong>Makefile, user_config.h, rf_init.c</strong> giữ nguyên, chỉ thay đổi nội dung file <code>main.c</code>. Mục đích: Chớp tắt đèn LED mỗi 1 giây.</p>
+<h2 id="lay-du-an-ve-tu-github">Lấy dự án về từ Github:<a class="headerlink" href="#lay-du-an-ve-tu-github" title="Permanent link">#</a></h2>
+<pre class="code"><code class="language-bash">git clone https://github.com/esp8266vn/esp-iot-led-blink.git
+cd esp-iot-led-blink &amp;&amp; make</code></pre>
+
+
+<h2 id="ma-nguon">Mã nguồn<a class="headerlink" href="#ma-nguon" title="Permanent link">#</a></h2>
 <pre class="code"><code class="language-c">//esp-led/main.c
 #include &lt;stdio.h&gt;
 #include &quot;osapi.h&quot;
