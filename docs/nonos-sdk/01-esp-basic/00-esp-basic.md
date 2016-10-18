@@ -81,7 +81,7 @@ Cài đặt Git
 Tải về tại một trong các địa chỉ sau:
 
 - [http://programs74.ru/udkew-en.html](http://programs74.ru/udkew-en.html)
-- link dropbox (later)
+- [Link Dropbox](https://www.dropbox.com/s/x0v25603pnf8sny/Espressif-ESP8266-DevKit-v2.1.0-x86.exe?dl=0)
 
 
 ### Linux
