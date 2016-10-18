@@ -9,4 +9,4 @@ Bất kỳ mục đích sử dụng nào liên quan tới thương mại hóa, b
 
 Vui lòng liên hệ: tuanpm [at] live [dot] com
 
-![](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc.eu.svg)
+![](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.eu.svg)

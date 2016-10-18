@@ -1,3 +1,6 @@
+# ESP8266 cơ bản
+
+Trong chương này chúng ta sẽ lập trình cơ bản về ESP8266, biên dịch 1 dự án mẫu, làm sao để kết nối đến mạng Wi-Fi hiện tại. Sử dụng các module phần cứng của ESP8266 như GPIO (LED, nút nhấn), cổng dữ liệu UART (TX & RX), I2C, SPI, ADC ...
 
 # Cài đặt công cụ cần thiết
 
@@ -6,7 +9,6 @@
 * Trình nạp, nạp mã máy đã biên dịch xuống Flash của ESP8266
 * SDK
 
-## Cài đặt Git
 
 ## Cài đặt trình biên dịch & các thư viện cơ bản
 
@@ -14,8 +16,8 @@
 
 Bạn có ít nhất 2 cách để có trình biên dịch, đơn giản nhất là tải về từ 1 trong các link sau:
 
-- https://esp8266.vn/esp8266-compiler-osx.zip
-- http://esp8266vn.github.io/esp8266.vn/esp8266-compiler-osx.zip
+- [xtensa-lx106-elf.zip](https://www.dropbox.com/s/wavfbh7v7k3lh15/xtensa-lx106-elf.zip?dl=0)
+
 
 và giải nén vào thư mục: `/tools/esp8266/compiler/`
 
@@ -78,9 +80,9 @@ Cài đặt Git
 
 Tải về tại một trong các địa chỉ sau:
 
-- http://*.ru
-- https://esp8266.vn/esp8266-compiler-windows.zip
-- http://esp8266vn.github.io/esp8266.vn/esp8266-compiler-windows.zip
+- [http://programs74.ru/udkew-en.html](http://programs74.ru/udkew-en.html)
+- link dropbox (later)
+
 
 ### Linux
 Cài đặt Git
@@ -139,8 +141,11 @@ Có thể xem thêm [log](http://pastebin.com/3SEJTNqT) cài đặt tham khảo
 
 ## Công cụ COM Terminal
 
+- Minicom
+- CoolTerm
+
 ## Tải tài liệu từ Espressif
 
-//https://espressif.com/sites/default/files/documentation/esp8266-technical_reference_en.pdf
+[http://espressif.com](http://espressif.com/en/support/download/documents?keys=&field_type_tid%5B%5D=14)
 
 ## Cấu hình chân nạp

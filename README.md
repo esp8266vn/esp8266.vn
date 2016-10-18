@@ -1,5 +1,7 @@
 # Internet Of Things (IoT) với ESP8266 
 
+![Build image](https://travis-ci.org/esp8266vn/esp8266.vn.svg?branch=master)
+
 Với mong muốn tổng hợp các kiến thức một cách khoa học giúp những kỹ sư đi sau có thể tiếp cận tốt những kiến thức về Network & Connectivity để triển khai các sản phẩm IoT bài bản. Mình đã tổ chức bộ tài liệu này trực tuyến hoàn toàn mở và miễn phí.
 
 Ngoài việc cung cấp những hướng dẫn sử dụng chip Wifi ESP8266, Website còn cung cấp kiến thức hữu ích về những vấn đề liên quan tới IoT cho các kỹ sư muốn làm sản phẩm thực sự chất lượng.

@@ -1,9 +1,17 @@
 # Biên dịch dự án đầu tiên 
 
-
 Trước khi biên dịch dự án mẫu, bạn cần phải cài đặt đầy đủ **Trình biên dịch**, tải về **esptool.py** và **ESP8266-NONOS-SDK** như hướng dẫn Cài đặt
 
 Trong phần này sẽ trình bày rất chi tiết để biên dịch một dự án hoàn chỉnh, bao gồm một số kiến thức bổ trợ liên quan tới lập trình **C** và được giải thích rõ ràng, cẩn thận. Bạn có thể bỏ qua phần này nếu đã hiểu rõ về **lập trình C**
+
+## Lấy dự án mẫu từ Github: 
+
+Bạn có thể lấy dự án mẫu từ github và biên dịch ngay:
+
+```bash
+git clone https://github.com/esp8266vn/esp-iot-basic.git
+cd esp-iot-basic && make
+```
 
 ## Sơ đồ file
 
