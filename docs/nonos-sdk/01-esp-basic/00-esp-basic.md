@@ -135,7 +135,7 @@ gcc version 4.8.5 (crosstool-NG crosstool-ng-1.22.0-55-gecfc19a)
 ```
 
 Có thể xem thêm [log](http://pastebin.com/3SEJTNqT) cài đặt tham khảo
-
+Nếu tải gói trên Ubuntu thì có đầy đủ SDK, esptool. Thư mục sẽ hơi khác một chút so với MAC OS (Ví dụ như esp-open-sdk)
 
 ## Tải SDK
 
@@ -156,8 +156,19 @@ Hoặc Download từ [Dropbox](https://www.dropbox.com/s/u3sihwbmjmx7xl3/esptool
 
 ## Công cụ COM Terminal
 
-- Minicom
-- CoolTerm
+- [Minicom](https://help.ubuntu.com/community/Minicom)
+- [CoolTerm](http://freeware.the-meiers.org/) (Window, MAC, không support Ubuntu)
+- Gtkterm
+    + Cài đặt
+    ```
+    apt-get install gtkterm 
+    ```
+    + Tìm kiếm COM kết nối dùng lệnh `lsusb` trong terminal
+    + Chạy gtkterm
+    ```
+    sudo gtkterm
+    ```
+    + Cấu hình Port và baud trong Configuration>Port
 
 ## Tải tài liệu từ Espressif
 
