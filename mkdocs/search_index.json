@@ -741,6 +741,26 @@
             "title": "C\u00e0i \u0111\u1eb7t"
         },
         {
+            "location": "/micropython/micropython/",
+            "text": "ESP8266 Micropython\n#",
+            "title": "Gi\u1edbi thi\u1ec7u"
+        },
+        {
+            "location": "/micropython/micropython/#esp8266-micropython",
+            "text": "",
+            "title": "ESP8266 Micropython"
+        },
+        {
+            "location": "/micropython/00-ucpython-basic/00-basic/",
+            "text": "C\u00e0i \u0111\u1eb7t\n#",
+            "title": "C\u00e0i \u0111\u1eb7t c\u00f4ng c\u1ee5 c\u1ea7n thi\u1ebft"
+        },
+        {
+            "location": "/micropython/00-ucpython-basic/00-basic/#cai-at",
+            "text": "",
+            "title": "C\u00e0i \u0111\u1eb7t"
+        },
+        {
             "location": "/projects/projects/",
             "text": "C\u00e1c d\u1ef1 \u00e1n\n#",
             "title": "C\u00e1c d\u1ef1 \u00e1n"
