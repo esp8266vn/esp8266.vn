@@ -539,7 +539,8 @@ export PATH=/home/hocarm/esp-open-sdk/xtensa-lx106-elf/bin:$PATH</code></pre>
 gcc version 4.8.5 (crosstool-NG crosstool-ng-1.22.0-55-gecfc19a) </code></pre>
 
 
-<p>Có thể xem thêm <a href="http://pastebin.com/3SEJTNqT">log</a> cài đặt tham khảo</p>
+<p>Có thể xem thêm <a href="http://pastebin.com/3SEJTNqT">log</a> cài đặt tham khảo
+Nếu tải gói trên Ubuntu thì có đầy đủ SDK, esptool. Thư mục sẽ hơi khác một chút so với MAC OS (Ví dụ như esp-open-sdk)</p>
 <h2 id="tai-sdk">Tải SDK<a class="headerlink" href="#tai-sdk" title="Permanent link">#</a></h2>
 <p>Tải ESP8266-NONOS-SDK 2.0 từ một trong các nguồn sau: </p>
 <ul>
@@ -552,8 +553,17 @@ gcc version 4.8.5 (crosstool-NG crosstool-ng-1.22.0-55-gecfc19a) </code></pre>
 <p>Hoặc Download từ <a href="https://www.dropbox.com/s/u3sihwbmjmx7xl3/esptool.zip?dl=0">Dropbox</a> và giải nén vào thư mục <code>/tools/esp8266/</code></p>
 <h2 id="cong-cu-com-terminal">Công cụ COM Terminal<a class="headerlink" href="#cong-cu-com-terminal" title="Permanent link">#</a></h2>
 <ul>
-<li>Minicom</li>
-<li>CoolTerm</li>
+<li><a href="https://help.ubuntu.com/community/Minicom">Minicom</a></li>
+<li><a href="http://freeware.the-meiers.org/">CoolTerm</a> (Window, MAC, không support Ubuntu)</li>
+<li>Gtkterm<ul>
+<li>Cài đặt
+<code>apt-get install gtkterm</code></li>
+<li>Tìm kiếm COM kết nối dùng lệnh <code>lsusb</code> trong terminal</li>
+<li>Chạy gtkterm
+<code>sudo gtkterm</code></li>
+<li>Cấu hình Port và baud trong Configuration&gt;Port</li>
+</ul>
+</li>
 </ul>
 <h2 id="tai-tai-lieu-tu-espressif">Tải tài liệu từ Espressif<a class="headerlink" href="#tai-tai-lieu-tu-espressif" title="Permanent link">#</a></h2>
 <p><a href="http://espressif.com/en/support/download/documents?keys=&amp;field_type_tid%5B%5D=14">http://espressif.com</a></p>
