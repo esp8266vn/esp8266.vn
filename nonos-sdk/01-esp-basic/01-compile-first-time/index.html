@@ -443,7 +443,7 @@ cd esp-iot-basic &amp;&amp; make</code></pre>
 
 
 <h2 id="so-o-file">Sơ đồ file<a class="headerlink" href="#so-o-file" title="Permanent link">#</a></h2>
-<pre class="code"><code>esp-helloworld
+<pre class="code"><code>esp-iot-basic
     |-- Makefile
     |-- main.c
     |-- rf_init.c
@@ -457,7 +457,7 @@ cd esp-iot-basic &amp;&amp; make</code></pre>
 <li><code>user_config.h</code> Khi biên dịch, SDK sẽ <code>include</code> file này, bạn có thể để file trống không nội dung.</li>
 </ul>
 <h3 id="makefile">Makefile<a class="headerlink" href="#makefile" title="Permanent link">#</a></h3>
-<pre class="code"><code class="language-Makefile">#esp-helloworld/Makefile
+<pre class="code"><code class="language-Makefile">#esp-iot-basic/Makefile
 XTENSA    ?= 
 SDK_BASE  ?= /tools/esp8266/sdk/ESP8266_NONOS_SDK 
 ESPTOOL   ?= /tools/esp8266/esptool/esptool.py
@@ -532,7 +532,7 @@ flash:
 </ul>
 <p>Các bạn có thể tìm hiểu rõ hơn về Makefile bằng google với từ khóa <code>Makefile basic</code>. Makefile này như là 1 kịch bản đơn giản nhất để công cụ <code>make</code> thực hiện việc biên dịch mã nguồn <strong>C</strong> sang mã máy để nạp cho ESP8266. Mục đích để bản nắm rõ hơn về cách thức hoạt động của SDK, trình biên dịch. Các ví dụ sau này sẽ dùng Makefile phức tạp hơn, và được cung cấp kèm với các dự án mẫu tại https://github.com/esp8266vn</p>
 <h3 id="rf_initc">rf_init.c<a class="headerlink" href="#rf_initc" title="Permanent link">#</a></h3>
-<pre class="code"><code class="language-c">//esp-helloworld/rf_init.c
+<pre class="code"><code class="language-c">//esp-iot-basic/rf_init.c
 #include &lt;stdio.h&gt;
 #include &quot;osapi.h&quot;
 #include &quot;user_interface.h&quot;
@@ -593,7 +593,7 @@ void user_init(void)
 
 <h2 id="bien-dich">Biên dịch<a class="headerlink" href="#bien-dich" title="Permanent link">#</a></h2>
 <p>Thực hiện biên dịch dự án</p>
-<pre class="code"><code class="language-bash">cd esp-helloworld
+<pre class="code"><code class="language-bash">cd esp-iot-basic
 make clean
 make
 make flash</code></pre>

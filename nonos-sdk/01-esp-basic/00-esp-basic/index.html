@@ -506,32 +506,20 @@ sudo apt-get install git</code></pre>
 
 
 <p>Cài đặt complier</p>
-<pre class="code"><code>git clone https://github.com/pfalcon/esp-open-sdk.git
-
-sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf \
-    flex bison texinfo gawk ncurses-dev libexpat-dev python sed
-
-cd esp-open-sdk
+<pre class="code"><code>mkdir /tools
+mkdir /tools/esp8266 
+mkdir /tools/esp8266/sdk
+mkdir /tools/esp8266/compiler
+cd /tools/esp8266/compiler
+git clone -b lx106 git://github.com/jcmvbkbc/crosstool-NG.git 
+cd crosstool-NG
+./bootstrap &amp;&amp; ./configure --prefix=`pwd` &amp;&amp; make &amp;&amp; make install
+./ct-ng xtensa-lx106-elf
 unset LD_LIBRARY_PATH
-make</code></pre>
+./ct-ng build
+PATH=$PWD/builds/xtensa-lx106-elf/bin:$PATH</code></pre>
 
 
-<p>Trường hợp gặp lỗi help2man update bằng lệnh sau</p>
-<pre class="code"><code>sudo apt-get update
-sudo apt-get install help2man</code></pre>
-
-
-<p>Trường hợp lỗi configure: error: could not find GNU libtool &gt;= 1.5.26 fix bằng lệnh</p>
-<pre class="code"><code>apt-get install libtool-bin</code></pre>
-
-
-<p>Sau khi chạy <code>make</code> xong (mất khoảng hơn 30ph) thì sẽ có thông báo như sau</p>
-<pre class="code"><code>Xtensa toolchain is built, to use it:
-
-export PATH=/home/hocarm/esp-open-sdk/xtensa-lx106-elf/bin:$PATH</code></pre>
-
-
-<p>Chạy lệnh export để sử dụng eXtnsa</p>
 <p>Kiểm tra việc cài đặt bằng lệnh</p>
 <p><code>xtensa-lx106-elf-gcc -v</code></p>
 <p>Có dòng này hiển thị ở cuối cùng thì việc cài đặt dã thành công</p>
@@ -539,8 +527,6 @@ export PATH=/home/hocarm/esp-open-sdk/xtensa-lx106-elf/bin:$PATH</code></pre>
 gcc version 4.8.5 (crosstool-NG crosstool-ng-1.22.0-55-gecfc19a) </code></pre>
 
 
-<p>Có thể xem thêm <a href="http://pastebin.com/3SEJTNqT">log</a> cài đặt tham khảo
-Nếu tải gói trên Ubuntu thì có đầy đủ SDK, esptool. Thư mục sẽ hơi khác một chút so với MAC OS (Ví dụ như esp-open-sdk)</p>
 <h2 id="tai-sdk">Tải SDK<a class="headerlink" href="#tai-sdk" title="Permanent link">#</a></h2>
 <p>Tải ESP8266-NONOS-SDK 2.0 từ một trong các nguồn sau: </p>
 <ul>
@@ -551,6 +537,14 @@ Nếu tải gói trên Ubuntu thì có đầy đủ SDK, esptool. Thư mục s�
 <h2 id="tai-esptoolpy">Tải <strong>esptool.py</strong><a class="headerlink" href="#tai-esptoolpy" title="Permanent link">#</a></h2>
 <p><code>git clone https://github.com/themadinventor/esptool.git</code> tại thư mục <code>/tools/esp8266/</code></p>
 <p>Hoặc Download từ <a href="https://www.dropbox.com/s/u3sihwbmjmx7xl3/esptool.zip?dl=0">Dropbox</a> và giải nén vào thư mục <code>/tools/esp8266/</code></p>
+<h2 id="tai-libclibhal-file-include-voi-ubuntu-them-lenh-sudo-truoc-wget">Tải libc,libhal, file include (với ubuntu thêm lệnh sudo trước wget)<a class="headerlink" href="#tai-libclibhal-file-include-voi-ubuntu-them-lenh-sudo-truoc-wget" title="Permanent link">#</a></h2>
+<pre class="code"><code>cd tools/esp8266/complier/crosstool-NG/builds/xtensa-lx106-elf/xtensa-lx106-elf/sysroot/usr
+wget -O lib/libc.a https://github.com/esp8266/esp8266-wiki/raw/master/libs/libc.a
+wget -O lib/libhal.a https://github.com/esp8266/esp8266-wiki/raw/master/libs/libhal.a
+wget -O include.tgz https://github.com/esp8266/esp8266-wiki/raw/master/include.tgz
+tar -xvzf include.tgz</code></pre>
+
+
 <h2 id="cong-cu-com-terminal">Công cụ COM Terminal<a class="headerlink" href="#cong-cu-com-terminal" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://help.ubuntu.com/community/Minicom">Minicom</a></li>
