@@ -118,7 +118,7 @@ Sau khi chạy `make` xong (mất khoảng hơn 30ph) thì sẽ có thông báo 
 ```
 Xtensa toolchain is built, to use it:
  
-export PATH=/home/hocarm/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
+export PATH=/home/ten-may-ban/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
 ```
 
 Chạy lệnh export để sử dụng eXtnsa
