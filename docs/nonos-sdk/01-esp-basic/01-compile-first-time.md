@@ -16,7 +16,7 @@ cd esp-iot-basic && make
 ## Sơ đồ file
 
 ```
-esp-helloworld
+esp-iot-basic
     |-- Makefile
     |-- main.c
     |-- rf_init.c
@@ -30,7 +30,7 @@ esp-helloworld
 ### Makefile
 
 ```Makefile
-#esp-helloworld/Makefile
+#esp-iot-basic/Makefile
 XTENSA    ?= 
 SDK_BASE  ?= /tools/esp8266/sdk/ESP8266_NONOS_SDK 
 ESPTOOL   ?= /tools/esp8266/esptool/esptool.py
@@ -106,7 +106,7 @@ Các bạn có thể tìm hiểu rõ hơn về Makefile bằng google với từ
 ### rf_init.c
 
 ```c
-//esp-helloworld/rf_init.c
+//esp-iot-basic/rf_init.c
 #include <stdio.h>
 #include "osapi.h"
 #include "user_interface.h"
@@ -171,7 +171,7 @@ void user_init(void)
 
 Thực hiện biên dịch dự án
 ```bash
-cd esp-helloworld
+cd esp-iot-basic
 make clean
 make
 make flash
