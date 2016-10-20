@@ -16,7 +16,7 @@ cd esp-iot-basic && make
 ## Sơ đồ file
 
 ```
-esp-helloworld
+esp-iot-basic
     |-- Makefile
     |-- main.c
     |-- rf_init.c
@@ -30,7 +30,7 @@ esp-helloworld
 ### Makefile
 
 ```Makefile
-#esp-helloworld/Makefile
+#esp-iot-basic/Makefile
 XTENSA    ?= 
 SDK_BASE  ?= /tools/esp8266/sdk/ESP8266_NONOS_SDK 
 ESPTOOL   ?= /tools/esp8266/esptool/esptool.py
@@ -81,9 +81,9 @@ flash:
 
 Giải thích Makefile như sau:
 
-- `XTENSA` Đường dẫn tới trình biên dịch, để trống nếu bạn đã thêm vào biến môi trường `PATH` của hệ điều hành, hoặc có dạng `/tools/esp8266/compiler/xtensa-lx106-elf/bin/` với MAC OS với ubuntu thì phải chạy lệnh `export PATH=/home/ten-may-ban/esp-open-sdk/xtensa-lx106-elf/bin:$PATH` trước khi build  chứ không thiết lập đường dẫn được.
-- `SDK_BASE` Đường dẫn tới **SDK**, nếu là Windows có dạng `C:\Espressif\ESP8266_NONOS_SDK` với ubuntu sẽ có dạng `/home/ten-may-ban/esp-open-sdk/sdk`
-- `ESPTOOL` Đường dẫn tới **esptool.py**, nhớ đảm bảo quyền thực thi cho file này (thực hiện lệnh `chmod +x`), với ubuntu sẽ có dạng `/home/ten-may-ban/esp-open-sdk/esptool/esptool.py`
+- `XTENSA` Đường dẫn tới trình biên dịch, để trống nếu bạn đã thêm vào biến môi trường `PATH` của hệ điều hành, hoặc có dạng `/tools/esp8266/compiler/xtensa-lx106-elf/bin/`
+- `SDK_BASE` Đường dẫn tới **SDK**, nếu là Windows có dạng `C:\Espressif\ESP8266_NONOS_SDK`
+- `ESPTOOL` Đường dẫn tới **esptool.py**, nhớ đảm bảo quyền thực thi cho file này (thực hiện lệnh `chmod +x`)
 - `SDK_LIBS` Các thư viện đi kèm với **SDK**, ví dụ nếu bạn dùng `smartconfig` thì thêm vào `-lsmartconfig`
 - `CC`, `AR`, `LD` Định nghĩa ngắn gọn Compiler, Linker, Archiver
 - `LDFLAGS` là cờ dành cho Linker 

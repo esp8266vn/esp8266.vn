@@ -93,35 +93,19 @@ sudo apt-get install git
 
 Cài đặt complier
 ```
-git clone https://github.com/pfalcon/esp-open-sdk.git
-
-sudo apt-get install make unrar autoconf automake libtool gcc g++ gperf \
-    flex bison texinfo gawk ncurses-dev libexpat-dev python sed
-
-cd esp-open-sdk
+mkdir /tools
+mkdir /tools/esp8266 
+mkdir /tools/esp8266/sdk
+mkdir /tools/esp8266/compiler
+cd /tools/esp8266/compiler
+git clone -b lx106 git://github.com/jcmvbkbc/crosstool-NG.git 
+cd crosstool-NG
+./bootstrap && ./configure --prefix=`pwd` && make && make install
+./ct-ng xtensa-lx106-elf
 unset LD_LIBRARY_PATH
-make
+./ct-ng build
+PATH=$PWD/builds/xtensa-lx106-elf/bin:$PATH
 ```
-
-Trường hợp gặp lỗi help2man update bằng lệnh sau
-```
-sudo apt-get update
-sudo apt-get install help2man
-```
-
-Trường hợp lỗi configure: error: could not find GNU libtool >= 1.5.26 fix bằng lệnh
-```
-apt-get install libtool-bin
-```
-
-Sau khi chạy `make` xong (mất khoảng hơn 30ph) thì sẽ có thông báo như sau
-```
-Xtensa toolchain is built, to use it:
- 
-export PATH=/home/ten-may-ban/esp-open-sdk/xtensa-lx106-elf/bin:$PATH
-```
-
-Chạy lệnh export để sử dụng eXtnsa
 
 Kiểm tra việc cài đặt bằng lệnh
 
@@ -133,9 +117,6 @@ Có dòng này hiển thị ở cuối cùng thì việc cài đặt dã thành 
 Thread model: single
 gcc version 4.8.5 (crosstool-NG crosstool-ng-1.22.0-55-gecfc19a) 
 ```
-
-Có thể xem thêm [log](http://pastebin.com/3SEJTNqT) cài đặt tham khảo
-Nếu tải gói trên Ubuntu thì có đầy đủ SDK, esptool. Thư mục sẽ hơi khác một chút so với MAC OS (Ví dụ như esp-open-sdk)
 
 ## Tải SDK
 
@@ -152,6 +133,14 @@ Giải nén ra (ví dụ tại thư mục: `/tools/esp8266/sdk/ESP8266_NONOS_SDK
 
 Hoặc Download từ [Dropbox](https://www.dropbox.com/s/u3sihwbmjmx7xl3/esptool.zip?dl=0) và giải nén vào thư mục `/tools/esp8266/`
 
+## Tải libc,libhal, file include (với ubuntu thêm lệnh sudo trước wget)
+```
+cd tools/esp8266/complier/crosstool-NG/builds/xtensa-lx106-elf/xtensa-lx106-elf/sysroot/usr
+wget -O lib/libc.a https://github.com/esp8266/esp8266-wiki/raw/master/libs/libc.a
+wget -O lib/libhal.a https://github.com/esp8266/esp8266-wiki/raw/master/libs/libhal.a
+wget -O include.tgz https://github.com/esp8266/esp8266-wiki/raw/master/include.tgz
+tar -xvzf include.tgz
+```
 
 
 ## Công cụ COM Terminal
