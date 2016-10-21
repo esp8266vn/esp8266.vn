@@ -1,7 +1,3 @@
-# ESP8266 cơ bản
-
-Trong chương này chúng ta sẽ lập trình cơ bản về ESP8266, biên dịch 1 dự án mẫu, làm sao để kết nối đến mạng Wi-Fi hiện tại. Sử dụng các module phần cứng của ESP8266 như GPIO (LED, nút nhấn), cổng dữ liệu UART (TX & RX), I2C, SPI, ADC ...
-
 # Cài đặt công cụ cần thiết
 
 * Trình soạn thảo trên máy tính, để viết mã nguồn **C**
@@ -73,6 +69,7 @@ gcc version 4.8.2 (crosstool-NG 1.20.0)
 ```
 
 
+
 ### Windows
 
 Cài đặt Git
@@ -88,15 +85,15 @@ Tải về tại một trong các địa chỉ sau:
 Cài đặt Git
 ```
 sudo apt-get update
-sudo apt-get install git
+sudo apt-get install make unrar-free autoconf automake libtool gcc g++ gperf \
+    flex bison texinfo gawk ncurses-dev libexpat-dev python-dev python python-serial \
+    sed git unzip bash help2man wget bzip2
+sudo apt-get install libtool-bin
 ```
 
 Cài đặt complier
 ```
-mkdir /tools
-mkdir /tools/esp8266 
-mkdir /tools/esp8266/sdk
-mkdir /tools/esp8266/compiler
+mkdir /tools /tools/esp8266 /tools/esp8266/sdk /tools/esp8266/compiler
 cd /tools/esp8266/compiler
 git clone -b lx106 git://github.com/jcmvbkbc/crosstool-NG.git 
 cd crosstool-NG
@@ -106,6 +103,7 @@ unset LD_LIBRARY_PATH
 ./ct-ng build
 PATH=$PWD/builds/xtensa-lx106-elf/bin:$PATH
 ```
+
 
 Kiểm tra việc cài đặt bằng lệnh
 
@@ -118,7 +116,7 @@ Thread model: single
 gcc version 4.8.5 (crosstool-NG crosstool-ng-1.22.0-55-gecfc19a) 
 ```
 
-## Tải SDK
+## Tải ESP8266_NONOS_SDK
 
 Tải ESP8266-NONOS-SDK 2.0 từ một trong các nguồn sau: 
 
@@ -129,7 +127,12 @@ Giải nén ra (ví dụ tại thư mục: `/tools/esp8266/sdk/ESP8266_NONOS_SDK
 
 ## Tải **esptool.py**
 
-`git clone https://github.com/themadinventor/esptool.git` tại thư mục `/tools/esp8266/`
+```
+cd /tools/esp8266/
+git clone https://github.com/themadinventor/esptool.git
+
+```
+
 
 Hoặc Download từ [Dropbox](https://www.dropbox.com/s/u3sihwbmjmx7xl3/esptool.zip?dl=0) và giải nén vào thư mục `/tools/esp8266/`
 
@@ -159,8 +162,8 @@ tar -xvzf include.tgz
     ```
     + Cấu hình Port và baud trong Configuration>Port
 
-## Tải tài liệu từ Espressif
+## Tài liệu từ Espressif
 
 [http://espressif.com](http://espressif.com/en/support/download/documents?keys=&field_type_tid%5B%5D=14)
 
-## Cấu hình chân nạp
+

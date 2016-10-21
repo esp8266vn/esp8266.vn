@@ -3,8 +3,6 @@
 
 Giống như tất cả các Vi điều khiển khác, việc lập trình cho ESP8266 cần những kiến thức về lập trình **C** cũng như phần cứng để thực hành. Trong sách này chúng ta sẽ sử dụng mạch phát triển NodeMCU để thử nghiệm tất cả các ví dụ mẫu.
 
-## Cài đặt Git
-
 ## Mạch phát triển NodeMCU
 
 Mạch này có bán rộng rãi trên thị trường, tiện lợi khi phát triển, và được cung cấp đầy đủ mạch nguyên lý, mở về phần cứng. Chip USB-TTL hỗ trợ DTR và RTS cho phép phần mềm nạp `esptool.py` có thể điều khiển ESP8266 vào chế độ nạp luôn mà không cần thao tác phần cứng nào.
@@ -32,12 +30,27 @@ Sơ đồ chân & sơ đồ khối ESP8266EX
 ## Cài đặt trình soạn thảo & cài đặt ban đầu
 
 ### Sublime Text
-- Tải [Sublime](https://www.sublimetext.com/3)
-- Cài [Package Control](https://packagecontrol.io/installation)
-- Cài [Markdown Editing](https://github.com/SublimeText-Markdown/MarkdownEditing)
-- Cài [Markdown Preview](https://github.com/revolunet/sublimetext-markdown-preview) để review lại trước khi commit. Để xem ấn Ctrl + Shift + P, gõ Preview in browser hoặc tạo phím tắt.
-- Tra cứu cách viết Markdown với [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links)
-- Luyện thêm vài tutorial Markdown để thực hành [Tut md](http://www.markdowntutorial.com/)
+
+### [Sublime Text 3](#sublime)
+
+- Link download: https://www.sublimetext.com/
+- Learn shortcut: https://sublime-learning.herokuapp.com/
+- Shortcut : 
+    + http://www.hongkiat.com/blog/sublime-text-tips/
+    + https://www.viget.com/articles/my-overused-sublime-text-keyboard-shortcuts
+- Getting started: https://gist.github.com/anotheruiguy/11054534
+- Plug-ins:
+    + http://emmet.io/
+    + [Markdown Editing](https://github.com/SublimeText-Markdown/MarkdownEditing)
+    + [SideBarEnhancements](https://github.com/titoBouzout/SideBarEnhancements)
+    + [GithubEmoji](https://packagecontrol.io/packages/GithubEmoji)
+    + [SublimeAStyleFormatter](https://github.com/timonwong/) - [Recommend setting for C](SublimeAStyleFormatter.sublime-settings)
+    + [.editorconfig](https://github.com/sindresorhus/editorconfig-sublime) - [Recommend config](./.editorconfig)
+    + [GitGutter](https://github.com/jisaacks/GitGutter)
+    + [sublime-text-git](https://github.com/kemayo/sublime-text-git)
+    + [Babel](https://packagecontrol.io/packages/Babel)
+    + https://github.com/feross/standard
+    + https://packagecontrol.io/packages/FileHeader
 
 ### Eclipse
 
