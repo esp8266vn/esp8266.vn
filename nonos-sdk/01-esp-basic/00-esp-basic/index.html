@@ -433,9 +433,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="esp8266-co-ban">ESP8266 cơ bản<a class="headerlink" href="#esp8266-co-ban" title="Permanent link">#</a></h1>
-<p>Trong chương này chúng ta sẽ lập trình cơ bản về ESP8266, biên dịch 1 dự án mẫu, làm sao để kết nối đến mạng Wi-Fi hiện tại. Sử dụng các module phần cứng của ESP8266 như GPIO (LED, nút nhấn), cổng dữ liệu UART (TX &amp; RX), I2C, SPI, ADC &hellip;</p>
-<h1 id="cai-at-cong-cu-can-thiet">Cài đặt công cụ cần thiết<a class="headerlink" href="#cai-at-cong-cu-can-thiet" title="Permanent link">#</a></h1>
+                <h1 id="cai-at-cong-cu-can-thiet">Cài đặt công cụ cần thiết<a class="headerlink" href="#cai-at-cong-cu-can-thiet" title="Permanent link">#</a></h1>
 <ul>
 <li>Trình soạn thảo trên máy tính, để viết mã nguồn <strong>C</strong></li>
 <li>Trình biên dịch, nhằm mục địch biên dịch mã nguồn <strong>C</strong> sang mã máy</li>
@@ -502,14 +500,14 @@ gcc version 4.8.2 (crosstool-NG 1.20.0) </code></pre>
 <h3 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">#</a></h3>
 <p>Cài đặt Git</p>
 <pre class="code"><code>sudo apt-get update
-sudo apt-get install git</code></pre>
+sudo apt-get install make unrar-free autoconf automake libtool gcc g++ gperf \
+    flex bison texinfo gawk ncurses-dev libexpat-dev python-dev python python-serial \
+    sed git unzip bash help2man wget bzip2
+sudo apt-get install libtool-bin</code></pre>
 
 
 <p>Cài đặt complier</p>
-<pre class="code"><code>mkdir /tools
-mkdir /tools/esp8266 
-mkdir /tools/esp8266/sdk
-mkdir /tools/esp8266/compiler
+<pre class="code"><code>mkdir /tools /tools/esp8266 /tools/esp8266/sdk /tools/esp8266/compiler
 cd /tools/esp8266/compiler
 git clone -b lx106 git://github.com/jcmvbkbc/crosstool-NG.git 
 cd crosstool-NG
@@ -527,7 +525,7 @@ PATH=$PWD/builds/xtensa-lx106-elf/bin:$PATH</code></pre>
 gcc version 4.8.5 (crosstool-NG crosstool-ng-1.22.0-55-gecfc19a) </code></pre>
 
 
-<h2 id="tai-sdk">Tải SDK<a class="headerlink" href="#tai-sdk" title="Permanent link">#</a></h2>
+<h2 id="tai-esp8266_nonos_sdk">Tải ESP8266_NONOS_SDK<a class="headerlink" href="#tai-esp8266_nonos_sdk" title="Permanent link">#</a></h2>
 <p>Tải ESP8266-NONOS-SDK 2.0 từ một trong các nguồn sau: </p>
 <ul>
 <li><a href="http://bbs.espressif.com/viewtopic.php?f=46&amp;t=2451">http://bbs.espressif.com/viewtopic.php?f=46&amp;t=2451</a></li>
@@ -535,7 +533,10 @@ gcc version 4.8.5 (crosstool-NG crosstool-ng-1.22.0-55-gecfc19a) </code></pre>
 </ul>
 <p>Giải nén ra (ví dụ tại thư mục: <code>/tools/esp8266/sdk/ESP8266_NONOS_SDK</code>)</p>
 <h2 id="tai-esptoolpy">Tải <strong>esptool.py</strong><a class="headerlink" href="#tai-esptoolpy" title="Permanent link">#</a></h2>
-<p><code>git clone https://github.com/themadinventor/esptool.git</code> tại thư mục <code>/tools/esp8266/</code></p>
+<pre class="code"><code>cd /tools/esp8266/
+git clone https://github.com/themadinventor/esptool.git</code></pre>
+
+
 <p>Hoặc Download từ <a href="https://www.dropbox.com/s/u3sihwbmjmx7xl3/esptool.zip?dl=0">Dropbox</a> và giải nén vào thư mục <code>/tools/esp8266/</code></p>
 <h2 id="tai-libclibhal-file-include-voi-ubuntu-them-lenh-sudo-truoc-wget">Tải libc,libhal, file include (với ubuntu thêm lệnh sudo trước wget)<a class="headerlink" href="#tai-libclibhal-file-include-voi-ubuntu-them-lenh-sudo-truoc-wget" title="Permanent link">#</a></h2>
 <pre class="code"><code>cd tools/esp8266/complier/crosstool-NG/builds/xtensa-lx106-elf/xtensa-lx106-elf/sysroot/usr
@@ -559,9 +560,8 @@ tar -xvzf include.tgz</code></pre>
 </ul>
 </li>
 </ul>
-<h2 id="tai-tai-lieu-tu-espressif">Tải tài liệu từ Espressif<a class="headerlink" href="#tai-tai-lieu-tu-espressif" title="Permanent link">#</a></h2>
+<h2 id="tai-lieu-tu-espressif">Tài liệu từ Espressif<a class="headerlink" href="#tai-lieu-tu-espressif" title="Permanent link">#</a></h2>
 <p><a href="http://espressif.com/en/support/download/documents?keys=&amp;field_type_tid%5B%5D=14">http://espressif.com</a></p>
-<h2 id="cau-hinh-chan-nap">Cấu hình chân nạp<a class="headerlink" href="#cau-hinh-chan-nap" title="Permanent link">#</a></h2>
               
             </div>
           </div>
