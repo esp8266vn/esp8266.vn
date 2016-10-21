@@ -757,13 +757,23 @@
         },
         {
             "location": "/micropython/00-ucpython-basic/00-basic/",
-            "text": "C\u00e0i \u0111\u1eb7t\n#",
+            "text": "C\u00e0i \u0111\u1eb7t\n#\n\n\nC\u00e0i \u0111\u1eb7t esp-open-sdk\n#\n\n\nB\u1edfi v\u00ec \nmicropython\n build cho ESP8266 c\u1ea7n 1 s\u1ed1 s\u1ef1 thay \u0111\u1ed5i trong compile v\u00e0 th\u01b0 vi\u1ec7n \u0111i k\u00e8m n\u00ean ph\u1ea3i s\u1eed d\u1ee5ng compiler, sdk t\u1eeb esp-open-sdk \n\n\nC\u00e0i \u0111\u1eb7t theo h\u01b0\u1edbng d\u1eabn t\u1ea1i \nesp-open-sdk\n\n\nsed -i.bak '1s/^/gettext=\\'$'\\n/' crosstool-NG/kconfig/Makefile\nsed -i.bak -e 's/[[:<:]]sed[[:>:]]/gsed/' Makefile\nsed -i.bak -e 's/[[:<:]]awk[[:>:]]/\\$(AWK)/' lx106-hal/src/Makefile.am\nsed -i.bak 's/AM_PROG_AS/AM_PROG_AS\\'$'\\nAM_PROG_AR/' lx106-hal/configure.ac \n\n\n\n\nIDE\n#\n\n\nS\u1eed d\u1ee5ng https://github.com/eduvik/mu/tree/feature/multi-board\nhttps://www.pycom.io/solutions/pymakr/\n\n\nL\u01b0 \u00fd vi\u1ec7c Flash firmware cho ESP8266 d\u00f9ng esptool.py \n\n\nesptool.py --port /dev/tty.SLAB_USBtoUART --baud 921600 write_flash --verify --flash_size=32m --flash_mode=qio 0 build/firmware-combined.bin",
             "title": "C\u00e0i \u0111\u1eb7t c\u00f4ng c\u1ee5 c\u1ea7n thi\u1ebft"
         },
         {
             "location": "/micropython/00-ucpython-basic/00-basic/#cai-at",
             "text": "",
             "title": "C\u00e0i \u0111\u1eb7t"
+        },
+        {
+            "location": "/micropython/00-ucpython-basic/00-basic/#cai-at-esp-open-sdk",
+            "text": "B\u1edfi v\u00ec  micropython  build cho ESP8266 c\u1ea7n 1 s\u1ed1 s\u1ef1 thay \u0111\u1ed5i trong compile v\u00e0 th\u01b0 vi\u1ec7n \u0111i k\u00e8m n\u00ean ph\u1ea3i s\u1eed d\u1ee5ng compiler, sdk t\u1eeb esp-open-sdk   C\u00e0i \u0111\u1eb7t theo h\u01b0\u1edbng d\u1eabn t\u1ea1i  esp-open-sdk  sed -i.bak '1s/^/gettext=\\'$'\\n/' crosstool-NG/kconfig/Makefile\nsed -i.bak -e 's/[[:<:]]sed[[:>:]]/gsed/' Makefile\nsed -i.bak -e 's/[[:<:]]awk[[:>:]]/\\$(AWK)/' lx106-hal/src/Makefile.am\nsed -i.bak 's/AM_PROG_AS/AM_PROG_AS\\'$'\\nAM_PROG_AR/' lx106-hal/configure.ac",
+            "title": "C\u00e0i \u0111\u1eb7t esp-open-sdk"
+        },
+        {
+            "location": "/micropython/00-ucpython-basic/00-basic/#ide",
+            "text": "S\u1eed d\u1ee5ng https://github.com/eduvik/mu/tree/feature/multi-board\nhttps://www.pycom.io/solutions/pymakr/  L\u01b0 \u00fd vi\u1ec7c Flash firmware cho ESP8266 d\u00f9ng esptool.py   esptool.py --port /dev/tty.SLAB_USBtoUART --baud 921600 write_flash --verify --flash_size=32m --flash_mode=qio 0 build/firmware-combined.bin",
+            "title": "IDE"
         },
         {
             "location": "/projects/projects/",

@@ -434,6 +434,20 @@
             <div class="section">
               
                 <h1 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">#</a></h1>
+<h2 id="cai-at-esp-open-sdk">Cài đặt esp-open-sdk<a class="headerlink" href="#cai-at-esp-open-sdk" title="Permanent link">#</a></h2>
+<p>Bởi vì <code>micropython</code> build cho ESP8266 cần 1 số sự thay đổi trong compile và thư viện đi kèm nên phải sử dụng compiler, sdk từ esp-open-sdk </p>
+<p>Cài đặt theo hướng dẫn tại <a href="https://github.com/pfalcon/esp-open-sdk">esp-open-sdk</a></p>
+<pre class="code"><code>sed -i.bak '1s/^/gettext=\'$'\n/' crosstool-NG/kconfig/Makefile
+sed -i.bak -e 's/[[:&lt;:]]sed[[:&gt;:]]/gsed/' Makefile
+sed -i.bak -e 's/[[:&lt;:]]awk[[:&gt;:]]/\$(AWK)/' lx106-hal/src/Makefile.am
+sed -i.bak 's/AM_PROG_AS/AM_PROG_AS\'$'\nAM_PROG_AR/' lx106-hal/configure.ac </code></pre>
+
+
+<h2 id="ide">IDE<a class="headerlink" href="#ide" title="Permanent link">#</a></h2>
+<p>Sử dụng https://github.com/eduvik/mu/tree/feature/multi-board
+https://www.pycom.io/solutions/pymakr/</p>
+<p>Lư ý việc Flash firmware cho ESP8266 dùng esptool.py </p>
+<pre class="code"><code>esptool.py --port /dev/tty.SLAB_USBtoUART --baud 921600 write_flash --verify --flash_size=32m --flash_mode=qio 0 build/firmware-combined.bin</code></pre>
               
             </div>
           </div>
