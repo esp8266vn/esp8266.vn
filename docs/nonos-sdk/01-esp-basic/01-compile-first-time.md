@@ -13,6 +13,16 @@ git clone https://github.com/esp8266vn/esp-iot-basic.git
 cd esp-iot-basic && make
 ```
 
+_Lưu ý:_  Nếu bạn sử dụng ví dụ này cho bản Unofficial Developement KIT trên Windows, với đường dẫn cài đặt mặc định là `C:\Espressif`:
+
+```bat
+mkdir C:\Espressif\examples\esp8266vn
+cd C:\Espressif\examples\esp8266vn
+git clone https://github.com/esp8266vn/esp-iot-basic.git
+cd esp-iot-basic
+git checkout windows_unofficial_devkit
+```
+
 ## Sơ đồ file
 
 ```
@@ -195,7 +205,7 @@ Leaving...
 
 ## Kết quả
 
-Mở cổng COM bằng bất kỳ phần mềm nào hỗ trợ. Windows có thể sử dụng ..., MacOS/OSX, Linux thì sử dụng screen, minicom. Sau khi kết nối xong, bấm nút RESET trên board phát triển, bạn sẽ nhận được 1 loạt các ký tự lạ đầu tiên. Đó là các ký tự do các module của SDK sinh ra, nhưng trước khi ứng dụng mẫu cấu hình đúng tốc độ Baud:
+Mở cổng COM bằng bất kỳ phần mềm nào hỗ trợ. Windows có thể sử dụng teraterm, putty; MacOS/OSX, Linux thì sử dụng screen, minicom. Sau khi kết nối xong, bấm nút RESET trên board phát triển, bạn sẽ nhận được 1 loạt các ký tự lạ đầu tiên. Đó là các ký tự do các module của SDK sinh ra, nhưng trước khi ứng dụng mẫu cấu hình đúng tốc độ Baud:
 
 ```bash
 ...

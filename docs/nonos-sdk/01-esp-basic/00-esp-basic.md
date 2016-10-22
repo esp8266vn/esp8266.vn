@@ -80,6 +80,15 @@ Tải về tại một trong các địa chỉ sau:
 - [http://programs74.ru/udkew-en.html](http://programs74.ru/udkew-en.html)
 - [Link Dropbox](https://www.dropbox.com/s/x0v25603pnf8sny/Espressif-ESP8266-DevKit-v2.1.0-x86.exe?dl=0)
 
+Đây là bộ KIT đã bao gồm tất cả các công cụ, SDK và mã nguồn chương trình cần thiết để phát triển ứng dụng ESP8266. Tuy không phải là chính thức của hãng (unofficial) nhưng thuộc dạng tất-cả-trong-một, rất tiện lợi & dễ sử dụng.
+Vị trí mặc định của bộ KIT sau khi cài đặt là `C:\Espressif`, bao gồm:
+
+- `C:\Espressif\xtensa-lx106-elf\bin`: trình biên dịch xtensa-lx106-elf
+- `C:\Espressif\utils\ESP8266`: các chương trình tiện ích, ví dụ `esptool.exe` để nạp ESP8266
+- `C:\Espressif\docs\ESP8266`: tài liệu liên quan.
+- `C:\Espressif\ESP8266_SDK`: tương ứng với bản **ESP8266_NONOS_SDK v2.0.0**
+- `C:\Espressif\ESP8266_RTOS_SDK`: tương ứng với bản **ESP8266 RTOS SDK v1.4.0**
+- `C:\Espressif\examples\ESP8266`: mã nguồn ví dụ các dự án.
 
 ### Linux
 Cài đặt Git
