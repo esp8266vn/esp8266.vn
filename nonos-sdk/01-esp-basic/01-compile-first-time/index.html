@@ -442,6 +442,14 @@
 cd esp-iot-basic &amp;&amp; make</code></pre>
 
 
+<p><em>Lưu ý:</em>  Nếu bạn sử dụng ví dụ này cho bản Unofficial Developement KIT trên Windows, với đường dẫn cài đặt mặc định là <code>C:\Espressif</code>:</p>
+<pre class="code"><code class="language-bat">mkdir C:\Espressif\examples\esp8266vn
+cd C:\Espressif\examples\esp8266vn
+git clone https://github.com/esp8266vn/esp-iot-basic.git
+cd esp-iot-basic
+git checkout windows_unofficial_devkit</code></pre>
+
+
 <h2 id="so-o-file">Sơ đồ file<a class="headerlink" href="#so-o-file" title="Permanent link">#</a></h2>
 <pre class="code"><code>esp-iot-basic
     |-- Makefile
@@ -614,7 +622,7 @@ Leaving...</code></pre>
 
 
 <h2 id="ket-qua">Kết quả<a class="headerlink" href="#ket-qua" title="Permanent link">#</a></h2>
-<p>Mở cổng COM bằng bất kỳ phần mềm nào hỗ trợ. Windows có thể sử dụng &hellip;, MacOS/OSX, Linux thì sử dụng screen, minicom. Sau khi kết nối xong, bấm nút RESET trên board phát triển, bạn sẽ nhận được 1 loạt các ký tự lạ đầu tiên. Đó là các ký tự do các module của SDK sinh ra, nhưng trước khi ứng dụng mẫu cấu hình đúng tốc độ Baud:</p>
+<p>Mở cổng COM bằng bất kỳ phần mềm nào hỗ trợ. Windows có thể sử dụng teraterm, putty; MacOS/OSX, Linux thì sử dụng screen, minicom. Sau khi kết nối xong, bấm nút RESET trên board phát triển, bạn sẽ nhận được 1 loạt các ký tự lạ đầu tiên. Đó là các ký tự do các module của SDK sinh ra, nhưng trước khi ứng dụng mẫu cấu hình đúng tốc độ Baud:</p>
 <pre class="code"><code class="language-bash">...
 hello world
 scandone</code></pre>
