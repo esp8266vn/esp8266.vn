@@ -442,14 +442,6 @@
 cd esp-iot-basic &amp;&amp; make</code></pre>
 
 
-<p><em>Lưu ý:</em>  Nếu bạn sử dụng ví dụ này cho bản Unofficial Developement KIT trên Windows, với đường dẫn cài đặt mặc định là <code>C:\Espressif</code>:</p>
-<pre class="code"><code class="language-bat">mkdir C:\Espressif\examples\esp8266vn
-cd C:\Espressif\examples\esp8266vn
-git clone https://github.com/esp8266vn/esp-iot-basic.git
-cd esp-iot-basic
-git checkout windows_unofficial_devkit</code></pre>
-
-
 <h2 id="so-o-file">Sơ đồ file<a class="headerlink" href="#so-o-file" title="Permanent link">#</a></h2>
 <pre class="code"><code>esp-iot-basic
     |-- Makefile
@@ -512,6 +504,21 @@ flash:
                    0x10000 main0x10000.bin \
                    0x3fc000 $(SDK_BASE)/bin/esp_init_data_default.bin
 .PHONY: all clean flash</code></pre>
+
+
+<p><em>Lưu ý:</em>  Nếu bạn sử dụng ví dụ này cho bản Unofficial Developement KIT trên Windows, với đường dẫn cài đặt mặc định là <code>C:\Espressif</code>, Makefile cần thay đổi như sau:</p>
+<pre class="code"><code class="language-makefile">XTENSA    ?=
+SDK_BASE  ?= C:/Espressif/ESP8266_SDK
+ESPTOOL   ?= C:/Espressif/utils/ESP8266/esptool.py
+...
+# Ví dụ cổng serial dùng để nạp cho ESP8266 là COM3:
+flash:
+   $(ESPTOOL) --port COM3 \
+          --baud 480600 \
+          write_flash --flash_freq 40m --flash_mode dio --flash_size 32m \
+          0x00000 main0x00000.bin \
+          0x10000 main0x10000.bin \
+          0x3fc000 $(SDK_BASE)/bin/esp_init_data_default.bin</code></pre>
 
 
 <p>Giải thích Makefile như sau:</p>

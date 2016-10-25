@@ -507,6 +507,20 @@ Vị trí mặc định của bộ KIT sau khi cài đặt là <code>C:\Espressi
 <li><code>C:\Espressif\ESP8266_RTOS_SDK</code>: tương ứng với bản <strong>ESP8266 RTOS SDK v1.4.0</strong></li>
 <li><code>C:\Espressif\examples\ESP8266</code>: mã nguồn ví dụ các dự án.</li>
 </ul>
+<p>Cài đặt đường dẫn <code>C:\Espressif\xtensa-lx106-elf\bin</code> và <code>C:\Espressif\utils\ESP8266</code> vào biến môi trường <code>PATH</code> của windows, có 2 cách:</p>
+<ul>
+<li>Cài đặt cứng trong <code>My Computer</code> -&gt; (Chuột phải) -&gt; <code>Properties</code> -&gt; <code>Advanced system settings</code> -&gt; <code>Environment Variables...</code> -&gt; <code>System variables</code>, chọn giá trị <code>PATH</code> -&gt; chọn <code>Edit...</code> -&gt; di chuyển đến cuối chuỗi, thêm <code>;C:\Espressif\xtensa-lx106-elf\bin;C:\Espressif\utils\ESP8266;</code></li>
+<li>Cài đặt khi chạy: trong cửa sổ console, nhập <code>set PATH=%PATH%;C:\Espressif\xtensa-lx106-elf\bin;C:\Espressif\utils\ESP8266;</code></li>
+</ul>
+<p>Kiểm tra việc cài đặt, có dòng này hiển thị ở cuối cùng thì việc cài đặt đã thành công:</p>
+<pre class="code"><code class="language-bat">xtensa-lx106-elf-gcc --version
+xtensa-lx106-elf-gcc (GCC) 5.2.0</code></pre>
+
+
+<pre class="code"><code class="language-bat">esptool.py
+usage: esptool [-h] [--port PORT] [--baud BAUD]</code></pre>
+
+
 <h3 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">#</a></h3>
 <p>Cài đặt Git</p>
 <pre class="code"><code>sudo apt-get update
