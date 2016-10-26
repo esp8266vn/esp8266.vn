@@ -8,5 +8,5 @@ Lợi thế của `micropython` là sử dụng ngôn ngữ bậc cao, dễ dàn
 
 Nhưng một khó khăn là khi muốn bổ sung những tính năng mới, module mới không sẵn có, thì cần phải am hiểu về `micropython` để có thể viết được module bổ sung.
 
-Website: [http://www.micropython.org/](http://www.micropython.org/)
-Github: [https://github.com/micropython/micropython](https://github.com/micropython/micropython)
+- Website: [http://www.micropython.org/](http://www.micropython.org/)
+- Github: [https://github.com/micropython/micropython](https://github.com/micropython/micropython)
