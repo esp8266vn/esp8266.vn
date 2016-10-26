@@ -433,7 +433,24 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="freertos-sdk-co-ban">FreeRTOS SDK cơ bản<a class="headerlink" href="#freertos-sdk-co-ban" title="Permanent link">#</a></h1>
+                <h1 id="cai-at-cong-cu-can-thiet">Cài đặt công cụ cần thiết<a class="headerlink" href="#cai-at-cong-cu-can-thiet" title="Permanent link">#</a></h1>
+<p>Tương tự phần cài đặt cho ESP8266 NONOS-SDK, tham khảo <a href="https://esp8266.vn/nonos-sdk/01-esp-basic/00-esp-basic/">tại đây</a></p>
+<h1 id="download-rtos-sdk-cho-esp8266">Download RTOS SDK cho ESP8266<a class="headerlink" href="#download-rtos-sdk-cho-esp8266" title="Permanent link">#</a></h1>
+<ul>
+<li>Tải về máy &amp; giải nén <a href="https://espressif.com/sites/default/files/sdks/esp8266_rtos_sdk_v1.4.0_16_02_26_0.zip">từ đây</a></li>
+<li>Hoặc git clone từ:</li>
+</ul>
+<pre class="code"><code class="language-bash">git clone https://github.com/espressif/ESP8266_RTOS_SDK.git
+cd ESP8266_RTOS_SDK
+# Nhánh 1.4.x đã bao gồm phần vá lỗi (patch) cho bản v1.4.0 (nhánh master)
+git checkout 1.4.x</code></pre>
+
+
+<ul>
+<li>Thay đổi <code>SDK_BASE</code> trong Makefile của mỗi dự án trỏ tới folder vừa giải nén/clone:</li>
+</ul>
+<pre class="code"><code class="language-makefile"># Ví dụ với người dùng windows và unofficial dev kit
+SDK_BASE    ?= C:/Espressif/ESP8266_RTOS_SDK</code></pre>
               
             </div>
           </div>
