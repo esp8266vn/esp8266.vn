@@ -10,3 +10,4 @@ Nhưng một khó khăn là khi muốn bổ sung những tính năng mới, modu
 
 - Website: [http://www.micropython.org/](http://www.micropython.org/)
 - Github: [https://github.com/micropython/micropython](https://github.com/micropython/micropython)
+- Tài liệu [http://docs.micropython.org/en/latest/esp8266/esp8266/quickref.html](http://docs.micropython.org/en/latest/esp8266/esp8266/quickref.html)
