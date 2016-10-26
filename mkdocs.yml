@@ -72,7 +72,7 @@ pages:
       - Cơ bản:
         - Cài đặt công cụ cần thiết:  micropython/00-ucpython-basic/00-basic.md
 
-  - Các dự án:                      projects/projects.md
+  - Các dự án:                      projects/project-list.md
   - Bản quyền:                      license.md
   - Đóng góp:                       contributor.md
 
