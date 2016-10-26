@@ -67,6 +67,7 @@ pages:
       - Giới thiệu:                 arduino/arduino.md
       - Cơ bản:
         - Cài đặt công cụ cần thiết:  arduino/00-arduino-basic/00-basic.md
+      - Cập nhật Firmware (FOTA):     arduino/arduino-fota.md
     - ESP8266 Micropython:
       - Giới thiệu:                   micropython/micropython.md
       - Cơ bản:
