@@ -4,6 +4,9 @@ Trước khi biên dịch dự án mẫu, bạn cần phải cài đặt đầy 
 
 Trong phần này sẽ trình bày rất chi tiết để biên dịch một dự án hoàn chỉnh, bao gồm một số kiến thức bổ trợ liên quan tới lập trình **C** và được giải thích rõ ràng, cẩn thận. Bạn có thể bỏ qua phần này nếu đã hiểu rõ về **lập trình C**
 
+!!! note "Nội dung"
+    Hiển thị `helloworld` trên terminal
+
 ## Lấy dự án mẫu từ Github: 
 
 Bạn có thể lấy dự án mẫu từ github và biên dịch ngay:

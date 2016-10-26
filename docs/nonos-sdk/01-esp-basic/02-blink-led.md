@@ -1,7 +1,10 @@
 
 # Bật tắt LED
 
-Tương tự như việc biên dịch dự án mẫu trong phần trước, toàn bộ cấu trúc file, **Makefile, user_config.h, rf_init.c** giữ nguyên, chỉ thay đổi nội dung file `main.c`. Mục đích: Chớp tắt đèn LED mỗi 1 giây.
+Tổ chức file căn cứ theo bài [Biên dịch dự án đầu tiên](./01-compile-first-time.md), toàn bộ cấu trúc file, **Makefile, user_config.h, rf_init.c** giữ nguyên, chỉ thay đổi nội dung file `main.c`. 
+
+!!! note "Nội dung"
+    Chớp tắt đèn LED mỗi 1 giây
 
 ## Lấy dự án về từ Github: 
 

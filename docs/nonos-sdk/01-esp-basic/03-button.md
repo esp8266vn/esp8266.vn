@@ -1,8 +1,12 @@
 # Nút nhấn
 
-Mã nguồn copy toàn bộ tự dự án trước, bao gồm các file `Makefile`, `main.c`, `rf_init.c`, `user_config.h`. Tuy nhiên chỉ thay đổi nội dung file `main.c`
+Tổ chức file căn cứ theo bài [Biên dịch dự án đầu tiên](./01-compile-first-time.md), bao gồm các file `Makefile`, `main.c`, `rf_init.c`, `user_config.h`. Tuy nhiên chỉ thay đổi nội dung file `main.c`
 
-Bạn có thể tải và biên dịch trực tiếp từ github: 
+!!! note "Nội dung"
+    Nhấn nút thì chớp tắt đèn LED
+
+
+## Lấy dự án về từ Github: 
 
 ```
 git clone https://github.com/esp8266vn/eps-iot-button
