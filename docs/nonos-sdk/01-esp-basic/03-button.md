@@ -10,6 +10,18 @@ cd eps-iot-button
 make
 ```
 
+## Sơ đồ file
+
+```
+esp-iot-button
+    |-- Makefile
+    |-- main.c
+    |-- rf_init.c
+    `-- user_config.h
+```
+
+## Mã nguồn
+
 ```c
 //esp-button/main.c
 #include "osapi.h"
