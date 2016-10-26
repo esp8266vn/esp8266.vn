@@ -10,6 +10,16 @@ git clone https://github.com/esp8266vn/esp-iot-led-blink.git
 cd esp-iot-led-blink && make
 ```
 
+## Sơ đồ file
+
+```
+esp-iot-led-blink
+    |-- Makefile
+    |-- main.c
+    |-- rf_init.c
+    `-- user_config.h
+```
+
 ## Mã nguồn
 
 ```c
