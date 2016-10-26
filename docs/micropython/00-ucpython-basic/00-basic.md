@@ -39,3 +39,17 @@ Lưu ý việc Flash firmware cho ESP8266 dùng esptool.py
 ```bash
 esptool.py --port /dev/tty.SLAB_USBtoUART --baud 921600 write_flash --verify --flash_size=32m --flash_mode=qio 0 build/firmware-combined.bin
 ```
+
+## Phần cứng - Pinout 
+
+!!! note "Lưu ý"
+    Lưu ý là Micropython sử dụng GPIO giống với tên GPIO cho chip ESP8266, khác cách đặt tên của NodeMCU, do vậy, nếu bạn sử dụng Board NodeMCU hoặc các board nào khác thì lưu ý
+
+![NodeMCU Pinout](../../00-introduction/images/esp8266_devkit.svg)
+
+Ví dụ: 
+```python
+from machine import Pin 
+led = Pin(16, Pin.OUT) #Tương đương LED trên board NodeMCU
+gpio13 = Pin(13, Pin.OUT) # Tương đương chân D7 trên NodeMCU
+```

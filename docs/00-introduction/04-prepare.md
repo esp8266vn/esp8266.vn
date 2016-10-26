@@ -25,7 +25,8 @@ Sơ đồ chân & sơ đồ khối ESP8266EX
 
 ## Những lựa chọn khác
 
-// Các mạch phát triển khác..
+- WeMos
+- Adafruit
 
 ## Cài đặt trình soạn thảo & cài đặt ban đầu
 

@@ -18,18 +18,19 @@ google_analytics: ['UA-60470603-4', 'esp8266.vn']
 # Page tree
 pages:
   - Trang chủ:                      index.md
-  - Nội dung: 
+  - Nội dung:
     - Kiến thức cơ bản:
-      - Kiến thức cơ bản:           00-introduction/00-introduction.md
+      - Tổng quan:                  00-introduction/00-introduction.md
       - Internet Of Things (IoT):   00-introduction/01-about-iot.md
       - ESP8266 & ESP8285:          00-introduction/02-about-esp8266.md
       - Module & Board phát triển:  00-introduction/03-esp-module.md
-      - Các kiến thức cơ bản:       00-introduction/04-prepare.md 
+      - Phần cứng & công cụ:        00-introduction/04-prepare.md
     - ESP8266 NONOS-SDK:
-      - Cơ bản:               
+      - Giới thiệu:                   nonos-sdk/nonos-sdk.md
+      - Cơ bản:
         - Cài đặt công cụ cần thiết:  nonos-sdk/01-esp-basic/00-esp-basic.md
         - Biên dịch dự án mẫu:        nonos-sdk/01-esp-basic/01-compile-first-time.md
-        - Bật tắt LED:                nonos-sdk/01-esp-basic/02-blink-led.md 
+        - Bật tắt LED:                nonos-sdk/01-esp-basic/02-blink-led.md
         - Nút nhấn:                   nonos-sdk/01-esp-basic/03-button.md
         - UART:                       nonos-sdk/01-esp-basic/04-uart.md
         - Task:                       nonos-sdk/01-esp-basic/05-task.md
@@ -50,22 +51,25 @@ pages:
       - HTTP Server:
         - ESP8266 HTTP Server:        nonos-sdk/05-esp-http-server/00-esp-http-server.md
       - Firmware Over The Air:
-        - FOTA:                       nonos-sdk/06-esp-fota/00-esp-fota.md 
+        - FOTA:                       nonos-sdk/06-esp-fota/00-esp-fota.md
       - ESP Now:
         - ESP Now:                    nonos-sdk/07-esp-now/00-esp-now.md
       - ESP Mesh:
         - ESP Mesh:                   nonos-sdk/08-esp-mesh/00-esp-mesh.md
+      - Các dự án:
+        - Danh sách:                  nonos-sdk/09-esp-projects/00-project-list.md
+
     - ESP8266 FreeRTOS-SDK:
-      - Cơ bản:                       
-        - Giới thiệu:                 freertos-sdk/freertos-sdk.md
+      - Giới thiệu:                 freertos-sdk/freertos-sdk.md
+      - Cơ bản:
         - Cài đặt công cụ cần thiết:  freertos-sdk/00-freertos-basic/00-basic.md
     - ESP8266 Arduino:
+      - Giới thiệu:                 arduino/arduino.md
       - Cơ bản:
-        - Giới thiệu:                 arduino/arduino.md
         - Cài đặt công cụ cần thiết:  arduino/00-arduino-basic/00-basic.md
     - ESP8266 Micropython:
+      - Giới thiệu:                   micropython/micropython.md
       - Cơ bản:
-        - Giới thiệu:                 micropython/micropython.md
         - Cài đặt công cụ cần thiết:  micropython/00-ucpython-basic/00-basic.md
 
   - Các dự án:                      projects/projects.md
