@@ -396,7 +396,7 @@
           
             <li><ul class="subnav">
     <li class="">
-        <a class="" href="../../../projects/projects/" id="Các dự án" style="font-size:95%;font-weight:bold;">Các dự án</a>
+        <a class="" href="../../../projects/project-list/" id="Các dự án" style="font-size:95%;font-weight:bold;">Các dự án</a>
     </li>
     
     <li class="paddingtop20"></li>
@@ -482,7 +482,8 @@ static int led_value = 0;
 void led_service_cb(void *args) //Hàm này sẽ được gọi khi soft timer `led_timer` hoàn thành việc đếm 
 {
     led_value ^= 0x01;
-    WRITE_PERI_REG(RTC_GPIO_OUT, (READ_PERI_REG(RTC_GPIO_OUT) &amp; (uint32_t)0xfffffffe)| (uint32_t)(led_value &amp; 1)); //Ghi giá trị ra LED IO, `led_value` khi thực hiện **XOR** với 1 sẽ đảo giá trị giữa 1 và 0
+    //Ghi giá trị ra LED IO, `led_value` khi thực hiện **XOR** với 1 sẽ đảo giá trị giữa 1 và 0
+    WRITE_PERI_REG(RTC_GPIO_OUT, (READ_PERI_REG(RTC_GPIO_OUT) &amp; (uint32_t)0xfffffffe)| (uint32_t)(led_value &amp; 1)); 
     os_printf(&quot;Blink\r\n&quot;);
 }
 void app_init()
