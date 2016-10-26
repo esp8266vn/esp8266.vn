@@ -30,18 +30,16 @@ Sơ đồ chân & sơ đồ khối ESP8266EX
 
 ## Cài đặt trình soạn thảo & cài đặt ban đầu
 
-### Sublime Text
-
 ### [Sublime Text 3](#sublime)
 
-- Link download: https://www.sublimetext.com/
-- Learn shortcut: https://sublime-learning.herokuapp.com/
+- Link download: [https://www.sublimetext.com/](https://www.sublimetext.com/)
+- Learn shortcut: [https://sublime-learning.herokuapp.com/](https://sublime-learning.herokuapp.com/)
 - Shortcut : 
-    + http://www.hongkiat.com/blog/sublime-text-tips/
-    + https://www.viget.com/articles/my-overused-sublime-text-keyboard-shortcuts
-- Getting started: https://gist.github.com/anotheruiguy/11054534
+    + [http://www.hongkiat.com/blog/sublime-text-tips/](http://www.hongkiat.com/blog/sublime-text-tips/)
+    + [https://www.viget.com/articles/my-overused-sublime-text-keyboard-shortcuts](https://www.viget.com/articles/my-overused-sublime-text-keyboard-shortcuts)
+- Getting started: [https://gist.github.com/anotheruiguy/11054534](https://gist.github.com/anotheruiguy/11054534)
 - Plug-ins:
-    + http://emmet.io/
+    + [http://emmet.io/](http://emmet.io/)
     + [Markdown Editing](https://github.com/SublimeText-Markdown/MarkdownEditing)
     + [SideBarEnhancements](https://github.com/titoBouzout/SideBarEnhancements)
     + [GithubEmoji](https://packagecontrol.io/packages/GithubEmoji)
@@ -50,8 +48,8 @@ Sơ đồ chân & sơ đồ khối ESP8266EX
     + [GitGutter](https://github.com/jisaacks/GitGutter)
     + [sublime-text-git](https://github.com/kemayo/sublime-text-git)
     + [Babel](https://packagecontrol.io/packages/Babel)
-    + https://github.com/feross/standard
-    + https://packagecontrol.io/packages/FileHeader
+    + [https://github.com/feross/standard](https://github.com/feross/standard)
+    + [https://packagecontrol.io/packages/FileHeader](https://packagecontrol.io/packages/FileHeader)
 
 ### Eclipse
 
