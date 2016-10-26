@@ -22,7 +22,8 @@ static int led_value = 0;
 void led_service_cb(void *args) //Hàm này sẽ được gọi khi soft timer `led_timer` hoàn thành việc đếm 
 {
     led_value ^= 0x01;
-    WRITE_PERI_REG(RTC_GPIO_OUT, (READ_PERI_REG(RTC_GPIO_OUT) & (uint32_t)0xfffffffe)| (uint32_t)(led_value & 1)); //Ghi giá trị ra LED IO, `led_value` khi thực hiện **XOR** với 1 sẽ đảo giá trị giữa 1 và 0
+    //Ghi giá trị ra LED IO, `led_value` khi thực hiện **XOR** với 1 sẽ đảo giá trị giữa 1 và 0
+    WRITE_PERI_REG(RTC_GPIO_OUT, (READ_PERI_REG(RTC_GPIO_OUT) & (uint32_t)0xfffffffe)| (uint32_t)(led_value & 1)); 
     os_printf("Blink\r\n");
 }
 void app_init()
