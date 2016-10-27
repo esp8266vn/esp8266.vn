@@ -33,6 +33,7 @@ pages:
         - Bật tắt LED:                nonos-sdk/01-esp-basic/02-blink-led.md
         - Nút nhấn:                   nonos-sdk/01-esp-basic/03-button.md
         - UART:                       nonos-sdk/01-esp-basic/04-uart.md
+        - Makefile cho dự án phức tạp: nonos-sdk/01-esp-basic/complex-makefile.md
         - Task:                       nonos-sdk/01-esp-basic/05-task.md
         - Wifi:                       nonos-sdk/01-esp-basic/06-wifi.md
         - ESPCONN:                    nonos-sdk/01-esp-basic/07-espconn.md
