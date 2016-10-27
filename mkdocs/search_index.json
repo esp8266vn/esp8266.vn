@@ -636,6 +636,26 @@
             "title": "M\u00e3 ngu\u1ed3n"
         },
         {
+            "location": "/nonos-sdk/01-esp-basic/complex-makefile/",
+            "text": "S\u1eed d\u1ee5ng s\u1ef1 \u00e1n c\u00f3 Makefile ph\u1ee9c t\u1ea1p\n#\n\n\n\u0110\u1ec3 bi\u00ean d\u1ecbch s\u1ef1 \u00e1n c\u00f3 nhi\u1ec1u file h\u01a1n n\u1eefa th\u00ec vi\u1ec7c s\u1eed d\u1ee5ng Makefile nh\u01b0 c\u00e1c v\u00ed d\u1ee5 tr\u00ean kh\u00e1 phi\u1ec1n ph\u1ee9c, ph\u1ea3i thay \u0111\u1ed5i nhi\u1ec1u ch\u1ed7. M\u1ee5c \u0111\u00edch c\u1ee7a Makefile \u0111\u01a1n gi\u1ea3n l\u00e0 gi\u00fap ch\u00fang ta hi\u1ec3u \u0111\u01b0\u1ee3c nguy\u00ean l\u00fd ho\u1ea1t \u0111\u1ed9ng c\u1ee7a compiler v\u00e0 c\u00e1ch th\u1ee9c bi\u00ean d\u1ecbch \u1ee9ng d\u1ee5ng v\u1edbi Nonos-sdk. \n\u0110\u1ec3 ti\u1ec7n l\u1ee3i, k\u1ec3 t\u1eeb m\u1ee5c n\u00e0y tr\u1edf \u0111i, ch\u00fang ta s\u1eed d\u1ee5ng Makefile trong d\u1ef1 \u00e1n m\u1eabu v\u00e0 ph\u00e2n b\u1ed5 d\u1ef1 \u00e1n theo c\u1ea5u tr\u00fac nh\u01b0 b\u00ean d\u01b0\u1edbi. D\u1ef1 \u00e1n \u0111\u00e3 vi\u1ebft s\u1eb5n Makefile t\u1ef1 \u0111\u1ed9ng t\u00ecm v\u00e0 bi\u00ean d\u1ecbch c\u00e1c file \n.c\n \n\n\nD\u1ef1 \u00e1n m\u1eabu:\n#\n\n\n\n\nhttps://github.com/esp8266vn/esp8266-nonos-sdk-boilerplate\n\n\n\n\nC\u1ea5u tr\u00fac d\u1ef1 \u00e1n:\n#\n\n\nesp8266-nonos-sdk-boilerplate\n    |--- Makefile\n    |--- modules\n    |   |--- moduleA\n    |   |   |-- Makefile\n    |   |   |-- include\n    |   |   |   `-- modulea.h \n    |   |   `-- modulea.c\n    |--- include\n    |   `-- user_config.h\n    |--- user\n        |-- Makefile\n        |-- user_main.c \n        `-- rfinit.c\n\n\n\n\nTrong \u0111\u00f3: \n\n\n\n\nTh\u01b0 m\u1ee5c \nmodules\n ch\u1ee9a c\u00e1c module li\u00ean quan, m\u1ed7i module c\u00f3 \u0111\u1ecbnh ngh\u0129a prototype \u0111\u1eb7t trong th\u01b0 m\u1ee5c \ninclude",
+            "title": "Makefile cho d\u1ef1 \u00e1n ph\u1ee9c t\u1ea1p"
+        },
+        {
+            "location": "/nonos-sdk/01-esp-basic/complex-makefile/#su-dung-su-an-co-makefile-phuc-tap",
+            "text": "\u0110\u1ec3 bi\u00ean d\u1ecbch s\u1ef1 \u00e1n c\u00f3 nhi\u1ec1u file h\u01a1n n\u1eefa th\u00ec vi\u1ec7c s\u1eed d\u1ee5ng Makefile nh\u01b0 c\u00e1c v\u00ed d\u1ee5 tr\u00ean kh\u00e1 phi\u1ec1n ph\u1ee9c, ph\u1ea3i thay \u0111\u1ed5i nhi\u1ec1u ch\u1ed7. M\u1ee5c \u0111\u00edch c\u1ee7a Makefile \u0111\u01a1n gi\u1ea3n l\u00e0 gi\u00fap ch\u00fang ta hi\u1ec3u \u0111\u01b0\u1ee3c nguy\u00ean l\u00fd ho\u1ea1t \u0111\u1ed9ng c\u1ee7a compiler v\u00e0 c\u00e1ch th\u1ee9c bi\u00ean d\u1ecbch \u1ee9ng d\u1ee5ng v\u1edbi Nonos-sdk. \n\u0110\u1ec3 ti\u1ec7n l\u1ee3i, k\u1ec3 t\u1eeb m\u1ee5c n\u00e0y tr\u1edf \u0111i, ch\u00fang ta s\u1eed d\u1ee5ng Makefile trong d\u1ef1 \u00e1n m\u1eabu v\u00e0 ph\u00e2n b\u1ed5 d\u1ef1 \u00e1n theo c\u1ea5u tr\u00fac nh\u01b0 b\u00ean d\u01b0\u1edbi. D\u1ef1 \u00e1n \u0111\u00e3 vi\u1ebft s\u1eb5n Makefile t\u1ef1 \u0111\u1ed9ng t\u00ecm v\u00e0 bi\u00ean d\u1ecbch c\u00e1c file  .c",
+            "title": "S\u1eed d\u1ee5ng s\u1ef1 \u00e1n c\u00f3 Makefile ph\u1ee9c t\u1ea1p"
+        },
+        {
+            "location": "/nonos-sdk/01-esp-basic/complex-makefile/#du-an-mau",
+            "text": "https://github.com/esp8266vn/esp8266-nonos-sdk-boilerplate",
+            "title": "D\u1ef1 \u00e1n m\u1eabu:"
+        },
+        {
+            "location": "/nonos-sdk/01-esp-basic/complex-makefile/#cau-truc-du-an",
+            "text": "esp8266-nonos-sdk-boilerplate\n    |--- Makefile\n    |--- modules\n    |   |--- moduleA\n    |   |   |-- Makefile\n    |   |   |-- include\n    |   |   |   `-- modulea.h \n    |   |   `-- modulea.c\n    |--- include\n    |   `-- user_config.h\n    |--- user\n        |-- Makefile\n        |-- user_main.c \n        `-- rfinit.c  Trong \u0111\u00f3:    Th\u01b0 m\u1ee5c  modules  ch\u1ee9a c\u00e1c module li\u00ean quan, m\u1ed7i module c\u00f3 \u0111\u1ecbnh ngh\u0129a prototype \u0111\u1eb7t trong th\u01b0 m\u1ee5c  include",
+            "title": "C\u1ea5u tr\u00fac d\u1ef1 \u00e1n:"
+        },
+        {
             "location": "/nonos-sdk/01-esp-basic/05-task/",
             "text": "Task\n#",
             "title": "Task"
