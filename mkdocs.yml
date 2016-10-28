@@ -67,12 +67,12 @@ pages:
     - ESP8266 Arduino:
       - Giới thiệu:                   arduino/arduino.md
       - Cơ bản:
-        - Cài đặt:                    arduino/00-arduino-basic/00-basic.md
-        - Digital:                    arduino/00-arduino-basic/digital.md
-        - Analog:                     arduino/00-arduino-basic/analog.md
-        - Thời gian & Delay:          arduino/00-arduino-basic/timming-delay.md
-        - Serial:                     arduino/00-arduino-basic/serial.md
-        - Progmem:                    arduino/00-arduino-basic/progmem.md
+        - Cài đặt:                    arduino/basic/basic.md
+        - Digital:                    arduino/basic/digital.md
+        - Analog:                     arduino/basic/analog.md
+        - Thời gian & Delay:          arduino/basic/timming-delay.md
+        - Serial:                     arduino/basic/serial.md
+        - Progmem:                    arduino/basic/progmem.md
       - Cập nhật Firmware (FOTA):     arduino/arduino-fota.md
     - ESP8266 Micropython:
       - Giới thiệu:                   micropython/micropython.md
