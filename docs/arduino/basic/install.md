@@ -51,26 +51,22 @@ Cấu trúc dự án sau khi bạn thực hiện xong:
 
 ```bash
 Arduino
-|
---- hardware
-    |
-    --- esp8266com
-        |
-        --- esp8266
-            |
-            --- bootloaders
-            --- cores
-            --- doc
-            --- libraries
-            --- package
-            --- tests
-            --- tools
-            --- variants
-            --- platform.txt
-            --- programmers.txt
-            --- README.md
-            --- boards.txt
-            --- LICENSE
+    |- hardware
+    |- esp8266com
+        |- esp8266
+            |- bootloaders
+            |- cores
+            |- doc
+            |- libraries
+            |- package
+            |- tests
+            |- tools
+            |- variants
+            |- platform.txt
+            |- programmers.txt
+            |- README.md
+            |- boards.txt
+            `- LICENSE
 ```
 
 - Tải binary tools
