@@ -1,7 +1,7 @@
 site_name: Internet Of Things (IoT) với ESP8266
 site_url: https://esp8266.vn
 site_description: ESP8266 Việt Nam
-# theme: readthedocs
+#theme: readthedocs
 site_author: Tuan PM
 theme_dir: readthedocshm
 copyright: Copyright &copy; 2016 <a href="https://esp8266.vn">ESP8266 Viet Nam</a>
