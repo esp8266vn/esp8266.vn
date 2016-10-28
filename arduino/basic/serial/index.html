@@ -8,7 +8,7 @@
   
   <meta name="author" content="Tuan PM">
   
-  <title>Digital - Internet Of Things (IoT) với ESP8266</title>
+  <title>Serial - Internet Of Things (IoT) với ESP8266</title>
   
 
   <link rel="shortcut icon" href="../../../img/favicon.ico">
@@ -25,9 +25,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Digital";
-    var mkdocs_page_input_path = "arduino/00-arduino-basic/digital.md";
-    var mkdocs_page_url = "/arduino/00-arduino-basic/digital/";
+    var mkdocs_page_name = "Serial";
+    var mkdocs_page_input_path = "arduino/basic/serial.md";
+    var mkdocs_page_url = "/arduino/basic/serial/";
   </script>
   
   <script src="../../../js/jquery-2.1.1.min.js"></script>
@@ -359,11 +359,11 @@
             <div style="display:none" id="hidden_ESP8266 ArduinoGiới thiệuCơ bản">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../00-basic/" id="Cài đặt">Cài đặt </a>
+                    <a style="padding-left:90px;" class="" href="../install/" id="Cài đặt">Cài đặt </a>
                 </li>
             
-                <li class="current">
-                    <a style="padding-left:90px;" class="current" href="./" id="Digital">Digital </a>
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../digital/" id="Digital">Digital </a>
                 </li>
             
                 <li class="">
@@ -374,8 +374,8 @@
                     <a style="padding-left:90px;" class="" href="../timming-delay/" id="Thời gian & Delay">Thời gian & Delay </a>
                 </li>
             
-                <li class="">
-                    <a style="padding-left:90px;" class="" href="../serial/" id="Serial">Serial </a>
+                <li class="current">
+                    <a style="padding-left:90px;" class="current" href="./" id="Serial">Serial </a>
                 </li>
             
                 <li class="">
@@ -483,7 +483,7 @@
         
       
     
-    <li>Digital</li>
+    <li>Serial</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -497,19 +497,27 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="digital-io">Digital IO<a class="headerlink" href="#digital-io" title="Permanent link">#</a></h2>
-<p>Tên chân trong Arduino (Pin number) giống với thứ tự chân của ESP8266. <code>pinMode</code>, <code>digitalRead</code>, và <code>digitalWrite</code> đều sử dụng Pin Number như nhau, ví dụ như đọc GPIO2, gọi hàm <code>digitalRead(2)</code>.</p>
-<p>Chân GPIO0..15 có thể là <code>INPUT</code>, <code>OUTPUT</code>, hay <code>INPUT_PULLUP</code>.
-Chân GPIO16 có thể là <code>INPUT</code>, <code>OUTPUT</code> hay <code>INPUT_PULLDOWN_16</code>. Khi khởi động, tất cả các chân sẽ được cấu hình là <code>INPUT</code>.</p>
-<p>Mỗi chân có thể phục vụ cho một tính năng nào đó, ví dụ <code>Serial</code>, <code>I2C</code>, <code>SPI</code>. Và tính năng đó sẽ được cấu hình đúng khi sử dụng thư viện. Hình bên dưới thẻ hiện sơ đồ chân đối với module ESP-12 phổ biến.</p>
-<p><img alt="Pin Functions" src="../../images/esp12.png" /></p>
-<p>GPIO6 và GPIO11 không được thể hiện bởi vì nó được sử dụng cho việc kết nối với Flash. Việc sử dụng 2 chân này có thể gây lỗi chương trình.</p>
-<div class="admonition note">
-<p class="admonition-title">Lưu ý</p>
-<p>Một số board và module khác (ví dụ ESP-12ED, NodeMCU 1.0) không có GPIO9 và GPIO11, họ sử dụng với chế độ <code>DIO</code> cho Flash, trong khi ESP12 chúng ta nói bên trên sử dụng chế độ <code>QIO</code></p>
-</div>
-<p>Ngắt GPIO hỗ trợ thông qua các hàm  <code>attachInterrupt</code>, <code>detachInterrupt</code> 
-Ngắt GPIO có thể gán cho bất kỳ GPIO nào, ngoại trừ <code>GPIO16</code>. Đều hỗ trợ các ngắt tiêu chuẩn của Arduino như: <code>CHANGE</code>, <code>RISING</code>, <code>FALLING</code>.</p>
+                <h2 id="serial">Serial<a class="headerlink" href="#serial" title="Permanent link">#</a></h2>
+<p><code>Serial</code> object works much the same way as on a regular Arduino. Apart from hardware FIFO (128 bytes for TX and RX) HardwareSerial has additional 256-byte TX and RX buffers. Both transmit and receive is interrupt-driven. Write and read functions only block the sketch execution when the respective FIFO/buffers are full/empty.</p>
+<p><code>Serial</code> uses UART0, which is mapped to pins GPIO1 (TX) and GPIO3 (RX). Serial may be remapped to GPIO15 (TX) and GPIO13 (RX) by calling <code>Serial.swap()</code> after <code>Serial.begin</code>. Calling <code>swap</code> again maps UART0 back to GPIO1 and GPIO3.</p>
+<p><code>Serial1</code> uses UART1, TX pin is GPIO2. UART1 can not be used to receive data because normally it&rsquo;s RX pin is occupied for flash chip connection. To use <code>Serial1</code>, call <code>Serial1.begin(baudrate)</code>.</p>
+<p>If <code>Serial1</code> is not used and <code>Serial</code> is not swapped - TX for UART0 can be mapped to GPIO2 instead by calling <code>Serial.set_tx(2)</code> after <code>Serial.begin</code> or directly with <code>Serial.begin(baud, config, mode, 2)</code>.</p>
+<p>By default the diagnostic output from WiFi libraries is disabled when you call <code>Serial.begin</code>. To enable debug output again, call <code>Serial.setDebugOutput(true)</code>. To redirect debug output to <code>Serial1</code> instead, call <code>Serial1.setDebugOutput(true)</code>.</p>
+<p>You also need to use <code>Serial.setDebugOutput(true)</code> to enable output from <code>printf()</code> function.</p>
+<p>Both <code>Serial</code> and <code>Serial1</code> objects support 5, 6, 7, 8 data bits, odd (O), even (E), and no (N) parity, and 1 or 2 stop bits. To set the desired mode, call <code>Serial.begin(baudrate, SERIAL_8N1)</code>, <code>Serial.begin(baudrate, SERIAL_6E2)</code>, etc.</p>
+<p>A new method has been implemented on both <code>Serial</code> and <code>Serial1</code> to get current baud rate setting. To get the current baud rate, call <code>Serial.baudRate()</code>, <code>Serial1.baudRate()</code>. Return a <code>int</code> of current speed. For example</p>
+<pre class="code"><code class="language-cpp">// Set Baud rate to 57600
+Serial.begin(57600);
+
+// Get current baud rate
+int br = Serial.baudRate();
+
+// Will print &quot;Serial is 57600 bps&quot;
+Serial.printf(&quot;Serial is %d bps&quot;, br);</code></pre>
+
+
+<p>I&rsquo;ve done this also for official ESP8266 <a href="https://github.com/esp8266/Arduino/blob/master/doc/libraries.md#softwareserial">Software Serial</a> library, see this <a href="https://github.com/plerup/espsoftwareserial/pull/22">pull request</a>.  <br />
+Note that this implementation is <strong>only for ESP8266 based boards</strong>, and will not works with other Arduino boards.</p>
               
             </div>
           </div>
@@ -517,10 +525,10 @@ Ngắt GPIO có thể gán cho bất kỳ GPIO nào, ngoại trừ <code>GPIO16<
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../analog/" class="btn btn-neutral float-right" title="Analog">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../progmem/" class="btn btn-neutral float-right" title="Progmem">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../00-basic/" class="btn btn-neutral" title="Cài đặt"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../timming-delay/" class="btn btn-neutral" title="Thời gian & Delay"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -550,10 +558,10 @@ Ngắt GPIO có thể gán cho bất kỳ GPIO nào, ngoại trừ <code>GPIO16<
           <a href="https://github.com/esp8266vn/esp8266.vn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../00-basic/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../timming-delay/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../analog/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../progmem/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div> -->

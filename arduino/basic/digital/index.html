@@ -8,7 +8,7 @@
   
   <meta name="author" content="Tuan PM">
   
-  <title>Cài đặt - Internet Of Things (IoT) với ESP8266</title>
+  <title>Digital - Internet Of Things (IoT) với ESP8266</title>
   
 
   <link rel="shortcut icon" href="../../../img/favicon.ico">
@@ -25,9 +25,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Cài đặt";
-    var mkdocs_page_input_path = "arduino/00-arduino-basic/00-basic.md";
-    var mkdocs_page_url = "/arduino/00-arduino-basic/00-basic/";
+    var mkdocs_page_name = "Digital";
+    var mkdocs_page_input_path = "arduino/basic/digital.md";
+    var mkdocs_page_url = "/arduino/basic/digital/";
   </script>
   
   <script src="../../../js/jquery-2.1.1.min.js"></script>
@@ -358,12 +358,12 @@
             
             <div style="display:none" id="hidden_ESP8266 ArduinoGiới thiệuCơ bản">
             
-                <li class="current">
-                    <a style="padding-left:90px;" class="current" href="./" id="Cài đặt">Cài đặt </a>
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../install/" id="Cài đặt">Cài đặt </a>
                 </li>
             
-                <li class="">
-                    <a style="padding-left:90px;" class="" href="../digital/" id="Digital">Digital </a>
+                <li class="current">
+                    <a style="padding-left:90px;" class="current" href="./" id="Digital">Digital </a>
                 </li>
             
                 <li class="">
@@ -483,7 +483,7 @@
         
       
     
-    <li>Cài đặt</li>
+    <li>Digital</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -497,81 +497,19 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="arduino-co-ban">Arduino cơ bản<a class="headerlink" href="#arduino-co-ban" title="Permanent link">#</a></h1>
-<p>Có thể tìm thấy hướng dẫn cài đặt Tiếng Anh và được cập nhật tại <a href="https://github.com/esp8266/Arduino">https://github.com/esp8266/Arduino</a></p>
-<h2 id="cai-at-voi-boards-manager">Cài đặt với Boards Manager<a class="headerlink" href="#cai-at-voi-boards-manager" title="Permanent link">#</a></h2>
-<p>Phương án khuyên dùng cho người dùng không chuyên </p>
-<h3 id="chuan-bi">Chuẩn bị<a class="headerlink" href="#chuan-bi" title="Permanent link">#</a></h3>
-<ul>
-<li>Arduino 1.6.8, tải từ <a href="https://www.arduino.cc/en/Main/OldSoftwareReleases#previous">Arduino website</a>.</li>
-<li>Kết nối Internet</li>
-</ul>
-<h3 id="huong-dan">Hướng dẫn<a class="headerlink" href="#huong-dan" title="Permanent link">#</a></h3>
-<ul>
-<li>Mở chương trình Arduino và cửa sổ Preferences.</li>
-<li>Enter <code>http://arduino.esp8266.com/stable/package_esp8266com_index.json</code> vào <em>Additional Board Manager URLs</em>. Bạn có thể thêm nhiều URL, cách nhau bằng dấu phẩy.</li>
-<li>Mở Boards Manager từ Tools &gt; Board menu và tìm <em>esp8266</em> platform.</li>
-<li>Chọn phiên bản bạn cần từ cửa sổ Drop-down.</li>
-<li>Click nút <em>install</em>.</li>
-<li>Đừng quên chọn loại ESP8266 board từ Tools &gt; Board menu sau khi cài đặt.</li>
-</ul>
-<p>Bạn có 1 lựa chọn khác cài đặt bản <em>staging</em> boards manager từ link:
-<code>http://arduino.esp8266.com/staging/package_esp8266com_index.json</code>. Phiên bản này có những tính năng mới hơn, tuy nhiên chưa thật sự được kiểm tra kỹ.</p>
-<h2 id="su-dung-git-version">Sử dụng git version<a class="headerlink" href="#su-dung-git-version" title="Permanent link">#</a></h2>
-<p>Phương án cài đặt này khuyên dùng cho những người có thể đóng góp vào dự án Arduino cho ESP8266 và developers.</p>
-<h3 id="chuan-bi_1">Chuẩn bị<a class="headerlink" href="#chuan-bi_1" title="Permanent link">#</a></h3>
-<ul>
-<li>Arduino 1.6.8 (hay mới hơn, nếu bạn biết bạn đang làm gì)</li>
-<li>git</li>
-<li>python 2.7</li>
-<li>terminal, console, or command prompt (phụ thuộc hệ điều hành của bạn)</li>
-<li>Kết nối Internet</li>
-</ul>
-<h3 id="huong-dan_1">Hướng dẫn<a class="headerlink" href="#huong-dan_1" title="Permanent link">#</a></h3>
-<ul>
-<li>Mở <code>console</code> và cd đến thư mục Arduino. Nó có thể là thư mục <em>sketchbook</em> (thường là <code>&lt;Documents&gt;/Arduino</code>), hay thư mục của Ứng dụng Arduino, tùy bạn chọn.</li>
-<li>Clone repository này đến thư mục <code>hardware/esp8266com/esp8266</code>. Hoặc bạn có thể clone vào nơi nào đó và tạo symlink bằng <code>ln -s</code>, nếu Hệ điều hành hỗ trợ.</li>
-</ul>
-<pre class="code"><code class="language-bash">cd hardware
-mkdir esp8266com
-cd esp8266com
-git clone https://github.com/esp8266/Arduino.git esp8266</code></pre>
-
-
-<p>Cấu trúc dự án sau khi bạn thực hiện xong:</p>
-<pre class="code"><code class="language-bash">Arduino
-|
---- hardware
-    |
-    --- esp8266com
-        |
-        --- esp8266
-            |
-            --- bootloaders
-            --- cores
-            --- doc
-            --- libraries
-            --- package
-            --- tests
-            --- tools
-            --- variants
-            --- platform.txt
-            --- programmers.txt
-            --- README.md
-            --- boards.txt
-            --- LICENSE</code></pre>
-
-
-<ul>
-<li>Tải binary tools</li>
-</ul>
-<pre class="code"><code class="language-bash">cd esp8266/tools
-python get.py</code></pre>
-
-
-<ul>
-<li>Khởi động lại Arduino</li>
-</ul>
+                <h2 id="digital-io">Digital IO<a class="headerlink" href="#digital-io" title="Permanent link">#</a></h2>
+<p>Tên chân trong Arduino (Pin number) giống với thứ tự chân của ESP8266. <code>pinMode</code>, <code>digitalRead</code>, và <code>digitalWrite</code> đều sử dụng Pin Number như nhau, ví dụ như đọc GPIO2, gọi hàm <code>digitalRead(2)</code>.</p>
+<p>Chân GPIO0..15 có thể là <code>INPUT</code>, <code>OUTPUT</code>, hay <code>INPUT_PULLUP</code>.
+Chân GPIO16 có thể là <code>INPUT</code>, <code>OUTPUT</code> hay <code>INPUT_PULLDOWN_16</code>. Khi khởi động, tất cả các chân sẽ được cấu hình là <code>INPUT</code>.</p>
+<p>Mỗi chân có thể phục vụ cho một tính năng nào đó, ví dụ <code>Serial</code>, <code>I2C</code>, <code>SPI</code>. Và tính năng đó sẽ được cấu hình đúng khi sử dụng thư viện. Hình bên dưới thẻ hiện sơ đồ chân đối với module ESP-12 phổ biến.</p>
+<p><img alt="Pin Functions" src="../../images/esp12.png" /></p>
+<p>GPIO6 và GPIO11 không được thể hiện bởi vì nó được sử dụng cho việc kết nối với Flash. Việc sử dụng 2 chân này có thể gây lỗi chương trình.</p>
+<div class="admonition note">
+<p class="admonition-title">Lưu ý</p>
+<p>Một số board và module khác (ví dụ ESP-12ED, NodeMCU 1.0) không có GPIO9 và GPIO11, họ sử dụng với chế độ <code>DIO</code> cho Flash, trong khi ESP12 chúng ta nói bên trên sử dụng chế độ <code>QIO</code></p>
+</div>
+<p>Ngắt GPIO hỗ trợ thông qua các hàm  <code>attachInterrupt</code>, <code>detachInterrupt</code> 
+Ngắt GPIO có thể gán cho bất kỳ GPIO nào, ngoại trừ <code>GPIO16</code>. Đều hỗ trợ các ngắt tiêu chuẩn của Arduino như: <code>CHANGE</code>, <code>RISING</code>, <code>FALLING</code>.</p>
               
             </div>
           </div>
@@ -579,10 +517,10 @@ python get.py</code></pre>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../digital/" class="btn btn-neutral float-right" title="Digital">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../analog/" class="btn btn-neutral float-right" title="Analog">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../arduino/" class="btn btn-neutral" title="Giới thiệu"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../install/" class="btn btn-neutral" title="Cài đặt"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -612,10 +550,10 @@ python get.py</code></pre>
           <a href="https://github.com/esp8266vn/esp8266.vn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../../arduino/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../install/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../digital/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../analog/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div> -->
