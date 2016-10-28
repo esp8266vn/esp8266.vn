@@ -1,3 +1,5 @@
+[TOC]
+
 # Biên dịch dự án đầu tiên 
 
 Trước khi biên dịch dự án mẫu, bạn cần phải cài đặt đầy đủ **Trình biên dịch**, tải về **esptool.py** và **ESP8266-NONOS-SDK** như hướng dẫn Cài đặt

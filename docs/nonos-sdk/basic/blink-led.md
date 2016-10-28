@@ -1,3 +1,4 @@
+[TOC]
 
 # Bật tắt LED
 

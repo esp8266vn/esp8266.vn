@@ -1,5 +1,6 @@
-## Đọc Analog
+[TOC]
 
+## Đọc Analog
 
 ESP8266 có duy nhất 1 chân ADC, chúng ta có thể dùng để đọc điện áp bên ngoài, hay đọc điện áp VCC.
 

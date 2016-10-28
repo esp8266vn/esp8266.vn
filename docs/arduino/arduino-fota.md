@@ -1,28 +1,4 @@
-## Danh mục
-  * [Giới thiệu](#introduction)
-    * [Bảo mật](#security)
-    * [An toàn](#safety)
-    * [Yêu cầu cơ bản](#basic-requirements)
-  * [Arduino IDE](#arduino-ide)
-    * [Yêu cầu](#requirements)
-    * [Ứng dụng mẫu](#application-example)
-    * [Mật khẩu bảo vệ](#password-protection)
-    * [Vấn đề thường gặp](#troubleshooting)
-  * [Web Browser](#web-browser)
-    * [Yêu cầu](#requirements-1)
-    * [Tổng quát](#implementation-overview)
-    * [Ứng dụng mẫu](#application-example-1)
-  * [HTTP Server](#http-server)
-      * [Yêu cầu](#requirements-2)
-      * [Arduino code](#arduino-code)
-        * [Cập nhật đơn giản](#simple-updater)
-        * [Cập nhật nâng cao](#advanced-updater)
-      * [Server request handling](#server-request-handling)
-        * [Cập nhật đơn giản](#simple-updater-1)
-        * [Cập nhật nâng cao](#advanced-updater-1)
-  * [Giao diện Stream](#stream-interface)
-  * [Updater Class](#updater-class)
-
+[TOC]
 
 ## Giới thiệu OTA
 

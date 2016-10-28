@@ -1,3 +1,5 @@
+[TOC]
+
 ## Progmem
 
 Bộ nhớ chỉ đọc lưu trong vùng nhớ Flash có cùng cách hoạt động với Arduino thông thường. Đặt chuỗi dữ liệu hay string vào vùng nhớ chỉ đọc giúp tiết kiệm bộ nhớ RAM của chương trình.

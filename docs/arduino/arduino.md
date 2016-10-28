@@ -1,3 +1,5 @@
+[TOC]
+
 # Arduino core cho ESP8266 WiFi chip
 
 Đây là một dự án mã nguồn mở giúp hỗ trợ môi trường phát triển Arudino cho ESP8266. Giúp bạn có thể viết 1 Sketches sử dụng các thư viện và hàm tương tự của Arduino, có thể chạy trực tiếp trên ESP8266 mà không cần bất kỳ Vi điều khiển nào khác.

@@ -1,3 +1,5 @@
+[TOC]
+
 ## Thời gian và Delay
 `millis()` và `micros()` trả về mili giây và micro giây tính từ thời điểm reset.
 

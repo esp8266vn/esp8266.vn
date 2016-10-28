@@ -1,3 +1,5 @@
+[TOC]
+
 ## Digital IO
 
 Tên chân trong Arduino (Pin number) giống với thứ tự chân của ESP8266. `pinMode`, `digitalRead`, và `digitalWrite` đều sử dụng Pin Number như nhau, ví dụ như đọc GPIO2, gọi hàm `digitalRead(2)`.

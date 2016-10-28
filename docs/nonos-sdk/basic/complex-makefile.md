@@ -1,3 +1,5 @@
+[TOC]
+
 # Sử dụng sự án có Makefile phức tạp
 
 Để biên dịch sự án có nhiều file hơn nữa thì việc sử dụng Makefile như các ví dụ trên khá phiền phức, phải thay đổi nhiều chỗ. Mục đích của Makefile đơn giản là giúp chúng ta hiểu được nguyên lý hoạt động của compiler và cách thức biên dịch ứng dụng với Nonos-sdk. 
