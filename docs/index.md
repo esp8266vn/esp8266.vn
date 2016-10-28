@@ -2,7 +2,7 @@
 
 Đây là Website cung cấp kiến thức cơ bản cho người mới bắt đầu làm quen, lập trình cho ESP8266 theo cấu trúc tuần tự. Giúp người đọc có thể tự học được.
 
-![Pinout](./00-introduction/images/ESP_Pinout_01_big.png)
+![Pinout](./introduction/images/ESP_Pinout_01_big.png)
 
 (Hình ảnh sử dụng [link](http://www.pighixxx.com/test/2015/09/esp8266-pinout))
 ## Nội dung cung cấp
