@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Tuan PM">
+  
+  <title>Cài đặt công cụ cần thiết - Internet Of Things (IoT) với ESP8266</title>
+  
+
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/highlight.css">
+
+  <link rel="stylesheet" href="../../../css/custom.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Cài đặt công cụ cần thiết";
+    var mkdocs_page_input_path = "nonos-sdk/basic/basic.md";
+    var mkdocs_page_url = "/nonos-sdk/basic/basic/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../js/highlight.pack.js"></script>
+  <script src="../../../js/theme.js"></script>
+  <script src="../../../js/jquery.cookie-1.4.1.min.js"></script>
+  <script src="../../../js/nav.js"></script> 
+
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-60470603-4', 'esp8266.vn');
+      ga('send', 'pageview');
+  </script>
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> Internet Of Things (IoT) với ESP8266</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li><ul class="subnav">
+    <li class="">
+        <a class="" href="../../.." id="Trang chủ" style="font-size:95%;font-weight:bold;">Trang chủ</a>
+    </li>
+    
+    <li class="paddingtop20"></li>
+</ul>
+<li>
+          
+            <li><ul class="subnav">
+    <li class="current">
+        <a class="current"  id="Nội dung" style="font-size:95%;font-weight:bold;">Nội dung</a>
+    </li>
+    
+        <li class="">
+            <a style="padding-left:50px;" class=""  id="Kiến thức cơ bản" onclick="showChildren('Kiến thức cơ bản')">Kiến thức cơ bản  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+        </li>
+        
+        <div style="display:none" id="hidden_Kiến thức cơ bản">
+        
+            <li class="">
+                <a style="padding-left:70px;" class="" href="../../../introduction/introduction/" id="Tổng quan">Tổng quan </a>
+            </li>
+            
+            <div style="display:none" id="hidden_Kiến thức cơ bảnTổng quan">
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class="" href="../../../introduction/about-iot/" id="Internet Of Things (IoT)">Internet Of Things (IoT) </a>
+            </li>
+            
+            <div style="display:none" id="hidden_Kiến thức cơ bảnTổng quanInternet Of Things (IoT)">
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class="" href="../../../introduction/about-esp8266/" id="ESP8266 & ESP8285">ESP8266 & ESP8285 </a>
+            </li>
+            
+            <div style="display:none" id="hidden_Kiến thức cơ bảnTổng quanInternet Of Things (IoT)ESP8266 & ESP8285">
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class="" href="../../../introduction/esp-module/" id="Module & Board phát triển">Module & Board phát triển </a>
+            </li>
+            
+            <div style="display:none" id="hidden_Kiến thức cơ bảnTổng quanInternet Of Things (IoT)ESP8266 & ESP8285Module & Board phát triển">
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class="" href="../../../introduction/prepare/" id="Phần cứng & công cụ">Phần cứng & công cụ </a>
+            </li>
+            
+            <div style="display:none" id="hidden_Kiến thức cơ bảnTổng quanInternet Of Things (IoT)ESP8266 & ESP8285Module & Board phát triểnPhần cứng & công cụ">
+            
+            </div>
+        
+        </div>
+    
+        <li class="current">
+            <a style="padding-left:50px;" class="current"  id="ESP8266 NONOS-SDK" onclick="showChildren('ESP8266 NONOS-SDK')">ESP8266 NONOS-SDK  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+        </li>
+        
+        <div style="display:none" id="hidden_ESP8266 NONOS-SDK">
+        
+            <li class="">
+                <a style="padding-left:70px;" class="" href="../../nonos-sdk/" id="Giới thiệu">Giới thiệu </a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệu">
+            
+            </div>
+        
+            <li class="current">
+                <a style="padding-left:70px;" class="current"  id="Cơ bản" onclick="showChildren('ESP8266 NONOS-SDKGiới thiệuCơ bản')">Cơ bản  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bản">
+            
+                <li class="current">
+                    <a style="padding-left:90px;" class="current" href="./" id="Cài đặt công cụ cần thiết">Cài đặt công cụ cần thiết </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../compile-first-time/" id="Biên dịch dự án mẫu">Biên dịch dự án mẫu </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../blink-led/" id="Bật tắt LED">Bật tắt LED </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../button/" id="Nút nhấn">Nút nhấn </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../uart/" id="UART">UART </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../complex-makefile/" id="Makefile cho dự án phức tạp">Makefile cho dự án phức tạp </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../task/" id="Task">Task </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../wifi/" id="Wifi">Wifi </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../espconn/" id="ESPCONN">ESPCONN </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../mdns/" id="MDNS">MDNS </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../ntp/" id="NTP">NTP </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../save-to-flash/" id="Lưu dữ liệu vào Flash">Lưu dữ liệu vào Flash </a>
+                </li>
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class=""  id="Smartconfig" onclick="showChildren('ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfig')">Smartconfig  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfig">
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../smartconfig/smartconfig/" id="ESP8266 Smartconfig">ESP8266 Smartconfig </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../smartconfig/why-smartconfig/" id="Tại sao cần Smartconfig">Tại sao cần Smartconfig </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../smartconfig/esptouch/" id="ESPTOUCH & AIRKISS">ESPTOUCH & AIRKISS </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../smartconfig/wps/" id="WPS">WPS </a>
+                </li>
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class=""  id="MQTT" onclick="showChildren('ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTT')">MQTT  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTT">
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../mqtt/esp-mqtt/" id="ESP8266 MQTT">ESP8266 MQTT </a>
+                </li>
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class=""  id="HTTP Client" onclick="showChildren('ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP Client')">HTTP Client  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP Client">
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../http-client/http-client/" id="ESP8266 HTTP Client">ESP8266 HTTP Client </a>
+                </li>
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class=""  id="HTTP Server" onclick="showChildren('ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP ClientHTTP Server')">HTTP Server  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP ClientHTTP Server">
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../http-server/http-server/" id="ESP8266 HTTP Server">ESP8266 HTTP Server </a>
+                </li>
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class=""  id="Firmware Over The Air" onclick="showChildren('ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP ClientHTTP ServerFirmware Over The Air')">Firmware Over The Air  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP ClientHTTP ServerFirmware Over The Air">
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../fota/fota/" id="FOTA">FOTA </a>
+                </li>
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class=""  id="ESP Now" onclick="showChildren('ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP ClientHTTP ServerFirmware Over The AirESP Now')">ESP Now  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP ClientHTTP ServerFirmware Over The AirESP Now">
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../esp-now/esp-now/" id="ESP Now">ESP Now </a>
+                </li>
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class=""  id="ESP Mesh" onclick="showChildren('ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP ClientHTTP ServerFirmware Over The AirESP NowESP Mesh')">ESP Mesh  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP ClientHTTP ServerFirmware Over The AirESP NowESP Mesh">
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../esp-mesh/esp-mesh/" id="ESP Mesh">ESP Mesh </a>
+                </li>
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class=""  id="Các dự án" onclick="showChildren('ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP ClientHTTP ServerFirmware Over The AirESP NowESP MeshCác dự án')">Các dự án  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP ClientHTTP ServerFirmware Over The AirESP NowESP MeshCác dự án">
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../projects/list/" id="Danh sách">Danh sách </a>
+                </li>
+            
+            </div>
+        
+        </div>
+    
+        <li class="">
+            <a style="padding-left:50px;" class=""  id="ESP8266 FreeRTOS-SDK" onclick="showChildren('ESP8266 FreeRTOS-SDK')">ESP8266 FreeRTOS-SDK  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+        </li>
+        
+        <div style="display:none" id="hidden_ESP8266 FreeRTOS-SDK">
+        
+            <li class="">
+                <a style="padding-left:70px;" class="" href="../../../freertos-sdk/freertos-sdk/" id="Giới thiệu">Giới thiệu </a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 FreeRTOS-SDKGiới thiệu">
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class=""  id="Cơ bản" onclick="showChildren('ESP8266 FreeRTOS-SDKGiới thiệuCơ bản')">Cơ bản  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 FreeRTOS-SDKGiới thiệuCơ bản">
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../freertos-sdk/basic/introduction/" id="Cài đặt công cụ cần thiết">Cài đặt công cụ cần thiết </a>
+                </li>
+            
+            </div>
+        
+        </div>
+    
+        <li class="">
+            <a style="padding-left:50px;" class=""  id="ESP8266 Arduino" onclick="showChildren('ESP8266 Arduino')">ESP8266 Arduino  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+        </li>
+        
+        <div style="display:none" id="hidden_ESP8266 Arduino">
+        
+            <li class="">
+                <a style="padding-left:70px;" class="" href="../../../arduino/arduino/" id="Giới thiệu">Giới thiệu </a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 ArduinoGiới thiệu">
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class=""  id="Cơ bản" onclick="showChildren('ESP8266 ArduinoGiới thiệuCơ bản')">Cơ bản  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 ArduinoGiới thiệuCơ bản">
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../arduino/basic/install/" id="Cài đặt">Cài đặt </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../arduino/basic/digital/" id="Digital">Digital </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../arduino/basic/analog/" id="Analog">Analog </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../arduino/basic/timming-delay/" id="Thời gian & Delay">Thời gian & Delay </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../arduino/basic/serial/" id="Serial">Serial </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../arduino/basic/progmem/" id="Progmem">Progmem </a>
+                </li>
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class=""  id="Thư viện" onclick="showChildren('ESP8266 ArduinoGiới thiệuCơ bảnThư viện')">Thư viện  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 ArduinoGiới thiệuCơ bảnThư viện">
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../arduino/libraries/esp8266-wifi/" id="ESP8266WiFi">ESP8266WiFi </a>
+                </li>
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class=""  id="Filesystem" onclick="showChildren('ESP8266 ArduinoGiới thiệuCơ bảnThư việnFilesystem')">Filesystem  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 ArduinoGiới thiệuCơ bảnThư việnFilesystem">
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../arduino/filesystem/flash-layout/" id="Flash Layout">Flash Layout </a>
+                </li>
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class="" href="../../../arduino/arduino-fota/" id="Cập nhật Firmware (FOTA)">Cập nhật Firmware (FOTA) </a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 ArduinoGiới thiệuCơ bảnThư việnFilesystemCập nhật Firmware (FOTA)">
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class="" href="../../../arduino/arduino-esp8266-hardware/" id="Phần cứng hỗ trợ">Phần cứng hỗ trợ </a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 ArduinoGiới thiệuCơ bảnThư việnFilesystemCập nhật Firmware (FOTA)Phần cứng hỗ trợ">
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class=""  id="Các dự án" onclick="showChildren('ESP8266 ArduinoGiới thiệuCơ bảnThư việnFilesystemCập nhật Firmware (FOTA)Phần cứng hỗ trợCác dự án')">Các dự án  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 ArduinoGiới thiệuCơ bảnThư việnFilesystemCập nhật Firmware (FOTA)Phần cứng hỗ trợCác dự án">
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../arduino/projects/list/" id="Danh sách">Danh sách </a>
+                </li>
+            
+            </div>
+        
+        </div>
+    
+        <li class="">
+            <a style="padding-left:50px;" class=""  id="ESP8266 Micropython" onclick="showChildren('ESP8266 Micropython')">ESP8266 Micropython  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+        </li>
+        
+        <div style="display:none" id="hidden_ESP8266 Micropython">
+        
+            <li class="">
+                <a style="padding-left:70px;" class="" href="../../../micropython/micropython/" id="Giới thiệu">Giới thiệu </a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 MicropythonGiới thiệu">
+            
+            </div>
+        
+            <li class="">
+                <a style="padding-left:70px;" class=""  id="Cơ bản" onclick="showChildren('ESP8266 MicropythonGiới thiệuCơ bản')">Cơ bản  <i class="fa fa-arrow-circle-down" style="padding-left:5px;font-size:13px;"></i></a>
+            </li>
+            
+            <div style="display:none" id="hidden_ESP8266 MicropythonGiới thiệuCơ bản">
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../micropython/basic/introduction/" id="Cài đặt công cụ cần thiết">Cài đặt công cụ cần thiết </a>
+                </li>
+            
+            </div>
+        
+        </div>
+    
+    <li class="paddingtop20"></li>
+</ul>
+<li>
+          
+            <li><ul class="subnav">
+    <li class="">
+        <a class="" href="../../../projects/list/" id="Các dự án" style="font-size:95%;font-weight:bold;">Các dự án</a>
+    </li>
+    
+    <li class="paddingtop20"></li>
+</ul>
+<li>
+          
+            <li><ul class="subnav">
+    <li class="">
+        <a class="" href="../../../license/" id="Bản quyền" style="font-size:95%;font-weight:bold;">Bản quyền</a>
+    </li>
+    
+    <li class="paddingtop20"></li>
+</ul>
+<li>
+          
+            <li><ul class="subnav">
+    <li class="">
+        <a class="" href="../../../contributor/" id="Đóng góp" style="font-size:95%;font-weight:bold;">Đóng góp</a>
+    </li>
+    
+    <li class="paddingtop20"></li>
+</ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">Internet Of Things (IoT) với ESP8266</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>ESP8266 NONOS-SDK &raquo;</li>
+        
+      
+        
+          <li>Cơ bản &raquo;</li>
+        
+      
+    
+    <li>Cài đặt công cụ cần thiết</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/esp8266vn/esp8266.vn" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="cai-at-cong-cu-can-thiet">Cài đặt công cụ cần thiết<a class="headerlink" href="#cai-at-cong-cu-can-thiet" title="Permanent link">#</a></h1>
+<ul>
+<li>Trình soạn thảo trên máy tính, để viết mã nguồn <strong>C</strong></li>
+<li>Trình biên dịch, nhằm mục địch biên dịch mã nguồn <strong>C</strong> sang mã máy</li>
+<li>Trình nạp, nạp mã máy đã biên dịch xuống Flash của ESP8266</li>
+<li>SDK</li>
+</ul>
+<h2 id="cai-at-trinh-bien-dich-cac-thu-vien-co-ban">Cài đặt trình biên dịch &amp; các thư viện cơ bản<a class="headerlink" href="#cai-at-trinh-bien-dich-cac-thu-vien-co-ban" title="Permanent link">#</a></h2>
+<h3 id="macososx">MacOS/OSX<a class="headerlink" href="#macososx" title="Permanent link">#</a></h3>
+<p>Bạn có ít nhất 2 cách để có trình biên dịch, đơn giản nhất là tải về từ 1 trong các link sau:</p>
+<ul>
+<li><a href="https://www.dropbox.com/s/wavfbh7v7k3lh15/xtensa-lx106-elf.zip?dl=0">xtensa-lx106-elf.zip</a></li>
+</ul>
+<p>và giải nén vào thư mục: <code>/tools/esp8266/compiler/</code></p>
+<p><strong>Cách 2</strong> phức tạp hơn, nhưng sẽ phù hợp với tất cả phiên bản hệ điều hành của bạn. Biên dịch Trình biên dịch từ mã nguồn:</p>
+<pre class="code"><code class="language-bash">sudo port install git gsed gawk binutils gperf grep gettext py-serial wget libtool autoconf automake 
+
+hdiutil create -size 5g -fs &quot;Case-sensitive HFS+&quot; -volname ESPTools ESPTools.sparsebundle 
+hdiutil attach ESPTools.sparsebundle &lt;3&gt;
+sudo ln -s /Volumes/ESPTools/ /tools &lt;3&gt;
+mkdir /tools/esp8266 &lt;4&gt;
+mkdir /tools/esp8266/sdk &lt;4&gt;
+mkdir /tools/esp8266/compiler &lt;4&gt;
+cd /tools/esp8266/compiler
+
+git clone -b lx106 git://github.com/jcmvbkbc/crosstool-NG.git &lt;5&gt;
+cd crosstool-NG
+sed -i.bak '1s/^/gettext=\'$'\n/' crosstool-NG/kconfig/Makefile
+./bootstrap &amp;&amp; ./configure --prefix=`pwd` &amp;&amp; make &amp;&amp; make install
+./ct-ng xtensa-lx106-elf
+./ct-ng build</code></pre>
+
+
+<ul>
+<li>Các thư viện cần thiết để biên dịch crosstool-NG, sử dụng MacPorts để cài đặt. Nếu chưa cài đặt MacPorts có thẻ tải tại đây: https://www.macports.org/</li>
+<li>Biên dịch <code>crosstool-NG</code> cần định dạng ổ cứng hỗ trợ phân biệt đường dẫn chữ Hoa và chữ thường, nên cần tạo một ổ đĩa ảo như vậy.</li>
+<li>Mount ổ đĩa <code>ESPTools ESPTools.sparsebundle</code> tới thư mục <code>/tools/</code></li>
+<li>Tạo các thư mục cho để chứa SDK, trình biên dịch và công cụ nạp</li>
+<li>Clone dự án crosstool-NG, nhánh <code>lx106</code> về, tiến hành các thao tác biên dịch</li>
+</ul>
+<h4 id="luu-y">Lưu ý<a class="headerlink" href="#luu-y" title="Permanent link">#</a></h4>
+<p>Lưu ý rằng, quá trình biên dịch cần khoảng 1 giờ (tùy cấu hình máy) và 1.5GiB dung lượng ổ cứng trống</p>
+<p>Tiếp theo, cần phải thêm đường dẫn của compiler vào biến môi trường <code>PATH</code> của hệ điều hành</p>
+<pre class="code"><code class="language-bash">echo &quot;export PATH=$PATH:/tools/esp8266/compiler/crosstool-NG/builds/xtensa-lx106-elf/bin&quot; &gt;&gt;  ~/.bash_profile &lt;1&gt;
+source ~/.bash_profile </code></pre>
+
+
+<ul>
+<li>Thêm dòng <code>export</code> vào cuối file <code>~/.bash_profile</code> bằng <code>echo</code></li>
+<li><code>source</code> để tải lại biến môi trường</li>
+</ul>
+<p>Kiểm tra việc cài đặt, Có dòng này hiển thị ở cuối cùng thì việc cài đặt dã thành công</p>
+<pre class="code"><code class="language-bash">xtensa-lx106-elf-gcc -v
+gcc version 4.8.2 (crosstool-NG 1.20.0) </code></pre>
+
+
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">#</a></h3>
+<p>Cài đặt Git
+- https://desktop.github.com/</p>
+<p>Tải về tại một trong các địa chỉ sau:</p>
+<ul>
+<li><a href="http://programs74.ru/udkew-en.html">http://programs74.ru/udkew-en.html</a></li>
+<li><a href="https://www.dropbox.com/s/x0v25603pnf8sny/Espressif-ESP8266-DevKit-v2.1.0-x86.exe?dl=0">Link Dropbox</a></li>
+</ul>
+<p>Đây là bộ KIT đã bao gồm tất cả các công cụ, SDK và mã nguồn chương trình cần thiết để phát triển ứng dụng ESP8266. Tuy không phải là chính thức của hãng (unofficial) nhưng thuộc dạng tất-cả-trong-một, rất tiện lợi &amp; dễ sử dụng.
+Vị trí mặc định của bộ KIT sau khi cài đặt là <code>C:\Espressif</code>, bao gồm:</p>
+<ul>
+<li><code>C:\Espressif\xtensa-lx106-elf\bin</code>: trình biên dịch xtensa-lx106-elf</li>
+<li><code>C:\Espressif\utils\ESP8266</code>: các chương trình tiện ích, ví dụ <code>esptool.exe</code> để nạp ESP8266</li>
+<li><code>C:\Espressif\docs\ESP8266</code>: tài liệu liên quan.</li>
+<li><code>C:\Espressif\ESP8266_SDK</code>: tương ứng với bản <strong>ESP8266_NONOS_SDK v2.0.0</strong></li>
+<li><code>C:\Espressif\ESP8266_RTOS_SDK</code>: tương ứng với bản <strong>ESP8266 RTOS SDK v1.4.0</strong></li>
+<li><code>C:\Espressif\examples\ESP8266</code>: mã nguồn ví dụ các dự án.</li>
+</ul>
+<p>Cài đặt đường dẫn <code>C:\Espressif\xtensa-lx106-elf\bin</code> và <code>C:\Espressif\utils\ESP8266</code> vào biến môi trường <code>PATH</code> của windows, có 2 cách:</p>
+<ul>
+<li>Cài đặt cứng trong <code>My Computer</code> -&gt; (Chuột phải) -&gt; <code>Properties</code> -&gt; <code>Advanced system settings</code> -&gt; <code>Environment Variables...</code> -&gt; <code>System variables</code>, chọn giá trị <code>PATH</code> -&gt; chọn <code>Edit...</code> -&gt; di chuyển đến cuối chuỗi, thêm <code>;C:\Espressif\xtensa-lx106-elf\bin;C:\Espressif\utils\ESP8266;</code></li>
+<li>Cài đặt khi chạy: trong cửa sổ console, nhập <code>set PATH=%PATH%;C:\Espressif\xtensa-lx106-elf\bin;C:\Espressif\utils\ESP8266;</code></li>
+</ul>
+<p>Kiểm tra việc cài đặt, có dòng này hiển thị ở cuối cùng thì việc cài đặt đã thành công:</p>
+<pre class="code"><code class="language-bat">xtensa-lx106-elf-gcc --version
+xtensa-lx106-elf-gcc (GCC) 5.2.0</code></pre>
+
+
+<pre class="code"><code class="language-bat">esptool.py
+usage: esptool [-h] [--port PORT] [--baud BAUD]</code></pre>
+
+
+<h3 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">#</a></h3>
+<p>Cài đặt Git</p>
+<pre class="code"><code>sudo apt-get update
+sudo apt-get install make unrar-free autoconf automake libtool gcc g++ gperf \
+    flex bison texinfo gawk ncurses-dev libexpat-dev python-dev python python-serial \
+    sed git unzip bash help2man wget bzip2
+sudo apt-get install libtool-bin</code></pre>
+
+
+<p>Cài đặt complier</p>
+<pre class="code"><code>mkdir /tools /tools/esp8266 /tools/esp8266/sdk /tools/esp8266/compiler
+cd /tools/esp8266/compiler
+git clone -b lx106 git://github.com/jcmvbkbc/crosstool-NG.git 
+cd crosstool-NG
+./bootstrap &amp;&amp; ./configure --prefix=`pwd` &amp;&amp; make &amp;&amp; make install
+./ct-ng xtensa-lx106-elf
+unset LD_LIBRARY_PATH
+./ct-ng build
+PATH=$PWD/builds/xtensa-lx106-elf/bin:$PATH</code></pre>
+
+
+<p>Kiểm tra việc cài đặt bằng lệnh</p>
+<p><code>xtensa-lx106-elf-gcc -v</code></p>
+<p>Có dòng này hiển thị ở cuối cùng thì việc cài đặt dã thành công</p>
+<pre class="code"><code>Thread model: single
+gcc version 4.8.5 (crosstool-NG crosstool-ng-1.22.0-55-gecfc19a) </code></pre>
+
+
+<h2 id="tai-esp8266_nonos_sdk">Tải ESP8266_NONOS_SDK<a class="headerlink" href="#tai-esp8266_nonos_sdk" title="Permanent link">#</a></h2>
+<p>Tải ESP8266-NONOS-SDK 2.0 từ một trong các nguồn sau: </p>
+<ul>
+<li><a href="http://bbs.espressif.com/viewtopic.php?f=46&amp;t=2451">http://bbs.espressif.com/viewtopic.php?f=46&amp;t=2451</a></li>
+<li><a href="https://www.dropbox.com/s/vgq9pvy3333am24/ESP8266_NONOS_SDK_V2.0.0_16_08_10.zip?dl=0">Dropbox ESP8266-NONOS-SDK</a></li>
+</ul>
+<p>Giải nén ra (ví dụ tại thư mục: <code>/tools/esp8266/sdk/ESP8266_NONOS_SDK</code>)</p>
+<h2 id="tai-esptoolpy">Tải <strong>esptool.py</strong><a class="headerlink" href="#tai-esptoolpy" title="Permanent link">#</a></h2>
+<pre class="code"><code>cd /tools/esp8266/
+git clone https://github.com/themadinventor/esptool.git</code></pre>
+
+
+<p>Hoặc Download từ <a href="https://www.dropbox.com/s/u3sihwbmjmx7xl3/esptool.zip?dl=0">Dropbox</a> và giải nén vào thư mục <code>/tools/esp8266/</code></p>
+<h2 id="tai-libclibhal-file-include-voi-ubuntu-them-lenh-sudo-truoc-wget">Tải libc,libhal, file include (với ubuntu thêm lệnh sudo trước wget)<a class="headerlink" href="#tai-libclibhal-file-include-voi-ubuntu-them-lenh-sudo-truoc-wget" title="Permanent link">#</a></h2>
+<pre class="code"><code>cd tools/esp8266/complier/crosstool-NG/builds/xtensa-lx106-elf/xtensa-lx106-elf/sysroot/usr
+wget -O lib/libc.a https://github.com/esp8266/esp8266-wiki/raw/master/libs/libc.a
+wget -O lib/libhal.a https://github.com/esp8266/esp8266-wiki/raw/master/libs/libhal.a
+wget -O include.tgz https://github.com/esp8266/esp8266-wiki/raw/master/include.tgz
+tar -xvzf include.tgz</code></pre>
+
+
+<h2 id="cong-cu-com-terminal">Công cụ COM Terminal<a class="headerlink" href="#cong-cu-com-terminal" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="https://help.ubuntu.com/community/Minicom">Minicom</a></li>
+<li><a href="http://freeware.the-meiers.org/">CoolTerm</a> (Window, MAC, không support Ubuntu)</li>
+<li>Gtkterm<ul>
+<li>Cài đặt
+<code>apt-get install gtkterm</code></li>
+<li>Tìm kiếm COM kết nối dùng lệnh <code>lsusb</code> trong terminal</li>
+<li>Chạy gtkterm
+<code>sudo gtkterm</code></li>
+<li>Cấu hình Port và baud trong Configuration&gt;Port</li>
+</ul>
+</li>
+</ul>
+<h2 id="tai-lieu-tu-espressif">Tài liệu từ Espressif<a class="headerlink" href="#tai-lieu-tu-espressif" title="Permanent link">#</a></h2>
+<p><a href="http://espressif.com/en/support/download/documents?keys=&amp;field_type_tid%5B%5D=14">http://espressif.com</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../compile-first-time/" class="btn btn-neutral float-right" title="Biên dịch dự án mẫu">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../nonos-sdk/" class="btn btn-neutral" title="Giới thiệu"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Copyright &copy; 2016 <a href="https://esp8266.vn">ESP8266 Viet Nam</a></p>
+    
+  </div>
+
+  
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<!-- <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/esp8266vn/esp8266.vn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../../nonos-sdk/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../compile-first-time/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div> -->
+
+<script type="text/javascript">
+  // If cookie is defined toggle the id
+  if (typeof $.cookie('docToggle') !== 'undefined') {
+      // Parse cookie which is an array
+      var _parsed_cookie = JSON.parse($.cookie('docToggle'));
+      // Loop over array and show hidden divs
+      $.each(_parsed_cookie, function(index, value) {
+          // Toggle
+          $("[id='hidden_" + value + "']").css('display','');
+      })
+  }
+</script>
+
+</body>
+</html>
