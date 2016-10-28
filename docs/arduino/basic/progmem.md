@@ -1,10 +1,11 @@
 ## Progmem
 
-The Program memory features work much the same way as on a regular Arduino; placing read only data and strings in read only memory and freeing heap for your application.
-The important difference is that on the ESP8266 the literal strings are not pooled.  This means that the same literal string defined inside a `F("")` and/or `PSTR("")` will take up space for each instance in the code. So you will need to manage the duplicate strings yourself.
+Bộ nhớ chỉ đọc lưu trong vùng nhớ Flash có cùng cách hoạt động với Arduino thông thường. Đặt chuỗi dữ liệu hay string vào vùng nhớ chỉ đọc giúp tiết kiệm bộ nhớ RAM của chương trình.
 
-There is one additional helper macro to make it easier to pass ```const PROGMEM``` strings to methods that take a ```__FlashStringHelper``` called ```FPSTR()```.  The use of this will help make it easier to pool strings.
-Not pooling strings...
+!!! note "Lưu ý"
+    Điều khác biệt nhất là chuỗi dữ liệu định nghĩa sẵn này không được không được gộp chung. Nếu bạn đặt chuỗi trong `F("")` và/hoặc trong `PSTR("")` sẽ chiếm dụng bộ nhớ cho mỗi instance của mã. Cho nên bạn cần tự quản lý những chuỗi string trùng.
+
+Một số macro hỗ trợ có thể dễ dàng sử dụng ```const PROGMEM``` để có thể gọi  từ ```__FlashStringHelper``` hàm ```FPSTR()```. 
 
 ```c++
 String response1;

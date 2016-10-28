@@ -1,18 +1,10 @@
+## Thời gian và Delay
+`millis()` và `micros()` trả về mili giây và micro giây tính từ thời điểm reset.
 
+`delay(ms)` sẽ dừng sketch cho `ms` micro giây, vẫn cho phép WiFi và TCP/IP hoạt động.
+Tương tự với `delayMicroseconds(us)` sẽ dừng chương trình với `us` micro giây.
 
-## Timing and delays
-`millis()` and `micros()` return the number of milliseconds and microseconds elapsed after reset, respectively.
+Hãy ghi nhớ rằng có rất nhiều thứ đang cần hoạt động bên dưới sketch của bạn. Khi WiFi đã kết nối, thư viện WiFi và TCP/IP sẽ cần thời gian để thực hiện bất kỳ sự kiện nào. Việc gọi gọi hàm `loop()`, hay thực thi `delay` sẽ thực hiện điều đó.
+Cho nên, nếu bạn có bất kỳ vòng lặp nào chiếm nhiều thời gian (>50ms) mà không gọi hàm `delay`, bạn nên đặt hàm `delay` vào trong hàm đó, để đảm bảo WiFi stack hoạt động trơn tru.
 
-`delay(ms)` pauses the sketch for a given number of milliseconds and allows WiFi and TCP/IP tasks to run.
-`delayMicroseconds(us)` pauses for a given number of microseconds.
-
-Remember that there is a lot of code that needs to run on the chip besides the sketch
-when WiFi is connected. WiFi and TCP/IP libraries get a chance to handle any pending
-events each time the `loop()` function completes, OR when `delay` is called.
-If you have a loop somewhere in your sketch that takes a lot of time (>50ms) without
-calling `delay`, you might consider adding a call to `delay` function to keep the WiFi
-stack running smoothly.
-
-There is also a `yield()` function which is equivalent to `delay(0)`. The `delayMicroseconds`
-function, on the other hand, does not yield to other tasks, so using it for delays
-more than 20 milliseconds is not recommended.
+Chúng ta cũng có hàm `yield()` tương đương với `delay(0)`. Hàm `delayMicroseconds` thì lại không thực hiện việc chuyển task, đơn giản nó chỉ dùng để delay và nếu nhiều hơn 20 mili giây thì không được khuyến khích.

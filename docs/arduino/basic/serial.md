@@ -2,31 +2,35 @@
 
 ## Serial
 
-`Serial` object works much the same way as on a regular Arduino. Apart from hardware FIFO (128 bytes for TX and RX) HardwareSerial has additional 256-byte TX and RX buffers. Both transmit and receive is interrupt-driven. Write and read functions only block the sketch execution when the respective FIFO/buffers are full/empty.
+Đối tượng `Serial` làm việc giống nhiều với Arduino bình thường. Ngoại trừ việc phần cứng của ESP8266 có thêm 128 bytes RAM FIFO và 256 bytes RX-TX Buffer. Cả TX và RX đều truyền nhận dựa vào interrupt. Việc đọc và ghi dữ liệu chỉ bị block lại khi FIFO/buffer đầy/rỗng.
 
-`Serial` uses UART0, which is mapped to pins GPIO1 (TX) and GPIO3 (RX). Serial may be remapped to GPIO15 (TX) and GPIO13 (RX) by calling `Serial.swap()` after `Serial.begin`. Calling `swap` again maps UART0 back to GPIO1 and GPIO3.
+`Serial` sử dụng là UART0, được map thằng vào chân GPIO1 (TX) và GPIO3 (RX). Serial có thể REMAP lại vào GPIO15 (TX) và GPIO13 (RX) bởi việc gọi hàm `Serial.swap()` sau khi gọi `Serial.begin`. Gọi `swap` lại sẽ MAP UART0 trở lại GPIO1 và GPIO3.
 
-`Serial1` uses UART1, TX pin is GPIO2. UART1 can not be used to receive data because normally it's RX pin is occupied for flash chip connection. To use `Serial1`, call `Serial1.begin(baudrate)`.
+`Serial1` sử dụng UART1, TX pin là chân GPIO2. UART1 không thể sử dụng để nhận dữ liệu bởi vì bình thường nó được sử dụng để kết nối với Flash. Để sử dụng `Serial1`, gọi `Serial1.begin(baudrate)`.
 
-If `Serial1` is not used and `Serial` is not swapped - TX for UART0 can be mapped to GPIO2 instead by calling `Serial.set_tx(2)` after `Serial.begin` or directly with `Serial.begin(baud, config, mode, 2)`.
+!!! note "Lưu ý"
+    Nếu `Serial1` không được sử dụng và `Serial` không bị REMAP - TX cho UART0 có thể MAP sang GPIO2 bởi gọi hàm `Serial.set_tx(2)` sau `Serial.begin` hay trực tiếp với `Serial.begin(baud, config, mode, 2)`.
 
-By default the diagnostic output from WiFi libraries is disabled when you call `Serial.begin`. To enable debug output again, call `Serial.setDebugOutput(true)`. To redirect debug output to `Serial1` instead, call `Serial1.setDebugOutput(true)`.
+Mặc định, tất cả thông tin chuẩn đoán hệ thống và thư viện sẽ bị bỏ qua nesu gọi hàm `Serial.begin`. Để cho phép những thông tin đó, có thể gọi `Serial.setDebugOutput(true)`. Để chuyển thông tin đó ra  `Serial1`, gọi hàm `Serial1.setDebugOutput(true)`.
 
-You also need to use `Serial.setDebugOutput(true)` to enable output from `printf()` function.
+!!! note "Lưu ý"
+    Bạn cũng cần phải gọi `Serial.setDebugOutput(true)` để cho phép hàm `printf()`.
 
-Both `Serial` and `Serial1` objects support 5, 6, 7, 8 data bits, odd (O), even (E), and no (N) parity, and 1 or 2 stop bits. To set the desired mode, call `Serial.begin(baudrate, SERIAL_8N1)`, `Serial.begin(baudrate, SERIAL_6E2)`, etc.
+Cả đối tượng `Serial` và `Serial1` hỗ trợ 5, 6, 7, 8 bits dữ liệu, odd (O), even (E), và no (N) parity, và 1 hay 2 bits stop. Để cấu hình các mode trên, gọi `Serial.begin(baudrate, SERIAL_8N1)`, `Serial.begin(baudrate, SERIAL_6E2)`, v.v..
 
-A new method has been implemented on both `Serial` and `Serial1` to get current baud rate setting. To get the current baud rate, call `Serial.baudRate()`, `Serial1.baudRate()`. Return a `int` of current speed. For example
+Một phương thức được hiện thực trên cả 2 `Serial` và `Serial1` để lấy baud rate hiện tại như sau: `Serial.baudRate()`, `Serial1.baudRate()` trả về một số `int` của tốc độ Baud hiện tại. Ví dụ
 ```cpp
-// Set Baud rate to 57600
+// Set Baud rate 57600
 Serial.begin(57600);
 
-// Get current baud rate
+// Kiểm tra baud rate hiện tại
 int br = Serial.baudRate();
 
-// Will print "Serial is 57600 bps"
+// sẽ xuất ra "Serial is 57600 bps"
 Serial.printf("Serial is %d bps", br);
 ```
 
-I've done this also for official ESP8266 [Software Serial](https://github.com/esp8266/Arduino/blob/master/doc/libraries.md#softwareserial) library, see this [pull request](https://github.com/plerup/espsoftwareserial/pull/22).    
-Note that this implementation is **only for ESP8266 based boards**, and will not works with other Arduino boards.
+Ngoài ra, các Contributor Team ESP8266 Arduino cũng hoàn thiện thư viện [Software Serial](https://github.com/esp8266/Arduino/blob/master/doc/libraries.md#softwareserial) cho ESP8266, xem [pull request](https://github.com/plerup/espsoftwareserial/pull/22).    
+
+!!! warning "Cẩn thận"
+    Thư viện này được thực hiện chỉ  **duy nhất cho ESP8266 boards**, và sẽ không làm việc với các thư viện Arduino khác.
