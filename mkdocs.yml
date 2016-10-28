@@ -46,7 +46,8 @@ pages:
         - ESPTOUCH & AIRKISS:         nonos-sdk/smartconfig/esptouch.md
         - WPS:                        nonos-sdk/smartconfig/wps.md
       - MQTT:
-        - ESP8266 MQTT:               nonos-sdk/mqtt/esp-mqtt.md
+        - Giao thức MQTT:             nonos-sdk/mqtt/what-is-mqtt.md
+        - ESP8266 MQTT Client:        nonos-sdk/mqtt/mqtt-client.md
       - HTTP Client:
         - ESP8266 HTTP Client:        nonos-sdk/http-client/http-client.md
       - HTTP Server:

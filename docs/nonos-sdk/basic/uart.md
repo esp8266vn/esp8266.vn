@@ -2,7 +2,7 @@
 
 ESP8266 có 2 UART, trong đó UART0 có đầy đủ 2 tính năng TX, RX, và dùng làm ngõ ra mặc định cho các thông tin debug cho SDK, cũng như là cổng nạp chương trình.
 
-Tổ chức file căn cứ theo bài [Biên dịch dự án đầu tiên](./01-compile-first-time.md), bổ sung thêm file `uart.c`, `uart.h` để cấu hình cổng UART0 cho việc nhận dữ liệu
+Tổ chức file căn cứ theo bài [Biên dịch dự án đầu tiên](./compile-first-time.md), bổ sung thêm file `uart.c`, `uart.h` để cấu hình cổng UART0 cho việc nhận dữ liệu
 
 - UART0 của ESP8266 hỗ trợ 128 Byte FIFO và tính năng Ngắt Timeout, ngắt khi đầy FIFO. Có thể hiểu nếu bạn cấu hình ngắt 128 bytes FIFO, và ngắt Timeout, khi UART nhận đầy FIFO sẽ kích hoạt ngắt đầy FIFO, hoặc nếu trường hợp chưa đầy FIFO nhưng qua 1 khoảng thời gian (có thể cấu hình được) mà không nhận được dữ liệu nữa thì cũng phát sinh ngắt TOUT 
 - Bạn có thể lấy driver trực tiếp từ bài này hoặc các ví dụ từ SDK mà không phải làm gì nữa nếu việc truyền nhận không quá phức tạp
@@ -33,7 +33,7 @@ esp-iot-uart
     `-- user_config.h
 ```
 
-Ta sẽ gom phần [LED](./02-blink-led.md) và [Nút nhấn](./03-button.md) thành 1 file `led_btn.c`. Bổ sung thêm file `uart.c` để cấu hình UART
+Ta sẽ gom phần [LED](./blink-led.md) và [Nút nhấn](./button.md) thành 1 file `led_btn.c`. Bổ sung thêm file `uart.c` để cấu hình UART
 
 ## Mã nguồn
 

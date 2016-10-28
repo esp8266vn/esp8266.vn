@@ -1,6 +1,6 @@
 # Nút nhấn
 
-Tổ chức file căn cứ theo bài [Biên dịch dự án đầu tiên](./01-compile-first-time.md), bao gồm các file `Makefile`, `main.c`, `rf_init.c`, `user_config.h`. Tuy nhiên chỉ thay đổi nội dung file `main.c`
+Tổ chức file căn cứ theo bài [Biên dịch dự án đầu tiên](./compile-first-time.md), bao gồm các file `Makefile`, `main.c`, `rf_init.c`, `user_config.h`. Tuy nhiên chỉ thay đổi nội dung file `main.c`
 
 !!! note "Nội dung"
     Nhấn nút thì chớp tắt đèn LED
