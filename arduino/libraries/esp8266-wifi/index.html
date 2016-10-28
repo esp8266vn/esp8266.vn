@@ -546,6 +546,17 @@
             <div class="section">
               
                 <h1 id="thu-vien-esp8266wifi">Thư viện ESP8266WiFi<a class="headerlink" href="#thu-vien-esp8266wifi" title="Permanent link">#</a></h1>
+<p>Thư viện ESP8266WiFi có khung giống như các thư viện wifi khác. Những điểm khác biệt gồm :</p>
+<ul>
+<li><strong>WiFi.mode(m)</strong>: thiết lập chế độ <strong>WIFI_AP</strong>, <strong>WIFI_STA</strong>, <strong>WIFI_AP_STA</strong> hoặc <strong>WIFI_OFF</strong>.</li>
+<li>Gọi <strong>WiFi.softAP(ssid)</strong> để thiết lập một open network</li>
+<li>Gọi <strong>WiFi.softAP(ssid, password)</strong> để thiết lập <strong>WPA2-PSK</strong> ( mật khấu ít nhất 8 ký tự )</li>
+<li><strong>WiFi.macAddress(mac)</strong> cho <strong>STA</strong>, <strong>WiFi.softAPmacAddress(mac)</strong> cho <strong>AP</strong>.</li>
+<li><strong>WiFi.localIP()</strong> cho <strong>STA</strong>, <strong>WiFi.softAPIP()</strong> cho <strong>AP</strong>.</li>
+<li><strong>WiFi.printDiag(Serial)</strong> sẽ hiển thị những thông tin dự đoán</li>
+<li><strong>WiFiUDP</strong> lớp hổ trợ gữi và nhận các gói tin multicast trên giao diện STA. Khi gữi một gói tin multicast, thay thế <strong>udp.beginPacket(addr, port)</strong> bằng <strong>udp.beginPacketMulticast(addr, port, WiFi.localIP())</strong>. Khi đang lắng nghe những gói tin multicast, thay thế <strong>udp.begin(port)</strong> bằng <strong>udp.beginMulticast(WiFi.localIP()</strong>, <strong>multicast_ip_addr, port)</strong>. Bạn có thể sử dụng <strong>udp.destinationIP()</strong> để phân biệt gói tin nhận được đến multicast hoặc địa chỉ unicast.</li>
+</ul>
+<p><strong>WiFiServer</strong>, <strong>WiFiClient</strong>, và <strong>WiFiUDP</strong> thực hiện theo cùng một cách như khung thư viện WiFi. Có bốn ví dụ được làm mẫu cho thư viện này. Bạn có thể xem chi tiết các lệnh ở đây : <a href="https://www.arduino.cc/en/Reference/WiFi">http://www.arduino.cc/en/Reference/WiFi</a></p>
               
             </div>
           </div>
