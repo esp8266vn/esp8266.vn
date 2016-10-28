@@ -1172,13 +1172,18 @@
         },
         {
             "location": "/contributor/",
-            "text": "Danh s\u00e1ch th\u00e0nh vi\u00ean \u0111\u00f3ng g\u00f3p:\n#\n\n\n\n\nTu\u1ea5n PM\n\n\nTr\u1ecbnh \u0110\u1ee9c\n\n\nH\u1ecdc ARM\n\n\nHi\u1ebfu Nguy\u1ec5n",
+            "text": "Danh s\u00e1ch th\u00e0nh vi\u00ean \u0111\u00f3ng g\u00f3p:\n#\n\n\n\n\nTu\u1ea5n PM\n\n\nTr\u1ecbnh \u0110\u1ee9c\n\n\nH\u1ecdc ARM\n\n\nHi\u1ebfu Nguy\u1ec5n\n\n\n\n\nDanh s\u00e1ch c\u00e1 nh\u00e2n \u1ee7ng h\u1ed9 d\u1ef1 \u00e1n:\n#",
             "title": "\u0110\u00f3ng g\u00f3p"
         },
         {
             "location": "/contributor/#danh-sach-thanh-vien-ong-gop",
             "text": "Tu\u1ea5n PM  Tr\u1ecbnh \u0110\u1ee9c  H\u1ecdc ARM  Hi\u1ebfu Nguy\u1ec5n",
             "title": "Danh s\u00e1ch th\u00e0nh vi\u00ean \u0111\u00f3ng g\u00f3p:"
+        },
+        {
+            "location": "/contributor/#danh-sach-ca-nhan-ung-ho-du-an",
+            "text": "",
+            "title": "Danh s\u00e1ch c\u00e1 nh\u00e2n \u1ee7ng h\u1ed9 d\u1ef1 \u00e1n:"
         }
     ]
 }
