@@ -67,7 +67,7 @@ pages:
     - ESP8266 Arduino:
       - Giới thiệu:                   arduino/arduino.md
       - Cơ bản:
-        - Cài đặt:                    arduino/basic/basic.md
+        - Cài đặt:                    arduino/basic/install.md
         - Digital:                    arduino/basic/digital.md
         - Analog:                     arduino/basic/analog.md
         - Thời gian & Delay:          arduino/basic/timming-delay.md
