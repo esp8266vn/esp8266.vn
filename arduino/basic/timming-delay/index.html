@@ -497,19 +497,13 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="timing-and-delays">Timing and delays<a class="headerlink" href="#timing-and-delays" title="Permanent link">#</a></h2>
-<p><code>millis()</code> and <code>micros()</code> return the number of milliseconds and microseconds elapsed after reset, respectively.</p>
-<p><code>delay(ms)</code> pauses the sketch for a given number of milliseconds and allows WiFi and TCP/IP tasks to run.
-<code>delayMicroseconds(us)</code> pauses for a given number of microseconds.</p>
-<p>Remember that there is a lot of code that needs to run on the chip besides the sketch
-when WiFi is connected. WiFi and TCP/IP libraries get a chance to handle any pending
-events each time the <code>loop()</code> function completes, OR when <code>delay</code> is called.
-If you have a loop somewhere in your sketch that takes a lot of time (&gt;50ms) without
-calling <code>delay</code>, you might consider adding a call to <code>delay</code> function to keep the WiFi
-stack running smoothly.</p>
-<p>There is also a <code>yield()</code> function which is equivalent to <code>delay(0)</code>. The <code>delayMicroseconds</code>
-function, on the other hand, does not yield to other tasks, so using it for delays
-more than 20 milliseconds is not recommended.</p>
+                <h2 id="thoi-gian-va-delay">Thời gian và Delay<a class="headerlink" href="#thoi-gian-va-delay" title="Permanent link">#</a></h2>
+<p><code>millis()</code> và <code>micros()</code> trả về mili giây và micro giây tính từ thời điểm reset.</p>
+<p><code>delay(ms)</code> sẽ dừng sketch cho <code>ms</code> micro giây, vẫn cho phép WiFi và TCP/IP hoạt động.
+Tương tự với <code>delayMicroseconds(us)</code> sẽ dừng chương trình với <code>us</code> micro giây.</p>
+<p>Hãy ghi nhớ rằng có rất nhiều thứ đang cần hoạt động bên dưới sketch của bạn. Khi WiFi đã kết nối, thư viện WiFi và TCP/IP sẽ cần thời gian để thực hiện bất kỳ sự kiện nào. Việc gọi gọi hàm <code>loop()</code>, hay thực thi <code>delay</code> sẽ thực hiện điều đó.
+Cho nên, nếu bạn có bất kỳ vòng lặp nào chiếm nhiều thời gian (&gt;50ms) mà không gọi hàm <code>delay</code>, bạn nên đặt hàm <code>delay</code> vào trong hàm đó, để đảm bảo WiFi stack hoạt động trơn tru.</p>
+<p>Chúng ta cũng có hàm <code>yield()</code> tương đương với <code>delay(0)</code>. Hàm <code>delayMicroseconds</code> thì lại không thực hiện việc chuyển task, đơn giản nó chỉ dùng để delay và nếu nhiều hơn 20 mili giây thì không được khuyến khích.</p>
               
             </div>
           </div>
