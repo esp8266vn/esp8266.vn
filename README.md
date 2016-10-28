@@ -32,4 +32,3 @@ Sử dụng lệnh này trước khi làm theo các bước tiếp theo từ tra
 git remote add upstream https://github.com/esp8266vn/esp8266.vn.git
 ```
 
-
