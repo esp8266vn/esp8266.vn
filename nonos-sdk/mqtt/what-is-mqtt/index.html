@@ -8,7 +8,7 @@
   
   <meta name="author" content="Tuan PM">
   
-  <title>ESP8266 MQTT - Internet Of Things (IoT) với ESP8266</title>
+  <title>Giao thức MQTT - Internet Of Things (IoT) với ESP8266</title>
   
 
   <link rel="shortcut icon" href="../../../img/favicon.ico">
@@ -25,9 +25,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "ESP8266 MQTT";
-    var mkdocs_page_input_path = "nonos-sdk/mqtt/esp-mqtt.md";
-    var mkdocs_page_url = "/nonos-sdk/mqtt/esp-mqtt/";
+    var mkdocs_page_name = "Giao thức MQTT";
+    var mkdocs_page_input_path = "nonos-sdk/mqtt/what-is-mqtt.md";
+    var mkdocs_page_url = "/nonos-sdk/mqtt/what-is-mqtt/";
   </script>
   
   <script src="../../../js/jquery-2.1.1.min.js"></script>
@@ -231,7 +231,11 @@
             <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTT">
             
                 <li class="current">
-                    <a style="padding-left:90px;" class="current" href="./" id="ESP8266 MQTT">ESP8266 MQTT </a>
+                    <a style="padding-left:90px;" class="current" href="./" id="Giao thức MQTT">Giao thức MQTT </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../mqtt-client/" id="ESP8266 MQTT Client">ESP8266 MQTT Client </a>
                 </li>
             
             </div>
@@ -527,7 +531,7 @@
         
       
     
-    <li>ESP8266 MQTT</li>
+    <li>Giao thức MQTT</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -541,7 +545,42 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="mqtt-la-gi">MQTT là gì<a class="headerlink" href="#mqtt-la-gi" title="Permanent link">#</a></h1>
+<p><img alt="" src="http://mqtt.org/new/wp-content/uploads/2011/08/mqttorg-glow.png" /></p>
+<p><a href="../../../tags/MQTT">MQTT</a> (Message Queuing Telemetry Transport) là một giao thức gởi dạng publish/subscribe sử dụng cho các thiết bị <a href="../../../tags/IoT">Internet of Things</a> với băng thông thấp, độ tin cậy cao và khả năng được sử dụng trong mạng lưới không ổn định.</p>
+<p>Bởi vì giao thức này sử dụng băng thông thấp trong môi trường có độ trễ cao nên nó là một giao thức lý tưởng cho các ứng dụng <a href="../../../tags/M2M">M2M</a></p>
+<p>MQTT cũng là giao thức sử dụng trong <a href="https://www.facebook.com/notes/facebook-engineering/building-facebook-messenger/10150259350998920">Facebook Messager</a></p>
+<p>Và MQTT là gì? Để có một cái nhìn toàn diện hoặc định nghĩa chi tiết, chỉ cần google &ldquo;what is mqtt&rdquo;, &ldquo;mqtt slides&rdquo; &hellip; Trong bài viết này chúng ta chỉ nói ngắn gọn thôi, đủ để hiểu giao thức MQTT, bao gồm các định nghĩa <strong>&ldquo;subscribe&rdquo;, &ldquo;publish&rdquo;, &ldquo;qos&rdquo;, &ldquo;retain&rdquo;, &ldquo;last will and testament (lwt)&rdquo;</strong> - Và chỉ dành cho những ai đang muốn tìm hiểu về MQTT, không thì đọc toàn chữ thôi, mỏi mắt lắm.</p>
+<h3 id="publish-subscribe">Publish, subscribe<a class="headerlink" href="#publish-subscribe" title="Permanent link">#</a></h3>
+<p>Trong một hệ thống sử dụng giao thức MQTT, nhiều node trạm (gọi là mqtt client - gọi tắt là client) kết nối tới một MQTT server (gọi là broker). Mỗi client sẽ đăng ký một vài kênh (topic), ví dụ như &ldquo;/client1/channel1&rdquo;, &ldquo;/client1/channel2&rdquo;. Quá trình đăng ký này gọi là <strong>&ldquo;subscribe&rdquo;</strong>, giống như chúng ta đăng ký nhận tin trên một kênh Youtube vậy. Mỗi client sẽ nhận được dữ liệu khi bất kỳ trạm nào khác gởi dữ liệu và kênh đã đăng ký. Khi một client gởi dữ liệu tới kênh đó, gọi là <strong>&ldquo;publish&rdquo;</strong>.</p>
+<h3 id="qos">QoS<a class="headerlink" href="#qos" title="Permanent link">#</a></h3>
+<p>Ở đây có 3 tuỳ chọn <strong>QoS (Qualities of service) </strong> khi &ldquo;publish&rdquo; và &ldquo;subscribe&rdquo;:</p>
+<ul>
+<li><strong>QoS0</strong> Broker/client sẽ gởi dữ liệu đúng 1 lần, quá trình gởi được xác nhận bởi chỉ giao thức TCP/IP, giống kiểu đem con bỏ chợ.</li>
+<li><strong>QoS1</strong> Broker/client sẽ gởi dữ liệu với ít nhất 1 lần xác nhận từ đầu kia, nghĩa là có thể có nhiều hơn 1 lần xác nhận đã nhận được dữ liệu.</li>
+<li><strong>QoS2</strong> Broker/client đảm bảm khi gởi dữ liệu thì phía nhận chỉ nhận được đúng 1 lần, quá trình này phải trải qua 4 bước bắt tay.</li>
+</ul>
+<p><strong>Xem thêm QoS</strong>: https://code.google.com/p/mqtt4erl/wiki/QualityOfServiceUseCases</p>
+<p>Một gói tin có thể được gởi ở bất kỳ QoS nào, và các client cũng có thể subscribe với bất kỳ yêu cầu QoS nào. Có nghĩa là client sẽ lựa chọn QoS tối đa mà nó có để nhận tin. Ví dụ, nếu 1 gói dữ liệu được publish với QoS2, và client subscribe với QoS0, thì gói dữ liệu được nhận về client này sẽ được broker gởi với QoS0, và 1 client khác đăng ký cùng kênh này với QoS 2, thì nó sẽ được Broker gởi dữ liệu với QoS2.</p>
+<p>Một ví dụ khác, nếu 1 client subscribe với QoS2 và gói dữ liệu gởi vào kênh đó publish với QoS0 thì client đó sẽ được Broker gởi dữ liệu với QoS0. QoS càng cao thì càng đáng tin cậy, đồng thời độ trễ và băng thông đòi hỏi cũng cao hơn.</p>
+<h3 id="retain">Retain<a class="headerlink" href="#retain" title="Permanent link">#</a></h3>
+<p>Nếu RETAIN được set bằng 1, khi gói tin được publish từ Client, Broker <strong>PHẢI</strong> lưu trữ lại gói tin với QoS, và nó sẽ được gởi đến bất kỳ Client nào subscribe cùng kênh trong tương lai. Khi một Client kết nối tới Broker và subscribe, nó sẽ nhận được gói tin cuối cùng có RETAIN = 1 với bất kỳ topic nào mà nó đăng ký trùng. Tuy nhiên, nếu Broker nhận được gói tin mà có QoS = 0 và RETAIN = 1, nó sẽ huỷ tất cả các gói tin có RETAIN = 1 trước đó. Và phải lưu gói tin này lại, nhưng hoàn toàn có thể huỷ bất kỳ lúc nào.</p>
+<p>Khi publish một gói dữ liệu đến Client, Broker phải se RETAIN = 1 nếu gói được gởi như là kết quả của việc subscribe mới của Client (giống như tin nhắn ACK báo subscribe thành công). RETAIN phải bằng 0 nếu không quan tâm tới kết quả của viẹc subscribe.</p>
+<h3 id="lwt">LWT<a class="headerlink" href="#lwt" title="Permanent link">#</a></h3>
+<p>Gói tin LWT (last will and testament) không thực sự biết được Client có trực tuyến hay không, cái này do gói tin KeepAlive đảm nhận. Tuy nhiên gói tin LWT như là thông tin điều gì sẽ xảy đến sau khi thiết bị ngoại tuyến.</p>
+<p><strong>Một ví dụ</strong></p>
+<p>Tôi có 1 cảm biến, nó gởi những dữ liệu quan trọng và rất không thường xuyên. Nó có đăng ký trước với Broker một tin nhắn lwt ở topic <strong>/node/gone-offline</strong> với tin nhắn <strong>id</strong> của nó. Và tôi cũng đăng ký theo dõi topic <strong>/node/gone-offline</strong>, sẽ gởi SMS tới điện thoại thôi mỗi khi nhận được tin nhắn nào ở kênh mà tôi theo dõi.
+Trong quá trình hoạt động, cảm biến luôn giữ kết nối với Broker bởi việc luôn gởi gói tin keepAlive. Nhưng nếu vì lý do gì đó, cảm biến này chuyển sang ngoại tuyến, kết nối tới Broker timeout do Broker không còn nhận được gói keepAlive.
+Lúc này, do cảm biến của tôi đã đăng ký LWT, do vậy broker sẽ đóng kết nối của Cảm biến, đồng thời sẽ publish một gói tin là Id của cảm biến vào kênh <strong>/node/gone-offline</strong>, dĩ nhiên là tôi cũng sẽ nhận được tin nhắn báo cái Cảm biến yêu quý của mình  đã ngoại tuyến.</p>
+<p><strong>Ngắn gọn</strong></p>
+<p>Ngoài việc đóng kết nối của Client đã ngoại tuyến, gói tin LWT có thể được định nghĩa trước và được gởi bởi Broker tới kênh nào đó khi thiết bị đăng ký LWT ngoại tuyến.</p>
+<h3 id="reference">Reference:<a class="headerlink" href="#reference" title="Permanent link">#</a></h3>
+<ul>
+<li><a href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html">http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html</a></li>
+<li><a href="http://bb-smartsensing.com/basics-of-mqtt/">http://bb-smartsensing.com/basics-of-mqtt/</a></li>
+<li><a href="http://stackoverflow.com/questions/17270863/mqtt-what-is-the-purpose-or-usage-of-last-will-testament">http://stackoverflow.com/questions/17270863/</a></li>
+<li><a href="http://tuanpmt.github.io/what-is-mqtt/">http://tuanpmt.github.io/what-is-mqtt/</a></li>
+</ul>
               
             </div>
           </div>
@@ -549,7 +588,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../http-client/http-client/" class="btn btn-neutral float-right" title="ESP8266 HTTP Client">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../mqtt-client/" class="btn btn-neutral float-right" title="ESP8266 MQTT Client">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../../smartconfig/wps/" class="btn btn-neutral" title="WPS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -585,7 +624,7 @@
         <span><a href="../../smartconfig/wps/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../http-client/http-client/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../mqtt-client/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div> -->

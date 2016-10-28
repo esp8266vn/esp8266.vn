@@ -231,7 +231,11 @@
             <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTT">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../mqtt/esp-mqtt/" id="ESP8266 MQTT">ESP8266 MQTT </a>
+                    <a style="padding-left:90px;" class="" href="../../mqtt/what-is-mqtt/" id="Giao thức MQTT">Giao thức MQTT </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../mqtt/mqtt-client/" id="ESP8266 MQTT Client">ESP8266 MQTT Client </a>
                 </li>
             
             </div>
@@ -543,7 +547,7 @@
               
                 <h1 id="truyen-nhan-uart">Truyền nhận UART<a class="headerlink" href="#truyen-nhan-uart" title="Permanent link">#</a></h1>
 <p>ESP8266 có 2 UART, trong đó UART0 có đầy đủ 2 tính năng TX, RX, và dùng làm ngõ ra mặc định cho các thông tin debug cho SDK, cũng như là cổng nạp chương trình.</p>
-<p>Tổ chức file căn cứ theo bài <a href="./01-compile-first-time.md">Biên dịch dự án đầu tiên</a>, bổ sung thêm file <code>uart.c</code>, <code>uart.h</code> để cấu hình cổng UART0 cho việc nhận dữ liệu</p>
+<p>Tổ chức file căn cứ theo bài <a href="../compile-first-time/">Biên dịch dự án đầu tiên</a>, bổ sung thêm file <code>uart.c</code>, <code>uart.h</code> để cấu hình cổng UART0 cho việc nhận dữ liệu</p>
 <ul>
 <li>UART0 của ESP8266 hỗ trợ 128 Byte FIFO và tính năng Ngắt Timeout, ngắt khi đầy FIFO. Có thể hiểu nếu bạn cấu hình ngắt 128 bytes FIFO, và ngắt Timeout, khi UART nhận đầy FIFO sẽ kích hoạt ngắt đầy FIFO, hoặc nếu trường hợp chưa đầy FIFO nhưng qua 1 khoảng thời gian (có thể cấu hình được) mà không nhận được dữ liệu nữa thì cũng phát sinh ngắt TOUT </li>
 <li>Bạn có thể lấy driver trực tiếp từ bài này hoặc các ví dụ từ SDK mà không phải làm gì nữa nếu việc truyền nhận không quá phức tạp</li>
@@ -570,7 +574,7 @@ make</code></pre>
     `-- user_config.h</code></pre>
 
 
-<p>Ta sẽ gom phần <a href="./02-blink-led.md">LED</a> và <a href="./03-button.md">Nút nhấn</a> thành 1 file <code>led_btn.c</code>. Bổ sung thêm file <code>uart.c</code> để cấu hình UART</p>
+<p>Ta sẽ gom phần <a href="../blink-led/">LED</a> và <a href="../button/">Nút nhấn</a> thành 1 file <code>led_btn.c</code>. Bổ sung thêm file <code>uart.c</code> để cấu hình UART</p>
 <h2 id="ma-nguon">Mã nguồn<a class="headerlink" href="#ma-nguon" title="Permanent link">#</a></h2>
 <pre class="code"><code class="language-c">//main.c
 #include &lt;stdio.h&gt;
