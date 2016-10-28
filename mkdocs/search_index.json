@@ -807,23 +807,43 @@
         },
         {
             "location": "/arduino/00-arduino-basic/00-basic/",
-            "text": "Arduino c\u01a1 b\u1ea3n\n#\n\n\nC\u00e0i \u0111\u1eb7t\n#\n\n\n\n\nC\u00f3 th\u1ec3 t\u00ecm th\u1ea5y h\u01b0\u1edbng d\u1eabn c\u00e0i \u0111\u1eb7t Ti\u1ebfng Anh v\u00e0 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt t\u1ea1i \nhttps://github.com/esp8266/Arduino\n\n\n\n\nC\u00e0i \u0111\u1eb7t v\u1edbi Boards Manager\n#\n\n\n\n\nC\u00e0i phi\u00ean b\u1ea3n m\u1edbi nh\u1ea5t c\u1ee7a Arduino t\u1eeb website Arduino.\n\n\nKh\u1edfi \u0111\u1ed9ng Arduino sau \u0111\u00f3 ch\u1ecdn File > Preferences.\n\n\nTrong c\u1eeda s\u1ed5 hi\u1ec7n ra ta th\u00eam \u0111\u01b0\u1eddng d\u1eabn \nhttp://arduino.esp8266.com/stable/package_esp8266com_index.json\n v\u00e0o m\u1ee5c Additional Board Manager URLs. Sau \u0111\u00f3 ch\u1ecdn OK.\n\n\nM\u1edf Boards Manager b\u1eb1ng c\u00e1ch ch\u1ecdn Tools > Board t\u1eeb menu v\u00e0 c\u00e0i \u0111\u1eb7t esp8266 platform\n\n\nCh\u1ecdn board ESP8266 ph\u00f9 h\u1ee3p v\u1edbi c\u00e1i m\u00ecnh c\u00f3 s\u1eb5n c\u0169ng th\u00f4ng qua Tools > Board.",
+            "text": "Arduino c\u01a1 b\u1ea3n\n#\n\n\nC\u00f3 th\u1ec3 t\u00ecm th\u1ea5y h\u01b0\u1edbng d\u1eabn c\u00e0i \u0111\u1eb7t Ti\u1ebfng Anh v\u00e0 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt t\u1ea1i \nhttps://github.com/esp8266/Arduino\n\n\nC\u00e0i \u0111\u1eb7t v\u1edbi Boards Manager\n#\n\n\nPh\u01b0\u01a1ng \u00e1n khuy\u00ean d\u00f9ng cho ng\u01b0\u1eddi d\u00f9ng kh\u00f4ng chuy\u00ean \n\n\nChu\u1ea9n b\u1ecb\n#\n\n\n\n\nArduino 1.6.8, t\u1ea3i t\u1eeb \nArduino website\n.\n\n\nK\u1ebft n\u1ed1i Internet\n\n\n\n\nH\u01b0\u1edbng d\u1eabn\n#\n\n\n\n\nM\u1edf ch\u01b0\u01a1ng tr\u00ecnh Arduino v\u00e0 c\u1eeda s\u1ed5 Preferences.\n\n\nEnter \nhttp://arduino.esp8266.com/stable/package_esp8266com_index.json\n v\u00e0o \nAdditional Board Manager URLs\n. B\u1ea1n c\u00f3 th\u1ec3 th\u00eam nhi\u1ec1u URL, c\u00e1ch nhau b\u1eb1ng d\u1ea5u ph\u1ea9y.\n\n\nM\u1edf Boards Manager t\u1eeb Tools > Board menu v\u00e0 t\u00ecm \nesp8266\n platform.\n\n\nCh\u1ecdn phi\u00ean b\u1ea3n b\u1ea1n c\u1ea7n t\u1eeb c\u1eeda s\u1ed5 Drop-down.\n\n\nClick n\u00fat \ninstall\n.\n\n\n\u0110\u1eebng qu\u00ean ch\u1ecdn lo\u1ea1i ESP8266 board t\u1eeb Tools > Board menu sau khi c\u00e0i \u0111\u1eb7t.\n\n\n\n\nB\u1ea1n c\u00f3 1 l\u1ef1a ch\u1ecdn kh\u00e1c c\u00e0i \u0111\u1eb7t b\u1ea3n \nstaging\n boards manager t\u1eeb link:\n\nhttp://arduino.esp8266.com/staging/package_esp8266com_index.json\n. Phi\u00ean b\u1ea3n n\u00e0y c\u00f3 nh\u1eefng t\u00ednh n\u0103ng m\u1edbi h\u01a1n, tuy nhi\u00ean ch\u01b0a th\u1eadt s\u1ef1 \u0111\u01b0\u1ee3c ki\u1ec3m tra k\u1ef9.\n\n\nS\u1eed d\u1ee5ng git version\n#\n\n\nPh\u01b0\u01a1ng \u00e1n c\u00e0i \u0111\u1eb7t n\u00e0y khuy\u00ean d\u00f9ng cho nh\u1eefng ng\u01b0\u1eddi c\u00f3 th\u1ec3 \u0111\u00f3ng g\u00f3p v\u00e0o d\u1ef1 \u00e1n Arduino cho ESP8266 v\u00e0 developers.\n\n\nChu\u1ea9n b\u1ecb\n#\n\n\n\n\nArduino 1.6.8 (hay m\u1edbi h\u01a1n, n\u1ebfu b\u1ea1n bi\u1ebft b\u1ea1n \u0111ang l\u00e0m g\u00ec)\n\n\ngit\n\n\npython 2.7\n\n\nterminal, console, or command prompt (ph\u1ee5 thu\u1ed9c h\u1ec7 \u0111i\u1ec1u h\u00e0nh c\u1ee7a b\u1ea1n)\n\n\nK\u1ebft n\u1ed1i Internet\n\n\n\n\nH\u01b0\u1edbng d\u1eabn\n#\n\n\n\n\nM\u1edf \nconsole\n v\u00e0 cd \u0111\u1ebfn th\u01b0 m\u1ee5c Arduino. N\u00f3 c\u00f3 th\u1ec3 l\u00e0 th\u01b0 m\u1ee5c \nsketchbook\n (th\u01b0\u1eddng l\u00e0 \n<Documents>/Arduino\n), hay th\u01b0 m\u1ee5c c\u1ee7a \u1ee8ng d\u1ee5ng Arduino, t\u00f9y b\u1ea1n ch\u1ecdn.\n\n\nClone repository n\u00e0y \u0111\u1ebfn th\u01b0 m\u1ee5c \nhardware/esp8266com/esp8266\n. Ho\u1eb7c b\u1ea1n c\u00f3 th\u1ec3 clone v\u00e0o n\u01a1i n\u00e0o \u0111\u00f3 v\u00e0 t\u1ea1o symlink b\u1eb1ng \nln -s\n, n\u1ebfu H\u1ec7 \u0111i\u1ec1u h\u00e0nh h\u1ed7 tr\u1ee3.\n\n\n\n\ncd hardware\nmkdir esp8266com\ncd esp8266com\ngit clone https://github.com/esp8266/Arduino.git esp8266\n\n\n\n\nC\u1ea5u tr\u00fac d\u1ef1 \u00e1n sau khi b\u1ea1n th\u1ef1c hi\u1ec7n xong:\n\n\nArduino\n|\n--- hardware\n    |\n    --- esp8266com\n        |\n        --- esp8266\n            |\n            --- bootloaders\n            --- cores\n            --- doc\n            --- libraries\n            --- package\n            --- tests\n            --- tools\n            --- variants\n            --- platform.txt\n            --- programmers.txt\n            --- README.md\n            --- boards.txt\n            --- LICENSE\n\n\n\n\n\n\nT\u1ea3i binary tools\n\n\n\n\ncd esp8266/tools\npython get.py\n\n\n\n\n\n\nKh\u1edfi \u0111\u1ed9ng l\u1ea1i Arduino",
             "title": "C\u00e0i \u0111\u1eb7t c\u00f4ng c\u1ee5 c\u1ea7n thi\u1ebft"
         },
         {
             "location": "/arduino/00-arduino-basic/00-basic/#arduino-co-ban",
-            "text": "",
+            "text": "C\u00f3 th\u1ec3 t\u00ecm th\u1ea5y h\u01b0\u1edbng d\u1eabn c\u00e0i \u0111\u1eb7t Ti\u1ebfng Anh v\u00e0 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt t\u1ea1i  https://github.com/esp8266/Arduino",
             "title": "Arduino c\u01a1 b\u1ea3n"
         },
         {
-            "location": "/arduino/00-arduino-basic/00-basic/#cai-at",
-            "text": "C\u00f3 th\u1ec3 t\u00ecm th\u1ea5y h\u01b0\u1edbng d\u1eabn c\u00e0i \u0111\u1eb7t Ti\u1ebfng Anh v\u00e0 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt t\u1ea1i  https://github.com/esp8266/Arduino",
-            "title": "C\u00e0i \u0111\u1eb7t"
+            "location": "/arduino/00-arduino-basic/00-basic/#cai-at-voi-boards-manager",
+            "text": "Ph\u01b0\u01a1ng \u00e1n khuy\u00ean d\u00f9ng cho ng\u01b0\u1eddi d\u00f9ng kh\u00f4ng chuy\u00ean",
+            "title": "C\u00e0i \u0111\u1eb7t v\u1edbi Boards Manager"
         },
         {
-            "location": "/arduino/00-arduino-basic/00-basic/#cai-at-voi-boards-manager",
-            "text": "C\u00e0i phi\u00ean b\u1ea3n m\u1edbi nh\u1ea5t c\u1ee7a Arduino t\u1eeb website Arduino.  Kh\u1edfi \u0111\u1ed9ng Arduino sau \u0111\u00f3 ch\u1ecdn File > Preferences.  Trong c\u1eeda s\u1ed5 hi\u1ec7n ra ta th\u00eam \u0111\u01b0\u1eddng d\u1eabn  http://arduino.esp8266.com/stable/package_esp8266com_index.json  v\u00e0o m\u1ee5c Additional Board Manager URLs. Sau \u0111\u00f3 ch\u1ecdn OK.  M\u1edf Boards Manager b\u1eb1ng c\u00e1ch ch\u1ecdn Tools > Board t\u1eeb menu v\u00e0 c\u00e0i \u0111\u1eb7t esp8266 platform  Ch\u1ecdn board ESP8266 ph\u00f9 h\u1ee3p v\u1edbi c\u00e1i m\u00ecnh c\u00f3 s\u1eb5n c\u0169ng th\u00f4ng qua Tools > Board.",
-            "title": "C\u00e0i \u0111\u1eb7t v\u1edbi Boards Manager"
+            "location": "/arduino/00-arduino-basic/00-basic/#chuan-bi",
+            "text": "Arduino 1.6.8, t\u1ea3i t\u1eeb  Arduino website .  K\u1ebft n\u1ed1i Internet",
+            "title": "Chu\u1ea9n b\u1ecb"
+        },
+        {
+            "location": "/arduino/00-arduino-basic/00-basic/#huong-dan",
+            "text": "M\u1edf ch\u01b0\u01a1ng tr\u00ecnh Arduino v\u00e0 c\u1eeda s\u1ed5 Preferences.  Enter  http://arduino.esp8266.com/stable/package_esp8266com_index.json  v\u00e0o  Additional Board Manager URLs . B\u1ea1n c\u00f3 th\u1ec3 th\u00eam nhi\u1ec1u URL, c\u00e1ch nhau b\u1eb1ng d\u1ea5u ph\u1ea9y.  M\u1edf Boards Manager t\u1eeb Tools > Board menu v\u00e0 t\u00ecm  esp8266  platform.  Ch\u1ecdn phi\u00ean b\u1ea3n b\u1ea1n c\u1ea7n t\u1eeb c\u1eeda s\u1ed5 Drop-down.  Click n\u00fat  install .  \u0110\u1eebng qu\u00ean ch\u1ecdn lo\u1ea1i ESP8266 board t\u1eeb Tools > Board menu sau khi c\u00e0i \u0111\u1eb7t.   B\u1ea1n c\u00f3 1 l\u1ef1a ch\u1ecdn kh\u00e1c c\u00e0i \u0111\u1eb7t b\u1ea3n  staging  boards manager t\u1eeb link: http://arduino.esp8266.com/staging/package_esp8266com_index.json . Phi\u00ean b\u1ea3n n\u00e0y c\u00f3 nh\u1eefng t\u00ednh n\u0103ng m\u1edbi h\u01a1n, tuy nhi\u00ean ch\u01b0a th\u1eadt s\u1ef1 \u0111\u01b0\u1ee3c ki\u1ec3m tra k\u1ef9.",
+            "title": "H\u01b0\u1edbng d\u1eabn"
+        },
+        {
+            "location": "/arduino/00-arduino-basic/00-basic/#su-dung-git-version",
+            "text": "Ph\u01b0\u01a1ng \u00e1n c\u00e0i \u0111\u1eb7t n\u00e0y khuy\u00ean d\u00f9ng cho nh\u1eefng ng\u01b0\u1eddi c\u00f3 th\u1ec3 \u0111\u00f3ng g\u00f3p v\u00e0o d\u1ef1 \u00e1n Arduino cho ESP8266 v\u00e0 developers.",
+            "title": "S\u1eed d\u1ee5ng git version"
+        },
+        {
+            "location": "/arduino/00-arduino-basic/00-basic/#chuan-bi_1",
+            "text": "Arduino 1.6.8 (hay m\u1edbi h\u01a1n, n\u1ebfu b\u1ea1n bi\u1ebft b\u1ea1n \u0111ang l\u00e0m g\u00ec)  git  python 2.7  terminal, console, or command prompt (ph\u1ee5 thu\u1ed9c h\u1ec7 \u0111i\u1ec1u h\u00e0nh c\u1ee7a b\u1ea1n)  K\u1ebft n\u1ed1i Internet",
+            "title": "Chu\u1ea9n b\u1ecb"
+        },
+        {
+            "location": "/arduino/00-arduino-basic/00-basic/#huong-dan_1",
+            "text": "M\u1edf  console  v\u00e0 cd \u0111\u1ebfn th\u01b0 m\u1ee5c Arduino. N\u00f3 c\u00f3 th\u1ec3 l\u00e0 th\u01b0 m\u1ee5c  sketchbook  (th\u01b0\u1eddng l\u00e0  <Documents>/Arduino ), hay th\u01b0 m\u1ee5c c\u1ee7a \u1ee8ng d\u1ee5ng Arduino, t\u00f9y b\u1ea1n ch\u1ecdn.  Clone repository n\u00e0y \u0111\u1ebfn th\u01b0 m\u1ee5c  hardware/esp8266com/esp8266 . Ho\u1eb7c b\u1ea1n c\u00f3 th\u1ec3 clone v\u00e0o n\u01a1i n\u00e0o \u0111\u00f3 v\u00e0 t\u1ea1o symlink b\u1eb1ng  ln -s , n\u1ebfu H\u1ec7 \u0111i\u1ec1u h\u00e0nh h\u1ed7 tr\u1ee3.   cd hardware\nmkdir esp8266com\ncd esp8266com\ngit clone https://github.com/esp8266/Arduino.git esp8266  C\u1ea5u tr\u00fac d\u1ef1 \u00e1n sau khi b\u1ea1n th\u1ef1c hi\u1ec7n xong:  Arduino\n|\n--- hardware\n    |\n    --- esp8266com\n        |\n        --- esp8266\n            |\n            --- bootloaders\n            --- cores\n            --- doc\n            --- libraries\n            --- package\n            --- tests\n            --- tools\n            --- variants\n            --- platform.txt\n            --- programmers.txt\n            --- README.md\n            --- boards.txt\n            --- LICENSE   T\u1ea3i binary tools   cd esp8266/tools\npython get.py   Kh\u1edfi \u0111\u1ed9ng l\u1ea1i Arduino",
+            "title": "H\u01b0\u1edbng d\u1eabn"
         },
         {
             "location": "/arduino/arduino-fota/",
