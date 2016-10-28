@@ -61,13 +61,18 @@ pages:
         - Danh sách:                  nonos-sdk/09-esp-projects/00-project-list.md
 
     - ESP8266 FreeRTOS-SDK:
-      - Giới thiệu:                 freertos-sdk/freertos-sdk.md
+      - Giới thiệu:                   freertos-sdk/freertos-sdk.md
       - Cơ bản:
         - Cài đặt công cụ cần thiết:  freertos-sdk/00-freertos-basic/00-basic.md
     - ESP8266 Arduino:
-      - Giới thiệu:                 arduino/arduino.md
+      - Giới thiệu:                   arduino/arduino.md
       - Cơ bản:
-        - Cài đặt công cụ cần thiết:  arduino/00-arduino-basic/00-basic.md
+        - Cài đặt:                    arduino/00-arduino-basic/00-basic.md
+        - Digital:                    arduino/00-arduino-basic/digital.md
+        - Analog:                     arduino/00-arduino-basic/analog.md
+        - Thời gian & Delay:          arduino/00-arduino-basic/timming-delay.md
+        - Serial:                     arduino/00-arduino-basic/serial.md
+        - Progmem:                    arduino/00-arduino-basic/progmem.md
       - Cập nhật Firmware (FOTA):     arduino/arduino-fota.md
     - ESP8266 Micropython:
       - Giới thiệu:                   micropython/micropython.md
