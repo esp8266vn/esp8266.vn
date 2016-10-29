@@ -84,7 +84,8 @@ flash:
 .PHONY: all clean flash
 ```
 
-_Lưu ý:_  Nếu bạn sử dụng ví dụ này cho bản Unofficial Developement KIT trên Windows, với đường dẫn cài đặt mặc định là `C:\Espressif`, Makefile cần thay đổi như sau:
+!!! note "Lưu ý"
+    Nếu bạn sử dụng ví dụ này cho bản Unofficial Developement KIT trên Windows, với đường dẫn cài đặt mặc định là `C:\Espressif`, Makefile cần thay đổi như sau:
 
 ```makefile
 XTENSA    ?=
@@ -117,10 +118,9 @@ Giải thích Makefile như sau:
 - Thực hiện `make clean` xóa hết các file được tạo ra khi gọi `make all`
 - Thực hiện `make flash` để nạp ESP8266, cần chắc chắc mạch nạp đã được kết nối máy tính, và tên cổng được thay thế đúng cho `/dev/tty.SLAB_USBtoUART`. Bạn có thể tìm hiểu thêm về việc đọc tên công COM trên máy tính tại (OSX, Windows, Linux)
 
-#### Quan trọng
-
-* Dấu `\` báo chưa kết thúc dòng trong Makefile
-* Trong `Makefile`, luôn luôn đặt chế độ Indent là Tab, nếu dùng Space sẽ báo lỗi `Makefile:35: *** missing separator.  Stop.`
+!!! warning "Quan trọng"
+    * Dấu `\` báo chưa kết thúc dòng trong Makefile
+    * Trong `Makefile`, luôn luôn đặt chế độ Indent là Tab, nếu dùng Space sẽ báo lỗi `Makefile:35: *** missing separator.  Stop.`
 
 
 Các bạn có thể tìm hiểu rõ hơn về Makefile bằng google với từ khóa `Makefile basic`. Makefile này như là 1 kịch bản đơn giản nhất để công cụ `make` thực hiện việc biên dịch mã nguồn **C** sang mã máy để nạp cho ESP8266. Mục đích để bản nắm rõ hơn về cách thức hoạt động của SDK, trình biên dịch. Các ví dụ sau này sẽ dùng Makefile phức tạp hơn, và được cung cấp kèm với các dự án mẫu tại https://github.com/esp8266vn
