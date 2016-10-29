@@ -99,7 +99,7 @@ Hướng dẫn dưới đây cấu hình chương trình OTA sử dụng board N
 ! [cấu hình tải lên nối tiếp] (images/a-ota-serial-upload-configuration.png)
 
 !!! note "Lưu ý" 
-    Tùy thuộc vào phiên bản của gói nền tảng và hội đồng quản trị mà bạn có, bạn có thể thấy `` `Upload Using:` `` trong menu ở trên. Tùy chọn này không hoạt động và nó không quan trọng khi bạn chọn. Nó đã được để lại cho phù hợp với phiên bản cũ của OTA và sẽ bị loại bỏ trong phiên bản 2.2.0.
+    Tùy thuộc vào phiên bản của gói nền tảng và hội đồng quản trị mà bạn có, bạn có thể thấy `Upload Using:`  trong menu ở trên. Tùy chọn này không hoạt động và nó không quan trọng khi bạn chọn. Nó đã được để lại cho phù hợp với phiên bản cũ của OTA và sẽ bị loại bỏ trong phiên bản 2.2.0.
 
 **3.** Nạp Sketch (Ctrl + U). Sau khi thực hiện, mở tiếp Serial Monitor (Ctrl + Shift + M) và kiểm tra xem ESP8266 đã kết nối vào mạng Wi-Fi của bạn:
 
@@ -117,7 +117,7 @@ Hướng dẫn dưới đây cấu hình chương trình OTA sử dụng board N
 ![cấu hình tải lên OTA] (images/a-ota-ota-upload-configuration.png)
     
 !!! note "Lưu ý"
-    Các mục trình đơn `` `Upload Speed:` `` không quan trọng vào thời điểm này vì nó liên quan đến cổng nối tiếp. Không cần phải tác động
+    Các mục trình đơn `Upload Speed:` không quan trọng vào thời điểm này vì nó liên quan đến cổng nối tiếp. Không cần phải tác động
 
 **6.** Nếu bạn đã hoàn thành tất cả các bước trên, bạn có thể tải lên (Ctrl + U) cùng một (hoặc bất kỳ) Sketch qua OTA:
 
@@ -161,34 +161,35 @@ Khi thực hiện cập nhật, Arduino IDE sử dụng mật khẩu đã nhập
 
 #### Giải quyết các lỗi thường gặp
 
-If OTA update fails, first step is to check for error messages that may be shown in upload window of Arduino IDE. If this is not providing any useful hints try to upload again while checking what is shown by ESP on serial port. Serial Monitor from IDE will not be useful in that case. When attempting to open it, you will likely see the following:
+Nếu OTA cập nhật thất bại, bước đầu tiên là kiểm tra các thông báo lỗi được hiển thị trong cửa sổ Log của Arduino IDE. Nếu nó không được cung cấp được bất kỳ gợi ý hữu ích nào, thử cập nhật OTA một lần nữa trong khi kiểm tra thông tin từ ESP8266 được thể hiện trên cổng Serial. Serial Port Monitor từ IDE sẽ không hữu ích trong trường hợp đó. Khi cố gắng để mở nó, bạn có thể sẽ thấy như sau:
 
-![Arduino IDE network terminal window](images/a-ota-network-terminal.png)
+![Arduino IDE cửa sổ thiết bị đầu cuối mạng](images/a-ota-network-terminal.png)
    
-This window is for Arduino Yún and not yet implemented for esp8266/Arduino. It shows up because IDE is attempting to open Serial Monitor using network port you have selected for OTA upload.
+Cửa sổ này là dành cho Arduino Yun và chưa nâng cấp cho esp8266/Arduino. Nó hiển thị bởi vì IDE đang cố mở tiếp sổ Serial Monitor sử dụng cổng Network mà bạn đã chọn để tải lên OTA.
 
-Instead you need an external serial monitor. If you are a Windows user check out [Termite](http://www.compuphase.com/software_termite.htm). This is handy, slick and simple RS232 terminal that does not impose RTS or DTR flow control. Such flow control may cause issues if you are using respective lines to toggle GPIO0 and RESET pins on ESP for upload. 
+Thay vào đó bạn cần một chương trình Serial Port Monitor  bên ngoài. Nếu bạn là người dùng Windows, hãy xem qua [Termite](http://www.compuphase.com/software_termite.htm). Khá tiện dụng, thú vị và đơn giản, sử dụng cho thiết bị đầu cuối RS232 mà không áp đặt điều khiển flow control RTS hoặc DTR. Việc sử dụng flow control cho cổng Serial có thể gây ra vấn đề chuyển mức tín hiệu GPIO0 và RESET chân trên ESP8266. 
 
-Select COM port and baud rate on external terminal program as if you were using Arduino Serial Monitor. Please see typical settings for [Termite](http://www.compuphase.com/software_termite.htm) below:
+Chọn cổng COM và tốc độ truyền trên chương trình Serial Port Monitor như khi bạn đang sử dụng Arduino Serial Monitor. Xem các thiết lập tiêu biểu cho [Termite](http://www.compuphase.com/software_termite.htm) dưới đây:
 
-![Termite settings](images/termite-configuration.png)
+![thiết lập mối](images/termite-configuration.png)
 
-Then run OTA from IDE and look what is displayed on terminal. Successful [ArduinoOTA](#arduinoota) process using BasicOTA.ino sketch looks like below (IP address depends on your network configuration):
+Sau đó chạy OTA từ IDE và nhìn những gì được hiển thị trên Serial Port Terminal. Tiến tình  [ArduinoOTA](https://github.com/esp8266/Arduino/tree/master/libraries/ArduinoOTA) thành công sử dụng BasicOTA.ino Sketch nhìn như bên dưới (địa chỉ IP phụ thuộc vào cấu hình mạng của bạn):
 
-![OTA upload successful - output on an external serial terminal](images/a-ota-external-serial-terminal-output.png)
+![OTA tải lên thành công - sản lượng trên một thiết bị đầu cuối nối tiếp bên ngoài](images/a-ota-external-serial-terminal-output.png)
 
-If upload fails you will likely see errors caught by the uploader, exception and the stack dump, or both. 
+Nếu cập nhật bị lỗi bạn sẽ muốn nhìn thấy nguyên nhân bởi trình tải lên, exception và stack dump, hoặc cả 2 
 
-The most common causes of OTA failure are as follows:
-* not enough physical memory on the chip (e.g. ESP01 with 512K flash memory is not enough for OTA),
-* too much memory declared for SPIFFS so new sketch will not fit between existing sketch and SPIFFS – see  [Update process - memory view](#update-process---memory-view),
-* too little memory declared in Arduino IDE for your selected board (i.e. less than physical size). 
+Các nguyên nhân phổ biến nhất gây thất bại cho việc cập nhật OTA như sau:
 
-For more details regarding flash memory layout please check [File system]( https://github.com/esp8266/Arduino/blob/master/doc/filesystem.md).
-For overview where new sketch is stored, how it is copied and how memory is organized for the purpose of OTA see [Update process - memory view](#update-process---memory-view).
+- Không đủ bộ nhớ Flash trên chip (ví dụ như ESP01 với bộ nhớ flash 512K là không đủ cho OTA),
+- Định nghĩa bộ nhờ Flash quá nhiều cho SPIFFS, Sketch mới sẽ không khớp với Sketch cũ và SPIFFS - xem [Cập nhật quá trình - xem bộ nhớ] #update-process---memory-view),
+* Quá ít bộ nhớ Flash được khai báo trong Arduino IDE cho board của bạn (tức là ít hơn so với kích thước vật lý). 
+
+Để biết thêm chi tiết về cách bố trí bộ nhớ flash xin vui lòng kiểm tra [Filesystem] (filesystem/flash-layout.md).
+Tổng quan về nơi Sketch mới được lưu trữ, làm thế nào nó được sao chép và tổ chức  bộ nhớ cho mục đích OTA xem như thế nào, xem [Tiến trình cập nhật - Memory view] (#update-process---memory-view).
 
 
-## Web Browser
+## Trình duyệt Web
 
 Updates described in this chapter are done with a web browser that can be useful in the following typical scenarios:
 
