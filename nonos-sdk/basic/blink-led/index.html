@@ -655,7 +655,7 @@ Blink</code></pre>
 
 
 <h2 id="goi-y">Gợi ý<a class="headerlink" href="#goi-y" title="Permanent link">#</a></h2>
-<p>Có thể tìm thấy định nghĩa các địa chỉ thanh ghi tại thư mục chứa SDK <code>$SDK_BASE\include\eagle_soc.h</code>. Ngoài ra, bạn có thể tham khảo việc cấu hình GPIO16 tại <code>$SDK_BASE\driver_lib\gpio16.c</code> </p>
+<p>Có thể tìm thấy định nghĩa các địa chỉ thanh ghi tại thư mục chứa SDK <code>$SDK_BASE\include\eagle_soc.h</code>. Ngoài ra, bạn có thể tham khảo việc cấu hình GPIO16 tại <code>$SDK_BASE\driver_lib\driver\gpio16.c</code> </p>
 <p>Ta có thể thấy </p>
 <pre class="code"><code>WRITE_PERI_REG(RTC_GPIO_OUT, (READ_PERI_REG(RTC_GPIO_OUT) &amp; (uint32_t)0xfffffffe)| (uint32_t)(led_value &amp; 1));</code></pre>
 
