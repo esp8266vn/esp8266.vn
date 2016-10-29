@@ -12,3 +12,10 @@ Thư viện ESP8266WiFi có khung giống như các thư viện wifi khác. Nh�
 - `WiFiUDP` lớp hổ trợ gữi và nhận các gói tin multicast trên giao diện STA. Khi gữi một gói tin multicast, thay thế `udp.beginPacket(addr, port)` bằng `udp.beginPacketMulticast(addr, port, WiFi.localIP())`. Khi đang lắng nghe những gói tin multicast, thay thế `udp.begin(port)` bằng `udp.beginMulticast(WiFi.localIP()`, `multicast_ip_addr, port)`. Bạn có thể sử dụng `udp.destinationIP()` để phân biệt gói tin nhận được đến multicast hoặc địa chỉ unicast.
 
 `WiFiServer`, `WiFiClient`, và `WiFiUDP` thực hiện theo cùng một cách như khung thư viện WiFi. Có bốn ví dụ được làm mẫu cho thư viện này. Bạn có thể xem chi tiết các lệnh ở đây : [http://www.arduino.cc/en/Reference/WiFi](https://www.arduino.cc/en/Reference/WiFi)
+
+# Ticker
+Thư viện cho gọi lại hàm với một chu kỳ nhất định. Gồm có hai ví dụ.
+
+Ở thời điểm hiện tại nó không được khuyến khích để ngăn chặn các hoạt động của IO (network, serial, file) từ hàm gọi lại Ticker. Thay vào đó, thiết lập một cờ bên trong hàm gọi lại Ticker và kiểm tra cờ đó bên trong hàm lặp.
+
+Đường dẫn sau là thư viện thường dùng **simplificate** Ticker và tránh reset WDT : [TickerScheduler](https://github.com/Toshik/TickerScheduler)
