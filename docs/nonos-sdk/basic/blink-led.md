@@ -5,9 +5,9 @@
 Tổ chức file căn cứ theo bài [Biên dịch dự án đầu tiên](./compile-first-time.md), toàn bộ cấu trúc file, **Makefile, user_config.h, rf_init.c** giữ nguyên, chỉ thay đổi nội dung file `main.c`. 
 
 !!! note "Nội dung"
-    Chớp tắt đèn LED mỗi 1 giây
+    Chớp tắt đèn LED trên GPIO16 mỗi 1 giây
 
-## Lấy dự án về từ Github: 
+## Lấy dự án về từ Github 
 
 ```bash
 git clone https://github.com/esp8266vn/esp-iot-led-blink.git
@@ -70,9 +70,38 @@ void user_init(void)
 - Để ghi vào thanh ghi, chúng ta dùng định nghĩa: `WRITE_PERI_REG` với tham số đầu tiên là địa chỉ thanh ghi, thông số thứ 2 là giá trị. Tương tự với việc đọc, định nghĩa `READ_PERI_REG` chỉ cần 1 tham số là địa chỉ thanh ghi, và trả về giá trị của thanh ghi.
 - Trước khi sử dụng Software Timer, cần định nghĩa trước biến chưa thông tin là `os_timer_t led_timer`, khởi tạo hàm sẽ gọi khi Timer đến tới hạn với `os_timer_setfn` và `os_timer_arm` với tham số thứ 3 = 1 đảm bảo sẽ lặp lại việc đếm liên tục.
 
+## Kết quả
+
+Sau khi nạp thành công chương trình và kết nối LED với chân GPIO16 sẽ thấy chớp LED mỗi 1 giây.
+
+Sử dụng Terminal quan sát sẽ thấy
+```
+Blink
+Blink
+Blink
+Blink
+Blink
+```
+
+
 ## Gợi ý
 
 Có thể tìm thấy định nghĩa các địa chỉ thanh ghi tại thư mục chứa SDK `$SDK_BASE\include\eagle_soc.h`. Ngoài ra, bạn có thể tham khảo việc cấu hình GPIO16 tại `$SDK_BASE\driver_lib\gpio16.c` 
+
+Ta có thể thấy 
+```
+WRITE_PERI_REG(RTC_GPIO_OUT, (READ_PERI_REG(RTC_GPIO_OUT) & (uint32_t)0xfffffffe)| (uint32_t)(led_value & 1));
+``` 
+tương ứng với lệnh `gpio16_output_set(led_value);` 
+
+và các lệnh
+```    
+WRITE_PERI_REG(PAD_XPD_DCDC_CONF, (READ_PERI_REG(PAD_XPD_DCDC_CONF) & 0xffffffbc) | (uint32_t)0x1);  
+WRITE_PERI_REG(RTC_GPIO_CONF, (READ_PERI_REG(RTC_GPIO_CONF) & (uint32_t)0xfffffffe) | (uint32_t)0x0);
+WRITE_PERI_REG(RTC_GPIO_ENABLE, (READ_PERI_REG(RTC_GPIO_ENABLE) & (uint32_t)0xfffffffe) | (uint32_t)0x1);
+```
+tương ứng với
+`gpio16_output_conf(void)` trong gpio16.c
 
 
 !!! warning "Cảnh báo"
