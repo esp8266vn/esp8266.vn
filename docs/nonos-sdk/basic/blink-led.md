@@ -104,6 +104,5 @@ tương ứng với
 `gpio16_output_conf(void)` trong gpio16.c
 
 
-## Cảnh báo
-
-Chân `GPIO16` của ESP8266 là chân khá đặc biệt, sử dụng chung với RTC OUTPUT, dùng ở chế độ DEEPSLEEP, khi RTC tới hạn và khởi động Chip bằng cách hạ mức thấp chân này. Nếu bạn thiết kế ứng dụng cần sử dụng chế độ ngủ DEEPSLEEP thì đừng sử dụng chân GPIO16 cho mục đích khác, ngoại trừ việc nối thẳng vào chân nRST (chân **32** của ESP8266)
+!!! warning "Cảnh báo"
+    Chân `GPIO16` của ESP8266 là chân khá đặc biệt, sử dụng chung với RTC OUTPUT, dùng ở chế độ DEEPSLEEP, khi RTC tới hạn và khởi động Chip bằng cách hạ mức thấp chân này. Nếu bạn thiết kế ứng dụng cần sử dụng chế độ ngủ DEEPSLEEP thì đừng sử dụng chân GPIO16 cho mục đích khác, ngoại trừ việc nối thẳng vào chân nRST (chân **32** của ESP8266)

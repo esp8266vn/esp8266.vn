@@ -30,6 +30,8 @@ int br = Serial.baudRate();
 Serial.printf("Serial is %d bps", br);
 ```
 
+## Software Serial 
+
 Ngoài ra, các Contributor Team ESP8266 Arduino cũng hoàn thiện thư viện [Software Serial](https://github.com/esp8266/Arduino/blob/master/doc/libraries.md#softwareserial) cho ESP8266, xem [pull request](https://github.com/plerup/espsoftwareserial/pull/22).    
 
 !!! warning "Cẩn thận"
