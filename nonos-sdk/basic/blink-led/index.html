@@ -574,9 +574,10 @@
                 <div class="toc">
 <ul>
 <li><a href="#bat-tat-led">Bật tắt LED</a><ul>
-<li><a href="#lay-du-an-ve-tu-github">Lấy dự án về từ Github:</a></li>
+<li><a href="#lay-du-an-ve-tu-github">Lấy dự án về từ Github</a></li>
 <li><a href="#so-o-file">Sơ đồ file</a></li>
 <li><a href="#ma-nguon">Mã nguồn</a></li>
+<li><a href="#ket-qua">Kết quả</a></li>
 <li><a href="#goi-y">Gợi ý</a></li>
 <li><a href="#canh-bao">Cảnh báo</a></li>
 </ul>
@@ -587,9 +588,9 @@
 <p>Tổ chức file căn cứ theo bài <a href="../compile-first-time/">Biên dịch dự án đầu tiên</a>, toàn bộ cấu trúc file, <strong>Makefile, user_config.h, rf_init.c</strong> giữ nguyên, chỉ thay đổi nội dung file <code>main.c</code>. </p>
 <div class="admonition note">
 <p class="admonition-title">Nội dung</p>
-<p>Chớp tắt đèn LED mỗi 1 giây</p>
+<p>Chớp tắt đèn LED trên GPIO16 mỗi 1 giây</p>
 </div>
-<h2 id="lay-du-an-ve-tu-github">Lấy dự án về từ Github:<a class="headerlink" href="#lay-du-an-ve-tu-github" title="Permanent link">#</a></h2>
+<h2 id="lay-du-an-ve-tu-github">Lấy dự án về từ Github<a class="headerlink" href="#lay-du-an-ve-tu-github" title="Permanent link">#</a></h2>
 <pre class="code"><code class="language-bash">git clone https://github.com/esp8266vn/esp-iot-led-blink.git
 cd esp-iot-led-blink &amp;&amp; make</code></pre>
 
@@ -644,8 +645,31 @@ void user_init(void)
 <li>Để ghi vào thanh ghi, chúng ta dùng định nghĩa: <code>WRITE_PERI_REG</code> với tham số đầu tiên là địa chỉ thanh ghi, thông số thứ 2 là giá trị. Tương tự với việc đọc, định nghĩa <code>READ_PERI_REG</code> chỉ cần 1 tham số là địa chỉ thanh ghi, và trả về giá trị của thanh ghi.</li>
 <li>Trước khi sử dụng Software Timer, cần định nghĩa trước biến chưa thông tin là <code>os_timer_t led_timer</code>, khởi tạo hàm sẽ gọi khi Timer đến tới hạn với <code>os_timer_setfn</code> và <code>os_timer_arm</code> với tham số thứ 3 = 1 đảm bảo sẽ lặp lại việc đếm liên tục.</li>
 </ul>
+<h2 id="ket-qua">Kết quả<a class="headerlink" href="#ket-qua" title="Permanent link">#</a></h2>
+<p>Sau khi nạp thành công chương trình và kết nối LED với chân GPIO16 sẽ thấy chớp LED mỗi 1 giây.</p>
+<p>Sử dụng Terminal quan sát sẽ thấy</p>
+<pre class="code"><code>Blink
+Blink
+Blink
+Blink
+Blink</code></pre>
+
+
 <h2 id="goi-y">Gợi ý<a class="headerlink" href="#goi-y" title="Permanent link">#</a></h2>
 <p>Có thể tìm thấy định nghĩa các địa chỉ thanh ghi tại thư mục chứa SDK <code>$SDK_BASE\include\eagle_soc.h</code>. Ngoài ra, bạn có thể tham khảo việc cấu hình GPIO16 tại <code>$SDK_BASE\driver_lib\gpio16.c</code> </p>
+<p>Ta có thể thấy </p>
+<pre class="code"><code>WRITE_PERI_REG(RTC_GPIO_OUT, (READ_PERI_REG(RTC_GPIO_OUT) &amp; (uint32_t)0xfffffffe)| (uint32_t)(led_value &amp; 1));</code></pre>
+
+
+<p>tương ứng với lệnh <code>gpio16_output_set(led_value);</code> </p>
+<p>và các lệnh</p>
+<pre class="code"><code>WRITE_PERI_REG(PAD_XPD_DCDC_CONF, (READ_PERI_REG(PAD_XPD_DCDC_CONF) &amp; 0xffffffbc) | (uint32_t)0x1);  
+WRITE_PERI_REG(RTC_GPIO_CONF, (READ_PERI_REG(RTC_GPIO_CONF) &amp; (uint32_t)0xfffffffe) | (uint32_t)0x0);
+WRITE_PERI_REG(RTC_GPIO_ENABLE, (READ_PERI_REG(RTC_GPIO_ENABLE) &amp; (uint32_t)0xfffffffe) | (uint32_t)0x1);</code></pre>
+
+
+<p>tương ứng với
+<code>gpio16_output_conf(void)</code> trong gpio16.c</p>
 <h2 id="canh-bao">Cảnh báo<a class="headerlink" href="#canh-bao" title="Permanent link">#</a></h2>
 <p>Chân <code>GPIO16</code> của ESP8266 là chân khá đặc biệt, sử dụng chung với RTC OUTPUT, dùng ở chế độ DEEPSLEEP, khi RTC tới hạn và khởi động Chip bằng cách hạ mức thấp chân này. Nếu bạn thiết kế ứng dụng cần sử dụng chế độ ngủ DEEPSLEEP thì đừng sử dụng chân GPIO16 cho mục đích khác, ngoại trừ việc nối thẳng vào chân nRST (chân <strong>32</strong> của ESP8266)</p>
               
