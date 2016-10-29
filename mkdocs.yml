@@ -8,7 +8,6 @@ copyright: Copyright &copy; 2016 <a href="https://esp8266.vn">ESP8266 Viet Nam</
 markdown_extensions:
     - toc:
         permalink: '#'
-    - codehilite(css_class=code)
     - admonition
     - smarty
 repo_name: GitHub

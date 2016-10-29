@@ -2,26 +2,26 @@
 
 ## Giới thiệu OTA
 
-OTA (Over the Air) update is the process of loading the firmware to ESP module using Wi-Fi connection rather that a serial port. Such functionality became extremely useful in case of limited or no physical access to the module.
+Cập nhật firmware OTA (Over the Air) là tiến trình tải firmware mới vào ESP module thay vì sử dụng cổng Serial. Tính năng này thực sự rất hữu dụng trong nhiều trường hợp giới hạn về kết nối vật lý đến ESP Module.
 
-OTA may be done using:
+
+OTA có thể thực hiện với:
 
 * [Arduino IDE](#arduino-ide)
 * [Web Browser](#web-browser)
 * [HTTP Server](#http-server)
 
-Arduino IDE option is intended primarily for software development phase. The two other options would be more useful after deployment, to provide module with application updates manually with a web browser or automatically using a http server.
+Sử dụng OTA với tùy chọn dùng **Arduino IDE** trong quá trình phát triển, thử nghiệm, 2 tùy chọn còn lại phù hợp cho việc triển khai ứng dụng thực tế, cung cấp tính năng cập nhật OTA thông qua web hay sử dụng HTTP Server.
 
-In any case first firmware upload have to be done over a serial port. If OTA routines are correctly implemented in a sketch, then all subsequent uploads may be done over the air.
+Trong tất cả các trường hợp, thì Firmware hỗ trợ OTA phải được nạp lần đầu tiên qua cổng Serial, nếu mọi thứ hoạt động trơn tru, logic ứng dụng OTA hoạt động đúng thì có thể thực hiện việc cập nhật firmware thông qua OTA.
 
-There is no imposed security on OTA process from being hacked. It is up to developer to ensure that updates are allowed only from legitimate / trusted source. Once update is complete, module restarts and new code is executed. Developer should ensure that application running on module is shut down and restarted in a safe manner. Chapters below provide additional information regarding security and safety of OTA process.
+Sẽ không có đảm bảo an ninh đối với quá trình cập nhật OTA bị hack. Nó phụ thuộc vào nhà phát triển đảm bảo việc cập nhật được phép từ nguồn hợp pháp, đáng tin cậy. Khi cập nhật hoàn tấn, ESP8266 sẽ khởi động lại và thực thi code mới. Nhà phát triển phải đảm bảo ứng dụng thực trên module phải được tắt và khởi độn glaij 1 cách an toàn. Nội dung bên dưới cung cấp bổ sung các thông tin về an ninh, và an toàn cho tiến trình cập nhật OTA.
 
+### Bảo mật
 
-### Security
+Khi ESP8266  được phép thực thi OTA, có nghĩa nó được kết nối mạng không dây và có khả năng được cập nhập Sketch mới. Cho nên khả năng ESP8266 bị tấn công sẽ nhiều hơn và bị nạp bởi mã thực thi khác là rất cao. Để giảm khả năng bị tấn công cần xem xét bảo vệ cập nhật của bạn với một mật khẩu, cổng sử dụng cố định khác biệt, v.v...
 
-Module has to be exposed wirelessly to get it updated with a new sketch. That poses chances of module being violently hacked and loaded with some other code. To reduce likelihood of being hacked consider protecting your uploads with a password, selecting certain OTA port, etc.
-
-Check functionality provided with [ArduinoOTA](https://github.com/esp8266/Arduino/tree/master/libraries/ArduinoOTA) library that may improve security:
+Kiểm tra những tính năng được cung cấp bởi thư viện [ArduinoOTA](https://github.com/esp8266/Arduino/tree/master/libraries/ArduinoOTA) thường xuyên, có thể được nâng cấp khả năng bảo vệ an toàn:
 
 ```cpp
 void setPort(uint16_t port);
@@ -29,18 +29,19 @@ void setHostname(const char* hostname);
 void setPassword(const char* password);
 ```
 
-Certain protection functionality is already built in and do not require any additional coding by developer. [ArduinoOTA](https://github.com/esp8266/Arduino/tree/master/libraries/ArduinoOTA) and `espota.py` use [Digest-MD5](https://en.wikipedia.org/wiki/Digest_access_authentication) to authenticate upload. Integrity of transferred data is verified on ESP side using [MD5](https://en.wikipedia.org/wiki/MD5) checksum.
+Một số chức năng bảo vệ đã được xây dựng trong và không yêu cầu bất kỳ mã hóa nào cho nhà phát triển. [ArduinoOTA](https://github.com/esp8266/Arduino/tree/master/libraries/ArduinoOTA) và `espota.py` sử dụng [Digest-MD5](https://en.wikipedia.org/wiki/Digest_access_authentication) để chứng thực việc tải firmware lên. Đơn giản là đảm bảo tính toàn vẹn của firmware bằng việc tính [MD5](https://en.wikipedia.org/wiki/MD5).
 
-Make your own risk analysis and depending on application decide what library functions to implement. If required consider implementation of other means of protection from being hacked, e.g. exposing module for uploads only according to specific schedule, trigger OTA only be user pressing dedicated “Update” button, etc.
+Hãy phân tích rủi ro cho riêng ứng dụng của bạn bạn và tùy thuộc vào ứng dụng mà quyết định những chức năng cũng như thư viện để thực hiện. Nếu cần thiết, có thẻ xem xét việc thực hiện các phương thức bảo vệ khỏi bị hack, ví dụ như cập nhật OTA chỉ cho tải lên chỉ theo lịch trình cụ thể, kích hoạt OTA chỉ được người dùng nhấn nút chuyên dụng "Cập nhật", v.v...
+
+### An toàn
+
+Quá trình OTA tiêu tốn nguồn tài nguyên và băng thông của ESP8266 khi tải lên. Sau đó, ESP8266 được khởi động lại và một Sketch mới được thực thi. Cần phải phân tích và kiểm tra để Sketch mới không ảnh hưởng tới các chức năng hiện có của Sketch hiện tại, cũng như việc cập nhật OTA lần sau vẫn được đảm bảo.
+
+Nếu ESP8266 được đặt từ xa và kiểm soát một số thiết bị đang vận hành, bạn nên đặt các chú ý đi kèm thông tin những gì sẽ xảy ra nếu hoạt động của thiết bị này đột nhiên bị gián đoạn bởi quá trình cập nhật. Vần phải đưa thiết bị vào trạng thái an toàn trước khi bắt đầu cập nhật. 
+Ví dụ ESP8266 của bạn có thể được kiểm soát một hệ thống tưới vườn. Nếu nó không được đóng đúng cách và một van nước bỏ ngỏ, khu vườn của bạn có thể bị ngập và van này không được đóng lại sau khi OTA xong và khởi động lại mô-đun.
 
 
-### Safety
-
-OTA process takes ESP’s resources and bandwidth during upload. Then module is restarted and a new sketch executed. Analyse and test how it affects functionality of your existing and new sketch.
-
-If ESP is placed in remote location and controlling some equipment, you should put additional attention what happens if operation of this equipment is suddenly interrupted by update process. Therefore decide how to put this equipment into safe state before starting the update.  For instance your module may be controlling a garden watering system in a sequence. If this sequence is not properly shut down and a water valve left open, your garden may be flooded if this valve is not closed after OTA is finished and module restarts.  
-
-The following functions are provided with [ArduinoOTA](https://github.com/esp8266/Arduino/tree/master/libraries/ArduinoOTA) library and intended to handle functionality of your application during specific stages of OTA or on an OTA error:
+Một số hàm sau được cung cấp kèm với thưu viện [ArduinoOTA](https://github.com/esp8266/Arduino/tree/master/libraries/ArduinoOTA) và được dùng để xử lý các chức năng của ứng dụng trong từng giai đoạn cụ thể của OTA hoặc xử lý lỗi OTA:
 
 ```cpp
 void onStart(OTA_CALLBACK(fn));
@@ -49,116 +50,116 @@ void onProgress(OTA_CALLBACK_PROGRESS(fn));
 void onError(OTA_CALLBACK_ERROR (fn));
 ```
 
-### Basic Requirements
+### Yêu cầu cơ bản
 
-Flash chip size needs a size that is able to hold the old sketch (currently running) and the new sketch (OTA) at the same time.
-Keep in mind that the File system and EEPROM for example needs space too (one time) see [flash layout](./filesystem/flash-layout.md#flash-layout).
+Kích thước Flash cần đủ để có thể giữ Sketch cũ (hiện đang chạy) và Sketch mới (OTA) cùng một lúc. Xem [flash layout](./filesystem/flash-layout.md#flash-layout).
+
 ```cpp
 ESP.getFreeSketchSpace();
 ```
-can be used for checking the free space for the new sketch.
 
-For overview of memory layout, where new sketch is stored and how it is copied during OTA process see [Update process - memory view](#update-process---memory-view).
+có thể sử dụng cho việc kiểm tra vùng nhớ còn trống cho Sketch mới.
 
+Để có cái nhìn tổng quan về layout bộ nhớ, nơi Sketch mới được lưu trữ và làm thế nào để ESP8266 copy trong quá trình OTA, xem ở [Tiến trình cập nhật - bộ nhớ](#update-process---memory-view).
 
-The following chapters provide more details and specific methods of doing OTA.
-
+Phần tiếp theo sẽ cung cấp thông tinh chi tiết cho từng phương thức OTA.
 
 ## Arduino IDE
 
-Uploading modules wirelessly from Arduino IDE is intended for the following typical scenarios:
-- during firmware development as a quicker alternative to loading over a serial
-- for updating small quantity of modules
-- only if modules are available on the same network as the computer with Arduino IDE
+Cập nhật OTA sử dụng Arduino IDE tải firmware lên cho ESP8266 dành cho các tình huống điển hình sau đây:
+- Trong quá trình phát triển ứng dụng như một cách thay thế nhanh hơn sử dụng cổng Serial
+- Để cập nhật số lượng nhỏ của các module ESP8266
+- Chỉ khi module ESP8266 cùng mạng LAN với máy tính chạy Arduino IDE
 
+### Yêu cầu
+- Các module ESP8266 và máy tính phải được kết nối với cùng một mạng LAN.
 
-### Requirements
- - The ESP and the computer must be connected to the same network.
+### Ví dụ ứng dụng
 
+Hướng dẫn dưới đây cấu hình chương trình OTA sử dụng board NodeMCU 1.0 (ESP-12E Module). Bạn có thể sử dụng bất kỳ board ESP8266 nào, miễn sao nó đáp ứng được [yêu cầu] (#basic-requirements) được mô tả ở trên. Hướng dẫn này có hiệu lực cho tất cả các hệ điều hành hỗ trợ bởi Arduino IDE. Màn hình chụp đã được thực hiện trên Windows 7 và bạn có thể thấy sự khác biệt nhỏ (như tên của cổng nối tiếp) nếu bạn đang sử dụng Linux và MacOS.
 
-### Application Example
+**1.** Trước khi bạn bắt đầu, bạn cần đảm bảo các phần mềm sau đã được cài đặt:
+- Arduino IDE 1.6.7 hoặc mới hơn - https://www.arduino.cc/en/Main/Software
+- ESP8266/Arduino nền tảng gói 2.0.0 hoặc mới hơn - để được hướng dẫn làm theo https://esp8266.vn/arduino/basic/install/
+- Python 2.7 (không cài đặt Python 3.5, nó không được hỗ trợ) - https://www.python.org/
 
-Instructions below show configuration of OTA on NodeMCU 1.0 (ESP-12E Module) board. You can use any other board assuming that it meets [requirements](#basic-requirements) described above. This instruction is valid for all operating systems supported by Arduino IDE. Screen captures have been made on Windows 7 and you may see small differences (like name of serial port) if you are using Linux and MacOS.
+!!! note "Lưu ý"
+    Người dùng Windows nên chọn "Add python.exe Path" (xem bên dưới - tùy chọn này không được chọn theo mặc định).
 
-1. Before you begin, please make sure that you have the following s/w installed:
-    - Arduino IDE 1.6.7 or newer - https://www.arduino.cc/en/Main/Software
-    - esp8266/Arduino platform package 2.0.0 or newer - for instructions follow https://github.com/esp8266/Arduino#installing-with-boards-manager
-    - Python 2.7 (do not install Python 3.5 that is not supported) - https://www.python.org/
+![cài đặt Python](images/a-ota-python-configuration.png)
 
-        **Note:** Windows users should select “Add python.exe to Path” (see below – this option is not selected by default).
+**2.** Bây giờ chuẩn bị cho Sketch mới và cấu hình cho việc  nạp firmware qua cổng nối tiếp.
+- Bắt đầu Arduino IDE và mở BasicOTA.ino Sketch sẵn, phần File >  Examples > ArduinoOTA
+![lựa chọn các ví dụ OTA phác thảo](images/a-ota-sketch-selection.png)
 
-        ![Python installation set up](images/a-ota-python-configuration.png)
-
-2. Now prepare the sketch and configuration for the upload over a serial port.
-    - Start Arduino IDE and load sketch BasicOTA.ino available under File >  Examples > ArduinoOTA
-        ![selection of example OTA sketch](images/a-ota-sketch-selection.png)
-
-    - Update SSID and password in the sketch so the module can join your Wi-Fi network
-        ![SSID and password entry](images/a-ota-ssid-pass-entry.png)
+- Cập nhật SSID và mật khẩu WiFi để ESP8266 có thể kết nối vào mạng Wi-Fi của bạn
+![SSID và mật khẩu nhập] (images/a-ota-ssid-pass-entry.png)
         
-    - Configure upload parameters as below (you may need to adjust configuration if you are using a different module):
-        ![configuration of serial upload](images/a-ota-serial-upload-configuration.png)
+- Các thông số cấu hình tải lên như bên dưới (bạn có thể cần phải điều chỉnh cấu hình nếu bạn đang sử dụng các module ESP8266 khác):
+! [cấu hình tải lên nối tiếp] (images/a-ota-serial-upload-configuration.png)
 
-        **Note:** Depending on version of platform package and board you have, you may see ``` Upload Using: ``` in the menu above. This option is inactive and it does not matter what you select. It has been left for compatibility with older implementation of OTA and is targeted for removal in platform package version 2.2.0.
- 
-3. Upload the sketch (Ctrl+U). Once done, open Serial Monitor (Ctrl+Shift+M) and check if module has joined your Wi-Fi network:
+!!! note "Lưu ý" 
+    Tùy thuộc vào phiên bản của gói nền tảng và hội đồng quản trị mà bạn có, bạn có thể thấy `` `Upload Using:` `` trong menu ở trên. Tùy chọn này không hoạt động và nó không quan trọng khi bạn chọn. Nó đã được để lại cho phù hợp với phiên bản cũ của OTA và sẽ bị loại bỏ trong phiên bản 2.2.0.
 
-    ![check if module joined network](images/a-ota-upload-complete-and-joined-wifi.png)
+**3.** Nạp Sketch (Ctrl + U). Sau khi thực hiện, mở tiếp Serial Monitor (Ctrl + Shift + M) và kiểm tra xem ESP8266 đã kết nối vào mạng Wi-Fi của bạn:
 
-4. Only if module is connected to network, after a couple of seconds, the esp8266-ota port will show up in Arduino IDE. Select port with IP adress shown in Serial Monitor in previus step:
+![kiểm tra nếu module tham gia mạng] (images/a-ota-upload-complete-and-joined-wifi.png)
 
-    ![selection of OTA port](images/a-ota-ota-port-selection.png)
+**4.** Chỉ khi module ESP8266 được kết nối vào mạng, sau một vài giây, cổng esp8266-ota sẽ hiển thị trong Arduino IDE. Chọn cổng với địa chỉ IP hiện tại hiển thị trên Serial Monitor trong bước trước:
+
+![lựa chọn các cổng OTA] (images/a-ota-ota-port-selection.png)
     
-    **Note:** If OTA port does not show up, exit Arduino IDE, open it again and check if port is there. If it does not help check your firewall settings.
+ !!! note "Lưu ý" 
+    Nếu cổng OTA không hiện lên, Thoát khảoi Arduino IDE, mở nó một lần nữa và kiểm tra lại. Nếu hoàn toàn không có, thiết lập tường lửa của bạn.
 
-5. Now get ready for your first OTA upload by selecting the OTA port:
+**5.** Bây giờ đã sẵn sàng để cập nhật OTA đầu tiên của bạn bằng cách chọn cổng OTA:
 
-    ![configuration of OTA upload](images/a-ota-ota-upload-configuration.png)
+![cấu hình tải lên OTA] (images/a-ota-ota-upload-configuration.png)
     
-    **Note:** The menu entry  ``` Upload Speed: ``` does not matter at this point as it concerns the serial port. Just left it unchanged.
+!!! note "Lưu ý"
+    Các mục trình đơn `` `Upload Speed:` `` không quan trọng vào thời điểm này vì nó liên quan đến cổng nối tiếp. Không cần phải tác động
 
-6. If you have successfully completed all the above steps, you can upload (Ctrl+U) the same (or any other) sketch over OTA:
+**6.** Nếu bạn đã hoàn thành tất cả các bước trên, bạn có thể tải lên (Ctrl + U) cùng một (hoặc bất kỳ) Sketch qua OTA:
 
-    ![OTA upload complete](images/a-ota-ota-upload-complete.png)
+![OTA tải lên hoàn] (images/a-ota-ota-upload-complete.png)
 
-**Note:** To be able to upload your sketch over and over again using OTA, you need to embed OTA routines inside. Please use BasicOTA.ino as an example.
+!!! note "Lưu ý" 
+    Để có thể tải lên các bản Sketch của bạn nhiều lần hơn nữa sử dụng OTA, bạn cần phải sử dụng các hàm phục vụ OTA bên trong. Vui lòng xem cách sử dụng BasicOTA.ino như là một ví dụ.
 
+#### Bảo vệ mật khẩu
 
-#### Password Protection
-
-Protecting your OTA uploads with password is really straightforward. All you need to do, is to include the following statement in your code:
+Bảo vệ cập nhật OTA với mật khẩu khá đơn giản. Tất cả việc cần làm là sử dụng đoạn code sau trong mã Sketch:
 
 ```cpp
-ArduinoOTA.setPassword((const char *)"123");
-
+ArduinoOTA.setPassword ((const char *) "123");
 ```
 
-Where ``` 123 ``` is a sample password that you should replace with your own.
+Với `123` là một mật khẩu mẫu cần được thay thế cho ứng dụng của bạn.
 
-Before implementing it in your sketch, it is a good idea to check how it works using *BasicOTA.ino* sketch available under *File > Examples > ArduinoOTA*.  Go ahead, open *BasicOTA.ino*, uncomment the above statement that is already there, and upload the sketch. To make troubleshooting easier, do not modify example sketch besides what is absolutely required. This is including original simple ``` 123 ``` OTA password. Then attempt to upload sketch again (using OTA). After compilation is complete, once upload is about to begin, you should see prompt for password as follows:
- 
-![Password prompt for OTA upload](images/a-ota-upload-password-prompt.png)
+Trước khi thực hiện nó trong Sketch, Bạn có thể thử nghiệm hoạt động OTA bằng việc mở Sketch mẫu **BasicOTA.ino** trong **File > Examples > ArduinoOTA**.  Tiếp theo, mở **BasicOTA.ino**, bỏ comment phía trước phần cấu hình mật khầu (mô tả bên trên). Để xử lý các trường hợp lỗi dễ dàng hơn, không nên sửa đổi mẫu Sketch ngoài trừ các yêu cầu cần thiết. Bao gồm việc đơn giản là sửa mật khẩu OTA `123`  thành mật khẩu của bạn. Rồi cập nhật lên ứng dụng sử dụng OTA. Khi bạn bắt đầu cập nhật OTA, sẽ hiện ra khung hỏi mật khẩu như bên dưới:
 
-Enter the password and upload should be initiated as usual with the only difference being ``` Authenticating...OK ``` message visible in upload log.
+![Mật khẩu nhắc để tải lên OTA] (images/a-ota-upload-password-prompt.png)
 
-![ Authenticating...OK during OTA upload](a-ota-upload-password-authenticating-ok.png)
+Nhập mật khẩu và tải lên nên bắt đầu như bình thường, chỉ khác lúc trước là có thêm dòng `Authenticating ...OK ` trong cửa sổ log.
 
-You will not be prompted for a reentering the same password next time. Arduino IDE will remember it for you. You will see prompt for password only after reopening IDE, or if you change it in your sketch, upload the sketch and then try to upload it again.
+![ Xác thực ...OK trong upload OTA] (images/a-ota-upload-password-authenticating-ok.png)
 
-Please note, it is possible to reveal password entered previously in Arduino IDE, if IDE has not been closed since last upload. This can be done by enabling *Show verbose output during: upload* in *File > Preferences* and attempting to upload the module.
+Bạn sẽ không bị hỏi mật khảu cho lần sau. Arduino IDE sẽ nhớ nó cho bạn. Bạn chỉ thấy dấu khung hỏi mật khẩu chỉ khi mở lại IDE, hoặc nếu bạn thay đổi nó trong Sketch của bạn, tải lên các bản phác thảo và sau đó tải nó lên một lần nữa.
+
+!!! note "Lưu ý"
+    Hoàn toàn có khả năng xem lại mật khẩu của lần cập nhật trước bởi Arduino IDE, nếu IDE không bị đóng kể từ lần cập nhật sau cùng. Để thấy được mật khẩu trong cửa sổ Log, thực hiện như sau: Cho phép *Show verbose output during: upload* trong *File > Preferences* và thực hiện việc cập nhật lại.
 
 ![Verbose upload output with password passing in plan text](images/a-ota-upload-password-passing-upload-ok.png)
 
-The picture above shows that the password is visible in log as it is passed to *espota.py* upload script.
+Hình ảnh trên cho thấy mật khẩu là có thể được nhìn thấy trong Log và nó được gán cho file **espota.py** để thực hiện việc tải firmware.
 
-Another example below shows situation when password is changed between uploads. 
+Ví dụ dưới đây cho thấy tình huống khi mật khẩu được thay đổi giữa các lần cập nhật. 
 
-![Verbose output when OTA password has been changed between uploads](images/a-ota-upload-password-passing-again-upload-ok.png)
+![đầu ra dài khi OTA mật khẩu đã được thay đổi giữa các lần tải](images/a-ota-upload-password-passing-again-upload-ok.png)
 
-When uploading, Arduino IDE used previously entered password, so the upload failed and that has been clearly reported by IDE. Only then IDE prompted for a new password. That was entered correctly and second attempt to upload has been successful.
+Khi thực hiện cập nhật, Arduino IDE sử dụng mật khẩu đã nhập trước đó, vì vậy khi không thành công và sẽ báo cáo rõ ràng bởi IDE, IDE sẽ nhắc bạn nhập mật khẩu mới và dùng nó để thực hiện lại việc cập nhật, để đảm bảo thành công.
 
-
-#### Troubleshooting
+#### Giải quyết các lỗi thường gặp
 
 If OTA update fails, first step is to check for error messages that may be shown in upload window of Arduino IDE. If this is not providing any useful hints try to upload again while checking what is shown by ESP on serial port. Serial Monitor from IDE will not be useful in that case. When attempting to open it, you will likely see the following:
 
@@ -170,7 +171,7 @@ Instead you need an external serial monitor. If you are a Windows user check out
 
 Select COM port and baud rate on external terminal program as if you were using Arduino Serial Monitor. Please see typical settings for [Termite](http://www.compuphase.com/software_termite.htm) below:
 
-![Termite settings](termite-configuration.png)
+![Termite settings](images/termite-configuration.png)
 
 Then run OTA from IDE and look what is displayed on terminal. Successful [ArduinoOTA](#arduinoota) process using BasicOTA.ino sketch looks like below (IP address depends on your network configuration):
 
@@ -442,4 +443,4 @@ checking its integrity and telling the bootloader to load the new firmware on th
  - the new sketch is now copied "over" the old one.
  - the new sketch is started.
 
-![Memory Copy](update_memory_copy.png)
+![Memory Copy](images/update_memory_copy.png)
