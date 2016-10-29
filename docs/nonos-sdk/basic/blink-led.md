@@ -86,7 +86,7 @@ Blink
 
 ## Gợi ý
 
-Có thể tìm thấy định nghĩa các địa chỉ thanh ghi tại thư mục chứa SDK `$SDK_BASE\include\eagle_soc.h`. Ngoài ra, bạn có thể tham khảo việc cấu hình GPIO16 tại `$SDK_BASE\driver_lib\gpio16.c` 
+Có thể tìm thấy định nghĩa các địa chỉ thanh ghi tại thư mục chứa SDK `$SDK_BASE\include\eagle_soc.h`. Ngoài ra, bạn có thể tham khảo việc cấu hình GPIO16 tại `$SDK_BASE\driver_lib\driver\gpio16.c` 
 
 Ta có thể thấy 
 ```
