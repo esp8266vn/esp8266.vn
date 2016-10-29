@@ -579,7 +579,6 @@
 <li><a href="#ma-nguon">Mã nguồn</a></li>
 <li><a href="#ket-qua">Kết quả</a></li>
 <li><a href="#goi-y">Gợi ý</a></li>
-<li><a href="#canh-bao">Cảnh báo</a></li>
 </ul>
 </li>
 </ul>
@@ -670,8 +669,10 @@ WRITE_PERI_REG(RTC_GPIO_ENABLE, (READ_PERI_REG(RTC_GPIO_ENABLE) &amp; (uint32_t)
 
 <p>tương ứng với
 <code>gpio16_output_conf(void)</code> trong gpio16.c</p>
-<h2 id="canh-bao">Cảnh báo<a class="headerlink" href="#canh-bao" title="Permanent link">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Cảnh báo</p>
 <p>Chân <code>GPIO16</code> của ESP8266 là chân khá đặc biệt, sử dụng chung với RTC OUTPUT, dùng ở chế độ DEEPSLEEP, khi RTC tới hạn và khởi động Chip bằng cách hạ mức thấp chân này. Nếu bạn thiết kế ứng dụng cần sử dụng chế độ ngủ DEEPSLEEP thì đừng sử dụng chân GPIO16 cho mục đích khác, ngoại trừ việc nối thẳng vào chân nRST (chân <strong>32</strong> của ESP8266)</p>
+</div>
               
             </div>
           </div>

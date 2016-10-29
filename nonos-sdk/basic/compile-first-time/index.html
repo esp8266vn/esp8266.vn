@@ -576,10 +576,7 @@
 <li><a href="#bien-dich-du-an-au-tien">Biên dịch dự án đầu tiên</a><ul>
 <li><a href="#lay-du-an-mau-tu-github">Lấy dự án mẫu từ Github:</a></li>
 <li><a href="#so-o-file">Sơ đồ file</a><ul>
-<li><a href="#makefile">Makefile</a><ul>
-<li><a href="#quan-trong">Quan trọng</a></li>
-</ul>
-</li>
+<li><a href="#makefile">Makefile</a></li>
 <li><a href="#rf_initc">rf_init.c</a></li>
 <li><a href="#mainc">main.c</a></li>
 </ul>
@@ -667,7 +664,10 @@ flash:
 .PHONY: all clean flash</code></pre>
 
 
-<p><em>Lưu ý:</em>  Nếu bạn sử dụng ví dụ này cho bản Unofficial Developement KIT trên Windows, với đường dẫn cài đặt mặc định là <code>C:\Espressif</code>, Makefile cần thay đổi như sau:</p>
+<div class="admonition note">
+<p class="admonition-title">Lưu ý</p>
+<p>Nếu bạn sử dụng ví dụ này cho bản Unofficial Developement KIT trên Windows, với đường dẫn cài đặt mặc định là <code>C:\Espressif</code>, Makefile cần thay đổi như sau:</p>
+</div>
 <pre class="code"><code class="language-makefile">XTENSA    ?=
 SDK_BASE  ?= C:/Espressif/ESP8266_SDK
 ESPTOOL   ?= C:/Espressif/utils/ESP8266/esptool.py
@@ -701,11 +701,13 @@ flash:
 </li>
 <li>Thực hiện <code>make flash</code> để nạp ESP8266, cần chắc chắc mạch nạp đã được kết nối máy tính, và tên cổng được thay thế đúng cho <code>/dev/tty.SLAB_USBtoUART</code> (thường với linux sẽ là /dev/ttyUSB0, MAC OS là SLAB_USBtoUART). Ngoài ra tốc độ baud cần phải thay thế cho phù hợp(mặc định ban đầu có thể là 9600 hoặc 115200 hoặc 480600) .Bạn có thể tìm hiểu thêm về việc đọc tên công COM trên máy tính tại (OSX, Windows, Linux)</li>
 </ul>
-<h4 id="quan-trong">Quan trọng<a class="headerlink" href="#quan-trong" title="Permanent link">#</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Quan trọng</p>
 <ul>
 <li>Dấu <code>\</code> báo chưa kết thúc dòng trong Makefile</li>
 <li>Trong <code>Makefile</code>, luôn luôn đặt chế độ Indent là Tab, nếu dùng Space sẽ báo lỗi <code>Makefile:35: *** missing separator.  Stop.</code></li>
 </ul>
+</div>
 <p>Các bạn có thể tìm hiểu rõ hơn về Makefile bằng google với từ khóa <code>Makefile basic</code>. Makefile này như là 1 kịch bản đơn giản nhất để công cụ <code>make</code> thực hiện việc biên dịch mã nguồn <strong>C</strong> sang mã máy để nạp cho ESP8266. Mục đích để bản nắm rõ hơn về cách thức hoạt động của SDK, trình biên dịch. Các ví dụ sau này sẽ dùng Makefile phức tạp hơn, và được cung cấp kèm với các dự án mẫu tại https://github.com/esp8266vn</p>
 <h3 id="rf_initc">rf_init.c<a class="headerlink" href="#rf_initc" title="Permanent link">#</a></h3>
 <pre class="code"><code class="language-c">//esp-iot-basic/rf_init.c
