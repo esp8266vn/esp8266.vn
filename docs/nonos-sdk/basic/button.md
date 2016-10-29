@@ -5,13 +5,13 @@
 Tổ chức file căn cứ theo bài [Biên dịch dự án đầu tiên](./compile-first-time.md), bao gồm các file `Makefile`, `main.c`, `rf_init.c`, `user_config.h`. Tuy nhiên chỉ thay đổi nội dung file `main.c`
 
 !!! note "Nội dung"
-    Nhấn nút thì chớp tắt đèn LED
+    Nhấn nút (GPIO0)thì chớp tắt đèn LED (GPIO6)
 
 
 ## Lấy dự án về từ Github: 
 
 ```
-git clone https://github.com/esp8266vn/eps-iot-button
+git clone https://github.com/esp8266vn/esp-iot-button.git
 cd eps-iot-button
 make
 ```
