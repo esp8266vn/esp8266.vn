@@ -115,7 +115,7 @@ Giải thích Makefile như sau:
 - Mặc định khi gọi `make` hay `make all` sẽ gọi `all`, nhưng trước đó sẽ cần gọi `main.bin`
 
 - Thực hiện `make clean` xóa hết các file được tạo ra khi gọi `make all`
-- Thực hiện `make flash` để nạp ESP8266, cần chắc chắc mạch nạp đã được kết nối máy tính, và tên cổng được thay thế đúng cho `/dev/tty.SLAB_USBtoUART`. Bạn có thể tìm hiểu thêm về việc đọc tên công COM trên máy tính tại (OSX, Windows, Linux)
+- Thực hiện `make flash` để nạp ESP8266, cần chắc chắc mạch nạp đã được kết nối máy tính, và tên cổng được thay thế đúng cho `/dev/tty.SLAB_USBtoUART` (thường với linux sẽ là /dev/ttyUSB0, MAC OS là SLAB_USBtoUART). Ngoài ra tốc độ baud cần phải thay thế cho phù hợp(mặc định ban đầu có thể là 9600 hoặc 115200 hoặc 480600) .Bạn có thể tìm hiểu thêm về việc đọc tên công COM trên máy tính tại (OSX, Windows, Linux)
 
 #### Quan trọng
 
@@ -133,42 +133,41 @@ Các bạn có thể tìm hiểu rõ hơn về Makefile bằng google với từ
 #include "osapi.h"
 #include "user_interface.h"
 
-void __attribute__((weak)) user_rf_pre_init(void) //Hàm này sẽ được SDK gọi cấu hình công suất phát WiFi
+void __attribute__((weak)) user_rf_pre_init(void)
 {
   system_phy_set_rfoption(1);
-  system_phy_set_max_tpw(82); //công suất truyền, Giá trị từ 1-82
+  system_phy_set_max_tpw(82);
 }
 
-uint32_t __attribute__((weak)) user_rf_cal_sector_set(void) 
+uint32_t __attribute__((weak)) user_rf_cal_sector_set(void)
 {
-  enum flash_size_map size_map = system_get_flash_size_map();
-  uint32 rf_cal_sec = 0;
+    enum flash_size_map size_map = system_get_flash_size_map();
+    uint32 rf_cal_sec = 0;
 
-  switch (size_map) {
-    case FLASH_SIZE_4M_MAP_256_256:
-      rf_cal_sec = 128 - 5;
-      break;
+    switch (size_map) {
+        case FLASH_SIZE_4M_MAP_256_256:
+            rf_cal_sec = 128 - 5;
+            break;
 
-    case FLASH_SIZE_8M_MAP_512_512:
-      rf_cal_sec = 256 - 5;
-      break;
+        case FLASH_SIZE_8M_MAP_512_512:
+            rf_cal_sec = 256 - 5;
+            break;
 
-    case FLASH_SIZE_16M_MAP_512_512:
-    case FLASH_SIZE_16M_MAP_1024_1024:
-      rf_cal_sec = 512 - 5;
-      break;
+        case FLASH_SIZE_16M_MAP_512_512:
+        case FLASH_SIZE_16M_MAP_1024_1024:
+            rf_cal_sec = 512 - 5;
+            break;
 
-    case FLASH_SIZE_32M_MAP_512_512:
-    case FLASH_SIZE_32M_MAP_1024_1024:
-      rf_cal_sec = 1024 - 5;
-      break;
+        case FLASH_SIZE_32M_MAP_512_512:
+        case FLASH_SIZE_32M_MAP_1024_1024:
+            rf_cal_sec = 1024 - 5;
+            break;
 
-    default:
-      rf_cal_sec = 0;
-      break;
-  }
-  return rf_cal_sec;
-}
+        default:
+            rf_cal_sec = 0;
+            break;
+    }
+    return rf_cal_sec;
 ```
 
 ### main.c
@@ -180,13 +179,16 @@ uint32_t __attribute__((weak)) user_rf_cal_sector_set(void)
 
 void app_init()
 {
-    os_printf("hello world\r\n");
+    uart_div_modify(0, UART_CLK_FREQ / 115200);
+    os_delay_us(1000000);
+    os_printf("\r\nhello world\r\n");
 }
 
 void user_init(void)
 {
     system_init_done_cb(app_init);
 }
+
 ```
 
 ## Biên dịch
