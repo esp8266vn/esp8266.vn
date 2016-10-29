@@ -179,7 +179,7 @@ uint32_t __attribute__((weak)) user_rf_cal_sector_set(void)
 
 void app_init()
 {
-    uart_div_modify(0, UART_CLK_FREQ / 480600);
+    uart_div_modify(0, UART_CLK_FREQ / 115200);
     os_delay_us(1000000);
     os_printf("\r\nhello world\r\n");
 }
@@ -190,7 +190,7 @@ void user_init(void)
 }
 
 ```
-####Lưu ý: Thay đổi tốc độ nạp tại `uart_div_modify(0, UART_CLK_FREQ / 480600);`
+
 ## Biên dịch
 
 Thực hiện biên dịch dự án
