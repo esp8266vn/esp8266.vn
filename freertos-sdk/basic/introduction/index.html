@@ -578,17 +578,18 @@
 <li>Tải về máy &amp; giải nén <a href="https://espressif.com/sites/default/files/sdks/esp8266_rtos_sdk_v1.4.0_16_02_26_0.zip">từ đây</a></li>
 <li>Hoặc git clone từ:</li>
 </ul>
-<pre class="code"><code class="language-bash">git clone https://github.com/espressif/ESP8266_RTOS_SDK.git
+<pre><code class="bash">git clone https://github.com/espressif/ESP8266_RTOS_SDK.git
 cd ESP8266_RTOS_SDK
 # Nhánh 1.4.x đã bao gồm phần vá lỗi (patch) cho bản v1.4.0 (nhánh master)
-git checkout 1.4.x</code></pre>
-
+git checkout 1.4.x
+</code></pre>
 
 <ul>
 <li>Thay đổi <code>SDK_BASE</code> trong Makefile của mỗi dự án trỏ tới folder vừa giải nén/clone:</li>
 </ul>
-<pre class="code"><code class="language-makefile"># Ví dụ với người dùng windows và unofficial dev kit
-SDK_BASE    ?= C:/Espressif/ESP8266_RTOS_SDK</code></pre>
+<pre><code class="makefile"># Ví dụ với người dùng windows và unofficial dev kit
+SDK_BASE    ?= C:/Espressif/ESP8266_RTOS_SDK
+</code></pre>
               
             </div>
           </div>

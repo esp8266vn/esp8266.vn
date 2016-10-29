@@ -586,7 +586,8 @@
 </ul>
 <p>và giải nén vào thư mục: <code>/tools/esp8266/compiler/</code></p>
 <p><strong>Cách 2</strong> phức tạp hơn, nhưng sẽ phù hợp với tất cả phiên bản hệ điều hành của bạn. Biên dịch Trình biên dịch từ mã nguồn:</p>
-<pre class="code"><code class="language-bash">sudo port install git gsed gawk binutils gperf grep gettext py-serial wget libtool autoconf automake 
+<pre><code class="bash">
+sudo port install git gsed gawk binutils gperf grep gettext py-serial wget libtool autoconf automake 
 
 hdiutil create -size 5g -fs &quot;Case-sensitive HFS+&quot; -volname ESPTools ESPTools.sparsebundle 
 hdiutil attach ESPTools.sparsebundle &lt;3&gt;
@@ -601,8 +602,8 @@ cd crosstool-NG
 sed -i.bak '1s/^/gettext=\'$'\n/' crosstool-NG/kconfig/Makefile
 ./bootstrap &amp;&amp; ./configure --prefix=`pwd` &amp;&amp; make &amp;&amp; make install
 ./ct-ng xtensa-lx106-elf
-./ct-ng build</code></pre>
-
+./ct-ng build
+</code></pre>
 
 <ul>
 <li>Các thư viện cần thiết để biên dịch crosstool-NG, sử dụng MacPorts để cài đặt. Nếu chưa cài đặt MacPorts có thẻ tải tại đây: https://www.macports.org/</li>
@@ -614,18 +615,18 @@ sed -i.bak '1s/^/gettext=\'$'\n/' crosstool-NG/kconfig/Makefile
 <h4 id="luu-y">Lưu ý<a class="headerlink" href="#luu-y" title="Permanent link">#</a></h4>
 <p>Lưu ý rằng, quá trình biên dịch cần khoảng 1 giờ (tùy cấu hình máy) và 1.5GiB dung lượng ổ cứng trống</p>
 <p>Tiếp theo, cần phải thêm đường dẫn của compiler vào biến môi trường <code>PATH</code> của hệ điều hành</p>
-<pre class="code"><code class="language-bash">echo &quot;export PATH=$PATH:/tools/esp8266/compiler/crosstool-NG/builds/xtensa-lx106-elf/bin&quot; &gt;&gt;  ~/.bash_profile &lt;1&gt;
-source ~/.bash_profile </code></pre>
-
+<pre><code class="bash">echo &quot;export PATH=$PATH:/tools/esp8266/compiler/crosstool-NG/builds/xtensa-lx106-elf/bin&quot; &gt;&gt;  ~/.bash_profile &lt;1&gt;
+source ~/.bash_profile 
+</code></pre>
 
 <ul>
 <li>Thêm dòng <code>export</code> vào cuối file <code>~/.bash_profile</code> bằng <code>echo</code></li>
 <li><code>source</code> để tải lại biến môi trường</li>
 </ul>
 <p>Kiểm tra việc cài đặt, Có dòng này hiển thị ở cuối cùng thì việc cài đặt dã thành công</p>
-<pre class="code"><code class="language-bash">xtensa-lx106-elf-gcc -v
-gcc version 4.8.2 (crosstool-NG 1.20.0) </code></pre>
-
+<pre><code class="bash">xtensa-lx106-elf-gcc -v
+gcc version 4.8.2 (crosstool-NG 1.20.0) 
+</code></pre>
 
 <h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">#</a></h3>
 <p>Cài đặt Git
@@ -651,25 +652,25 @@ Vị trí mặc định của bộ KIT sau khi cài đặt là <code>C:\Espressi
 <li>Cài đặt khi chạy: trong cửa sổ console, nhập <code>set PATH=%PATH%;C:\Espressif\xtensa-lx106-elf\bin;C:\Espressif\utils\ESP8266;</code></li>
 </ul>
 <p>Kiểm tra việc cài đặt, có dòng này hiển thị ở cuối cùng thì việc cài đặt đã thành công:</p>
-<pre class="code"><code class="language-bat">xtensa-lx106-elf-gcc --version
-xtensa-lx106-elf-gcc (GCC) 5.2.0</code></pre>
+<pre><code class="bat">xtensa-lx106-elf-gcc --version
+xtensa-lx106-elf-gcc (GCC) 5.2.0
+</code></pre>
 
-
-<pre class="code"><code class="language-bat">esptool.py
-usage: esptool [-h] [--port PORT] [--baud BAUD]</code></pre>
-
+<pre><code class="bat">esptool.py
+usage: esptool [-h] [--port PORT] [--baud BAUD]
+</code></pre>
 
 <h3 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">#</a></h3>
 <p>Cài đặt Git</p>
-<pre class="code"><code>sudo apt-get update
+<pre><code>sudo apt-get update
 sudo apt-get install make unrar-free autoconf automake libtool gcc g++ gperf \
     flex bison texinfo gawk ncurses-dev libexpat-dev python-dev python python-serial \
     sed git unzip bash help2man wget bzip2
-sudo apt-get install libtool-bin</code></pre>
-
+sudo apt-get install libtool-bin
+</code></pre>
 
 <p>Cài đặt complier</p>
-<pre class="code"><code>mkdir /tools /tools/esp8266 /tools/esp8266/sdk /tools/esp8266/compiler
+<pre><code>mkdir /tools /tools/esp8266 /tools/esp8266/sdk /tools/esp8266/compiler
 cd /tools/esp8266/compiler
 git clone -b lx106 git://github.com/jcmvbkbc/crosstool-NG.git 
 cd crosstool-NG
@@ -677,15 +678,15 @@ cd crosstool-NG
 ./ct-ng xtensa-lx106-elf
 unset LD_LIBRARY_PATH
 ./ct-ng build
-PATH=$PWD/builds/xtensa-lx106-elf/bin:$PATH</code></pre>
-
+PATH=$PWD/builds/xtensa-lx106-elf/bin:$PATH
+</code></pre>
 
 <p>Kiểm tra việc cài đặt bằng lệnh</p>
 <p><code>xtensa-lx106-elf-gcc -v</code></p>
 <p>Có dòng này hiển thị ở cuối cùng thì việc cài đặt dã thành công</p>
-<pre class="code"><code>Thread model: single
-gcc version 4.8.5 (crosstool-NG crosstool-ng-1.22.0-55-gecfc19a) </code></pre>
-
+<pre><code>Thread model: single
+gcc version 4.8.5 (crosstool-NG crosstool-ng-1.22.0-55-gecfc19a) 
+</code></pre>
 
 <h2 id="tai-esp8266_nonos_sdk">Tải ESP8266_NONOS_SDK<a class="headerlink" href="#tai-esp8266_nonos_sdk" title="Permanent link">#</a></h2>
 <p>Tải ESP8266-NONOS-SDK 2.0 từ một trong các nguồn sau: </p>
@@ -695,18 +696,19 @@ gcc version 4.8.5 (crosstool-NG crosstool-ng-1.22.0-55-gecfc19a) </code></pre>
 </ul>
 <p>Giải nén ra (ví dụ tại thư mục: <code>/tools/esp8266/sdk/ESP8266_NONOS_SDK</code>)</p>
 <h2 id="tai-esptoolpy">Tải <strong>esptool.py</strong><a class="headerlink" href="#tai-esptoolpy" title="Permanent link">#</a></h2>
-<pre class="code"><code>cd /tools/esp8266/
-git clone https://github.com/themadinventor/esptool.git</code></pre>
+<pre><code>cd /tools/esp8266/
+git clone https://github.com/themadinventor/esptool.git
 
+</code></pre>
 
 <p>Hoặc Download từ <a href="https://www.dropbox.com/s/u3sihwbmjmx7xl3/esptool.zip?dl=0">Dropbox</a> và giải nén vào thư mục <code>/tools/esp8266/</code></p>
 <h2 id="tai-libclibhal-file-include-voi-ubuntu-them-lenh-sudo-truoc-wget">Tải libc,libhal, file include (với ubuntu thêm lệnh sudo trước wget)<a class="headerlink" href="#tai-libclibhal-file-include-voi-ubuntu-them-lenh-sudo-truoc-wget" title="Permanent link">#</a></h2>
-<pre class="code"><code>cd tools/esp8266/complier/crosstool-NG/builds/xtensa-lx106-elf/xtensa-lx106-elf/sysroot/usr
+<pre><code>cd tools/esp8266/complier/crosstool-NG/builds/xtensa-lx106-elf/xtensa-lx106-elf/sysroot/usr
 wget -O lib/libc.a https://github.com/esp8266/esp8266-wiki/raw/master/libs/libc.a
 wget -O lib/libhal.a https://github.com/esp8266/esp8266-wiki/raw/master/libs/libhal.a
 wget -O include.tgz https://github.com/esp8266/esp8266-wiki/raw/master/include.tgz
-tar -xvzf include.tgz</code></pre>
-
+tar -xvzf include.tgz
+</code></pre>
 
 <h2 id="cong-cu-com-terminal">Công cụ COM Terminal<a class="headerlink" href="#cong-cu-com-terminal" title="Permanent link">#</a></h2>
 <ul>

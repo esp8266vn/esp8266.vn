@@ -576,21 +576,21 @@
 <p>Bởi vì <code>micropython</code> build cho ESP8266 cần 1 số sự thay đổi trong compile và thư viện đi kèm nên phải sử dụng compiler, sdk từ esp-open-sdk </p>
 <p>Cài đặt theo hướng dẫn tại <a href="https://github.com/pfalcon/esp-open-sdk">esp-open-sdk</a></p>
 <p>Trước khi thực hiện <code>make</code> thì thực hiện lệnh này trước: </p>
-<pre class="code"><code class="language-bash">sed -i.bak '1s/^/gettext=\'$'\n/' crosstool-NG/kconfig/Makefile
+<pre><code class="bash">sed -i.bak '1s/^/gettext=\'$'\n/' crosstool-NG/kconfig/Makefile
 sed -i.bak -e 's/[[:&lt;:]]sed[[:&gt;:]]/gsed/' Makefile
 sed -i.bak -e 's/[[:&lt;:]]awk[[:&gt;:]]/\$(AWK)/' lx106-hal/src/Makefile.am
-sed -i.bak 's/AM_PROG_AS/AM_PROG_AS\'$'\nAM_PROG_AR/' lx106-hal/configure.ac </code></pre>
-
+sed -i.bak 's/AM_PROG_AS/AM_PROG_AS\'$'\nAM_PROG_AR/' lx106-hal/configure.ac 
+</code></pre>
 
 <h2 id="bien-dich-firmware-micropython-cho-esp8266">Biên dịch Firmware Micropython cho ESP8266<a class="headerlink" href="#bien-dich-firmware-micropython-cho-esp8266" title="Permanent link">#</a></h2>
-<pre class="code"><code class="language-bash">git clone --recursive https://github.com/micropython/micropython.git 
+<pre><code class="bash">git clone --recursive https://github.com/micropython/micropython.git 
 git submodule update --init
 cd micropython
 make -C mpy-cross
 cd esp8266
 make axtls
-make</code></pre>
-
+make
+</code></pre>
 
 <p>Xem hướng dẫn rõ hơn tại đây: <a href="https://github.com/micropython/micropython/tree/master/esp8266">https://github.com/micropython/micropython/tree/master/esp8266</a></p>
 <h2 id="download-firmware">Download firmware<a class="headerlink" href="#download-firmware" title="Permanent link">#</a></h2>
@@ -598,8 +598,8 @@ make</code></pre>
 - <a href="https://www.dropbox.com/s/zjjmh984cuivy2w/firmware-combined.1.8.5.bin?dl=0">dropbox 1.8.5 build 20-oct-2016</a></p>
 <h2 id="flash-firmware">Flash firmware<a class="headerlink" href="#flash-firmware" title="Permanent link">#</a></h2>
 <p>Lưu ý việc Flash firmware cho ESP8266 dùng esptool.py </p>
-<pre class="code"><code class="language-bash">esptool.py --port /dev/tty.SLAB_USBtoUART --baud 921600 write_flash --verify --flash_size=32m --flash_mode=qio 0 build/firmware-combined.bin</code></pre>
-
+<pre><code class="bash">esptool.py --port /dev/tty.SLAB_USBtoUART --baud 921600 write_flash --verify --flash_size=32m --flash_mode=qio 0 build/firmware-combined.bin
+</code></pre>
 
 <h2 id="phan-cung-pinout">Phần cứng - Pinout<a class="headerlink" href="#phan-cung-pinout" title="Permanent link">#</a></h2>
 <div class="admonition note">
@@ -608,9 +608,10 @@ make</code></pre>
 </div>
 <p><img alt="NodeMCU Pinout" src="../../../introduction/images/esp8266_devkit.svg" /></p>
 <p>Ví dụ: </p>
-<pre class="code"><code class="language-python">from machine import Pin 
+<pre><code class="python">from machine import Pin 
 led = Pin(16, Pin.OUT) #Tương đương LED trên board NodeMCU
-gpio13 = Pin(13, Pin.OUT) # Tương đương chân D7 trên NodeMCU</code></pre>
+gpio13 = Pin(13, Pin.OUT) # Tương đương chân D7 trên NodeMCU
+</code></pre>
               
             </div>
           </div>

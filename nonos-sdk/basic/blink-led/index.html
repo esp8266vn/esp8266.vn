@@ -590,20 +590,20 @@
 <p>Chớp tắt đèn LED trên GPIO16 mỗi 1 giây</p>
 </div>
 <h2 id="lay-du-an-ve-tu-github">Lấy dự án về từ Github<a class="headerlink" href="#lay-du-an-ve-tu-github" title="Permanent link">#</a></h2>
-<pre class="code"><code class="language-bash">git clone https://github.com/esp8266vn/esp-iot-led-blink.git
-cd esp-iot-led-blink &amp;&amp; make</code></pre>
-
+<pre><code class="bash">git clone https://github.com/esp8266vn/esp-iot-led-blink.git
+cd esp-iot-led-blink &amp;&amp; make
+</code></pre>
 
 <h2 id="so-o-file">Sơ đồ file<a class="headerlink" href="#so-o-file" title="Permanent link">#</a></h2>
-<pre class="code"><code>esp-iot-led-blink
+<pre><code>esp-iot-led-blink
     |-- Makefile
     |-- main.c
     |-- rf_init.c
-    `-- user_config.h</code></pre>
-
+    `-- user_config.h
+</code></pre>
 
 <h2 id="ma-nguon">Mã nguồn<a class="headerlink" href="#ma-nguon" title="Permanent link">#</a></h2>
-<pre class="code"><code class="language-c">//esp-led/main.c
+<pre><code class="c">//esp-led/main.c
 #include &lt;stdio.h&gt;
 #include &quot;osapi.h&quot;
 #include &quot;user_interface.h&quot;
@@ -636,8 +636,9 @@ void app_init()
 void user_init(void)
 {
     system_init_done_cb(app_init);
-}</code></pre>
+}
 
+</code></pre>
 
 <p>Ở phần này chúng ta sẽ biết thêm về cách thức đọc/ghi thanh ghi của ESP8266, đồng thời sử dụng Software Timer:</p>
 <ul>
@@ -647,25 +648,25 @@ void user_init(void)
 <h2 id="ket-qua">Kết quả<a class="headerlink" href="#ket-qua" title="Permanent link">#</a></h2>
 <p>Sau khi nạp thành công chương trình và kết nối LED với chân GPIO16 sẽ thấy chớp LED mỗi 1 giây.</p>
 <p>Sử dụng Terminal quan sát sẽ thấy</p>
-<pre class="code"><code>Blink
+<pre><code>Blink
 Blink
 Blink
 Blink
-Blink</code></pre>
-
+Blink
+</code></pre>
 
 <h2 id="goi-y">Gợi ý<a class="headerlink" href="#goi-y" title="Permanent link">#</a></h2>
 <p>Có thể tìm thấy định nghĩa các địa chỉ thanh ghi tại thư mục chứa SDK <code>$SDK_BASE\include\eagle_soc.h</code>. Ngoài ra, bạn có thể tham khảo việc cấu hình GPIO16 tại <code>$SDK_BASE\driver_lib\driver\gpio16.c</code> </p>
 <p>Ta có thể thấy </p>
-<pre class="code"><code>WRITE_PERI_REG(RTC_GPIO_OUT, (READ_PERI_REG(RTC_GPIO_OUT) &amp; (uint32_t)0xfffffffe)| (uint32_t)(led_value &amp; 1));</code></pre>
-
+<pre><code>WRITE_PERI_REG(RTC_GPIO_OUT, (READ_PERI_REG(RTC_GPIO_OUT) &amp; (uint32_t)0xfffffffe)| (uint32_t)(led_value &amp; 1));
+</code></pre>
 
 <p>tương ứng với lệnh <code>gpio16_output_set(led_value);</code> </p>
 <p>và các lệnh</p>
-<pre class="code"><code>WRITE_PERI_REG(PAD_XPD_DCDC_CONF, (READ_PERI_REG(PAD_XPD_DCDC_CONF) &amp; 0xffffffbc) | (uint32_t)0x1);  
+<pre><code>WRITE_PERI_REG(PAD_XPD_DCDC_CONF, (READ_PERI_REG(PAD_XPD_DCDC_CONF) &amp; 0xffffffbc) | (uint32_t)0x1);  
 WRITE_PERI_REG(RTC_GPIO_CONF, (READ_PERI_REG(RTC_GPIO_CONF) &amp; (uint32_t)0xfffffffe) | (uint32_t)0x0);
-WRITE_PERI_REG(RTC_GPIO_ENABLE, (READ_PERI_REG(RTC_GPIO_ENABLE) &amp; (uint32_t)0xfffffffe) | (uint32_t)0x1);</code></pre>
-
+WRITE_PERI_REG(RTC_GPIO_ENABLE, (READ_PERI_REG(RTC_GPIO_ENABLE) &amp; (uint32_t)0xfffffffe) | (uint32_t)0x1);
+</code></pre>
 
 <p>tương ứng với
 <code>gpio16_output_conf(void)</code> trong gpio16.c</p>

@@ -583,13 +583,13 @@
 <p>Khi nhận được ký tự <code>1</code> từ Terminal, bật đèn LED, xuất nội dung <code>LED On</code> trở lại, và <code>0</code> sẽ tắt, xuất nội dung <code>LED Off</code></p>
 </div>
 <h2 id="lay-du-an-ve-tu-github">Lấy dự án về từ Github:<a class="headerlink" href="#lay-du-an-ve-tu-github" title="Permanent link">#</a></h2>
-<pre class="code"><code>git clone https://github.com/esp8266vn/eps-iot-uart
+<pre><code>git clone https://github.com/esp8266vn/eps-iot-uart
 cd eps-iot-uart
-make</code></pre>
-
+make
+</code></pre>
 
 <h2 id="so-o-file">Sơ đồ file<a class="headerlink" href="#so-o-file" title="Permanent link">#</a></h2>
-<pre class="code"><code>esp-iot-uart
+<pre><code>esp-iot-uart
     |-- Makefile
     |-- main.c
     |-- rf_init.c
@@ -597,12 +597,12 @@ make</code></pre>
     |-- uart.h
     |-- led_btn.c
     |-- led_btn.h
-    `-- user_config.h</code></pre>
-
+    `-- user_config.h
+</code></pre>
 
 <p>Ta sẽ gom phần <a href="../blink-led/">LED</a> và <a href="../button/">Nút nhấn</a> thành 1 file <code>led_btn.c</code>. Bổ sung thêm file <code>uart.c</code> để cấu hình UART</p>
 <h2 id="ma-nguon">Mã nguồn<a class="headerlink" href="#ma-nguon" title="Permanent link">#</a></h2>
-<pre class="code"><code class="language-c">//main.c
+<pre><code class="c">//main.c
 #include &lt;stdio.h&gt;
 #include &quot;osapi.h&quot;
 #include &quot;user_interface.h&quot;
@@ -632,8 +632,8 @@ void app_init()
 void user_init(void)
 {
     system_init_done_cb(app_init);
-}</code></pre>
-
+}
+</code></pre>
 
 <p>Nội dung file <a href="https://github.com/esp8266vn/eps-iot-uart/blob/master/uart.c">uart.c</a> khá dài, có thể xem trực tiếp trên github</p>
               

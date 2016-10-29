@@ -596,17 +596,17 @@
 </div>
 <h2 id="lay-du-an-mau-tu-github">Lấy dự án mẫu từ Github:<a class="headerlink" href="#lay-du-an-mau-tu-github" title="Permanent link">#</a></h2>
 <p>Bạn có thể lấy dự án mẫu từ github và biên dịch ngay:</p>
-<pre class="code"><code class="language-bash">git clone https://github.com/esp8266vn/esp-iot-basic.git
-cd esp-iot-basic &amp;&amp; make</code></pre>
-
+<pre><code class="bash">git clone https://github.com/esp8266vn/esp-iot-basic.git
+cd esp-iot-basic &amp;&amp; make
+</code></pre>
 
 <h2 id="so-o-file">Sơ đồ file<a class="headerlink" href="#so-o-file" title="Permanent link">#</a></h2>
-<pre class="code"><code>esp-iot-basic
+<pre><code>esp-iot-basic
     |-- Makefile
     |-- main.c
     |-- rf_init.c
-    `-- user_config.h</code></pre>
-
+    `-- user_config.h
+</code></pre>
 
 <ul>
 <li><code>Makefile</code> Giúp cho công cụ <code>make</code> thực hiện việc biên dịch dự án một cách tự động</li>
@@ -615,7 +615,7 @@ cd esp-iot-basic &amp;&amp; make</code></pre>
 <li><code>user_config.h</code> Khi biên dịch, SDK sẽ <code>include</code> file này, bạn có thể để file trống không nội dung.</li>
 </ul>
 <h3 id="makefile">Makefile<a class="headerlink" href="#makefile" title="Permanent link">#</a></h3>
-<pre class="code"><code class="language-Makefile">#esp-iot-basic/Makefile
+<pre><code class="Makefile">#esp-iot-basic/Makefile
 XTENSA    ?= 
 SDK_BASE  ?= /tools/esp8266/sdk/ESP8266_NONOS_SDK 
 ESPTOOL   ?= /tools/esp8266/esptool/esptool.py
@@ -661,14 +661,14 @@ flash:
                    0x00000 main0x00000.bin \
                    0x10000 main0x10000.bin \
                    0x3fc000 $(SDK_BASE)/bin/esp_init_data_default.bin
-.PHONY: all clean flash</code></pre>
-
+.PHONY: all clean flash
+</code></pre>
 
 <div class="admonition note">
 <p class="admonition-title">Lưu ý</p>
 <p>Nếu bạn sử dụng ví dụ này cho bản Unofficial Developement KIT trên Windows, với đường dẫn cài đặt mặc định là <code>C:\Espressif</code>, Makefile cần thay đổi như sau:</p>
 </div>
-<pre class="code"><code class="language-makefile">XTENSA    ?=
+<pre><code class="makefile">XTENSA    ?=
 SDK_BASE  ?= C:/Espressif/ESP8266_SDK
 ESPTOOL   ?= C:/Espressif/utils/ESP8266/esptool.py
 ...
@@ -679,8 +679,8 @@ flash:
           write_flash --flash_freq 40m --flash_mode dio --flash_size 32m \
           0x00000 main0x00000.bin \
           0x10000 main0x10000.bin \
-          0x3fc000 $(SDK_BASE)/bin/esp_init_data_default.bin</code></pre>
-
+          0x3fc000 $(SDK_BASE)/bin/esp_init_data_default.bin
+</code></pre>
 
 <p>Giải thích Makefile như sau:</p>
 <ul>
@@ -710,7 +710,7 @@ flash:
 </div>
 <p>Các bạn có thể tìm hiểu rõ hơn về Makefile bằng google với từ khóa <code>Makefile basic</code>. Makefile này như là 1 kịch bản đơn giản nhất để công cụ <code>make</code> thực hiện việc biên dịch mã nguồn <strong>C</strong> sang mã máy để nạp cho ESP8266. Mục đích để bản nắm rõ hơn về cách thức hoạt động của SDK, trình biên dịch. Các ví dụ sau này sẽ dùng Makefile phức tạp hơn, và được cung cấp kèm với các dự án mẫu tại https://github.com/esp8266vn</p>
 <h3 id="rf_initc">rf_init.c<a class="headerlink" href="#rf_initc" title="Permanent link">#</a></h3>
-<pre class="code"><code class="language-c">//esp-iot-basic/rf_init.c
+<pre><code class="c">//esp-iot-basic/rf_init.c
 #include &lt;stdio.h&gt;
 #include &quot;osapi.h&quot;
 #include &quot;user_interface.h&quot;
@@ -749,11 +749,11 @@ uint32_t __attribute__((weak)) user_rf_cal_sector_set(void)
             rf_cal_sec = 0;
             break;
     }
-    return rf_cal_sec;</code></pre>
-
+    return rf_cal_sec;
+</code></pre>
 
 <h3 id="mainc">main.c<a class="headerlink" href="#mainc" title="Permanent link">#</a></h3>
-<pre class="code"><code class="language-c">#include &lt;stdio.h&gt;
+<pre><code class="c">#include &lt;stdio.h&gt;
 #include &quot;osapi.h&quot;
 #include &quot;user_interface.h&quot;
 
@@ -767,19 +767,20 @@ void app_init()
 void user_init(void)
 {
     system_init_done_cb(app_init);
-}</code></pre>
+}
 
+</code></pre>
 
 <h2 id="bien-dich">Biên dịch<a class="headerlink" href="#bien-dich" title="Permanent link">#</a></h2>
 <p>Thực hiện biên dịch dự án</p>
-<pre class="code"><code class="language-bash">cd esp-iot-basic
+<pre><code class="bash">cd esp-iot-basic
 make clean
 make
-make flash</code></pre>
-
+make flash
+</code></pre>
 
 <p>Màn hình Terminal kết thúc như sau là đã hoàn thành việc ghi vào ESP8266:</p>
-<pre class="code"><code class="language-bash">esptool.py v1.2-dev
+<pre><code class="bash">esptool.py v1.2-dev
 Connecting...
 Running Cesanta flasher stub...
 Flash params set to 0x0240
@@ -789,14 +790,15 @@ Writing 196608 @ 0x10000... 196608 (100 %)
 Wrote 196608 bytes at 0x10000 in 4.7 seconds (334.5 kbit/s)...
 Writing 4096 @ 0x3fc000... 4096 (100 %)
 Wrote 4096 bytes at 0x3fc000 in 0.1 seconds (320.4 kbit/s)...
-Leaving...</code></pre>
-
+Leaving...
+</code></pre>
 
 <h2 id="ket-qua">Kết quả<a class="headerlink" href="#ket-qua" title="Permanent link">#</a></h2>
 <p>Mở cổng COM bằng bất kỳ phần mềm nào hỗ trợ. Windows có thể sử dụng teraterm, putty; MacOS/OSX, Linux thì sử dụng screen, minicom. Sau khi kết nối xong, bấm nút RESET trên board phát triển, bạn sẽ nhận được 1 loạt các ký tự lạ đầu tiên. Đó là các ký tự do các module của SDK sinh ra, nhưng trước khi ứng dụng mẫu cấu hình đúng tốc độ Baud:</p>
-<pre class="code"><code class="language-bash">...
+<pre><code class="bash">...
 hello world
-scandone</code></pre>
+scandone
+</code></pre>
               
             </div>
           </div>

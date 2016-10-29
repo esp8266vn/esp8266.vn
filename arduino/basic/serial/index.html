@@ -592,15 +592,15 @@
 </div>
 <p>Cả đối tượng <code>Serial</code> và <code>Serial1</code> hỗ trợ 5, 6, 7, 8 bits dữ liệu, odd (O), even (E), và no (N) parity, và 1 hay 2 bits stop. Để cấu hình các mode trên, gọi <code>Serial.begin(baudrate, SERIAL_8N1)</code>, <code>Serial.begin(baudrate, SERIAL_6E2)</code>, v.v..</p>
 <p>Một phương thức được hiện thực trên cả 2 <code>Serial</code> và <code>Serial1</code> để lấy baud rate hiện tại như sau: <code>Serial.baudRate()</code>, <code>Serial1.baudRate()</code> trả về một số <code>int</code> của tốc độ Baud hiện tại. Ví dụ</p>
-<pre class="code"><code class="language-cpp">// Set Baud rate 57600
+<pre><code class="cpp">// Set Baud rate 57600
 Serial.begin(57600);
 
 // Kiểm tra baud rate hiện tại
 int br = Serial.baudRate();
 
 // sẽ xuất ra &quot;Serial is 57600 bps&quot;
-Serial.printf(&quot;Serial is %d bps&quot;, br);</code></pre>
-
+Serial.printf(&quot;Serial is %d bps&quot;, br);
+</code></pre>
 
 <h2 id="software-serial">Software Serial<a class="headerlink" href="#software-serial" title="Permanent link">#</a></h2>
 <p>Ngoài ra, các Contributor Team ESP8266 Arduino cũng hoàn thiện thư viện <a href="https://github.com/esp8266/Arduino/blob/master/doc/libraries.md#softwareserial">Software Serial</a> cho ESP8266, xem <a href="https://github.com/plerup/espsoftwareserial/pull/22">pull request</a>.    </p>

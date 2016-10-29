@@ -583,15 +583,15 @@
 <p>Điều khác biệt nhất là chuỗi dữ liệu định nghĩa sẵn này không được không được gộp chung. Nếu bạn đặt chuỗi trong <code>F("")</code> và/hoặc trong <code>PSTR("")</code> sẽ chiếm dụng bộ nhớ cho mỗi instance của mã. Cho nên bạn cần tự quản lý những chuỗi string trùng.</p>
 </div>
 <p>Một số macro hỗ trợ có thể dễ dàng sử dụng <code>const PROGMEM</code> để có thể gọi  từ <code>__FlashStringHelper</code> hàm <code>FPSTR()</code>. </p>
-<pre class="code"><code class="language-c++">String response1;
+<pre><code class="c++">String response1;
 response1 += F(&quot;http:&quot;);
 ...
 String response2;
-response2 += F(&quot;http:&quot;);</code></pre>
-
+response2 += F(&quot;http:&quot;);
+</code></pre>
 
 <p>using FPSTR would become&hellip;</p>
-<pre class="code"><code class="language-c++">const char HTTP[] PROGMEM = &quot;http:&quot;;
+<pre><code class="c++">const char HTTP[] PROGMEM = &quot;http:&quot;;
 ...
 {
     String response1;
@@ -599,7 +599,8 @@ response2 += F(&quot;http:&quot;);</code></pre>
     ...
     String response2;
     response2 += FPSTR(HTTP);
-}</code></pre>
+}
+</code></pre>
               
             </div>
           </div>

@@ -581,8 +581,8 @@
 <p>ESP8266 có duy nhất 1 chân ADC, chúng ta có thể dùng để đọc điện áp bên ngoài, hay đọc điện áp VCC.</p>
 <p>Để đọc điện áp bên ngoài bằng chân ADC, sử dụng hàm <code>analogRead(A0)</code>. Điện áp chấp nhận ở mức <code>0 — 1.0V</code>.</p>
 <p>Để đọc điện áp cấp (VCC) cho module, sử dụng <code>ESP.getVcc()</code> và chân ADC bên ngoài phải để hở. Đồng thời phải cấu hình dòng lệnh sau trong sketch:</p>
-<pre class="code"><code class="language-c++">ADC_MODE(ADC_VCC);</code></pre>
-
+<pre><code class="c++">ADC_MODE(ADC_VCC);
+</code></pre>
 
 <p>Dòng lệnh này có thể bất kỳ đâu, ở phía ngoài một hàm - có thể coi như ngang ngửa với dòng <code>#include</code> trong sketch.</p>
 <h2 id="ngo-ra-analog">Ngõ ra Analog<a class="headerlink" href="#ngo-ra-analog" title="Permanent link">#</a></h2>

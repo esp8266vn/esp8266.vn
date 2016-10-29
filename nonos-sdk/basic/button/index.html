@@ -588,21 +588,21 @@
 <p>Nhấn nút (GPIO0)thì chớp tắt đèn LED (GPIO6)</p>
 </div>
 <h2 id="lay-du-an-ve-tu-github">Lấy dự án về từ Github:<a class="headerlink" href="#lay-du-an-ve-tu-github" title="Permanent link">#</a></h2>
-<pre class="code"><code>git clone https://github.com/esp8266vn/esp-iot-button.git
+<pre><code>git clone https://github.com/esp8266vn/esp-iot-button.git
 cd eps-iot-button
-make</code></pre>
-
+make
+</code></pre>
 
 <h2 id="so-o-file">Sơ đồ file<a class="headerlink" href="#so-o-file" title="Permanent link">#</a></h2>
-<pre class="code"><code>esp-iot-button
+<pre><code>esp-iot-button
     |-- Makefile
     |-- main.c
     |-- rf_init.c
-    `-- user_config.h</code></pre>
-
+    `-- user_config.h
+</code></pre>
 
 <h2 id="ma-nguon">Mã nguồn<a class="headerlink" href="#ma-nguon" title="Permanent link">#</a></h2>
-<pre class="code"><code class="language-c">//esp-button/main.c
+<pre><code class="c">//esp-button/main.c
 #include &quot;osapi.h&quot;
 #include &quot;user_interface.h&quot;
 #include &quot;gpio.h&quot;
@@ -657,8 +657,8 @@ void key_intr_handler(void *args)
     WRITE_PERI_REG(RTC_GPIO_OUT, (READ_PERI_REG(RTC_GPIO_OUT) &amp; (uint32_t)0xfffffffe) | (uint32_t)(led_value &amp; 1));
   }
   GPIO_REG_WRITE(GPIO_STATUS_W1TC_ADDRESS, BIT(BTN_PIN));  //Xóa ngắt GPIO
-}</code></pre>
-
+}
+</code></pre>
 
 <p>Nút nhấn sẽ giúp việc ESP8266 khởi động một hành động nào đó khi cần thiết. Trong nhiều ứng dụng chúng ta hầu như đều cần những kích hoạt từ bên ngoài. Xuyên suốt cuốn sách này, sẽ dùng nút nhấn để kích hoạt chạy các ứng dụng mẫu cũng như đèn LED để thông báo các trạng thái. Trong phần này, nhấn nút đèn LED sẽ chuyển trạng thái (từ sáng -&gt; tắt và ngược lại). </p>
 <p>Đây là ví dụ đơn giản, trong thực tế việc xử lý nút nhấn khá phiền phức. Bởi vì nút nhấn vật lý khi được nhấn sẽ tạo ra hàng loạt các xung lên xuống (nhiễu, bouncing&hellip;). Thường thì chỉ cần đảm bảo mức Logic của chân đo được đã được giữ ổn định trong khoảng 100 mili giây là được xem đã ổn định. </p>

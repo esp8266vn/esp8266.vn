@@ -623,14 +623,14 @@
 <li>Mở <code>console</code> và cd đến thư mục Arduino. Nó có thể là thư mục <em>sketchbook</em> (thường là <code>&lt;Documents&gt;/Arduino</code>), hay thư mục của Ứng dụng Arduino, tùy bạn chọn.</li>
 <li>Clone repository này đến thư mục <code>hardware/esp8266com/esp8266</code>. Hoặc bạn có thể clone vào nơi nào đó và tạo symlink bằng <code>ln -s</code>, nếu Hệ điều hành hỗ trợ.</li>
 </ul>
-<pre class="code"><code class="language-bash">cd hardware
+<pre><code class="bash">cd hardware
 mkdir esp8266com
 cd esp8266com
-git clone https://github.com/esp8266/Arduino.git esp8266</code></pre>
-
+git clone https://github.com/esp8266/Arduino.git esp8266
+</code></pre>
 
 <p>Cấu trúc dự án sau khi bạn thực hiện xong:</p>
-<pre class="code"><code class="language-bash">Arduino
+<pre><code class="bash">Arduino
     |- hardware
     |- esp8266com
         |- esp8266
@@ -646,15 +646,15 @@ git clone https://github.com/esp8266/Arduino.git esp8266</code></pre>
             |- programmers.txt
             |- README.md
             |- boards.txt
-            `- LICENSE</code></pre>
-
+            `- LICENSE
+</code></pre>
 
 <ul>
 <li>Tải binary tools</li>
 </ul>
-<pre class="code"><code class="language-bash">cd esp8266/tools
-python get.py</code></pre>
-
+<pre><code class="bash">cd esp8266/tools
+python get.py
+</code></pre>
 
 <ul>
 <li>Khởi động lại Arduino</li>
