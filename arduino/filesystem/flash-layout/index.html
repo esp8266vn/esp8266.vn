@@ -434,11 +434,27 @@
             </div>
         
             <li class="">
-                <a style="padding-left:70px;" class="" href="../../arduino-fota/" id="Cập nhật Firmware (FOTA)">  Cập nhật Firmware (FOTA) </a>
+                <a style="padding-left:70px;" class=""  id="Cập nhật Firmware (FOTA)" onclick="showChildren('ESP8266 ArduinoGiới thiệuCơ bảnThư việnFilesystemCập nhật Firmware (FOTA)')"> <i class="fa fa-plus-square" style="padding-left:5px;font-size:13px;"></i>  Cập nhật Firmware (FOTA) </a>
                 <!--  -->
             </li>
             
             <div style="display:none" id="hidden_ESP8266 ArduinoGiới thiệuCơ bảnThư việnFilesystemCập nhật Firmware (FOTA)">
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../ota/arduino-fota/" id="Giới thiệu OTA">Giới thiệu OTA </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../ota/using-arduino-ide/" id="Sử dụng Arduino IDE">Sử dụng Arduino IDE </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../ota/using-web-browser/" id="Sử dụng trình duyệt">Sử dụng trình duyệt </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../ota/using-http-server/" id="Sử dụng HTTP Server">Sử dụng HTTP Server </a>
+                </li>
             
             </div>
         
@@ -572,8 +588,295 @@
             <div class="section">
               
                 <div class="toc">
-<ul></ul>
+<ul>
+<li><a href="#flash-layout">Flash layout</a></li>
+<li><a href="#uploading-files-to-file-system">Uploading files to file system</a></li>
+<li><a href="#file-system-object-spiffs">File system object (SPIFFS)</a><ul>
+<li><a href="#begin">begin</a></li>
+<li><a href="#end">end</a></li>
+<li><a href="#format">format</a></li>
+<li><a href="#open">open</a></li>
+<li><a href="#exists">exists</a></li>
+<li><a href="#opendir">openDir</a></li>
+<li><a href="#remove">remove</a></li>
+<li><a href="#rename">rename</a></li>
+<li><a href="#info">info</a></li>
+</ul>
+</li>
+<li><a href="#filesystem-information-structure">Filesystem information structure</a></li>
+<li><a href="#directory-object-dir">Directory object (Dir)</a></li>
+<li><a href="#file-object">File object</a><ul>
+<li><a href="#seek">seek</a></li>
+<li><a href="#position">position</a></li>
+<li><a href="#size">size</a></li>
+<li><a href="#name">name</a></li>
+<li><a href="#close">close</a></li>
+</ul>
+</li>
+</ul>
 </div>
+<h2 id="flash-layout">Flash layout<a class="headerlink" href="#flash-layout" title="Permanent link">#</a></h2>
+<p>Even though file system is stored on the same flash chip as the program, programming new sketch will not modify file system contents. This allows to use file system to store sketch data, configuration files, or content for Web server.</p>
+<p>The following diagram illustrates flash layout used in Arduino environment:</p>
+<pre><code>|--------------|-------|---------------|--|--|--|--|--|
+^              ^       ^               ^     ^
+Sketch    OTA update   File system   EEPROM  WiFi config (SDK)
+</code></pre>
+<p>File system size depends on the flash chip size. Depending on the board which is selected in IDE, you have the following options for flash size:</p>
+<table>
+<thead>
+<tr>
+<th>Board</th>
+<th>Flash chip size, bytes</th>
+<th>File system size, bytes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Generic module</td>
+<td>512k</td>
+<td>64k, 128k</td>
+</tr>
+<tr>
+<td>Generic module</td>
+<td>1M</td>
+<td>64k, 128k, 256k, 512k</td>
+</tr>
+<tr>
+<td>Generic module</td>
+<td>2M</td>
+<td>1M</td>
+</tr>
+<tr>
+<td>Generic module</td>
+<td>4M</td>
+<td>3M</td>
+</tr>
+<tr>
+<td>Adafruit HUZZAH</td>
+<td>4M</td>
+<td>1M, 3M</td>
+</tr>
+<tr>
+<td>ESPresso Lite 1.0</td>
+<td>4M</td>
+<td>1M, 3M</td>
+</tr>
+<tr>
+<td>ESPresso Lite 2.0</td>
+<td>4M</td>
+<td>1M, 3M</td>
+</tr>
+<tr>
+<td>NodeMCU 0.9</td>
+<td>4M</td>
+<td>1M, 3M</td>
+</tr>
+<tr>
+<td>NodeMCU 1.0</td>
+<td>4M</td>
+<td>1M, 3M</td>
+</tr>
+<tr>
+<td>Olimex MOD-WIFI-ESP8266(-DEV)</td>
+<td>2M</td>
+<td>1M</td>
+</tr>
+<tr>
+<td>SparkFun Thing</td>
+<td>512k</td>
+<td>64k</td>
+</tr>
+<tr>
+<td>SweetPea ESP-210</td>
+<td>4M</td>
+<td>1M, 3M</td>
+</tr>
+<tr>
+<td>WeMos D1 &amp; D1 mini</td>
+<td>4M</td>
+<td>1M, 3M</td>
+</tr>
+<tr>
+<td>ESPDuino</td>
+<td>4M</td>
+<td>1M, 3M</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> to use any of file system functions in the sketch, add the following include to the sketch:</p>
+<pre><code class="c++">#include &quot;FS.h&quot;
+</code></pre>
+
+<h2 id="uploading-files-to-file-system">Uploading files to file system<a class="headerlink" href="#uploading-files-to-file-system" title="Permanent link">#</a></h2>
+<p><em>ESP8266FS</em> is a tool which integrates into the Arduino IDE. It adds a menu item to <em>Tools</em> menu for uploading the contents of sketch data directory into ESP8266 flash file system.</p>
+<ul>
+<li>Download the tool: https://github.com/esp8266/arduino-esp8266fs-plugin/releases/download/0.2.0/ESP8266FS-0.2.0.zip.</li>
+<li>In your Arduino sketchbook directory, create <code>tools</code> directory if it doesn&rsquo;t exist yet</li>
+<li>Unpack the tool into <code>tools</code> directory (the path will look like <code>&lt;home_dir&gt;/Arduino/tools/ESP8266FS/tool/esp8266fs.jar</code>)</li>
+<li>Restart Arduino IDE</li>
+<li>Open a sketch (or create a new one and save it)</li>
+<li>Go to sketch directory (choose Sketch &gt; Show Sketch Folder)</li>
+<li>Create a directory named <code>data</code> and any files you want in the file system there</li>
+<li>Make sure you have selected a board, port, and closed Serial Monitor</li>
+<li>Select Tools &gt; ESP8266 Sketch Data Upload. This should start uploading the files into ESP8266 flash file system. When done, IDE status bar will display <code>SPIFFS Image Uploaded</code> message.</li>
+</ul>
+<h2 id="file-system-object-spiffs">File system object (SPIFFS)<a class="headerlink" href="#file-system-object-spiffs" title="Permanent link">#</a></h2>
+<h3 id="begin">begin<a class="headerlink" href="#begin" title="Permanent link">#</a></h3>
+<pre><code class="c++">SPIFFS.begin()
+</code></pre>
+
+<p>This method mounts SPIFFS file system. It must be called before any other
+FS APIs are used. Returns <em>true</em> if file system was mounted successfully, false
+otherwise.</p>
+<h3 id="end">end<a class="headerlink" href="#end" title="Permanent link">#</a></h3>
+<pre><code class="c++">SPIFFS.end()
+</code></pre>
+
+<p>This method unmounts SPIFFS file system. Use this method before updating SPIFFS using OTA.</p>
+<h3 id="format">format<a class="headerlink" href="#format" title="Permanent link">#</a></h3>
+<pre><code class="c++">SPIFFS.format()
+</code></pre>
+
+<p>Formats the file system. May be called either before or after calling <code>begin</code>.
+Returns <em>true</em> if formatting was successful.</p>
+<h3 id="open">open<a class="headerlink" href="#open" title="Permanent link">#</a></h3>
+<pre><code class="c++">SPIFFS.open(path, mode)
+</code></pre>
+
+<p>Opens a file. <code>path</code> should be an absolute path starting with a slash
+(e.g. <code>/dir/filename.txt</code>). <code>mode</code> is a string specifying access mode. It can be
+one of &ldquo;r&rdquo;, &ldquo;w&rdquo;, &ldquo;a&rdquo;, &ldquo;r+&rdquo;, &ldquo;w+&rdquo;, &ldquo;a+&rdquo;. Meaning of these modes is the same as
+for <code>fopen</code> C function.</p>
+<pre><code>   r      Open text file for reading.  The stream is positioned at the
+          beginning of the file.
+
+   r+     Open for reading and writing.  The stream is positioned at the
+          beginning of the file.
+
+   w      Truncate file to zero length or create text file for writing.
+          The stream is positioned at the beginning of the file.
+
+   w+     Open for reading and writing.  The file is created if it does
+          not exist, otherwise it is truncated.  The stream is
+          positioned at the beginning of the file.
+
+   a      Open for appending (writing at end of file).  The file is
+          created if it does not exist.  The stream is positioned at the
+          end of the file.
+
+   a+     Open for reading and appending (writing at end of file).  The
+          file is created if it does not exist.  The initial file
+          position for reading is at the beginning of the file, but
+          output is always appended to the end of the file.
+</code></pre>
+<p>Returns <em>File</em> object. To check whether the file was opened successfully, use
+the boolean operator.</p>
+<pre><code class="c++">File f = SPIFFS.open(&quot;/f.txt&quot;, &quot;w&quot;);
+if (!f) {
+    Serial.println(&quot;file open failed&quot;);
+}
+</code></pre>
+
+<h3 id="exists">exists<a class="headerlink" href="#exists" title="Permanent link">#</a></h3>
+<pre><code class="c++">SPIFFS.exists(path)
+</code></pre>
+
+<p>Returns <em>true</em> if a file with given path exists, <em>false</em> otherwise.</p>
+<h3 id="opendir">openDir<a class="headerlink" href="#opendir" title="Permanent link">#</a></h3>
+<pre><code class="c++">SPIFFS.openDir(path)
+</code></pre>
+
+<p>Opens a directory given its absolute path. Returns a <em>Dir</em> object.</p>
+<h3 id="remove">remove<a class="headerlink" href="#remove" title="Permanent link">#</a></h3>
+<pre><code class="c++">SPIFFS.remove(path)
+</code></pre>
+
+<p>Deletes the file given its absolute path. Returns <em>true</em> if file was deleted successfully.</p>
+<h3 id="rename">rename<a class="headerlink" href="#rename" title="Permanent link">#</a></h3>
+<pre><code class="c++">SPIFFS.rename(pathFrom, pathTo)
+</code></pre>
+
+<p>Renames file from <code>pathFrom</code> to <code>pathTo</code>. Paths must be absolute. Returns <em>true</em>
+if file was renamed successfully.</p>
+<h3 id="info">info<a class="headerlink" href="#info" title="Permanent link">#</a></h3>
+<pre><code class="c++">FSInfo fs_info;
+SPIFFS.info(fs_info);
+</code></pre>
+
+<p>Fills <a href="#filesystem-information-structure">FSInfo structure</a> with information about
+the file system. Returns <code>true</code> is successful, <code>false</code> otherwise.</p>
+<h2 id="filesystem-information-structure">Filesystem information structure<a class="headerlink" href="#filesystem-information-structure" title="Permanent link">#</a></h2>
+<pre><code class="c++">struct FSInfo {
+    size_t totalBytes;
+    size_t usedBytes;
+    size_t blockSize;
+    size_t pageSize;
+    size_t maxOpenFiles;
+    size_t maxPathLength;
+};
+</code></pre>
+
+<p>This is the structure which may be filled using FS::info method.
+- <code>totalBytes</code> — total size of useful data on the file system
+- <code>usedBytes</code> — number of bytes used by files
+- <code>blockSize</code> — SPIFFS block size
+- <code>pageSize</code> — SPIFFS logical page size
+- <code>maxOpenFiles</code> — max number of files which may be open simultaneously
+- <code>maxPathLength</code> — max file name length (including one byte for zero termination)</p>
+<h2 id="directory-object-dir">Directory object (Dir)<a class="headerlink" href="#directory-object-dir" title="Permanent link">#</a></h2>
+<p>The purpose of <em>Dir</em> object is to iterate over files inside a directory.
+It provides three methods: <code>next()</code>, <code>fileName()</code>, and <code>openFile(mode)</code>.</p>
+<p>The following example shows how it should be used:</p>
+<pre><code class="c++">Dir dir = SPIFFS.openDir(&quot;/data&quot;);
+while (dir.next()) {
+    Serial.print(dir.fileName());
+    File f = dir.openFile(&quot;r&quot;);
+    Serial.println(f.size());
+}
+</code></pre>
+
+<p><code>dir.next()</code> returns true while there are files in the directory to iterate over.
+It must be called before calling <code>fileName</code> and <code>openFile</code> functions.</p>
+<p><code>openFile</code> method takes <em>mode</em> argument which has the same meaning as for <code>SPIFFS.open</code> function.</p>
+<h2 id="file-object">File object<a class="headerlink" href="#file-object" title="Permanent link">#</a></h2>
+<p><code>SPIFFS.open</code> and <code>dir.openFile</code> functions return a <em>File</em> object. This object
+supports all the functions of <em>Stream</em>, so you can use <code>readBytes</code>, <code>findUntil</code>,
+<code>parseInt</code>, <code>println</code>, and all other <em>Stream</em> methods.</p>
+<p>There are also some functions which are specific to <em>File</em> object.</p>
+<h3 id="seek">seek<a class="headerlink" href="#seek" title="Permanent link">#</a></h3>
+<pre><code class="c++">file.seek(offset, mode)
+</code></pre>
+
+<p>This function behaves like <code>fseek</code> C function. Depending on the value of <code>mode</code>,
+it moves current position in a file as follows:</p>
+<ul>
+<li>if <code>mode</code> is <code>SeekSet</code>, position is set to <code>offset</code> bytes from the beginning.</li>
+<li>if <code>mode</code> is <code>SeekCur</code>, current position is moved by <code>offset</code> bytes.</li>
+<li>if <code>mode</code> is <code>SeekEnd</code>, position is set to <code>offset</code> bytes from the end of the
+file.</li>
+</ul>
+<p>Returns <em>true</em> if position was set successfully.</p>
+<h3 id="position">position<a class="headerlink" href="#position" title="Permanent link">#</a></h3>
+<pre><code class="c++">file.position()
+</code></pre>
+
+<p>Returns the current position inside the file, in bytes.</p>
+<h3 id="size">size<a class="headerlink" href="#size" title="Permanent link">#</a></h3>
+<pre><code class="c++">file.size()
+</code></pre>
+
+<p>Returns file size, in bytes.</p>
+<h3 id="name">name<a class="headerlink" href="#name" title="Permanent link">#</a></h3>
+<pre><code class="c++">String name = file.name();
+</code></pre>
+
+<p>Returns file name, as <code>const char*</code>. Convert it to <em>String</em> for storage.</p>
+<h3 id="close">close<a class="headerlink" href="#close" title="Permanent link">#</a></h3>
+<pre><code class="c++">file.close()
+</code></pre>
+
+<p>Close the file. No other operations should be performed on <em>File</em> object after <code>close</code> function was called.</p>
               
             </div>
           </div>
@@ -581,7 +884,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../arduino-fota/" class="btn btn-neutral float-right" title="Cập nhật Firmware (FOTA)">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../ota/arduino-fota/" class="btn btn-neutral float-right" title="Giới thiệu OTA">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../../libraries/esp8266-wifi/" class="btn btn-neutral" title="ESP8266WiFi"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -617,7 +920,7 @@
         <span><a href="../../libraries/esp8266-wifi/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../arduino-fota/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../ota/arduino-fota/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div> -->

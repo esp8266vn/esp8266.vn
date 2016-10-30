@@ -8,7 +8,7 @@
   
   <meta name="author" content="Tuan PM">
   
-  <title>Nút nhấn - Internet Of Things (IoT) với ESP8266</title>
+  <title>Sử dụng HTTP Server - Internet Of Things (IoT) với ESP8266</title>
   
 
   <link rel="shortcut icon" href="../../../img/favicon.ico">
@@ -25,9 +25,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Nút nhấn";
-    var mkdocs_page_input_path = "nonos-sdk/basic/button.md";
-    var mkdocs_page_url = "/nonos-sdk/basic/button/";
+    var mkdocs_page_name = "Sử dụng HTTP Server";
+    var mkdocs_page_input_path = "arduino/ota/using-http-server.md";
+    var mkdocs_page_url = "/arduino/ota/using-http-server/";
   </script>
   
   <script src="../../../js/jquery-2.1.1.min.js"></script>
@@ -135,14 +135,14 @@
         
         </div>
     
-        <li class="current">
-            <a style="padding-left:50px;" class="current"  id="ESP8266 NONOS-SDK" onclick="showChildren('ESP8266 NONOS-SDK')"> <i class="fa fa-plus-square" style="padding-left:5px;font-size:13px;"></i> ESP8266 NONOS-SDK</a>
+        <li class="">
+            <a style="padding-left:50px;" class=""  id="ESP8266 NONOS-SDK" onclick="showChildren('ESP8266 NONOS-SDK')"> <i class="fa fa-plus-square" style="padding-left:5px;font-size:13px;"></i> ESP8266 NONOS-SDK</a>
         </li>
         
         <div style="display:none" id="hidden_ESP8266 NONOS-SDK">
         
             <li class="">
-                <a style="padding-left:70px;" class="" href="../../nonos-sdk/" id="Giới thiệu">  Giới thiệu </a>
+                <a style="padding-left:70px;" class="" href="../../../nonos-sdk/nonos-sdk/" id="Giới thiệu">  Giới thiệu </a>
                 <!--  -->
             </li>
             
@@ -150,59 +150,59 @@
             
             </div>
         
-            <li class="current">
-                <a style="padding-left:70px;" class="current"  id="Cơ bản" onclick="showChildren('ESP8266 NONOS-SDKGiới thiệuCơ bản')"> <i class="fa fa-plus-square" style="padding-left:5px;font-size:13px;"></i>  Cơ bản </a>
+            <li class="">
+                <a style="padding-left:70px;" class=""  id="Cơ bản" onclick="showChildren('ESP8266 NONOS-SDKGiới thiệuCơ bản')"> <i class="fa fa-plus-square" style="padding-left:5px;font-size:13px;"></i>  Cơ bản </a>
                 <!--  -->
             </li>
             
             <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bản">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../basic/" id="Cài đặt công cụ cần thiết">Cài đặt công cụ cần thiết </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/basic/basic/" id="Cài đặt công cụ cần thiết">Cài đặt công cụ cần thiết </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../compile-first-time/" id="Biên dịch dự án mẫu">Biên dịch dự án mẫu </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/basic/compile-first-time/" id="Biên dịch dự án mẫu">Biên dịch dự án mẫu </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../blink-led/" id="Bật tắt LED">Bật tắt LED </a>
-                </li>
-            
-                <li class="current">
-                    <a style="padding-left:90px;" class="current" href="./" id="Nút nhấn">Nút nhấn </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/basic/blink-led/" id="Bật tắt LED">Bật tắt LED </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../uart/" id="UART">UART </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/basic/button/" id="Nút nhấn">Nút nhấn </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../complex-makefile/" id="Makefile cho dự án phức tạp">Makefile cho dự án phức tạp </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/basic/uart/" id="UART">UART </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../task/" id="Task">Task </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/basic/complex-makefile/" id="Makefile cho dự án phức tạp">Makefile cho dự án phức tạp </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../wifi/" id="Wifi">Wifi </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/basic/task/" id="Task">Task </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../espconn/" id="ESPCONN">ESPCONN </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/basic/wifi/" id="Wifi">Wifi </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../mdns/" id="MDNS">MDNS </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/basic/espconn/" id="ESPCONN">ESPCONN </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../ntp/" id="NTP">NTP </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/basic/mdns/" id="MDNS">MDNS </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../save-to-flash/" id="Lưu dữ liệu vào Flash">Lưu dữ liệu vào Flash </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/basic/ntp/" id="NTP">NTP </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/basic/save-to-flash/" id="Lưu dữ liệu vào Flash">Lưu dữ liệu vào Flash </a>
                 </li>
             
             </div>
@@ -215,19 +215,19 @@
             <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfig">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../smartconfig/smartconfig/" id="ESP8266 Smartconfig">ESP8266 Smartconfig </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/smartconfig/smartconfig/" id="ESP8266 Smartconfig">ESP8266 Smartconfig </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../smartconfig/why-smartconfig/" id="Tại sao cần Smartconfig">Tại sao cần Smartconfig </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/smartconfig/why-smartconfig/" id="Tại sao cần Smartconfig">Tại sao cần Smartconfig </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../smartconfig/esptouch/" id="ESPTOUCH & AIRKISS">ESPTOUCH & AIRKISS </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/smartconfig/esptouch/" id="ESPTOUCH & AIRKISS">ESPTOUCH & AIRKISS </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../smartconfig/wps/" id="WPS">WPS </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/smartconfig/wps/" id="WPS">WPS </a>
                 </li>
             
             </div>
@@ -240,11 +240,11 @@
             <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTT">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../mqtt/what-is-mqtt/" id="Giao thức MQTT">Giao thức MQTT </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/mqtt/what-is-mqtt/" id="Giao thức MQTT">Giao thức MQTT </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../mqtt/mqtt-client/" id="ESP8266 MQTT Client">ESP8266 MQTT Client </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/mqtt/mqtt-client/" id="ESP8266 MQTT Client">ESP8266 MQTT Client </a>
                 </li>
             
             </div>
@@ -257,7 +257,7 @@
             <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP Client">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../http-client/http-client/" id="ESP8266 HTTP Client">ESP8266 HTTP Client </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/http-client/http-client/" id="ESP8266 HTTP Client">ESP8266 HTTP Client </a>
                 </li>
             
             </div>
@@ -270,7 +270,7 @@
             <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP ClientHTTP Server">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../http-server/http-server/" id="ESP8266 HTTP Server">ESP8266 HTTP Server </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/http-server/http-server/" id="ESP8266 HTTP Server">ESP8266 HTTP Server </a>
                 </li>
             
             </div>
@@ -283,7 +283,7 @@
             <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP ClientHTTP ServerFirmware Over The Air">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../fota/fota/" id="FOTA">FOTA </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/fota/fota/" id="FOTA">FOTA </a>
                 </li>
             
             </div>
@@ -296,7 +296,7 @@
             <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP ClientHTTP ServerFirmware Over The AirESP Now">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../esp-now/esp-now/" id="ESP Now">ESP Now </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/esp-now/esp-now/" id="ESP Now">ESP Now </a>
                 </li>
             
             </div>
@@ -309,7 +309,7 @@
             <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP ClientHTTP ServerFirmware Over The AirESP NowESP Mesh">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../esp-mesh/esp-mesh/" id="ESP Mesh">ESP Mesh </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/esp-mesh/esp-mesh/" id="ESP Mesh">ESP Mesh </a>
                 </li>
             
             </div>
@@ -322,7 +322,7 @@
             <div style="display:none" id="hidden_ESP8266 NONOS-SDKGiới thiệuCơ bảnSmartconfigMQTTHTTP ClientHTTP ServerFirmware Over The AirESP NowESP MeshCác dự án">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../projects/list/" id="Danh sách">Danh sách </a>
+                    <a style="padding-left:90px;" class="" href="../../../nonos-sdk/projects/list/" id="Danh sách">Danh sách </a>
                 </li>
             
             </div>
@@ -359,14 +359,14 @@
         
         </div>
     
-        <li class="">
-            <a style="padding-left:50px;" class=""  id="ESP8266 Arduino" onclick="showChildren('ESP8266 Arduino')"> <i class="fa fa-plus-square" style="padding-left:5px;font-size:13px;"></i> ESP8266 Arduino</a>
+        <li class="current">
+            <a style="padding-left:50px;" class="current"  id="ESP8266 Arduino" onclick="showChildren('ESP8266 Arduino')"> <i class="fa fa-plus-square" style="padding-left:5px;font-size:13px;"></i> ESP8266 Arduino</a>
         </li>
         
         <div style="display:none" id="hidden_ESP8266 Arduino">
         
             <li class="">
-                <a style="padding-left:70px;" class="" href="../../../arduino/arduino/" id="Giới thiệu">  Giới thiệu </a>
+                <a style="padding-left:70px;" class="" href="../../arduino/" id="Giới thiệu">  Giới thiệu </a>
                 <!--  -->
             </li>
             
@@ -382,27 +382,27 @@
             <div style="display:none" id="hidden_ESP8266 ArduinoGiới thiệuCơ bản">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../../arduino/basic/install/" id="Cài đặt">Cài đặt </a>
+                    <a style="padding-left:90px;" class="" href="../../basic/install/" id="Cài đặt">Cài đặt </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../../arduino/basic/digital/" id="Digital">Digital </a>
+                    <a style="padding-left:90px;" class="" href="../../basic/digital/" id="Digital">Digital </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../../arduino/basic/analog/" id="Analog">Analog </a>
+                    <a style="padding-left:90px;" class="" href="../../basic/analog/" id="Analog">Analog </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../../arduino/basic/timming-delay/" id="Thời gian & Delay">Thời gian & Delay </a>
+                    <a style="padding-left:90px;" class="" href="../../basic/timming-delay/" id="Thời gian & Delay">Thời gian & Delay </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../../arduino/basic/serial/" id="Serial">Serial </a>
+                    <a style="padding-left:90px;" class="" href="../../basic/serial/" id="Serial">Serial </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../../arduino/basic/progmem/" id="Progmem">Progmem </a>
+                    <a style="padding-left:90px;" class="" href="../../basic/progmem/" id="Progmem">Progmem </a>
                 </li>
             
             </div>
@@ -415,7 +415,7 @@
             <div style="display:none" id="hidden_ESP8266 ArduinoGiới thiệuCơ bảnThư viện">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../../arduino/libraries/esp8266-wifi/" id="ESP8266WiFi">ESP8266WiFi </a>
+                    <a style="padding-left:90px;" class="" href="../../libraries/esp8266-wifi/" id="ESP8266WiFi">ESP8266WiFi </a>
                 </li>
             
             </div>
@@ -428,38 +428,38 @@
             <div style="display:none" id="hidden_ESP8266 ArduinoGiới thiệuCơ bảnThư việnFilesystem">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../../arduino/filesystem/flash-layout/" id="Flash Layout">Flash Layout </a>
+                    <a style="padding-left:90px;" class="" href="../../filesystem/flash-layout/" id="Flash Layout">Flash Layout </a>
                 </li>
             
             </div>
         
-            <li class="">
-                <a style="padding-left:70px;" class=""  id="Cập nhật Firmware (FOTA)" onclick="showChildren('ESP8266 ArduinoGiới thiệuCơ bảnThư việnFilesystemCập nhật Firmware (FOTA)')"> <i class="fa fa-plus-square" style="padding-left:5px;font-size:13px;"></i>  Cập nhật Firmware (FOTA) </a>
+            <li class="current">
+                <a style="padding-left:70px;" class="current"  id="Cập nhật Firmware (FOTA)" onclick="showChildren('ESP8266 ArduinoGiới thiệuCơ bảnThư việnFilesystemCập nhật Firmware (FOTA)')"> <i class="fa fa-plus-square" style="padding-left:5px;font-size:13px;"></i>  Cập nhật Firmware (FOTA) </a>
                 <!--  -->
             </li>
             
             <div style="display:none" id="hidden_ESP8266 ArduinoGiới thiệuCơ bảnThư việnFilesystemCập nhật Firmware (FOTA)">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../../arduino/ota/arduino-fota/" id="Giới thiệu OTA">Giới thiệu OTA </a>
+                    <a style="padding-left:90px;" class="" href="../arduino-fota/" id="Giới thiệu OTA">Giới thiệu OTA </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../../arduino/ota/using-arduino-ide/" id="Sử dụng Arduino IDE">Sử dụng Arduino IDE </a>
+                    <a style="padding-left:90px;" class="" href="../using-arduino-ide/" id="Sử dụng Arduino IDE">Sử dụng Arduino IDE </a>
                 </li>
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../../arduino/ota/using-web-browser/" id="Sử dụng trình duyệt">Sử dụng trình duyệt </a>
+                    <a style="padding-left:90px;" class="" href="../using-web-browser/" id="Sử dụng trình duyệt">Sử dụng trình duyệt </a>
                 </li>
             
-                <li class="">
-                    <a style="padding-left:90px;" class="" href="../../../arduino/ota/using-http-server/" id="Sử dụng HTTP Server">Sử dụng HTTP Server </a>
+                <li class="current">
+                    <a style="padding-left:90px;" class="current" href="./" id="Sử dụng HTTP Server">Sử dụng HTTP Server </a>
                 </li>
             
             </div>
         
             <li class="">
-                <a style="padding-left:70px;" class="" href="../../../arduino/arduino-esp8266-hardware/" id="Phần cứng hỗ trợ">  Phần cứng hỗ trợ </a>
+                <a style="padding-left:70px;" class="" href="../../arduino-esp8266-hardware/" id="Phần cứng hỗ trợ">  Phần cứng hỗ trợ </a>
                 <!--  -->
             </li>
             
@@ -475,7 +475,7 @@
             <div style="display:none" id="hidden_ESP8266 ArduinoGiới thiệuCơ bảnThư việnFilesystemCập nhật Firmware (FOTA)Phần cứng hỗ trợCác dự án">
             
                 <li class="">
-                    <a style="padding-left:90px;" class="" href="../../../arduino/projects/list/" id="Danh sách">Danh sách </a>
+                    <a style="padding-left:90px;" class="" href="../../projects/list/" id="Danh sách">Danh sách </a>
                 </li>
             
             </div>
@@ -565,15 +565,15 @@
     
       
         
-          <li>ESP8266 NONOS-SDK &raquo;</li>
+          <li>ESP8266 Arduino &raquo;</li>
         
       
         
-          <li>Cơ bản &raquo;</li>
+          <li>Cập nhật Firmware (FOTA) &raquo;</li>
         
       
     
-    <li>Nút nhấn</li>
+    <li>Sử dụng HTTP Server</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -587,98 +587,127 @@
           <div role="main">
             <div class="section">
               
-                <div class="toc">
+                <h1 id="http-server">HTTP Server<a class="headerlink" href="#http-server" title="Permanent link">#</a></h1>
+<p><code>ESPhttpUpdate</code> class can check for updates and download a binary file from HTTP web server.
+It is possible to download updates from every IP or domain address on the network or Internet.</p>
+<h4 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h4>
 <ul>
-<li><a href="#nut-nhan">Nút nhấn</a><ul>
-<li><a href="#lay-du-an-ve-tu-github">Lấy dự án về từ Github:</a></li>
-<li><a href="#so-o-file">Sơ đồ file</a></li>
-<li><a href="#ma-nguon">Mã nguồn</a></li>
+<li>web server</li>
 </ul>
-</li>
-</ul>
-</div>
-<h1 id="nut-nhan">Nút nhấn<a class="headerlink" href="#nut-nhan" title="Permanent link">#</a></h1>
-<p>Tổ chức file căn cứ theo bài <a href="../compile-first-time/">Biên dịch dự án đầu tiên</a>, bao gồm các file <code>Makefile</code>, <code>main.c</code>, <code>rf_init.c</code>, <code>user_config.h</code>. Tuy nhiên chỉ thay đổi nội dung file <code>main.c</code></p>
-<div class="admonition note">
-<p class="admonition-title">Nội dung</p>
-<p>Nhấn nút (GPIO0)thì chớp tắt đèn LED (GPIO6)</p>
-</div>
-<h2 id="lay-du-an-ve-tu-github">Lấy dự án về từ Github:<a class="headerlink" href="#lay-du-an-ve-tu-github" title="Permanent link">#</a></h2>
-<pre><code>git clone https://github.com/esp8266vn/esp-iot-button.git
-cd eps-iot-button
-make
+<h4 id="arduino-code">Arduino code<a class="headerlink" href="#arduino-code" title="Permanent link">#</a></h4>
+<h5 id="simple-updater">Simple updater<a class="headerlink" href="#simple-updater" title="Permanent link">#</a></h5>
+<p>Simple updater downloads the file every time the function is called.</p>
+<pre><code class="cpp">ESPhttpUpdate.update(&quot;192.168.0.2&quot;, 80, &quot;/arduino.bin&quot;);
 </code></pre>
 
-<h2 id="so-o-file">Sơ đồ file<a class="headerlink" href="#so-o-file" title="Permanent link">#</a></h2>
-<pre><code>esp-iot-button
-    |-- Makefile
-    |-- main.c
-    |-- rf_init.c
-    `-- user_config.h
-</code></pre>
-
-<h2 id="ma-nguon">Mã nguồn<a class="headerlink" href="#ma-nguon" title="Permanent link">#</a></h2>
-<pre><code class="c">//esp-button/main.c
-#include &quot;osapi.h&quot;
-#include &quot;user_interface.h&quot;
-#include &quot;gpio.h&quot;
-#define BTN_PIN 0 //GPIO0 
-static int led_value = 0;
-void key_intr_handler(void *args); //Khai báo `prototype` 
-void app_init()
-{
-    //Cấu hình chân GPIO16 là ngõ ra, điều khiển đèn LED
-  WRITE_PERI_REG(PAD_XPD_DCDC_CONF, (READ_PERI_REG(PAD_XPD_DCDC_CONF) &amp; 0xffffffbc) | (uint32_t)0x1);
-
-  //Cấu hình chân GPIO16 là ngõ ra, điều khiển đèn LED
-  WRITE_PERI_REG(RTC_GPIO_CONF, (READ_PERI_REG(RTC_GPIO_CONF) &amp; (uint32_t)0xfffffffe) | (uint32_t)0x0);
-  WRITE_PERI_REG(RTC_GPIO_ENABLE,(READ_PERI_REG(RTC_GPIO_ENABLE) &amp; (uint32_t)0xfffffffe) | (uint32_t)0x1);
-
-  //Cấu hình `key_intr_handler` là hàm xử lý ngắt GPIO
-  ETS_GPIO_INTR_ATTACH(key_intr_handler, NULL);
-
-  //Vô hiệu hóa ngắt GPIO để việc cấu hình không ảnh hưởng
-  ETS_GPIO_INTR_DISABLE();
-
-  //Lựa chọn chức năng cho GPIO0 sử dụng In/Out Logic
-  PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO0_U, FUNC_GPIO0);
-
-  //Cấu hình GPIO0 hoạt động như ngõ vào (Input)
-  gpio_output_set(0, 0, 0, GPIO_ID_PIN(BTN_PIN));
-  gpio_register_set(GPIO_PIN_ADDR(BTN_PIN), GPIO_PIN_INT_TYPE_SET(GPIO_PIN_INTR_DISABLE)
-                      | GPIO_PIN_PAD_DRIVER_SET(GPIO_PAD_DRIVER_DISABLE)
-                      | GPIO_PIN_SOURCE_SET(GPIO_AS_PIN_SOURCE));
-
-  //Xóa cờ ngắt GPIO
-  GPIO_REG_WRITE(GPIO_STATUS_W1TC_ADDRESS, BIT(BTN_PIN));
-
-  //Cấu hình ngắt GPIO0 cạnh xuống
-  gpio_pin_intr_state_set(GPIO_ID_PIN(BTN_PIN), GPIO_PIN_INTR_NEGEDGE);
-
-  //Cho phép ngắt GPIO
-  ETS_GPIO_INTR_ENABLE();
-}
-void user_init(void)
-{
-  system_init_done_cb(app_init);
-}
-void key_intr_handler(void *args)
-{
-  //Đọc trạng thái ngắt GPIO hiện tại
-  uint32 gpio_status = GPIO_REG_READ(GPIO_STATUS_ADDRESS);
-  if (gpio_status &amp; BIT(BTN_PIN)) { //Chắc chắn rằng ngắt xuất phát từ GPIO0
-    //Ghi giá trị đảo để hiển thị LED
-    led_value ^= 0x01;
-    led_value ^= 0x01;
-    WRITE_PERI_REG(RTC_GPIO_OUT, (READ_PERI_REG(RTC_GPIO_OUT) &amp; (uint32_t)0xfffffffe) | (uint32_t)(led_value &amp; 1));
-  }
-  GPIO_REG_WRITE(GPIO_STATUS_W1TC_ADDRESS, BIT(BTN_PIN));  //Xóa ngắt GPIO
+<h2 id="advanced-updater">Advanced updater<a class="headerlink" href="#advanced-updater" title="Permanent link">#</a></h2>
+<p>Its possible to point update function to a script at the server.
+If version string argument is given, it will be sent to the server.
+Server side script can use this to check if update should be performed.</p>
+<p>Server side script can respond as follows:
+- response code 200, and send the firmware image,
+- or response code 304 to notify ESP that no update is required.</p>
+<pre><code class="cpp">t_httpUpdate_return ret = ESPhttpUpdate.update(&quot;192.168.0.2&quot;, 80, &quot;/esp/update/arduino.php&quot;, &quot;optional current version string here&quot;);
+switch(ret) {
+    case HTTP_UPDATE_FAILED:
+        Serial.println(&quot;[update] Update failed.&quot;);
+        break;
+    case HTTP_UPDATE_NO_UPDATES:
+        Serial.println(&quot;[update] Update no Update.&quot;);
+        break;
+    case HTTP_UPDATE_OK:
+        Serial.println(&quot;[update] Update ok.&quot;); // may not called we reboot the ESP
+        break;
 }
 </code></pre>
 
-<p>Nút nhấn sẽ giúp việc ESP8266 khởi động một hành động nào đó khi cần thiết. Trong nhiều ứng dụng chúng ta hầu như đều cần những kích hoạt từ bên ngoài. Xuyên suốt cuốn sách này, sẽ dùng nút nhấn để kích hoạt chạy các ứng dụng mẫu cũng như đèn LED để thông báo các trạng thái. Trong phần này, nhấn nút đèn LED sẽ chuyển trạng thái (từ sáng -&gt; tắt và ngược lại). </p>
-<p>Đây là ví dụ đơn giản, trong thực tế việc xử lý nút nhấn khá phiền phức. Bởi vì nút nhấn vật lý khi được nhấn sẽ tạo ra hàng loạt các xung lên xuống (nhiễu, bouncing&hellip;). Thường thì chỉ cần đảm bảo mức Logic của chân đo được đã được giữ ổn định trong khoảng 100 mili giây là được xem đã ổn định. </p>
-<p>Ngoài cách dùng ngắt để xác định nút nhấn có được nhấn hay không - cách này sẽ tiết kiệm tài nguyên tính toán của CPU, nó chỉ được gọi khi có sự kiện sảy ra, thì còn một cách nữa là hỏi vòng: Cách này đỏi hỏi CPU liên tục kiểm tra xem mức Logic của nút nhấn. Đồng thời việc đáp ứng cũng không nhanh bằng sử dụng ngắt. </p>
+<h2 id="server-request-handling">Server request handling<a class="headerlink" href="#server-request-handling" title="Permanent link">#</a></h2>
+<h3 id="simple-updater_1">Simple updater<a class="headerlink" href="#simple-updater_1" title="Permanent link">#</a></h3>
+<p>For the simple updater the server only needs to deliver the binary file for update.</p>
+<h3 id="advanced-updater_1">Advanced updater<a class="headerlink" href="#advanced-updater_1" title="Permanent link">#</a></h3>
+<p>For advanced update management a script needs to run at the server side, for example a PHP script.
+At every update request the ESP sends some information in HTTP headers to the server.</p>
+<p>Example header data:</p>
+<pre><code>    [HTTP_USER_AGENT] =&gt; ESP8266-http-Update
+    [HTTP_X_ESP8266_STA_MAC] =&gt; 18:FE:AA:AA:AA:AA
+    [HTTP_X_ESP8266_AP_MAC] =&gt; 1A:FE:AA:AA:AA:AA
+    [HTTP_X_ESP8266_FREE_SPACE] =&gt; 671744
+    [HTTP_X_ESP8266_SKETCH_SIZE] =&gt; 373940
+    [HTTP_X_ESP8266_SKETCH_MD5] =&gt; a56f8ef78a0bebd812f62067daf1408a
+    [HTTP_X_ESP8266_CHIP_SIZE] =&gt; 4194304
+    [HTTP_X_ESP8266_SDK_VERSION] =&gt; 1.3.0
+    [HTTP_X_ESP8266_VERSION] =&gt; DOOR-7-g14f53a19
+</code></pre>
+
+<p>With this information the script now can check if an update is needed. It is also possible to deliver different binaries based on the MAC address for example.</p>
+<p>Script example:</p>
+<pre><code class="php">&lt;?PHP
+
+header('Content-type: text/plain; charset=utf8', true);
+
+function check_header($name, $value = false) {
+    if(!isset($_SERVER[$name])) {
+        return false;
+    }
+    if($value &amp;&amp; $_SERVER[$name] != $value) {
+        return false;
+    }
+    return true;
+}
+
+function sendFile($path) {
+    header($_SERVER[&quot;SERVER_PROTOCOL&quot;].' 200 OK', true, 200);
+    header('Content-Type: application/octet-stream', true);
+    header('Content-Disposition: attachment; filename='.basename($path));
+    header('Content-Length: '.filesize($path), true);
+    header('x-MD5: '.md5_file($path), true);
+    readfile($path);
+}
+
+if(!check_header('HTTP_USER_AGENT', 'ESP8266-http-Update')) {
+    header($_SERVER[&quot;SERVER_PROTOCOL&quot;].' 403 Forbidden', true, 403);
+    echo &quot;only for ESP8266 updater!\n&quot;;
+    exit();
+}
+
+if(
+    !check_header('HTTP_X_ESP8266_STA_MAC') ||
+    !check_header('HTTP_X_ESP8266_AP_MAC') ||
+    !check_header('HTTP_X_ESP8266_FREE_SPACE') ||
+    !check_header('HTTP_X_ESP8266_SKETCH_SIZE') ||
+    !check_header('HTTP_X_ESP8266_SKETCH_MD5') ||
+    !check_header('HTTP_X_ESP8266_CHIP_SIZE') ||
+    !check_header('HTTP_X_ESP8266_SDK_VERSION')
+) {
+    header($_SERVER[&quot;SERVER_PROTOCOL&quot;].' 403 Forbidden', true, 403);
+    echo &quot;only for ESP8266 updater! (header)\n&quot;;
+    exit();
+}
+
+$db = array(
+    &quot;18:FE:AA:AA:AA:AA&quot; =&gt; &quot;DOOR-7-g14f53a19&quot;,
+    &quot;18:FE:AA:AA:AA:BB&quot; =&gt; &quot;TEMP-1.0.0&quot;
+);
+
+if(!isset($db[$_SERVER['HTTP_X_ESP8266_STA_MAC']])) {
+    header($_SERVER[&quot;SERVER_PROTOCOL&quot;].' 500 ESP MAC not configured for updates', true, 500);
+}
+
+$localBinary = &quot;./bin/&quot;.$db[$_SERVER['HTTP_X_ESP8266_STA_MAC']].&quot;.bin&quot;;
+
+// Check if version has been set and does not match, if not, check if
+// MD5 hash between local binary and ESP8266 binary do not match if not.
+// then no update has been found.
+if((!check_header('HTTP_X_ESP8266_SDK_VERSION') &amp;&amp; $db[$_SERVER['HTTP_X_ESP8266_STA_MAC']] != $_SERVER['HTTP_X_ESP8266_VERSION'])
+    || $_SERVER[&quot;HTTP_X_ESP8266_SKETCH_MD5&quot;] != md5_file($localBinary)) {
+    sendFile($localBinary);
+} else {
+    header($_SERVER[&quot;SERVER_PROTOCOL&quot;].' 304 Not Modified', true, 304);
+}
+
+header($_SERVER[&quot;SERVER_PROTOCOL&quot;].' 500 no version for ESP MAC', true, 500);
+
+</code></pre>
               
             </div>
           </div>
@@ -686,10 +715,10 @@ void key_intr_handler(void *args)
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../uart/" class="btn btn-neutral float-right" title="UART">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../arduino-esp8266-hardware/" class="btn btn-neutral float-right" title="Phần cứng hỗ trợ">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../blink-led/" class="btn btn-neutral" title="Bật tắt LED"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../using-web-browser/" class="btn btn-neutral" title="Sử dụng trình duyệt"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -719,10 +748,10 @@ void key_intr_handler(void *args)
           <a href="https://github.com/esp8266vn/esp8266.vn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../blink-led/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../using-web-browser/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../uart/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../../arduino-esp8266-hardware/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div> -->
