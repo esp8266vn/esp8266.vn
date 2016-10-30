@@ -602,27 +602,25 @@
 </ul>
 <h2 id="vi-du-ung-dung">Ví dụ ứng dụng<a class="headerlink" href="#vi-du-ung-dung" title="Permanent link">#</a></h2>
 <p>Hướng dẫn dưới đây cấu hình chương trình OTA sử dụng board NodeMCU 1.0 (ESP-12E Module). Bạn có thể sử dụng bất kỳ board ESP8266 nào, miễn sao nó đáp ứng được [yêu cầu] (#basic-requirements) được mô tả ở trên. Hướng dẫn này có hiệu lực cho tất cả các hệ điều hành hỗ trợ bởi Arduino IDE. Màn hình chụp đã được thực hiện trên Windows 7 và bạn có thể thấy sự khác biệt nhỏ (như tên của cổng nối tiếp) nếu bạn đang sử dụng Linux và MacOS.</p>
-<p><strong>1.</strong> Trước khi bạn bắt đầu, bạn cần đảm bảo các phần mềm sau đã được cài đặt:
-- Arduino IDE 1.6.7 hoặc mới hơn - https://www.arduino.cc/en/Main/Software
-- ESP8266/Arduino nền tảng gói 2.0.0 hoặc mới hơn - để được hướng dẫn làm theo <a href="../../basic/install/">Cài đặt</a>
-- Python 2.7 (không cài đặt Python 3.5, nó không được hỗ trợ) - https://www.python.org/</p>
+<p><strong>1.</strong> Trước khi bạn bắt đầu, bạn cần đảm bảo các phần mềm sau đã được cài đặt:</p>
+<ul>
+<li>Arduino IDE 1.6.7 hoặc mới hơn - https://www.arduino.cc/en/Main/Software</li>
+<li>ESP8266/Arduino nền tảng gói 2.0.0 hoặc mới hơn - để được hướng dẫn làm theo <a href="../../basic/install/">Cài đặt</a></li>
+<li>Python 2.7 (không cài đặt Python 3.5, nó không được hỗ trợ) - https://www.python.org/</li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Lưu ý</p>
 <p>Người dùng Windows nên chọn &ldquo;Add python.exe Path&rdquo; (xem bên dưới - tùy chọn này không được chọn theo mặc định).</p>
 </div>
 <p><img alt="cài đặt Python" src="../../images/a-ota-python-configuration.png" /></p>
-<p><strong>2.</strong> Bây giờ chuẩn bị cho Sketch mới và cấu hình cho việc  nạp firmware qua cổng nối tiếp.
-- Bắt đầu Arduino IDE và mở BasicOTA.ino Sketch sẵn, phần File &gt;  Examples &gt; ArduinoOTA
-<img alt="lựa chọn các ví dụ OTA phác thảo" src="../../images/a-ota-sketch-selection.png" /></p>
+<p><strong>2.</strong> Bây giờ chuẩn bị cho Sketch mới và cấu hình cho việc  nạp firmware qua cổng nối tiếp.</p>
 <ul>
-<li>
-<p>Cập nhật SSID và mật khẩu WiFi để ESP8266 có thể kết nối vào mạng Wi-Fi của bạn
-<img alt="SSID và mật khẩu nhập" src="../../images/a-ota-ssid-pass-entry.png" /></p>
-</li>
-<li>
-<p>Các thông số cấu hình tải lên như bên dưới (bạn có thể cần phải điều chỉnh cấu hình nếu bạn đang sử dụng các module ESP8266 khác):
-! [cấu hình tải lên nối tiếp] (../images/a-ota-serial-upload-configuration.png)</p>
-</li>
+<li>Bắt đầu Arduino IDE và mở BasicOTA.ino Sketch sẵn, phần File &gt;  Examples &gt; ArduinoOTA
+<img alt="lựa chọn các ví dụ OTA phác thảo" src="../../images/a-ota-sketch-selection.png" /></li>
+<li>Cập nhật SSID và mật khẩu WiFi để ESP8266 có thể kết nối vào mạng Wi-Fi của bạn
+<img alt="SSID và mật khẩu nhập" src="../../images/a-ota-ssid-pass-entry.png" /></li>
+<li>Các thông số cấu hình tải lên như bên dưới (bạn có thể cần phải điều chỉnh cấu hình nếu bạn đang sử dụng các module ESP8266 khác):
+! [cấu hình tải lên nối tiếp] (../images/a-ota-serial-upload-configuration.png)</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Lưu ý</p>
