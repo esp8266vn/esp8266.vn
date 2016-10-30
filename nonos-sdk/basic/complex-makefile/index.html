@@ -592,8 +592,17 @@
                 <div class="toc">
 <ul>
 <li><a href="#su-dung-su-an-co-makefile-phuc-tap">Sử dụng sự án có Makefile phức tạp</a><ul>
-<li><a href="#du-an-mau">Dự án mẫu:</a></li>
-<li><a href="#cau-truc-du-an">Cấu trúc dự án:</a></li>
+<li><a href="#du-an-mau">Dự án mẫu</a></li>
+<li><a href="#cau-truc-du-an">Cấu trúc dự án</a></li>
+<li><a href="#luu-y">Lưu ý</a><ul>
+<li><a href="#cau-truc-du-an-sau-khi-build-thanh-cong">Cấu trúc dự án sau khi build thành công</a></li>
+</ul>
+</li>
+<li><a href="#ma-nguon">Mã nguồn</a><ul>
+<li><a href="#luu-y_1">Lưu ý</a></li>
+</ul>
+</li>
+<li><a href="#ket-qua">Kết quả</a></li>
 </ul>
 </li>
 </ul>
@@ -601,11 +610,15 @@
 <h1 id="su-dung-su-an-co-makefile-phuc-tap">Sử dụng sự án có Makefile phức tạp<a class="headerlink" href="#su-dung-su-an-co-makefile-phuc-tap" title="Permanent link">#</a></h1>
 <p>Để biên dịch sự án có nhiều file hơn nữa thì việc sử dụng Makefile như các ví dụ trên khá phiền phức, phải thay đổi nhiều chỗ. Mục đích của Makefile đơn giản là giúp chúng ta hiểu được nguyên lý hoạt động của compiler và cách thức biên dịch ứng dụng với Nonos-sdk. 
 Để tiện lợi, kể từ mục này trở đi, chúng ta sử dụng Makefile trong dự án mẫu và phân bổ dự án theo cấu trúc như bên dưới. Dự án đã viết sẵn Makefile tự động tìm và biên dịch các file <code>.c</code> </p>
-<h2 id="du-an-mau">Dự án mẫu:<a class="headerlink" href="#du-an-mau" title="Permanent link">#</a></h2>
+<h2 id="du-an-mau">Dự án mẫu<a class="headerlink" href="#du-an-mau" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://github.com/esp8266vn/esp8266-nonos-sdk-boilerplate">https://github.com/esp8266vn/esp8266-nonos-sdk-boilerplate</a></li>
+<li>Hoặc lấy dự án về từ Github: </li>
 </ul>
-<h2 id="cau-truc-du-an">Cấu trúc dự án:<a class="headerlink" href="#cau-truc-du-an" title="Permanent link">#</a></h2>
+<pre><code>git clone https://github.com/esp8266vn/esp8266-nonos-sdk-boilerplate.git
+</code></pre>
+
+<h2 id="cau-truc-du-an">Cấu trúc dự án<a class="headerlink" href="#cau-truc-du-an" title="Permanent link">#</a></h2>
 <pre><code>esp8266-nonos-sdk-boilerplate
     |--- Makefile
     |--- modules
@@ -627,6 +640,122 @@
 <ul>
 <li>Thư mục <code>modules</code> chứa các module liên quan, mỗi module có định nghĩa prototype đặt trong thư mục <code>include</code></li>
 </ul>
+<h2 id="luu-y">Lưu ý<a class="headerlink" href="#luu-y" title="Permanent link">#</a></h2>
+<ul>
+<li>Đường dẫn mặc định của project trong makefile</li>
+</ul>
+<pre><code># base directory of the ESP8266 SDK package, absolute
+SDK_BASE    ?= /tools/esp8266/sdk/ESP8266_NONOS_SDK
+
+#Esptool.py path and port
+ESPTOOL     ?= /tools/esp8266/esptool/esptool.py
+
+</code></pre>
+
+<ul>
+<li>Thay đổi cổng COM</li>
+</ul>
+<pre><code>ESPPORT     ?= /dev/tty.SLAB_USBtoUART
+</code></pre>
+
+<p>Với ubuntu/linux sẽ có dạng <code>ESPPORT        ?= /dev/ttyUSB0</code>
+- Tốc độ baud nạp chương trình là 460800</p>
+<pre><code>ESPBAUD     ?= 460800
+</code></pre>
+
+<ul>
+<li>Thực hiện build thử project esp8266-nonos-sdk-boilerplate, nếu thành công sẽ xuất hiện thư mục firmware chứa firmware để nạp xuống.</li>
+</ul>
+<h3 id="cau-truc-du-an-sau-khi-build-thanh-cong">Cấu trúc dự án sau khi build thành công<a class="headerlink" href="#cau-truc-du-an-sau-khi-build-thanh-cong" title="Permanent link">#</a></h3>
+<pre><code>esp8266-nonos-sdk-boilerplate
+.
+├── build
+│   ├── esp8266-nonos-app.a
+│   ├── esp8266-nonos-app.out
+│   └── user
+│       ├── rfinit.o
+│       └── user_main.o
+├── firmware
+│   ├── esp8266-nonos-app0x00000.bin
+│   └── esp8266-nonos-app0x10000.bin
+├── include
+│   └── user_config.h
+├── Makefile
+├── README.md
+├── SublimeAStyleFormatter.sublime-settings
+└── user
+    ├── Makefile
+    ├── rfinit.c
+    └── user_main.c
+
+5 directories, 13 files
+
+</code></pre>
+
+<h2 id="ma-nguon">Mã nguồn<a class="headerlink" href="#ma-nguon" title="Permanent link">#</a></h2>
+<pre><code>esp8266-nonos-sdk-boilerplate/user_main.c
+#include &quot;osapi.h&quot;
+#include &quot;user_interface.h&quot;
+
+void ICACHE_FLASH_ATTR print_info()
+{
+  uart_div_modify(0, UART_CLK_FREQ / 115200);
+  os_printf(&quot;\r\n\r\n[INFO] BOOTUP...\r\n&quot;);
+  os_printf(&quot;[INFO] SDK: %s\r\n&quot;, system_get_sdk_version());
+  os_printf(&quot;[INFO] Chip ID: %08X\r\n&quot;, system_get_chip_id());
+  os_printf(&quot;[INFO] Memory info:\r\n&quot;);
+  system_print_meminfo();
+
+  os_printf(&quot;[INFO] -------------------------------------------\n&quot;);
+  os_printf(&quot;[INFO] Build time: %s\n&quot;, BUID_TIME);
+  os_printf(&quot;[INFO] -------------------------------------------\n&quot;);
+
+}
+
+
+void ICACHE_FLASH_ATTR app_init()
+{
+
+
+  print_info();
+
+
+  wifi_set_opmode_current(STATION_MODE);
+
+}
+
+void ICACHE_FLASH_ATTR user_init(void)
+{
+  system_init_done_cb(app_init);
+
+}
+
+</code></pre>
+
+<p>Chương trình sẽ in ra màn hình một số thông tin về SDK, ID chip và thông tin về Memory, thời gian build,..</p>
+<h3 id="luu-y_1">Lưu ý<a class="headerlink" href="#luu-y_1" title="Permanent link">#</a></h3>
+<ul>
+<li>Tốc độ baud hiển thị thông tin ra terminal là 115200</li>
+</ul>
+<h2 id="ket-qua">Kết quả<a class="headerlink" href="#ket-qua" title="Permanent link">#</a></h2>
+<p>Sau khi build và nạp chương trình xuống sẽ hiện thông báo như sau</p>
+<pre><code>[INFO] BOOTUP...
+[INFO] SDK: 2.0.0(656edbf)
+[INFO] Chip ID: 00135C7D
+[INFO] Memory info:
+data  : 0x3ffe8000 ~ 0x3ffe836c, len: 876
+rodata: 0x3ffe8370 ~ 0x3ffe8574, len: 516
+bss   : 0x3ffe8578 ~ 0x3ffee808, len: 25232
+heap  : 0x3ffee808 ~ 0x3fffc000, len: 55288
+[INFO] -------------------------------------------
+[INFO] Build time: 2016-Th10-31_00:02:21_ICT
+[INFO] -------------------------------------------
+bcn 0
+del if1
+usl
+mode : sta(5c:cf:7f:13:5c:7d)
+add if0
+</code></pre>
               
             </div>
           </div>
