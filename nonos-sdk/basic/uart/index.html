@@ -591,7 +591,7 @@
               
                 <h1 id="truyen-nhan-uart">Truyền nhận UART<a class="headerlink" href="#truyen-nhan-uart" title="Permanent link">#</a></h1>
 <p>ESP8266 có 2 UART, trong đó UART0 có đầy đủ 2 tính năng TX, RX, và dùng làm ngõ ra mặc định cho các thông tin debug cho SDK, cũng như là cổng nạp chương trình.</p>
-<p>Tổ chức file căn cứ theo bài <a href="../compile-first-time/">Biên dịch dự án đầu tiên</a>, bổ sung thêm file <code>uart.c</code>, <code>uart.h</code> để cấu hình cổng UART0 cho việc nhận dữ liệu</p>
+<p>Tổ chức file căn cứ theo bài <a href="../compile-first-time/">Biên dịch dự án đầu tiên</a>, bổ sung thêm file <code>uart.c</code>, <code>uart.h</code> để cấu hình cổng UART0 cho việc nhận dữ liệu, tốc độ baud trong ví dụ này là 115200 theo hàm <code>uart_div_modify(0, UART_CLK_FREQ / 115200);</code></p>
 <ul>
 <li>UART0 của ESP8266 hỗ trợ 128 Byte FIFO và tính năng Ngắt Timeout, ngắt khi đầy FIFO. Có thể hiểu nếu bạn cấu hình ngắt 128 bytes FIFO, và ngắt Timeout, khi UART nhận đầy FIFO sẽ kích hoạt ngắt đầy FIFO, hoặc nếu trường hợp chưa đầy FIFO nhưng qua 1 khoảng thời gian (có thể cấu hình được) mà không nhận được dữ liệu nữa thì cũng phát sinh ngắt TOUT </li>
 <li>Bạn có thể lấy driver trực tiếp từ bài này hoặc các ví dụ từ SDK mà không phải làm gì nữa nếu việc truyền nhận không quá phức tạp</li>
@@ -601,7 +601,7 @@
 <p>Khi nhận được ký tự <code>1</code> từ Terminal, bật đèn LED, xuất nội dung <code>LED On</code> trở lại, và <code>0</code> sẽ tắt, xuất nội dung <code>LED Off</code></p>
 </div>
 <h2 id="lay-du-an-ve-tu-github">Lấy dự án về từ Github:<a class="headerlink" href="#lay-du-an-ve-tu-github" title="Permanent link">#</a></h2>
-<pre><code>git clone https://github.com/esp8266vn/eps-iot-uart
+<pre><code>git clone https://github.com/esp8266vn/eps-iot-uart.git
 cd eps-iot-uart
 make
 </code></pre>
@@ -618,7 +618,7 @@ make
     `-- user_config.h
 </code></pre>
 
-<p>Ta sẽ gom phần <a href="../blink-led/">LED</a> và <a href="../button/">Nút nhấn</a> thành 1 file <code>led_btn.c</code>. Bổ sung thêm file <code>uart.c</code> để cấu hình UART</p>
+<p>Phần cấu hình cho <a href="../blink-led/">LED</a> và <a href="../button/">Nút nhấn</a> được gộp lại thành 1 và nằm trong file <code>led_btn.c</code> và <code>led_btn.h</code> . </p>
 <h2 id="ma-nguon">Mã nguồn<a class="headerlink" href="#ma-nguon" title="Permanent link">#</a></h2>
 <pre><code class="c">//main.c
 #include &lt;stdio.h&gt;
@@ -653,7 +653,14 @@ void user_init(void)
 }
 </code></pre>
 
-<p>Nội dung file <a href="https://github.com/esp8266vn/eps-iot-uart/blob/master/uart.c">uart.c</a> khá dài, có thể xem trực tiếp trên github</p>
+<p>Nội dung file <a href="https://github.com/esp8266vn/eps-iot-uart/blob/master/uart.c">uart.c</a> khá dài, có thể xem trực tiếp trên github hoặc trong thư mục <code>esp-iot-uart</code> đã clone về </p>
+<h2 id="ket-qua">Kết quả<a class="headerlink" href="#ket-qua" title="Permanent link">#</a></h2>
+<p>Khi thực hiện ấn số 0 và số 1 trên terminal sẽ in ra dòng tương ứng</p>
+<pre><code>LED on
+LED off
+LED on
+LED off
+</code></pre>
               
             </div>
           </div>
