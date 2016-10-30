@@ -1,6 +1,7 @@
 # Arduino IDE
 
 Cập nhật OTA sử dụng Arduino IDE tải firmware lên cho ESP8266 dành cho các tình huống điển hình sau đây:
+
 - Trong quá trình phát triển ứng dụng như một cách thay thế nhanh hơn sử dụng cổng Serial
 - Để cập nhật số lượng nhỏ của các module ESP8266
 - Chỉ khi module ESP8266 cùng mạng LAN với máy tính chạy Arduino IDE
