@@ -14,6 +14,7 @@ Cập nhật OTA sử dụng Arduino IDE tải firmware lên cho ESP8266 dành c
 Hướng dẫn dưới đây cấu hình chương trình OTA sử dụng board NodeMCU 1.0 (ESP-12E Module). Bạn có thể sử dụng bất kỳ board ESP8266 nào, miễn sao nó đáp ứng được [yêu cầu] (#basic-requirements) được mô tả ở trên. Hướng dẫn này có hiệu lực cho tất cả các hệ điều hành hỗ trợ bởi Arduino IDE. Màn hình chụp đã được thực hiện trên Windows 7 và bạn có thể thấy sự khác biệt nhỏ (như tên của cổng nối tiếp) nếu bạn đang sử dụng Linux và MacOS.
 
 **1.** Trước khi bạn bắt đầu, bạn cần đảm bảo các phần mềm sau đã được cài đặt:
+
 - Arduino IDE 1.6.7 hoặc mới hơn - https://www.arduino.cc/en/Main/Software
 - ESP8266/Arduino nền tảng gói 2.0.0 hoặc mới hơn - để được hướng dẫn làm theo [Cài đặt](../basic/install.md)
 - Python 2.7 (không cài đặt Python 3.5, nó không được hỗ trợ) - https://www.python.org/
@@ -24,12 +25,11 @@ Hướng dẫn dưới đây cấu hình chương trình OTA sử dụng board N
 ![cài đặt Python](../images/a-ota-python-configuration.png)
 
 **2.** Bây giờ chuẩn bị cho Sketch mới và cấu hình cho việc  nạp firmware qua cổng nối tiếp.
+
 - Bắt đầu Arduino IDE và mở BasicOTA.ino Sketch sẵn, phần File >  Examples > ArduinoOTA
 ![lựa chọn các ví dụ OTA phác thảo](../images/a-ota-sketch-selection.png)
-
 - Cập nhật SSID và mật khẩu WiFi để ESP8266 có thể kết nối vào mạng Wi-Fi của bạn
 ![SSID và mật khẩu nhập] (../images/a-ota-ssid-pass-entry.png)
-        
 - Các thông số cấu hình tải lên như bên dưới (bạn có thể cần phải điều chỉnh cấu hình nếu bạn đang sử dụng các module ESP8266 khác):
 ! [cấu hình tải lên nối tiếp] (../images/a-ota-serial-upload-configuration.png)
 
