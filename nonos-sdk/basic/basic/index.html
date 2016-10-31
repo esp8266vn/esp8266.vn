@@ -357,6 +357,22 @@
                     <a style="padding-left:90px;" class="" href="../../../freertos-sdk/basic/introduction/" id="Cài đặt công cụ cần thiết">Cài đặt công cụ cần thiết </a>
                 </li>
             
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../freertos-sdk/basic/basic-task/" id="Task / Thread cơ bản">Task / Thread cơ bản </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../freertos-sdk/basic/software-timer/" id="Software Timer">Software Timer </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../freertos-sdk/basic/queue-semaphore-mutex/" id="Đồng bộ / trao đổi dữ liệu">Đồng bộ / trao đổi dữ liệu </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../../../freertos-sdk/basic/task-notification/" id="Task notification">Task notification </a>
+                </li>
+            
             </div>
         
         </div>
@@ -647,9 +663,27 @@ gcc version 4.8.2 (crosstool-NG 1.20.0)
 </code></pre>
 
 <h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">#</a></h3>
-<p>Cài đặt Git
-- https://desktop.github.com/</p>
-<p>Tải về tại một trong các địa chỉ sau:</p>
+<h4 id="cai-at-git-python">Cài đặt Git, Python<a class="headerlink" href="#cai-at-git-python" title="Permanent link">#</a></h4>
+<ul>
+<li><a href="https://desktop.github.com/">Git</a></li>
+<li><a href="https://www.python.org/ftp/python/2.7.12/python-2.7.12.msi">Python</a><ul>
+<li>Mặc định python được cài đặt tại <code>C:\Python27</code>, thêm đường dẫn này vào biến môi trường <code>PATH</code> (xem hướng dẫn các bước bên dưới)</li>
+</ul>
+</li>
+</ul>
+<h4 id="cai-at-mingw-make">Cài đặt MINGW make<a class="headerlink" href="#cai-at-mingw-make" title="Permanent link">#</a></h4>
+<ul>
+<li>Tải và cài đặt <a href="http://sourceforge.net/projects/mingw/files/Installer/">Mingw setup</a> </li>
+<li>Tải và chạy tập tin <code>install-mingw-package.bat</code> (Run as Administractor) từ <a href="http://programs74.ru/get.php?file=EspressifESP8266DevKitAddon">MinGW packages install script</a></li>
+</ul>
+<p>Mặc định MINGW được cài đặt tại <code>C:\MinGW</code>, Thêm đường dẫn <code>C:\MinGW\msys\1.0\bin\</code> vào biến môi trường <code>PATH</code> (xem hướng dẫn các bước bên dưới). </p>
+<p>Vào 1 thư mục trống bất kỳ (không có chứa <code>Makefile</code>), chạy <code>make</code> mà hiện dòng này là cài đặt thành công:</p>
+<pre><code class="bat">cd C:\
+make
+make: *** No targets specified and no makefile found.  Stop.
+</code></pre>
+
+<h4 id="tai-sdk-ve-tai-mot-trong-cac-ia-chi-sau-cai-at">Tải SDK về tại một trong các địa chỉ sau &amp; cài đặt:<a class="headerlink" href="#tai-sdk-ve-tai-mot-trong-cac-ia-chi-sau-cai-at" title="Permanent link">#</a></h4>
 <ul>
 <li><a href="http://programs74.ru/udkew-en.html">http://programs74.ru/udkew-en.html</a></li>
 <li><a href="https://www.dropbox.com/s/x0v25603pnf8sny/Espressif-ESP8266-DevKit-v2.1.0-x86.exe?dl=0">Link Dropbox</a></li>
@@ -669,7 +703,7 @@ Vị trí mặc định của bộ KIT sau khi cài đặt là <code>C:\Espressi
 <li>Cài đặt cứng trong <code>My Computer</code> -&gt; (Chuột phải) -&gt; <code>Properties</code> -&gt; <code>Advanced system settings</code> -&gt; <code>Environment Variables...</code> -&gt; <code>System variables</code>, chọn giá trị <code>PATH</code> -&gt; chọn <code>Edit...</code> -&gt; di chuyển đến cuối chuỗi, thêm <code>;C:\Espressif\xtensa-lx106-elf\bin;C:\Espressif\utils\ESP8266;</code></li>
 <li>Cài đặt khi chạy: trong cửa sổ console, nhập <code>set PATH=%PATH%;C:\Espressif\xtensa-lx106-elf\bin;C:\Espressif\utils\ESP8266;</code></li>
 </ul>
-<p>Kiểm tra việc cài đặt, có dòng này hiển thị ở cuối cùng thì việc cài đặt đã thành công:</p>
+<p>Kiểm tra việc cài đặt <code>xtensa-lx106-elf</code> và <code>esptool</code>, có dòng này hiển thị ở cuối cùng thì việc cài đặt đã thành công:</p>
 <pre><code class="bat">xtensa-lx106-elf-gcc --version
 xtensa-lx106-elf-gcc (GCC) 5.2.0
 </code></pre>

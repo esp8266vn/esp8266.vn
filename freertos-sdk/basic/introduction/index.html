@@ -357,6 +357,22 @@
                     <a style="padding-left:90px;" class="current" href="./" id="Cài đặt công cụ cần thiết">Cài đặt công cụ cần thiết </a>
                 </li>
             
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../basic-task/" id="Task / Thread cơ bản">Task / Thread cơ bản </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../software-timer/" id="Software Timer">Software Timer </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../queue-semaphore-mutex/" id="Đồng bộ / trao đổi dữ liệu">Đồng bộ / trao đổi dữ liệu </a>
+                </li>
+            
+                <li class="">
+                    <a style="padding-left:90px;" class="" href="../task-notification/" id="Task notification">Task notification </a>
+                </li>
+            
             </div>
         
         </div>
@@ -591,7 +607,7 @@
               
                 <h1 id="cai-at-cong-cu-can-thiet">Cài đặt công cụ cần thiết<a class="headerlink" href="#cai-at-cong-cu-can-thiet" title="Permanent link">#</a></h1>
 <p>Tương tự phần cài đặt cho ESP8266 NONOS-SDK, tham khảo <a href="https://esp8266.vn/nonos-sdk/01-esp-basic/00-esp-basic/">tại đây</a></p>
-<h1 id="download-rtos-sdk-cho-esp8266">Download RTOS SDK cho ESP8266<a class="headerlink" href="#download-rtos-sdk-cho-esp8266" title="Permanent link">#</a></h1>
+<h1 id="tai-rtos-sdk-cho-esp8266">Tải RTOS SDK cho ESP8266<a class="headerlink" href="#tai-rtos-sdk-cho-esp8266" title="Permanent link">#</a></h1>
 <ul>
 <li>Tải về máy &amp; giải nén <a href="https://espressif.com/sites/default/files/sdks/esp8266_rtos_sdk_v1.4.0_16_02_26_0.zip">từ đây</a></li>
 <li>Hoặc git clone từ:</li>
@@ -602,6 +618,10 @@ cd ESP8266_RTOS_SDK
 git checkout 1.4.x
 </code></pre>
 
+<div class="admonition note">
+<p class="admonition-title">Lưu ý</p>
+<p>Với người dùng Windows đã cài đặt bộ <code>Unofficial Dev Kit</code> thì RTOS SDK đã bao gồm trong <code>C:/Espressif/ESP8266_RTOS_SDK</code> (mặc định) nên không cần tải bộ RTOS SDK như trên nữa.</p>
+</div>
 <ul>
 <li>Thay đổi <code>SDK_BASE</code> trong Makefile của mỗi dự án trỏ tới folder vừa giải nén/clone:</li>
 </ul>
@@ -615,7 +635,7 @@ SDK_BASE    ?= C:/Espressif/ESP8266_RTOS_SDK
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../../arduino/arduino/" class="btn btn-neutral float-right" title="Giới thiệu">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../basic-task/" class="btn btn-neutral float-right" title="Task / Thread cơ bản">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../../freertos-sdk/" class="btn btn-neutral" title="Giới thiệu"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -651,7 +671,7 @@ SDK_BASE    ?= C:/Espressif/ESP8266_RTOS_SDK
         <span><a href="../../freertos-sdk/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../../../arduino/arduino/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../basic-task/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div> -->
