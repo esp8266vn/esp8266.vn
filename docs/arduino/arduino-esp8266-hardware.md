@@ -195,10 +195,10 @@ ESPxx Hardware
 | CH_PD         | PullUp   |                 |
 
 ## Minimal
-![ESP min](ESP_min.png)
+![ESP min](images/ESP_min.png)
 
 ## Improved Stability
-![ESP improved stability](ESP_improved_stability.png)
+![ESP improved stability](images/ESP_improved_stability.png)
 
 ## Boot Messages and Modes
 

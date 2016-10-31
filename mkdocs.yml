@@ -22,7 +22,8 @@ pages:
       - Tổng quan:                    introduction/introduction.md
       - Internet Of Things (IoT):     introduction/about-iot.md
       - ESP8266 & ESP8285:            introduction/about-esp8266.md
-      - Module & Board phát triển:    introduction/esp-module.md
+      - Các loại Module:              introduction/esp-module.md
+      - Board phát triển:             introduction/board.md
       - Phần cứng & công cụ:          introduction/prepare.md
     - ESP8266 NONOS-SDK:
       - Giới thiệu:                   nonos-sdk/nonos-sdk.md
