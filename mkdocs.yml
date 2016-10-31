@@ -89,6 +89,7 @@ pages:
       - Phần cứng hỗ trợ:             arduino/arduino-esp8266-hardware.md
       - Các dự án:
         - Danh sách:                  arduino/projects/list.md
+        - Smartconfig & react-native: arduino/projects/smartconfig-react-native.md
     - ESP8266 Micropython:
       - Giới thiệu:                   micropython/micropython.md
       - Cơ bản:
