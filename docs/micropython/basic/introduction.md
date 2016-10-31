@@ -45,7 +45,7 @@ esptool.py --port /dev/tty.SLAB_USBtoUART --baud 921600 write_flash --verify --f
 !!! note "Lưu ý"
     Lưu ý là Micropython sử dụng GPIO giống với tên GPIO cho chip ESP8266, khác cách đặt tên của NodeMCU, do vậy, nếu bạn sử dụng Board NodeMCU hoặc các board nào khác thì lưu ý
 
-![NodeMCU Pinout](../../00-introduction/images/esp8266_devkit.svg)
+![NodeMCU Pinout](../../introduction/images/esp8266_devkit.svg)
 
 Ví dụ: 
 ```python

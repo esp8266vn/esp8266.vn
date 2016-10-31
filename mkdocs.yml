@@ -8,7 +8,6 @@ copyright: Copyright &copy; 2016 <a href="https://esp8266.vn">ESP8266 Viet Nam</
 markdown_extensions:
     - toc:
         permalink: '#'
-    - codehilite(css_class=code)
     - admonition
     - smarty
 repo_name: GitHub
@@ -82,7 +81,11 @@ pages:
         - ESP8266WiFi:                arduino/libraries/esp8266-wifi.md
       - Filesystem:
         - Flash Layout:               arduino/filesystem/flash-layout.md
-      - Cập nhật Firmware (FOTA):     arduino/arduino-fota.md
+      - Cập nhật Firmware (FOTA):
+        - Giới thiệu OTA:             arduino/ota/arduino-fota.md
+        - Sử dụng Arduino IDE:        arduino/ota/using-arduino-ide.md
+        - Sử dụng trình duyệt:        arduino/ota/using-web-browser.md
+        - Sử dụng HTTP Server:        arduino/ota/using-http-server.md
       - Phần cứng hỗ trợ:             arduino/arduino-esp8266-hardware.md
       - Các dự án:
         - Danh sách:                  arduino/projects/list.md
