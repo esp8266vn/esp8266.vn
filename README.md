@@ -1,6 +1,7 @@
 # Internet Of Things (IoT) với ESP8266 
 
 ![Build image](https://travis-ci.org/esp8266vn/esp8266.vn.svg?branch=master)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/tuanpm)
 
 Với mong muốn tổng hợp các kiến thức một cách khoa học giúp những kỹ sư đi sau có thể tiếp cận tốt những kiến thức về Network & Connectivity để triển khai các sản phẩm IoT bài bản. Mình đã tổ chức bộ tài liệu này trực tuyến hoàn toàn mở và miễn phí.
 
