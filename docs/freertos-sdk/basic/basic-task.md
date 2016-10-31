@@ -61,12 +61,12 @@ void task_printf(void *pvParameters)
 ```
 
 !!! note "Lưu ý"
-    - Bên trong hàm con phải thực hiện vòng lặp vô tận (infinite loop), không được return.
-    - Ngoài ra, task có thể tự _hủy_ (delete) chính nó khi cần (bằng hàm vTaskDelete( TaskHandle_t xTask ))
+    - Bên trong hàm con phải thực hiện vòng lặp vô tận (_infinite loop_), không được _return_.
+    - Ngoài ra, task có thể tự _hủy_ (delete) chính nó khi cần (bằng hàm `vTaskDelete( TaskHandle_t xTask )`)
 
 !!! note "Tick"
     - `Tick` là hành động khi timer ngắt định kỳ dùng trong nhân FreeRTOS để MCU thực hiện chuyển _ngữ cảnh_ (_context_) khi chuyển qua lại giữa các task với nhau, khái niệm _thực hiện tác vụ song song, đồng thời, cùng lúc_ chỉ mang tính tương đối, vì RTOS thực hiện điều này 1 cách tuần tự.
-    - Giá trị của `tick` không phải lúc nào cũng là 1ms, tùy thuộc vào cấu hình khi _port_ FreeRTOS lên từng MCU khác nhau (trong trường hợp này do nhà sản xuất quy định). Có thể kiểm tra chính xác chu kỳ ms của `tick` bằng macro `portTICK_RATE_MS` --> Để delay chính xác t(ms) thì tham số truyền cho `vTaskDelay` là `t/portTICK_RATE_MS`
+    - Giá trị của `tick` không phải lúc nào cũng là 1ms, tùy thuộc vào cấu hình khi _port_ FreeRTOS lên từng MCU khác nhau (trong trường hợp này do nhà sản xuất quy định). Có thể kiểm tra chính xác chu kỳ ms của `tick` bằng macro `portTICK_RATE_MS` --> Để delay chính xác `t(ms)` thì tham số truyền cho `vTaskDelay` là `t/portTICK_RATE_MS`
 
 Trong hàm `user_init()` của ESP8266, sau khi khởi tạo các giá trị cần thiết cho UART và chân GPIO Ouput để nháy LED, sử dụng hàm `xTaskCreate` trong FreeRTOS để tạo task thực thi 2 hàm con này, cú pháp `xTaskCreate`:
 
