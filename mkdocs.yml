@@ -79,6 +79,17 @@ pages:
         - Progmem:                    arduino/basic/progmem.md
       - Thư viện:
         - ESP8266WiFi:                arduino/libraries/esp8266-wifi.md
+        - ESP-API:                    arduino/libraries/esp-api.md
+        - Ticker:                     arduino/libraries/ticker.md
+        - EEPROM:                     arduino/libraries/eeprom.md
+        - I2C (Thư viện Wire):        arduino/libraries/i2c.md
+        - SPI:                        arduino/libraries/spi.md
+        - Software Serial:            arduino/libraries/software-serial.md
+        - mDNS và DNS-SD:             arduino/libraries/mdns-dnssd.md
+        - SSDP:                       arduino/libraries/ssdp.md
+        - DNS Server:                 arduino/libraries/dns-server.md
+        - Servo:                      arduino/libraries/servo.md
+        - Thư viện hữu ích khác:      arduino/libraries/others.md
       - Filesystem:
         - Flash Layout:               arduino/filesystem/flash-layout.md
       - Cập nhật Firmware (FOTA):
