@@ -39,7 +39,7 @@ CFLAGS = -g -save-temps -std=gnu90 -Os -Wpointer-arith -Wundef -Werror \
 
 Chương trình có nhiệm vụ tạo ra 2 task riêng biệt, một dùng để nháy LED có chu kỳ 200 `ticks`, task còn lại để in thông tin ra UART0 với chu kỳ 1000 `ticks`.
 
-Muốn vậy, trước hết phải tạo ra 2 hàm con, tuân theo tiền khai báo có dạng `void tên_hàm(void *tham_số)` cho 2 task LED và UART:
+Muốn vậy, trước hết phải tạo ra 2 hàm con, tuân theo tiền khai báo kiểu `TaskFunction_t` có dạng `void vTaskCode( void * pvParameters )` cho task LED và UART:
 
 ```C
 void task_led(void *pvParameters)
@@ -61,9 +61,14 @@ void task_printf(void *pvParameters)
 ```
 
 !!! note "Lưu ý"
-    Bên trong hàm con phải thực hiện vòng lặp vô tận, không được return. Vì mục đích là tạo task chạy liên tục mãi mãi.
+    - Bên trong hàm con phải thực hiện vòng lặp vô tận (infinite loop), không được return.
+    - Ngoài ra, task có thể tự _hủy_ (delete) chính nó khi cần (bằng hàm vTaskDelete( TaskHandle_t xTask ))
 
-Sau đó, trong hàm `user_init` của ESP8266, sau khi khởi tạo các giá trị cần thiết cho UART và chân GPIO để nháy LED, sử dụng hàm xTaskCreate trong FreeRTOS để tạo task thực thi 2 hàm con này, cú pháp xTaskCreate:
+!!! note "Tick"
+    - `Tick` là hành động khi timer ngắt định kỳ dùng trong nhân FreeRTOS để MCU thực hiện chuyển _ngữ cảnh_ (_context_) khi chuyển qua lại giữa các task với nhau, khái niệm _thực hiện tác vụ song song, đồng thời, cùng lúc_ chỉ mang tính tương đối, vì RTOS thực hiện điều này 1 cách tuần tự.
+    - Giá trị của `tick` không phải lúc nào cũng là 1ms, tùy thuộc vào cấu hình khi _port_ FreeRTOS lên từng MCU khác nhau (trong trường hợp này do nhà sản xuất quy định). Có thể kiểm tra chính xác chu kỳ ms của `tick` bằng macro `portTICK_RATE_MS` --> Để delay chính xác t(ms) thì tham số truyền cho `vTaskDelay` là `t/portTICK_RATE_MS`
+
+Trong hàm `user_init()` của ESP8266, sau khi khởi tạo các giá trị cần thiết cho UART và chân GPIO Ouput để nháy LED, sử dụng hàm `xTaskCreate` trong FreeRTOS để tạo task thực thi 2 hàm con này, cú pháp `xTaskCreate`:
 
 ```C
 BaseType_t xTaskCreate(    TaskFunction_t pvTaskCode,
@@ -78,11 +83,11 @@ BaseType_t xTaskCreate(    TaskFunction_t pvTaskCode,
 Trong đó:
 
 - `pvTaskCode`: trỏ đến hàm con cần thực hiện khi tạo task
-- `pcName`: chuỗi biểu thị tên mô tả task này
+- `pcName`: chuỗi mô tả tên của task này
 - `usStackDepth`: độ lớn của con trỏ ngăn xếp, chọn sao cho lớn hơn độ lớn của con trỏ ngăn xếp khi thực hiện hàm con, ví dụ như khi hàm con gọi càng nhiều hàm khác bên trong lồng nhau, khi đó độ lớn này càng tăng.
-- `pvParameters`: con trỏ đến tham số truyền cần truyền vào hàm con khi task khởi tạo.
+- `pvParameters`: trỏ đến tham số cần truyền vào hàm con khi task khởi tạo.
 - `uxPriority`: mức độ ưu tiên của task.
-- `pxCreatedTask`: con trỏ đến biến kiểu `TaskHandle_t`, dùng để sau khi gọi `xTaskCreate`, biến này sẽ được gán để sử dụng cho mục đích sau, ví dụ như xóa task này.
+- `pxCreatedTask`: trỏ đến biến kiểu `TaskHandle_t`, biến sẽ được gán sau khi gọi `xTaskCreate` thành công, xem như _ID_ để phân biệt các task với nhau, và được sử dụng cho nhiều mục đích, ví dụ như xóa task (dùng hàm `vTaskDelete( TaskHandle_t xTask )`)
 Sử dụng `xTaskCreate` để tạo task LED và UART như sau:
 
 ```C
