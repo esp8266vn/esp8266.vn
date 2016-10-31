@@ -64,6 +64,10 @@ pages:
       - Giới thiệu:                   freertos-sdk/freertos-sdk.md
       - Cơ bản:
         - Cài đặt công cụ cần thiết:  freertos-sdk/basic/introduction.md
+        - Task / Thread cơ bản:       freertos-sdk/basic/basic-task.md
+        - Software Timer:             freertos-sdk/basic/software-timer.md
+        - Đồng bộ / trao đổi dữ liệu: freertos-sdk/basic/queue-semaphore-mutex.md
+        - Task notification:          freertos-sdk/basic/task-notification.md
     - ESP8266 Arduino:
       - Giới thiệu:                   arduino/arduino.md
       - Cơ bản:

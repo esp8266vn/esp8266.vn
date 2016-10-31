@@ -72,10 +72,27 @@ gcc version 4.8.2 (crosstool-NG 1.20.0)
 
 ### Windows
 
-Cài đặt Git
-- https://desktop.github.com/
+#### Cài đặt Git, Python
 
-Tải về tại một trong các địa chỉ sau:
+- [Git](https://desktop.github.com/)
+- [Python](https://www.python.org/ftp/python/2.7.12/python-2.7.12.msi)
+    + Mặc định python được cài đặt tại `C:\Python27`, thêm đường dẫn này vào biến môi trường `PATH` (xem hướng dẫn các bước bên dưới)
+
+#### Cài đặt MINGW make
+
+- Tải và cài đặt [Mingw setup](http://sourceforge.net/projects/mingw/files/Installer/) 
+- Tải và chạy tập tin `install-mingw-package.bat` (Run as Administractor) từ [MinGW packages install script](http://programs74.ru/get.php?file=EspressifESP8266DevKitAddon)
+
+Mặc định MINGW được cài đặt tại `C:\MinGW`, Thêm đường dẫn `C:\MinGW\msys\1.0\bin\` vào biến môi trường `PATH` (xem hướng dẫn các bước bên dưới). 
+
+Vào 1 thư mục trống bất kỳ (không có chứa `Makefile`), chạy `make` mà hiện dòng này là cài đặt thành công:
+```bat
+cd C:\
+make
+make: *** No targets specified and no makefile found.  Stop.
+```
+
+#### Tải SDK về tại một trong các địa chỉ sau & cài đặt:
 
 - [http://programs74.ru/udkew-en.html](http://programs74.ru/udkew-en.html)
 - [Link Dropbox](https://www.dropbox.com/s/x0v25603pnf8sny/Espressif-ESP8266-DevKit-v2.1.0-x86.exe?dl=0)
@@ -95,7 +112,7 @@ Cài đặt đường dẫn `C:\Espressif\xtensa-lx106-elf\bin` và `C:\Espressi
 - Cài đặt cứng trong `My Computer` -> (Chuột phải) -> `Properties` -> `Advanced system settings` -> `Environment Variables...` -> `System variables`, chọn giá trị `PATH` -> chọn `Edit...` -> di chuyển đến cuối chuỗi, thêm `;C:\Espressif\xtensa-lx106-elf\bin;C:\Espressif\utils\ESP8266;`
 - Cài đặt khi chạy: trong cửa sổ console, nhập `set PATH=%PATH%;C:\Espressif\xtensa-lx106-elf\bin;C:\Espressif\utils\ESP8266;`
 
-Kiểm tra việc cài đặt, có dòng này hiển thị ở cuối cùng thì việc cài đặt đã thành công:
+Kiểm tra việc cài đặt `xtensa-lx106-elf` và `esptool`, có dòng này hiển thị ở cuối cùng thì việc cài đặt đã thành công:
 ```bat
 xtensa-lx106-elf-gcc --version
 xtensa-lx106-elf-gcc (GCC) 5.2.0
