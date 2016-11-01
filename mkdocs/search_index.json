@@ -757,18 +757,43 @@
         },
         {
             "location": "/nonos-sdk/smartconfig/why-smartconfig/",
-            "text": "T\u1ea1i sao c\u1ea7n Smartconfig\n#",
+            "text": "T\u1ea1i sao c\u1ea7n Smartconfig\n#\n\n\n\n\nD\u1ec5 d\u00e0ng c\u1ea5u h\u00ecnh wifi cho ESP8266 th\u00f4ng qua smartphone.\n\n\nKh\u00f4ng c\u1ea7n ph\u1ea3i n\u1ea1p l\u1ea1i code \u0111\u1ec3 c\u1ea5u h\u00ecnh\n\n\nC\u00f3 th\u1ec3 d\u00f9ng Smartconfig \u0111\u1ec3 c\u1ea5u h\u00ecnh nhi\u1ec1u thi\u1ebft b\u1ecb m\u1ed9t l\u00fac",
             "title": "T\u1ea1i sao c\u1ea7n Smartconfig"
         },
         {
             "location": "/nonos-sdk/smartconfig/why-smartconfig/#tai-sao-can-smartconfig",
-            "text": "",
+            "text": "D\u1ec5 d\u00e0ng c\u1ea5u h\u00ecnh wifi cho ESP8266 th\u00f4ng qua smartphone.  Kh\u00f4ng c\u1ea7n ph\u1ea3i n\u1ea1p l\u1ea1i code \u0111\u1ec3 c\u1ea5u h\u00ecnh  C\u00f3 th\u1ec3 d\u00f9ng Smartconfig \u0111\u1ec3 c\u1ea5u h\u00ecnh nhi\u1ec1u thi\u1ebft b\u1ecb m\u1ed9t l\u00fac",
             "title": "T\u1ea1i sao c\u1ea7n Smartconfig"
         },
         {
             "location": "/nonos-sdk/smartconfig/esptouch/",
-            "text": "",
+            "text": "T\u1ed5ng quan\n#\n\n\nESP Touch l\u00e0 protocol \u0111\u01b0\u1ee3c d\u00f9ng trong Smart Config \u0111\u1ec3 ng\u01b0\u1eddi d\u00f9ng c\u00f3 th\u1ec3 k\u1ebft n\u1ed1i t\u1edbi c\u00e1c phi\u00ean b\u1ea3n modul ESP8266 th\u00f4ng qua c\u1ea5u h\u00ecnh \u0111\u01a1n gi\u1ea3n tr\u00ean Smartphone.\nBan \u0111\u1ea7u kh\u00f4ng th\u1ec3 k\u1ebft n\u1ed1i v\u1edbi ESP8266, nh\u01b0ng th\u00f4ng qua giao th\u1ee9c ESP-TOUCH th\u00ec Smartphone s\u1ebd g\u1eedi g\u00f3i UDP t\u1edbi Access Point(AP) \u1edf \u0111\u00e2y l\u00e0 ESP8266, m\u00e3 h\u00f3a SSID v\u00e0 m\u1eadt kh\u1ea9u th\u00e0nh tr\u01b0\u1eddng Length trong g\u00f3i UDP, \u0111\u1ec3 ESP8266 c\u00f3 th\u1ec3 hi\u1ec3u v\u00e0 gi\u1ea3i m\u00e3 \u0111\u01b0\u1ee3c th\u00f4ng tin.\n\n\nC\u1ea5u tr\u00fac g\u00f3i tin s\u1ebd c\u00f3 d\u1ea1ng\n\n\n\n\n\n\n\n\n6\n\n\n6\n\n\n2\n\n\n3\n\n\n5\n\n\nVariable\n\n\n4\n\n\n\n\n\n\n\n\n\n\nDA\n\n\nSA\n\n\nLength\n\n\nLLC\n\n\nSNAP\n\n\nDATA\n\n\nFCS\n\n\n\n\n\n\n\n\nLength bao g\u1ed3m SSID v\u00e0 th\u00f4ng tin key cho ESP8266\n\n\nPh\u1ea7n m\u1ec1m cho android v\u00e0 iOS\n#\n\n\nC\u00f3 th\u1ec3 t\u1ea3i file apk d\u00e0nh cho android t\u1ea1i \n\nESP-Touch Android\n\n\nHo\u1eb7c t\u1ea3i tr\u1ef1c ti\u1ebfp t\u1eeb Playstore\n\nESP8266 SmartConfig\n\n\nV\u00e0 file cho iOS\n\nESP-Touch iOS\n\n\nHo\u1ea1t \u0111\u1ed9ng\n#\n\n\n\n\nK\u00edch ho\u1ea1t ch\u1ee9c n\u0103ng Smart Config b\u1eb1ng c\u00e1ch l\u1eadp tr\u00ecnh v\u00e0 n\u1ea1p firmware cho ESP\n\n\nK\u1ebft n\u1ed1i smartphone v\u1edbi router \n\n\nM\u1edf ESP-TOUCH App \u0111\u00e3 c\u00e0i \u0111\u1eb7t tr\u00ean smartphone\n\n\nKi\u1ec3m tra SSID (t\u01b0\u01a1ng \u1ee9ng v\u1edbi t\u00ean Wifi) v\u00e0 m\u1eadt kh\u1ea9u (\u1edf \u0111\u00e2y l\u00e0 m\u1eadt kh\u1ea9u wifi c\u1ee7a b\u1ea1n) \u0111\u1ec3 k\u1ebft n\u1ed1i t\u1edbi thi\u1ebft b\u1ecb.\n\n\n\n\nK\u1ebft qu\u1ea3\n#\n\n\n\n\nN\u1ebfu th\u00e0nh c\u00f4ng s\u1ebd c\u00f3 th\u00f4ng b\u00e1o tr\u00ean smartphone v\u1ec1 \u0111\u1ecba ch\u1ec9 IP c\u1ee7a ESP8266 nh\u01b0 sau\n\n\n\n\nEsptouch success, bssid = xxxx, InnetAddress = 192.168.xx.xx\n\n\n\n\n- Ng\u01b0\u1ee3c l\u1ea1i s\u1ebd c\u00f3 th\u00f4ng b\u00e1o Esptouch fail.\n#",
             "title": "ESPTOUCH & AIRKISS"
+        },
+        {
+            "location": "/nonos-sdk/smartconfig/esptouch/#tong-quan",
+            "text": "ESP Touch l\u00e0 protocol \u0111\u01b0\u1ee3c d\u00f9ng trong Smart Config \u0111\u1ec3 ng\u01b0\u1eddi d\u00f9ng c\u00f3 th\u1ec3 k\u1ebft n\u1ed1i t\u1edbi c\u00e1c phi\u00ean b\u1ea3n modul ESP8266 th\u00f4ng qua c\u1ea5u h\u00ecnh \u0111\u01a1n gi\u1ea3n tr\u00ean Smartphone.\nBan \u0111\u1ea7u kh\u00f4ng th\u1ec3 k\u1ebft n\u1ed1i v\u1edbi ESP8266, nh\u01b0ng th\u00f4ng qua giao th\u1ee9c ESP-TOUCH th\u00ec Smartphone s\u1ebd g\u1eedi g\u00f3i UDP t\u1edbi Access Point(AP) \u1edf \u0111\u00e2y l\u00e0 ESP8266, m\u00e3 h\u00f3a SSID v\u00e0 m\u1eadt kh\u1ea9u th\u00e0nh tr\u01b0\u1eddng Length trong g\u00f3i UDP, \u0111\u1ec3 ESP8266 c\u00f3 th\u1ec3 hi\u1ec3u v\u00e0 gi\u1ea3i m\u00e3 \u0111\u01b0\u1ee3c th\u00f4ng tin.  C\u1ea5u tr\u00fac g\u00f3i tin s\u1ebd c\u00f3 d\u1ea1ng     6  6  2  3  5  Variable  4      DA  SA  Length  LLC  SNAP  DATA  FCS     Length bao g\u1ed3m SSID v\u00e0 th\u00f4ng tin key cho ESP8266",
+            "title": "T\u1ed5ng quan"
+        },
+        {
+            "location": "/nonos-sdk/smartconfig/esptouch/#phan-mem-cho-android-va-ios",
+            "text": "C\u00f3 th\u1ec3 t\u1ea3i file apk d\u00e0nh cho android t\u1ea1i  ESP-Touch Android  Ho\u1eb7c t\u1ea3i tr\u1ef1c ti\u1ebfp t\u1eeb Playstore ESP8266 SmartConfig  V\u00e0 file cho iOS ESP-Touch iOS",
+            "title": "Ph\u1ea7n m\u1ec1m cho android v\u00e0 iOS"
+        },
+        {
+            "location": "/nonos-sdk/smartconfig/esptouch/#hoat-ong",
+            "text": "K\u00edch ho\u1ea1t ch\u1ee9c n\u0103ng Smart Config b\u1eb1ng c\u00e1ch l\u1eadp tr\u00ecnh v\u00e0 n\u1ea1p firmware cho ESP  K\u1ebft n\u1ed1i smartphone v\u1edbi router   M\u1edf ESP-TOUCH App \u0111\u00e3 c\u00e0i \u0111\u1eb7t tr\u00ean smartphone  Ki\u1ec3m tra SSID (t\u01b0\u01a1ng \u1ee9ng v\u1edbi t\u00ean Wifi) v\u00e0 m\u1eadt kh\u1ea9u (\u1edf \u0111\u00e2y l\u00e0 m\u1eadt kh\u1ea9u wifi c\u1ee7a b\u1ea1n) \u0111\u1ec3 k\u1ebft n\u1ed1i t\u1edbi thi\u1ebft b\u1ecb.",
+            "title": "Ho\u1ea1t \u0111\u1ed9ng"
+        },
+        {
+            "location": "/nonos-sdk/smartconfig/esptouch/#ket-qua",
+            "text": "N\u1ebfu th\u00e0nh c\u00f4ng s\u1ebd c\u00f3 th\u00f4ng b\u00e1o tr\u00ean smartphone v\u1ec1 \u0111\u1ecba ch\u1ec9 IP c\u1ee7a ESP8266 nh\u01b0 sau   Esptouch success, bssid = xxxx, InnetAddress = 192.168.xx.xx",
+            "title": "K\u1ebft qu\u1ea3"
+        },
+        {
+            "location": "/nonos-sdk/smartconfig/esptouch/#-nguoc-lai-se-co-thong-bao-esptouch-fail",
+            "text": "",
+            "title": "- Ng\u01b0\u1ee3c l\u1ea1i s\u1ebd c\u00f3 th\u00f4ng b\u00e1o Esptouch fail."
         },
         {
             "location": "/nonos-sdk/smartconfig/wps/",
