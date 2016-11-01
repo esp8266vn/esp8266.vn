@@ -11,6 +11,7 @@ Websitte được cung cấp dưới dạng tài liệu được tổ chức, h�
 |  ![](images/logo-arduino.png)  | [Kiến thức về lập trình ESP8266 với Arduino](arduino/arduino.md)                        |
 | ![](images/logo-upy.jpeg)      | [Kiến thức về lập trình ESP8266 với Micropython](micropython/micropython.md)            |
 | -                              |  [Các dự án ứng dụng thực tiễn](projects/list.md)                                       |
+
 ## Bản quyền
 
 Toàn bộ tài liệu được phân phối theo giấy phép CC BY-SA-NC

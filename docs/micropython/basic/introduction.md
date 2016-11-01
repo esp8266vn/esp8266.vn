@@ -2,11 +2,11 @@
 
 ## Cài đặt esp-open-sdk
 
-Bởi vì `micropython` build cho ESP8266 cần 1 số sự thay đổi trong compile và thư viện đi kèm nên phải sử dụng compiler, sdk từ esp-open-sdk 
+Bởi vì `micropython` build cho ESP8266 cần 1 số sự thay đổi trong compile và thư viện đi kèm nên phải sử dụng compiler, sdk từ esp-open-sdk
 
 Cài đặt theo hướng dẫn tại [esp-open-sdk](https://github.com/pfalcon/esp-open-sdk)
 
-Trước khi thực hiện `make` thì thực hiện lệnh này trước: 
+Trước khi thực hiện `make` thì thực hiện lệnh này trước:
 ```bash
 sed -i.bak '1s/^/gettext=\'$'\n/' crosstool-NG/kconfig/Makefile
 sed -i.bak -e 's/[[:<:]]sed[[:>:]]/gsed/' Makefile
