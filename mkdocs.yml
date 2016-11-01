@@ -22,7 +22,8 @@ pages:
       - Tổng quan:                    introduction/introduction.md
       - Internet Of Things (IoT):     introduction/about-iot.md
       - ESP8266 & ESP8285:            introduction/about-esp8266.md
-      - Module & Board phát triển:    introduction/esp-module.md
+      - Các loại Module:              introduction/esp-module.md
+      - Board phát triển:             introduction/board.md
       - Phần cứng & công cụ:          introduction/prepare.md
     - ESP8266 NONOS-SDK:
       - Giới thiệu:                   nonos-sdk/nonos-sdk.md
@@ -79,6 +80,17 @@ pages:
         - Progmem:                    arduino/basic/progmem.md
       - Thư viện:
         - ESP8266WiFi:                arduino/libraries/esp8266-wifi.md
+        - ESP-API:                    arduino/libraries/esp-api.md
+        - Ticker:                     arduino/libraries/ticker.md
+        - EEPROM:                     arduino/libraries/eeprom.md
+        - I2C (Thư viện Wire):        arduino/libraries/i2c.md
+        - SPI:                        arduino/libraries/spi.md
+        - Software Serial:            arduino/libraries/software-serial.md
+        - mDNS và DNS-SD:             arduino/libraries/mdns-dnssd.md
+        - SSDP:                       arduino/libraries/ssdp.md
+        - DNS Server:                 arduino/libraries/dns-server.md
+        - Servo:                      arduino/libraries/servo.md
+        - Thư viện hữu ích khác:      arduino/libraries/others.md
       - Filesystem:
         - Flash Layout:               arduino/filesystem/flash-layout.md
       - Cập nhật Firmware (FOTA):
@@ -89,6 +101,7 @@ pages:
       - Phần cứng hỗ trợ:             arduino/arduino-esp8266-hardware.md
       - Các dự án:
         - Danh sách:                  arduino/projects/list.md
+        - Smartconfig & react-native: arduino/projects/smartconfig-react-native.md
     - ESP8266 Micropython:
       - Giới thiệu:                   micropython/micropython.md
       - Cơ bản:
