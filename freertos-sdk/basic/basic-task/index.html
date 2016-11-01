@@ -690,7 +690,7 @@ CFLAGS = -g -save-temps -std=gnu90 -Os -Wpointer-arith -Wundef -Werror \
 
 <h1 id="cau-truc-chuong-trinh-user_mainc">Cấu trúc chương trình <code>user_main.c</code><a class="headerlink" href="#cau-truc-chuong-trinh-user_mainc" title="Permanent link">#</a></h1>
 <p>Chương trình có nhiệm vụ tạo ra 2 task riêng biệt, một dùng để nháy LED có chu kỳ 200 <code>ticks</code>, task còn lại để in thông tin ra UART0 với chu kỳ 1000 <code>ticks</code>.</p>
-<p>Muốn vậy, trước hết phải tạo ra 2 hàm con, tuân theo tiền khai báo có dạng <code>void tên_hàm(void *tham_số)</code> cho 2 task LED và UART:</p>
+<p>Muốn vậy, trước hết phải tạo ra 2 hàm con, tuân theo tiền khai báo kiểu <code>TaskFunction_t</code> có dạng <code>void vTaskCode( void * pvParameters )</code> cho task LED và UART:</p>
 <pre><code class="C">void task_led(void *pvParameters)
 {
     for(;;){
@@ -711,9 +711,19 @@ void task_printf(void *pvParameters)
 
 <div class="admonition note">
 <p class="admonition-title">Lưu ý</p>
-<p>Bên trong hàm con phải thực hiện vòng lặp vô tận, không được return. Vì mục đích là tạo task chạy liên tục mãi mãi.</p>
+<ul>
+<li>Bên trong hàm con phải thực hiện vòng lặp vô tận (<em>infinite loop</em>), không được <em>return</em>.</li>
+<li>Ngoài ra, task có thể tự <em>hủy</em> (delete) chính nó khi cần (bằng hàm <code>vTaskDelete( TaskHandle_t xTask )</code>)</li>
+</ul>
 </div>
-<p>Sau đó, trong hàm <code>user_init</code> của ESP8266, sau khi khởi tạo các giá trị cần thiết cho UART và chân GPIO để nháy LED, sử dụng hàm xTaskCreate trong FreeRTOS để tạo task thực thi 2 hàm con này, cú pháp xTaskCreate:</p>
+<div class="admonition note">
+<p class="admonition-title">Tick</p>
+<ul>
+<li><code>Tick</code> là hành động khi timer ngắt định kỳ dùng trong nhân FreeRTOS để MCU thực hiện chuyển <em>ngữ cảnh</em> (<em>context</em>) khi chuyển qua lại giữa các task với nhau, khái niệm <em>thực hiện tác vụ song song, đồng thời, cùng lúc</em> chỉ mang tính tương đối, vì RTOS thực hiện điều này 1 cách tuần tự.</li>
+<li>Giá trị của <code>tick</code> không phải lúc nào cũng là 1ms, tùy thuộc vào cấu hình khi <em>port</em> FreeRTOS lên từng MCU khác nhau (trong trường hợp này do nhà sản xuất quy định). Có thể kiểm tra chính xác chu kỳ ms của <code>tick</code> bằng macro <code>portTICK_RATE_MS</code> &ndash;&gt; Để delay chính xác <code>t(ms)</code> thì tham số truyền cho <code>vTaskDelay</code> là <code>t/portTICK_RATE_MS</code></li>
+</ul>
+</div>
+<p>Trong hàm <code>user_init()</code> của ESP8266, sau khi khởi tạo các giá trị cần thiết cho UART và chân GPIO Ouput để nháy LED, sử dụng hàm <code>xTaskCreate</code> trong FreeRTOS để tạo task thực thi 2 hàm con này, cú pháp <code>xTaskCreate</code>:</p>
 <pre><code class="C">BaseType_t xTaskCreate(    TaskFunction_t pvTaskCode,
                             const char * const pcName,
                             unsigned short usStackDepth,
@@ -726,11 +736,11 @@ void task_printf(void *pvParameters)
 <p>Trong đó:</p>
 <ul>
 <li><code>pvTaskCode</code>: trỏ đến hàm con cần thực hiện khi tạo task</li>
-<li><code>pcName</code>: chuỗi biểu thị tên mô tả task này</li>
+<li><code>pcName</code>: chuỗi mô tả tên của task này</li>
 <li><code>usStackDepth</code>: độ lớn của con trỏ ngăn xếp, chọn sao cho lớn hơn độ lớn của con trỏ ngăn xếp khi thực hiện hàm con, ví dụ như khi hàm con gọi càng nhiều hàm khác bên trong lồng nhau, khi đó độ lớn này càng tăng.</li>
-<li><code>pvParameters</code>: con trỏ đến tham số truyền cần truyền vào hàm con khi task khởi tạo.</li>
+<li><code>pvParameters</code>: trỏ đến tham số cần truyền vào hàm con khi task khởi tạo.</li>
 <li><code>uxPriority</code>: mức độ ưu tiên của task.</li>
-<li><code>pxCreatedTask</code>: con trỏ đến biến kiểu <code>TaskHandle_t</code>, dùng để sau khi gọi <code>xTaskCreate</code>, biến này sẽ được gán để sử dụng cho mục đích sau, ví dụ như xóa task này.
+<li><code>pxCreatedTask</code>: trỏ đến biến kiểu <code>TaskHandle_t</code>, biến sẽ được gán sau khi gọi <code>xTaskCreate</code> thành công, xem như <em>ID</em> để phân biệt các task với nhau, và được sử dụng cho nhiều mục đích, ví dụ như xóa task (dùng hàm <code>vTaskDelete( TaskHandle_t xTask )</code>)
 Sử dụng <code>xTaskCreate</code> để tạo task LED và UART như sau:</li>
 </ul>
 <pre><code class="C">xTaskCreate(task_led, &quot;task_led&quot;, 256, NULL, 2, NULL);
