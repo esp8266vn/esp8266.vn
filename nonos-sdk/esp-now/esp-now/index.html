@@ -656,7 +656,98 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="gioi-thieu">Giới thiệu<a class="headerlink" href="#gioi-thieu" title="Permanent link">#</a></h1>
+<ul>
+<li>ESP-NOW là một giao thức được phát triển bởi Espressif cho phép nhiều thiết bị có thể kết nối với nhau mà không cần dùng Wifi. Các thiết bị sau khi kết nối được với nhau sẽ là peer-to-peer, và không yêu cầu bắt tay.</li>
+<li>ESP-NOW có thể được xem là một công nghệ được sử dụng cho ESP8266 để truyền các gói dữ liệu với tốc độ cao, nó được ứng dụng trong các thiết bị chiếu sáng thông minh, điều khiển từ xa các cảm biến,&hellip;</li>
+<li>Trong ESP-NOW dùng chuẩn IEEE802.11 cùng các hàm IE và mã hóa CCMP đảm bảo được độ tin cậy.</li>
+</ul>
+<h1 id="cac-chuc-nang-chinh">Các chức năng chính<a class="headerlink" href="#cac-chuc-nang-chinh" title="Permanent link">#</a></h1>
+<ul>
+<li>ESP-NOW có hỗ trợ các đặc điểm sau:<ul>
+<li>Mã hóa và giải mã gói tin unicast</li>
+<li>Mã hóa trộn và giải mã với peer devices</li>
+<li>Playload có thể lên tới 250 byte</li>
+<li>Có hàm callback để xác định được việc truyền dữ liệu thành công hay thất bại</li>
+</ul>
+</li>
+<li>Tuy nhiên cũng có một số hạn chế:<ul>
+<li>Không hỗ trợ broadcast</li>
+<li>Giới hạn các peer được mã hóa. Khoảng 10 peer được mã hóa trong mode Station, 6 peer trong SoftAP hoặc SoftAP + mode Station. Peer không mã hóa có thể có số lượng nhiều hơn nhưng phải nhỏ hơn 20.</li>
+<li>Playload bị giới hạn 250 byte.</li>
+</ul>
+</li>
+</ul>
+<h1 id="mo-ta">Mô tả<a class="headerlink" href="#mo-ta" title="Permanent link">#</a></h1>
+<p>Thông tin sẽ bao gồm
+- Trong local device
+    + PMW
+    + Role
+- Trong peer
+    + Key
+    + Địa chỉ MAC
+    + Role
+    + Channel
+- Bảng mô tả</p>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Thông tin</th>
+<th>Giá trị/ Độ dài</th>
+<th>Mô tả</th>
+<th>Ghi chú</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Local device</td>
+<td>PMK</td>
+<td>Độ dài 16 byte</td>
+<td>Primary Master Key, ví dụ như KOK trongAPI, dùng để mã hóa Key của peer.</td>
+<td>Hệ thống sẽ tạo PMK mặc định, không cần phải config</td>
+</tr>
+<tr>
+<td></td>
+<td>Role</td>
+<td>IDLE CONTROLLER SLAVE COMBO</td>
+<td>Đây là vai trò(role) của device IDLE: chưa phân role CONTROLLER:controller SLAVE: slave COMBO: đảm nhiệm 2 role là controller slave</td>
+<td>Role của local device được định nghĩa thông qua SoftAP hoặc Station của ESP-NOW IDLE:  việc truyền nhận sẽ không được cho phép CONTROLLER: ưu tiên cho Sation interface SLAVE: ưu tiên cho SoftAP interface COMBO: ưu tiên cho cả SoftAP interface và Station interface</td>
+</tr>
+<tr>
+<td>Peer</td>
+<td>Key</td>
+<td>Độ dài 16 byte</td>
+<td>Sử dụng để mã hóa paload key trong quá trình giao tiếp với các peer</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>MacAddress</td>
+<td>Độ dài 6 byte</td>
+<td>Địa chỉ MAC của peer</td>
+<td>Địa chỉ MAC phải cùng với địa chỉ gửi. Ví dụ như nếu gói tin được gửi từ Station interface thì địa chỉ MAC phải giống với địa chỉ của Station</td>
+</tr>
+<tr>
+<td></td>
+<td>Role</td>
+<td>IDLE CONTROLLER SLAVE COMBO</td>
+<td>Đây là vai trò(role) của device IDLE: chưa phân role CONTROLLER:controller SLAVE: slave COMBO: đảm nhiệm 2 role là controller slave</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Channel</td>
+<td>Giá trị từ 0 - 255</td>
+<td>Kênh để local device và peer kết nối với nhau</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="tham-khao">Tham khảo<a class="headerlink" href="#tham-khao" title="Permanent link">#</a></h1>
+<ul>
+<li>Có thể xem thêm các tài liệu mô tả về <a href="https://espressif.com/en/products/software/esp-now/resources">ESP-NOW</a> của Espressif</li>
+</ul>
               
             </div>
           </div>
