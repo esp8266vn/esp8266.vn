@@ -139,7 +139,7 @@ got ip !!!
 #define SSID		"yourssid"
 ```
 
-Sau khi kết nối giá trị của SSID và PÁSSWORD sẽ được lưu vào flash và điều này có nghĩa là nếu lần sau  bạn không thay đổi giá trị thì những giá trị trong flash sẽ được sử dụng để truy cập vào router. Điều này được thực hiện bằng đoạn code sau.
+Sau khi kết nối giá trị của SSID và PASSWORD sẽ được lưu vào flash và điều này có nghĩa là nếu lần sau  bạn không thay đổi giá trị thì những giá trị trong flash sẽ được sử dụng để truy cập vào router. Điều này được thực hiện bằng đoạn code sau.
 
 ```c
 	// Wifi configuration
@@ -174,7 +174,9 @@ Chú ý là hàm
 ```
 
 Có tham số thứ 3 là 0 có nghĩa là timer chỉ thực hiện đếm 100 ms 1 lần nếu tham số này được set thành 1 thì cứ sau 100 ms hàm user_esp_platform_check_ip() sẽ được gọi 1 lần.
-Bạn có thể xem thêm về cách sử dụng timer trong tài liệu ESP8266 Non-OS SDK API Reference (https://espressif.com/sites/default/files/documentation/2c-esp8266_non_os_sdk_api_reference_en.pdf)
+Bạn có thể xem thêm về cách sử dụng timer trong tài liệu ESP8266 Non-OS SDK API Reference
 
-!!!chú ý : source code trong bài này được tham khảo từ trang https://espressif.com/en/products/hardware/esp8266ex/resources
+##References:
+1. https://espressif.com/sites/default/files/documentation/2c-esp8266_non_os_sdk_api_reference_en.pdf
+2. https://espressif.com/en/products/hardware/esp8266ex/resources
 
