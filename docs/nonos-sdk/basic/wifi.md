@@ -189,7 +189,7 @@ Bạn có thể xem thêm về cách sử dụng timer trong tài liệu ESP8266
     - `wifi_station_set_config_current`  
     Có thể xem thêm tại `$SDK/include/user_interface.h`
 
-##References:
+##References
 1. [https://espressif.com/sites/default/files/documentation/2c-esp8266_non_os_sdk_api_reference_en.pdf](https://espressif.com/sites/default/files/documentation/2c-esp8266_non_os_sdk_api_reference_en.pdf)
 2. [https://espressif.com/en/products/hardware/esp8266ex/resources](https://espressif.com/en/products/hardware/esp8266ex/resources)
 
