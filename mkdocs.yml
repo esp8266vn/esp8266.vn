@@ -1,14 +1,13 @@
 site_name: Internet Of Things (IoT) với ESP8266
 site_url: https://esp8266.vn
 site_description: ESP8266 Việt Nam
-# theme: readthedocs
+#theme: readthedocs
 site_author: Tuan PM
 theme_dir: readthedocshm
 copyright: Copyright &copy; 2016 <a href="https://esp8266.vn">ESP8266 Viet Nam</a>
 markdown_extensions:
     - toc:
         permalink: '#'
-    - codehilite(css_class=code)
     - admonition
     - smarty
 repo_name: GitHub
@@ -18,57 +17,97 @@ google_analytics: ['UA-60470603-4', 'esp8266.vn']
 # Page tree
 pages:
   - Trang chủ:                      index.md
-  - Nội dung: 
+  - Nội dung:
     - Kiến thức cơ bản:
-      - Kiến thức cơ bản:           00-introduction/00-introduction.md
-      - Internet Of Things (IoT):   00-introduction/01-about-iot.md
-      - ESP8266 & ESP8285:          00-introduction/02-about-esp8266.md
-      - Module & Board phát triển:  00-introduction/03-esp-module.md
-      - Các kiến thức cơ bản:       00-introduction/04-prepare.md 
+      - Tổng quan:                    introduction/introduction.md
+      - Internet Of Things (IoT):     introduction/about-iot.md
+      - ESP8266 & ESP8285:            introduction/about-esp8266.md
+      - Các loại Module:              introduction/esp-module.md
+      - Board phát triển:             introduction/board.md
+      - Phần cứng & công cụ:          introduction/prepare.md
     - ESP8266 NONOS-SDK:
-      - Cơ bản:               
-        - Cài đặt công cụ cần thiết:  nonos-sdk/01-esp-basic/00-esp-basic.md
-        - Biên dịch dự án mẫu:        nonos-sdk/01-esp-basic/01-compile-first-time.md
-        - Bật tắt LED:                nonos-sdk/01-esp-basic/02-blink-led.md 
-        - Nút nhấn:                   nonos-sdk/01-esp-basic/03-button.md
-        - UART:                       nonos-sdk/01-esp-basic/04-uart.md
-        - Task:                       nonos-sdk/01-esp-basic/05-task.md
-        - Wifi:                       nonos-sdk/01-esp-basic/06-wifi.md
-        - ESPCONN:                    nonos-sdk/01-esp-basic/07-espconn.md
-        - MDNS:                       nonos-sdk/01-esp-basic/08-mdns.md
-        - NTP:                        nonos-sdk/01-esp-basic/09-ntp.md
-        - Lưu dữ liệu vào Flash:      nonos-sdk/01-esp-basic/10-save-to-flash.md
+      - Giới thiệu:                   nonos-sdk/nonos-sdk.md
+      - Cơ bản:
+        - Cài đặt công cụ cần thiết:  nonos-sdk/basic/basic.md
+        - Biên dịch dự án mẫu:        nonos-sdk/basic/compile-first-time.md
+        - Bật tắt LED:                nonos-sdk/basic/blink-led.md
+        - Nút nhấn:                   nonos-sdk/basic/button.md
+        - UART:                       nonos-sdk/basic/uart.md
+        - Makefile cho dự án phức tạp: nonos-sdk/basic/complex-makefile.md
+        - Task:                       nonos-sdk/basic/task.md
+        - Wifi:                       nonos-sdk/basic/wifi.md
+        - ESPCONN:                    nonos-sdk/basic/espconn.md
+        - MDNS:                       nonos-sdk/basic/mdns.md
+        - NTP:                        nonos-sdk/basic/ntp.md
+        - Lưu dữ liệu vào Flash:      nonos-sdk/basic/save-to-flash.md
       - Smartconfig:
-        - ESP8266 Smartconfig:        nonos-sdk/02-esp-smartconfig/00-esp-smartconfig.md
-        - Tại sao cần Smartconfig:    nonos-sdk/02-esp-smartconfig/01-why-smartconfig.md
-        - ESPTOUCH & AIRKISS:         nonos-sdk/02-esp-smartconfig/02-esptouch.md
-        - WPS:                        nonos-sdk/02-esp-smartconfig/03-wps.md
+        - ESP8266 Smartconfig:        nonos-sdk/smartconfig/smartconfig.md
+        - Tại sao cần Smartconfig:    nonos-sdk/smartconfig/why-smartconfig.md
+        - ESPTOUCH & AIRKISS:         nonos-sdk/smartconfig/esptouch.md
+        - WPS:                        nonos-sdk/smartconfig/wps.md
       - MQTT:
-        - ESP8266 MQTT:               nonos-sdk/03-esp-mqtt/00-esp-mqtt.md
+        - Giao thức MQTT:             nonos-sdk/mqtt/what-is-mqtt.md
+        - ESP8266 MQTT Client:        nonos-sdk/mqtt/mqtt-client.md
       - HTTP Client:
-        - ESP8266 HTTP Client:        nonos-sdk/04-esp-http-client/00-esp-http-client.md
+        - ESP8266 HTTP Client:        nonos-sdk/http-client/http-client.md
       - HTTP Server:
-        - ESP8266 HTTP Server:        nonos-sdk/05-esp-http-server/00-esp-http-server.md
+        - ESP8266 HTTP Server:        nonos-sdk/http-server/http-server.md
       - Firmware Over The Air:
-        - FOTA:                       nonos-sdk/06-esp-fota/00-esp-fota.md 
+        - FOTA:                       nonos-sdk/fota/fota.md
       - ESP Now:
-        - ESP Now:                    nonos-sdk/07-esp-now/00-esp-now.md
+        - ESP Now:                    nonos-sdk/esp-now/esp-now.md
       - ESP Mesh:
-        - ESP Mesh:                   nonos-sdk/08-esp-mesh/00-esp-mesh.md
-    - ESP8266 FreeRTOS-SDK:
-      - Cơ bản:                       
-        - Giới thiệu:                 freertos-sdk/freertos-sdk.md
-        - Cài đặt công cụ cần thiết:  freertos-sdk/00-freertos-basic/00-basic.md
-    - ESP8266 Arduino:
-      - Cơ bản:
-        - Giới thiệu:                 arduino/arduino.md
-        - Cài đặt công cụ cần thiết:  arduino/00-arduino-basic/00-basic.md
-    - ESP8266 Micropython:
-      - Cơ bản:
-        - Giới thiệu:                 micropython/micropython.md
-        - Cài đặt công cụ cần thiết:  micropython/00-ucpython-basic/00-basic.md
+        - ESP Mesh:                   nonos-sdk/esp-mesh/esp-mesh.md
+      - Các dự án:
+        - Danh sách:                  nonos-sdk/projects/list.md
 
-  - Các dự án:                      projects/projects.md
+    - ESP8266 FreeRTOS-SDK:
+      - Giới thiệu:                   freertos-sdk/freertos-sdk.md
+      - Cơ bản:
+        - Cài đặt công cụ cần thiết:  freertos-sdk/basic/introduction.md
+        - Task / Thread cơ bản:       freertos-sdk/basic/basic-task.md
+        - Software Timer:             freertos-sdk/basic/software-timer.md
+        - Đồng bộ / trao đổi dữ liệu: freertos-sdk/basic/queue-semaphore-mutex.md
+        - Task notification:          freertos-sdk/basic/task-notification.md
+    - ESP8266 Arduino:
+      - Giới thiệu:                   arduino/arduino.md
+      - Cơ bản:
+        - Cài đặt:                    arduino/basic/install.md
+        - Digital:                    arduino/basic/digital.md
+        - Analog:                     arduino/basic/analog.md
+        - Thời gian & Delay:          arduino/basic/timming-delay.md
+        - Serial:                     arduino/basic/serial.md
+        - Progmem:                    arduino/basic/progmem.md
+      - Thư viện:
+        - ESP8266WiFi:                arduino/libraries/esp8266-wifi.md
+        - ESP-API:                    arduino/libraries/esp-api.md
+        - Ticker:                     arduino/libraries/ticker.md
+        - EEPROM:                     arduino/libraries/eeprom.md
+        - I2C (Thư viện Wire):        arduino/libraries/i2c.md
+        - SPI:                        arduino/libraries/spi.md
+        - Software Serial:            arduino/libraries/software-serial.md
+        - mDNS và DNS-SD:             arduino/libraries/mdns-dnssd.md
+        - SSDP:                       arduino/libraries/ssdp.md
+        - DNS Server:                 arduino/libraries/dns-server.md
+        - Servo:                      arduino/libraries/servo.md
+        - Thư viện hữu ích khác:      arduino/libraries/others.md
+      - Filesystem:
+        - Flash Layout:               arduino/filesystem/flash-layout.md
+      - Cập nhật Firmware (FOTA):
+        - Giới thiệu OTA:             arduino/ota/arduino-fota.md
+        - Sử dụng Arduino IDE:        arduino/ota/using-arduino-ide.md
+        - Sử dụng trình duyệt:        arduino/ota/using-web-browser.md
+        - Sử dụng HTTP Server:        arduino/ota/using-http-server.md
+      - Phần cứng hỗ trợ:             arduino/arduino-esp8266-hardware.md
+      - Các dự án:
+        - Danh sách:                  arduino/projects/list.md
+        - Smartconfig & react-native: arduino/projects/smartconfig-react-native.md
+    - ESP8266 Micropython:
+      - Giới thiệu:                   micropython/micropython.md
+      - Cơ bản:
+        - Cài đặt công cụ cần thiết:  micropython/basic/introduction.md
+
+  - Các dự án:                      projects/list.md
   - Bản quyền:                      license.md
   - Đóng góp:                       contributor.md
 

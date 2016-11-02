@@ -1,1 +1,0 @@
-# Tại sao cần Smartconfig

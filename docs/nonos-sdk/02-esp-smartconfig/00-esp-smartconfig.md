@@ -1,1 +1,0 @@
-# ESP8266 Smart config

@@ -1,1 +1,0 @@
-# FreeRTOS SDK cơ bản
