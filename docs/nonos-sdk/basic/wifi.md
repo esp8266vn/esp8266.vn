@@ -3,7 +3,7 @@
 
 Tổ chức file căn cứ theo bài [Biên dịch dự án đầu tiên](./compile-first-time.md), toàn bộ cấu trúc file, **Makefile, user_config.h, rf_init.c** giữ nguyên, chỉ thay đổi nội dung file `main.c`.
 
-## Lấy dự án về từ Github:
+## Lấy dự án về từ Github
 
 ```bash
 git clone https://github.com/esp8266vn/esp-iot-basic.git
