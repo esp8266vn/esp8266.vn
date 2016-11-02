@@ -824,10 +824,25 @@ Chú ý là hàm</p>
 
 <p>Có tham số thứ 3 là 0 có nghĩa là timer chỉ thực hiện đếm 100 ms 1 lần nếu tham số này được set thành 1 thì cứ sau 100 ms hàm user_esp_platform_check_ip() sẽ được gọi 1 lần.
 Bạn có thể xem thêm về cách sử dụng timer trong tài liệu ESP8266 Non-OS SDK API Reference</p>
+<div class="admonition warning">
+<p class="admonition-title">Cẩn thận</p>
+<p>Những hàm sau đây khi cấu hình sẽ ghi dữ liệu vào vùng nhớ lưu trữ Flash, việc ghi cấu hình như vậy quá thường xuyên sẽ gây hỏng bộ nhớ: <br />
+- <code>wifi_set_opmode</code><br />
+- <code>wifi_station_set_config</code><br />
+- <code>wifi_station_set_auto_connect</code><br />
+SDK cung cấp cho ta các hàm tương để kiểm tra xem cấu hình đó đã tồn tại chưa và thực thi việc ghi nếu chưa:<br />
+- <code>wifi_get_opmode</code><br />
+- <code>wifi_station_get_config</code><br />
+- <code>wifi_station_get_auto_connect</code><br />
+Và các hàm chỉ ghi dữ liệu lên RAM và thực thi 
+- <code>wifi_set_opmode_current</code><br />
+- <code>wifi_station_set_config_current</code><br />
+Có thể xem thêm tại <code>$SDK/include/user_interface.h</code></p>
+</div>
 <h2 id="references">References:<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
 <ol>
-<li>https://espressif.com/sites/default/files/documentation/2c-esp8266_non_os_sdk_api_reference_en.pdf</li>
-<li>https://espressif.com/en/products/hardware/esp8266ex/resources</li>
+<li><a href="https://espressif.com/sites/default/files/documentation/2c-esp8266_non_os_sdk_api_reference_en.pdf">https://espressif.com/sites/default/files/documentation/2c-esp8266_non_os_sdk_api_reference_en.pdf</a></li>
+<li><a href="https://espressif.com/en/products/hardware/esp8266ex/resources">https://espressif.com/en/products/hardware/esp8266ex/resources</a></li>
 </ol>
               
             </div>
