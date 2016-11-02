@@ -1,15 +1,14 @@
 [TOC]
-# Kết nối ÉSP8266 với router Wifi
+# Kết nối ESP8266 với router Wifi
 
 Tổ chức file căn cứ theo bài [Biên dịch dự án đầu tiên](./compile-first-time.md), toàn bộ cấu trúc file, **Makefile, user_config.h, rf_init.c** giữ nguyên, chỉ thay đổi nội dung file `main.c`.
 
-!!! note "Nội dung"
-	Kết nối ÉSP8266 với router Wifi ở station mode
 ## Lấy dự án về từ Github:
 
 ```bash
 git clone https://github.com/esp8266vn/esp-iot-basic.git
 ```
+
 ## Sơ đồ file
 
 ```
