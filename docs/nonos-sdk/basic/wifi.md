@@ -6,7 +6,7 @@ Tổ chức file căn cứ theo bài [Biên dịch dự án đầu tiên](./comp
 ## Lấy dự án về từ Github
 
 ```bash
-git clone https://github.com/esp8266vn/esp-iot-basic.git
+git clone https://github.com/esp8266vn/eps-iot-wifi.git
 ```
 
 ## Sơ đồ file
