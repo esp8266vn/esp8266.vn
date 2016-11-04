@@ -656,7 +656,131 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="ong-bo-trao-oi-du-lieu-giua-cac-task">Đồng bộ / trao đổi dữ liệu giữa các task<a class="headerlink" href="#ong-bo-trao-oi-du-lieu-giua-cac-task" title="Permanent link">#</a></h1>
+                <div class="toc">
+<ul>
+<li><a href="#van-e-ong-bo-trao-oi-du-lieu-giua-cac-task">Vấn đề đồng bộ / trao đổi dữ liệu giữa các task</a></li>
+<li><a href="#hang-oi-queue">Hàng đợi (queue)</a><ul>
+<li><a href="#vi-du">Ví dụ</a></li>
+<li><a href="#tao-queue">Tạo queue</a></li>
+<li><a href="#gui-thong-iep-len-queue">Gửi thông điệp lên queue</a></li>
+<li><a href="#nhan-thong-iep-tu-queue">Nhận thông điệp từ queue</a></li>
+<li><a href="#chay-chuong-trinh">Chạy chương trình</a></li>
+</ul>
+</li>
+<li><a href="#semaphore">Semaphore</a></li>
+<li><a href="#mutex">Mutex</a></li>
+</ul>
+</div>
+<h1 id="van-e-ong-bo-trao-oi-du-lieu-giua-cac-task">Vấn đề đồng bộ / trao đổi dữ liệu giữa các task<a class="headerlink" href="#van-e-ong-bo-trao-oi-du-lieu-giua-cac-task" title="Permanent link">#</a></h1>
+<p>Mỗi task thực hiện tác vụ riêng của mình, chúng có không gian bộ nhớ riêng và hoàn toàn độc lập với nhau. </p>
+<ul>
+<li>Vậy làm thế nào để phối hợp chúng trong một chương trình lớn hơn, nếu xét mỗi task như là một module?</li>
+<li>Nếu task này muốn giao tiếp/trao đổi thông tin với task kia thì làm thế nào?</li>
+<li>Nếu 2 task cùng mức ưu tiên, cùng chạy song song và cùng muốn truy cập đến một tài nguyên chung thì làm sao để tránh xung đột?</li>
+</ul>
+<p>Tất cả chỉ gói gọn trong hàng đợi (queue), semaphore và mutex</p>
+<h1 id="hang-oi-queue">Hàng đợi (queue)<a class="headerlink" href="#hang-oi-queue" title="Permanent link">#</a></h1>
+<p>Hoạt động theo cơ chế FIFO (First In - First Out) dùng trong FreeRTOS để trao đổi thông điệp (message) giữa các task với nhau.</p>
+<p><img alt="queue" src="../images/queue.gif" /></p>
+<h2 id="vi-du">Ví dụ<a class="headerlink" href="#vi-du" title="Permanent link">#</a></h2>
+<p>Sử dụng lại ví dụ <code>esp-rtos-basic-task</code>, nhưng 2 task sửa lại theo mục đích sau:</p>
+<ul>
+<li><code>task_led</code>: nháy led, đếm biến <code>counter</code>, đếm xong thì gửi giá trị biến đếm này qua queue cho <code>task_printf</code> in ra giá trị.</li>
+<li><code>task_printf</code>: chỉ chờ  có thông điệp mới trên queue thì lấy thông điệp này ra khỏi queue và in giá trị này!</li>
+</ul>
+<p>Mã nguồn chương trình:</p>
+<pre><code class="bash">git clone https://github.com/esp8266vn/esp-rtos-basic-queue-sem-mutex.git
+cd esp-rtos-basic-queue-sem-mutex
+</code></pre>
+
+<p>Để sử dụng được queue phải <code>#include "freertos/queue.h"</code></p>
+<h2 id="tao-queue">Tạo queue<a class="headerlink" href="#tao-queue" title="Permanent link">#</a></h2>
+<p>Cú pháp:</p>
+<pre><code class="C"> xQueueHandle xQueueCreate( UBaseType_t uxQueueLength,
+                             UBaseType_t uxItemSize );
+</code></pre>
+
+<ul>
+<li><code>uxQueueLength</code>: kích thước/số phần tử tối đa trên queue</li>
+<li><code>uxItemSize</code>: kích thước của mỗi phần tử, tùy thuộc vào <em>kiểu</em> dữ liệu của phần tử trên queue.</li>
+</ul>
+<p>Trường hợp này, biến <code>counter</code> là <code>uint32_t</code>.
+Giả sử cần tối đa 10 phần tử trên queue.
+Khai báo và tạo như sau:</p>
+<pre><code class="C">xQueueHandle xCounterQueue;
+// ...
+xCounterQueue = xQueueCreate( 10, sizeof(uint32_t));
+</code></pre>
+
+<h2 id="gui-thong-iep-len-queue">Gửi thông điệp lên queue<a class="headerlink" href="#gui-thong-iep-len-queue" title="Permanent link">#</a></h2>
+<p>Theo cú pháp:</p>
+<pre><code class="C">BaseType_t xQueueSend(
+                            QueueHandle_t xQueue,
+                            const void * pvItemToQueue,
+                            TickType_t xTicksToWait
+                         );
+</code></pre>
+
+<ul>
+<li><code>xQueue</code>: queue handle (<code>xCounterQueue</code>)</li>
+<li><code>pvItemToQueue</code>: trỏ đến phần tử/thông điệp cần gửi lên queue (<code>&amp;counter</code>)</li>
+<li><code>xTicksToWait</code>: thời gian chờ tối đa (<em>timeout</em> - tính bằng <code>tick</code>) trong trường hợp queue bị đầy không gửi thêm vào được.</li>
+</ul>
+<p><code>task_led</code> sẽ làm nhiệm vụ này:</p>
+<pre><code class="C">void task_led(void *pvParameters)
+{
+    uint32_t counter = 0;
+    for(;;){
+        vTaskDelay(100);
+        GPIO_OUTPUT_SET(LED_GPIO, led_state);
+        led_state ^=1;
+        counter++;
+        if( xQueueSend( xCounterQueue,( void * ) &amp;counter, 10 ) != pdPASS )
+        {
+            // Failed to send msg to queue, TODO handle
+        }
+    }
+}
+</code></pre>
+
+<h2 id="nhan-thong-iep-tu-queue">Nhận thông điệp từ queue<a class="headerlink" href="#nhan-thong-iep-tu-queue" title="Permanent link">#</a></h2>
+<p>Theo cú pháp:</p>
+<pre><code class="C">BaseType_t xQueueReceive(
+                               QueueHandle_t xQueue,
+                               void *pvBuffer,
+                               TickType_t xTicksToWait
+                            );
+</code></pre>
+
+<ul>
+<li><code>xQueue</code>: queue handle (<code>xCounterQueue</code>)</li>
+<li><code>pvBuffer</code>: trỏ đến nơi sẽ chứa thông điệp lấy từ queue xuống.</li>
+<li><code>xTicksToWait</code>: timeout trong trường hợp không có phần từ nào trên queue (đang trống)</li>
+</ul>
+<p><code>task_printf</code> sẽ thực hiện nhiệm vụ này:</p>
+<pre><code class="C">void task_printf(void *pvParameters)
+{
+    uint32_t receiveCounter;
+
+    printf(&quot;task_printf started\n&quot;);
+
+    for(;;){
+        if( xQueueReceive( xCounterQueue, &amp;( receiveCounter ), 100 ) )
+        {
+           printf(&quot;task_printf, received counter = %u\n&quot;, receiveCounter);
+        }
+    }
+}
+</code></pre>
+
+<h2 id="chay-chuong-trinh">Chạy chương trình<a class="headerlink" href="#chay-chuong-trinh" title="Permanent link">#</a></h2>
+<pre><code class="bash">make clean
+make
+make flash
+</code></pre>
+
+<h1 id="semaphore">Semaphore<a class="headerlink" href="#semaphore" title="Permanent link">#</a></h1>
+<h1 id="mutex">Mutex<a class="headerlink" href="#mutex" title="Permanent link">#</a></h1>
               
             </div>
           </div>
