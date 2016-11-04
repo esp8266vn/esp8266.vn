@@ -10,7 +10,7 @@
   
   <meta name="author" content="Tuan PM">
   
-  <title>Task / Thread cơ bản - Internet Of Things (IoT) với ESP8266</title>
+  <title>Task cơ bản - Internet Of Things (IoT) với ESP8266</title>
   
 
   <link rel="shortcut icon" href="../../../img/favicon.ico">
@@ -27,7 +27,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Task / Thread cơ bản";
+    var mkdocs_page_name = "Task cơ bản";
     var mkdocs_page_input_path = "freertos-sdk/basic/basic-task.md";
     var mkdocs_page_url = "/freertos-sdk/basic/basic-task/";
   </script>
@@ -367,7 +367,7 @@
                 </li>
             
                 <li class="current">
-                    <a style="padding-left:90px;" class="current" href="./" id="Task / Thread cơ bản">Task / Thread cơ bản </a>
+                    <a style="padding-left:90px;" class="current" href="./" id="Task cơ bản">Task cơ bản </a>
                 </li>
             
                 <li class="">
@@ -642,7 +642,7 @@
           
         <li>Cơ bản &raquo;</li>
            
-        <li>Task / Thread cơ bản</li>
+        <li>Task cơ bản</li>
         <li class="wy-breadcrumbs-aside">
              
                 
@@ -656,9 +656,20 @@
           <div role="main">
             <div class="section">
               
-                <p>TOC</p>
-<h1 id="luong-thread-tac-vu-task-trong-freertos">Luồng (Thread) / Tác vụ (Task) trong FreeRTOS<a class="headerlink" href="#luong-thread-tac-vu-task-trong-freertos" title="Permanent link">#</a></h1>
-<p>// Đang xây dựng&hellip;</p>
+                <div class="toc">
+<ul>
+<li><a href="#ma-nguon-vi-du">Mã nguồn ví dụ</a></li>
+<li><a href="#makefile">Makefile</a></li>
+<li><a href="#cau-truc-chuong-trinh-user_mainc">Cấu trúc chương trình user_main.c</a></li>
+<li><a href="#bien-dich-va-chay-chuong-trinh">Biên dịch và chạy chương trình</a></li>
+<li><a href="#nang-cao-mot-chut">Nâng cao một chút</a></li>
+<li><a href="#gioi-thieu-ve-tac-vu-task-trong-freertos">Giới thiệu về tác vụ (task) trong FreeRTOS</a><ul>
+<li><a href="#cac-trang-thai-states-cua-task">Các trạng thái (states) của task</a></li>
+<li><a href="#cac-muc-uu-tien-priorities-cua-task">Các mức ưu tiên (priorities) của task</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <h1 id="ma-nguon-vi-du">Mã nguồn ví dụ<a class="headerlink" href="#ma-nguon-vi-du" title="Permanent link">#</a></h1>
 <pre><code class="bash">git clone https://github.com/esp8266vn/esp-rtos-basic-task.git
 </code></pre>
@@ -713,14 +724,14 @@ void task_printf(void *pvParameters)
 <p class="admonition-title">Lưu ý</p>
 <ul>
 <li>Bên trong hàm con phải thực hiện vòng lặp vô tận (<em>infinite loop</em>), không được <em>return</em>.</li>
-<li>Ngoài ra, task có thể tự <em>hủy</em> (delete) chính nó khi cần (bằng hàm <code>vTaskDelete( TaskHandle_t xTask )</code>)</li>
+<li>Ngoài ra, task có thể tự <em>hủy</em> (delete) chính nó khi cần (bằng hàm <code>vTaskDelete( TaskHandle_t xTask )</code> - xem ví dụ bên dưới)</li>
 </ul>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Tick</p>
 <ul>
 <li><code>Tick</code> là hành động khi timer ngắt định kỳ dùng trong nhân FreeRTOS để MCU thực hiện chuyển <em>ngữ cảnh</em> (<em>context</em>) khi chuyển qua lại giữa các task với nhau, khái niệm <em>thực hiện tác vụ song song, đồng thời, cùng lúc</em> chỉ mang tính tương đối, vì RTOS thực hiện điều này 1 cách tuần tự.</li>
-<li>Giá trị của <code>tick</code> không phải lúc nào cũng là 1ms, tùy thuộc vào cấu hình khi <em>port</em> FreeRTOS lên từng MCU khác nhau (trong trường hợp này do nhà sản xuất quy định). Có thể kiểm tra chính xác chu kỳ ms của <code>tick</code> bằng macro <code>portTICK_RATE_MS</code> &ndash;&gt; Để delay chính xác <code>t(ms)</code> thì tham số truyền cho <code>vTaskDelay</code> là <code>t/portTICK_RATE_MS</code></li>
+<li>Giá trị của <code>tick</code> không phải lúc nào cũng là 1ms, tùy thuộc vào cấu hình khi <em>port</em> FreeRTOS lên từng MCU khác nhau (trong trường hợp, <code>configTICK_RATE_HZ</code> của RTOS-SDK có giá trị là 100). Có thể kiểm tra chính xác chu kỳ ms của <code>tick</code> bằng macro <code>portTICK_RATE_MS</code> &ndash;&gt; Để delay chính xác <code>t(ms)</code> thì tham số truyền cho <code>vTaskDelay</code> là <code>t/portTICK_RATE_MS</code></li>
 </ul>
 </div>
 <p>Trong hàm <code>user_init()</code> của ESP8266, sau khi khởi tạo các giá trị cần thiết cho UART và chân GPIO Ouput để nháy LED, sử dụng hàm <code>xTaskCreate</code> trong FreeRTOS để tạo task thực thi 2 hàm con này, cú pháp <code>xTaskCreate</code>:</p>
@@ -750,7 +761,34 @@ xTaskCreate(task_printf, &quot;task_printf&quot;, 256, NULL, 2, NULL);
 <h1 id="bien-dich-va-chay-chuong-trinh">Biên dịch và chạy chương trình<a class="headerlink" href="#bien-dich-va-chay-chuong-trinh" title="Permanent link">#</a></h1>
 <pre><code class="bash">make clean
 make
+make flash
 </code></pre>
+
+<h1 id="nang-cao-mot-chut">Nâng cao một chút<a class="headerlink" href="#nang-cao-mot-chut" title="Permanent link">#</a></h1>
+<ul>
+<li>In vài thông tin cơ bản về <code>portTICK_RATE_MS</code> và <code>configMAX_PRIORITIES</code></li>
+<li>Ví dụ về <code>vTaskDelete()</code> cho <code>task_printf</code></li>
+</ul>
+<pre><code class="bash">git checkout task_delete
+make clean
+make
+make flash
+</code></pre>
+
+<h1 id="gioi-thieu-ve-tac-vu-task-trong-freertos">Giới thiệu về tác vụ (task) trong FreeRTOS<a class="headerlink" href="#gioi-thieu-ve-tac-vu-task-trong-freertos" title="Permanent link">#</a></h1>
+<h2 id="cac-trang-thai-states-cua-task">Các trạng thái (states) của task<a class="headerlink" href="#cac-trang-thai-states-cua-task" title="Permanent link">#</a></h2>
+<p>Có 4 trạng thái: Running, Ready, Blocked và Suspended</p>
+<ul>
+<li>Running: là trạng thái task đang được MCU thực thi thực sự, vì thế trong một thời điểm chỉ có duy nhất một task ở trạng thái running.</li>
+<li>Ready: là trạng thái task đã sẵn sàng để thực thi (không bị <em>blocked</em> hoặc <em>suspended</em>) nhưng đang không được MCU thực thi bởi vì MCU đang thực thi một task khác.</li>
+<li>Blocked: task đang bị <em>blocked</em> nếu nó đang đợi sự kiện (<em>event</em>) bên ngoài hoặc sự kiện thời gian. Ví dụ: khi task gọi hàm <code>vTaskDelay()</code> thì nó sẽ bị <em>blocked</em> cho đến khi hết thời gian delay (sự kiện thời gian). Hoặc task có thể bị <em>blocked</em> để đợi một hàng đợi (queue), semaphore, notification&hellip; nào đó. Thông thường, task bị <em>blocked</em> trong khoảng thòi gian quá hạn <code>timeout</code> cho trước, vì thế task sẽ luôn được <em>unblocked</em> (nếu có sự kiện bên ngoài) hoặc <code>timeout</code> nếu hết thời gian chờ.</li>
+<li>Suspended: Cũng giống như trạng thái <em>blocked</em> nhưng không có thời gian <code>timeout</code>, vì vậy chỉ có thể <code>enter</code> hoặc <code>exit</code> khỏi trạng thái <em>suspended</em> bởi hàm gọi từ bên ngoài tương ứng là  <code>vTaskSuspend()</code> và <code>xTaskResume()</code> </li>
+</ul>
+<p><img alt="task-state" src="../images/task-states.gif" /></p>
+<h2 id="cac-muc-uu-tien-priorities-cua-task">Các mức ưu tiên (priorities) của task<a class="headerlink" href="#cac-muc-uu-tien-priorities-cua-task" title="Permanent link">#</a></h2>
+<p>Mỗi task được tạo ra với mức ưu tiên được gán từ 0 đến giá trị <code>(configMAX_PRIORITIES - 1)</code>, với <code>configMAX_PRIORITIES</code> là giá trị được định nghĩa trong <code>FreeRTOSConfig.h</code> (với bản RTOS-SDK v1.4 đang sử dụng, <code>configMAX_PRIORITIES</code> là 15)</p>
+<p>Task đang ở trạng thái <em>ready</em> có ưu tiên cao hơn sẽ được chọn để thực thi (chuyển sang <em>running</em>) trong mỗi lần <code>tick</code></p>
+<p>Nếu các task có cùng mức ưu tiên? Trong trường hợp RTOS sẽ chia đều ra xử lý (do giá trị <code>configUSE_TIME_SLICING</code> đã được định nghĩa là 1 trong bản RTOS-SDK này)</p>
               
             </div>
           </div>
