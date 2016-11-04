@@ -4,12 +4,11 @@
 
 FreeRTOS là RTOS miễn phí vốn được _port_ cho rất nhiều MCU khác nhau (ARM7, Cortex M...)
 
-[Tham khảo chi tiết về FreeRTOS](http://www.freertos.org/)
-
-[Download FreeRTOS source code](http://www.freertos.org/a00104.html)
-
-[Tham khảo FreeRTOS API](http://www.freertos.org/a00106.html)
-
+- [Tham khảo chi tiết về FreeRTOS](http://www.freertos.org/)
+- [Download FreeRTOS source code (không phải RTOS-SDK cho ESP8266!!!)](http://www.freertos.org/a00104.html)
+- [Tham khảo FreeRTOS API](http://www.freertos.org/a00106.html)
+- Ebook: **Study of an operating system: FreeRTOS**, Nicolas Melot.
+- Ebook: **Using the FreeRTOS™ Real Time Kernel**, NXP LPC17xx Edition, Richard Barry.
 
 # Lưu ý
 
