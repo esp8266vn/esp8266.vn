@@ -16,14 +16,17 @@
 
 # Mô tả
 Thông tin sẽ bao gồm
+
 - Trong local device
     + PMW
     + Role
+
 - Trong peer
     + Key
     + Địa chỉ MAC
     + Role
     + Channel
+
 - Bảng mô tả
 
 | Device       | Thông tin  | Giá trị/ Độ dài             | Mô tả                                                                                                                               | Ghi chú                                                                                                                                                                                                                                                                 |
