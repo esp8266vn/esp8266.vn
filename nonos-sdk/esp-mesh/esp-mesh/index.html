@@ -657,9 +657,145 @@
             <div class="section">
               
                 <h1 id="gioi-thieu">Giới thiệu<a class="headerlink" href="#gioi-thieu" title="Permanent link">#</a></h1>
-<p>The development of the Internet of Things (IoT) requires an increasing number of nodes to connect to the Internet. However, only a limited number (usually fewer than 32) of nodes can directly connect to the same router. Therefore, Espressif has developed the ESP-MESH protocol to solve this problem. In a mesh network, the nodes can establish a network and forward packets. As a result, a large number of nodes can connect to the Internet without any improvements of the current router.</p>
+<p>Trong quá trình phát triển IoT thường đòi hỏi việc tăng số lượng node kết nối với Internet.Nhược điểm lớn nhất là số lượng node có thể trực tiếp kết nối tới router bị giới hạn nhỏ hơn 32 node. Để khắc phục điểm này thì Espressif đã phát triển giao thức ESP-MESH. Trong giao thức này node có thể tạo ra mạng để chuyển tiếp gói tin, nhờ đó mà một số lượng lớn node có thể kết nối Internet mà không cần phải cải tiến, nâng cấp router.</p>
+<h1 id="mot-so-inh-nghia">Một số định nghĩa<a class="headerlink" href="#mot-so-inh-nghia" title="Permanent link">#</a></h1>
+<ul>
+<li>IOT Espressif App: ứng dụng của Espressif dùng để điều khiển từ xa các thiết bị Wifi</li>
+<li>ESP-Touch: công nghệ để kết nối Wifi device với router</li>
+<li>Smart Config Mode cho ESP-Touch: cấu hình cho Wifi device dùng ESP-Touch thông qua Mode Smart Config.</li>
+<li>Local Device: thiết bị được người dùng cấu hình kết nối với router thông qua ESP-Touch mà không kích hoạt trên server, chỉ có thể điều khiển thông qua mạng cục bộ</li>
+<li>Cloud Device: giống như Local Device nhưng được kích hoạt trên server, có thể điều khiển ở mọi nơi có mạng internet.</li>
+</ul>
 <h1 id="cau-truc-mang">Cấu trúc mạng<a class="headerlink" href="#cau-truc-mang" title="Permanent link">#</a></h1>
+<p>Mạng Mesh hỗ trợ chức năng auto-networking. Khi người dùng thiết lập mạng mesh thông qua ESP-Touch thì thiết bị sẽ tự động tìm các Wifi AP gần kề.</p>
+<h2 id="so-o-mang-mesh">Sơ đồ mạng mesh<a class="headerlink" href="#so-o-mang-mesh" title="Permanent link">#</a></h2>
+<p><img alt="Mesh NetWork" src="../../images/mesh-network.png" /></p>
+<ul>
+<li>Các node sẽ kết nối trực tiếp tới router được gọi là root node, các node khác thì được gọi là non-root node.</li>
+<li>Online-Mesh: Khi router kết nối với internet thì ta có thể dùng IOT App để điều khiển từ xa ở bất kỳ đâu</li>
+<li>Local-Mesh: Bạn chỉ có thể điều khiển Local Device trong mạng thông qua router.</li>
+</ul>
+<h2 id="cac-node-trong-mang">Các node trong mạng<a class="headerlink" href="#cac-node-trong-mang" title="Permanent link">#</a></h2>
+<ul>
+<li>Root Node<ul>
+<li>Nhận và gửi gói tin</li>
+<li>Chuyển tiếp gói tin từ server, ứng dụng mobile và các node con của nó</li>
+</ul>
+</li>
+<li>None-root Node<ul>
+<li>Non-leaf node: Nhận và gửi gói tin, chuyển tiếp gói tin từ node cha và các node con khác</li>
+<li>Leaf node: Chỉ được nhận và gửi gói tin, không có chức năng chuyển tiếp.</li>
+</ul>
+</li>
+</ul>
 <h1 id="cac-header-trong-mesh">Các header trong Mesh<a class="headerlink" href="#cac-header-trong-mesh" title="Permanent link">#</a></h1>
+<p><img alt="Mesh Header" src="../../images/mesh-header.png" /></p>
+<p>Mô tả</p>
+<table>
+<thead>
+<tr>
+<th>Tên trường</th>
+<th>Độ dài</th>
+<th>Mô tả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ver</td>
+<td>2 bit</td>
+<td>Thông tin Mesh</td>
+</tr>
+<tr>
+<td>o</td>
+<td>1 bit</td>
+<td>Tùy chọn flag</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>5 bit</td>
+<td>FP</td>
+</tr>
+<tr>
+<td></td>
+<td>FP</td>
+<td>Cho phép Piggyback flow trong gói tin</td>
+</tr>
+<tr>
+<td></td>
+<td>FR</td>
+<td>Yêu cầu,Piggyback flow trong gói tin</td>
+</tr>
+<tr>
+<td></td>
+<td>resv</td>
+<td>Dự phòng</td>
+</tr>
+<tr>
+<td></td>
+<td>8 bit</td>
+<td>D</td>
+</tr>
+<tr>
+<td></td>
+<td>D</td>
+<td>Chiều của gói tin: 0: xuống (downward) 1: lên (upward)</td>
+</tr>
+<tr>
+<td></td>
+<td>P2P</td>
+<td>Gói tin từ Node tới Node</td>
+</tr>
+<tr>
+<td></td>
+<td>protocol</td>
+<td>Giao thức gửi dữ liệu được quy định bởi người dùng(6bit)</td>
+</tr>
+<tr>
+<td>len</td>
+<td>2 byte</td>
+<td>Chiều dài của gói tin (bao gồm cả mesh header)</td>
+</tr>
+<tr>
+<td>dst_addr</td>
+<td>6 bytes</td>
+<td>Địa chỉ đích</td>
+</tr>
+<tr>
+<td>src_addr</td>
+<td>6 bytes</td>
+<td>Địa chỉ nguồn</td>
+</tr>
+<tr>
+<td>ot_len</td>
+<td></td>
+<td>Độ dài của option (gồm cả chính nó)</td>
+</tr>
+<tr>
+<td>option_list</td>
+<td></td>
+<td>Danh sách các thành phần của các option</td>
+</tr>
+<tr>
+<td>otype</td>
+<td>1 byte</td>
+<td>Kiểu option</td>
+</tr>
+<tr>
+<td>olen</td>
+<td>1 byte</td>
+<td>Chiều dài của option hiện tịa</td>
+</tr>
+<tr>
+<td>ovalue</td>
+<td>Người dùng định nghĩa</td>
+<td>Giá trị option hiện tại</td>
+</tr>
+</tbody>
+</table>
+<h1 id="tham-khao">Tham khảo<a class="headerlink" href="#tham-khao" title="Permanent link">#</a></h1>
+<ul>
+<li><a href="https://espressif.com/en/products/software/esp-mesh/overview">ESP-MESH</a></li>
+</ul>
               
             </div>
           </div>
