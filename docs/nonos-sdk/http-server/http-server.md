@@ -550,10 +550,10 @@ tcp_server_listen(void *arg)
 }
 ```
 
-..* tcp_server_recv_cb: được gọi khi nhận được dữ liệu
-..* tcp_server_recon_cb:  được gọi khi xảy ra lỗi cần reconnect lại đường truyền tcp
-..* tcp_server_discon_cb: được gọi khi tcp bị disconnect
-..* tcp_server_sent_cb: được gọi khi dữ liệu được gửi thành công
+    * tcp_server_recv_cb: được gọi khi nhận được dữ liệu
+    * tcp_server_recon_cb:  được gọi khi xảy ra lỗi cần reconnect lại đường truyền tcp
+    * tcp_server_discon_cb: được gọi khi tcp bị disconnect
+    * tcp_server_sent_cb: được gọi khi dữ liệu được gửi thành công
 
 như vậy chúng ta sẽ xủ lý `http request ` trong hàm `tcp_server_recv_cb` như trong đoạn code bên dưới
 
