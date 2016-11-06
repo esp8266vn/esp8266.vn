@@ -377,8 +377,159 @@ ip:192.168.1.21,mask:255.255.255.0,gw:192.168.1.1
 - khi click vào nút on thì LED trên board sẽ sáng, khi click vào nút off thì LED sẽ tắt
 
 ## Gợi ý
+- Để có thể hiểu cách hoạt động của đoạn chương trình trên mình xin đề nghị các bạn đọc qua về các khái niệm http protocol, http request, http response những thông tin này có thể dễ dàng tìm thấy ở trang https://www.tutorialspoint.com/
+- Về cơ bản thì http server cũng chỉ là một `tcp server` nhưng sẽ giao tiếp với client thông qua `http response` và `http request`. Mỗi khi client muốn thông báo điều gì cho server thì sẽ gửi một `http request` cho server và server sẽ trả lời lại bằng một `http response`.
+
+- khi có một client truy cập vào địa chỉ của webserver thì browser sẽ gửi cho server một http request như sau
+
+```
+GET / HTTP/1.1
+```
+- ngay khi nhận được request này server sẽ gửi lại một http response như sau
+```
+HTTP/1.1 200 OK
+Content-Length: 200
+Content-Type: text/html
+Connection: Closed
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>ESP8266 HTTP server demo </h1>
+<button type='button' onclick='led_on()'>ON</button><br>
+<br>
+<button type='button' onclick='led_off()'>OFF</button><br>
+ 
+<script>
+
+function led_on(){
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xhttp.open("GET", 'led_on', true);
+  xhttp.send();
+}
+
+function led_off() {
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xhttp.open("GET", 'led_off', true);
+  xhttp.send();
+}
+
+</script>
+</body>
+</html>
+```
+
+chú ý là http response này gồm 2 phần là 
+- Status line : trả về http version, status code
+```
+HTTP/1.1 200 OK
+```
+
+- Header : chứa message length, message type
+```
+Content-Length: 200
+Content-Type: text/html
+Connection: Closed
+```
+
+- Message body: chứa nội dung mà server muốn gửi cho client thông thường là nội dung file html,js,php... được request
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>ESP8266 HTTP server demo </h1>
+<button type='button' onclick='led_on()'>ON</button><br>
+<br>
+<button type='button' onclick='led_off()'>OFF</button><br>
+ 
+<script>
+
+function led_on(){
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xhttp.open("GET", 'led_on', true);
+  xhttp.send();
+}
+
+function led_off() {
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xhttp.open("GET", 'led_off', true);
+  xhttp.send();
+}
+
+</script>
+</body>
+</html>
+```
 
 
+- trong chương trình này ngay sau khi được cấp IP thành công esp8266 được cấu hình hoạt động như một tcp server bằng cách gọi hàm `user_tcpserver_init` trong hàm `user_esp_platform_check_ip`
+
+```c
+void ICACHE_FLASH_ATTR
+user_esp_platform_check_ip(void)
+{
+    struct ip_info ipconfig;
+    
+    //disarm timer first
+    os_timer_disarm(&test_timer);
+    
+    //get ip info of ESP8266 station
+    wifi_get_ip_info(STATION_IF, &ipconfig);
+    
+    if (wifi_station_get_connect_status() == STATION_GOT_IP && ipconfig.ip.addr != 0) {
+    
+            os_printf("got ip !!! \r\n");
+            user_tcpserver_init(SERVER_LOCAL_PORT);
+    
+    } else {
+        
+        if ((wifi_station_get_connect_status() == STATION_WRONG_PASSWORD ||
+                wifi_station_get_connect_status() == STATION_NO_AP_FOUND ||
+                wifi_station_get_connect_status() == STATION_CONNECT_FAIL)) {
+                    
+            os_printf("connect fail !!! \r\n");
+                
+        } else {
+            
+            //re-arm timer to check ip
+            os_timer_setfn(&test_timer, (os_timer_func_t *)user_esp_platform_check_ip, NULL);
+            os_timer_arm(&test_timer, 100, 0);
+        }
+    }
+}
+```
+
+- trong hàm `user_tcpserver_init` có 3 hàm callback được config 
 
 !!! warning "Cảnh báo"
 
