@@ -9,7 +9,7 @@ Dự án này sẽ thực hiện việc lập trình lại Smart Plug bán sẵn
 - Có thể cập nhật firmware từ xa OTA thông qua Arduino IDE
 
 ## Cần chuẩn bị
-- [Noduino OpenPlug](http://noduino.org) - bạn có thể mua ở Việt Nam tại: iotmaker.vn (Trong trường hợp bạn mua tại [iotmaker.vn](https://iotmaker.vn) plug đã được nạp sẵn firmware hỗ trợ OTA và smartconfig, có thể bỏ qua bước Đấu nối dây và nạp firmware hỗ trợ OTA)
+- [Noduino OpenPlug](http://noduino.org) - bạn có thể mua ở Việt Nam tại: [!!btn btn-lg btn-outline|iotmaker.vn!!](https://iotmaker.vn) (Trong trường hợp bạn mua tại [iotmaker.vn](https://iotmaker.vn) plug đã được nạp sẵn firmware hỗ trợ OTA và smartconfig, có thể bỏ qua bước Đấu nối dây và nạp firmware hỗ trợ OTA)
 - Mạch USB to TTL cho việc flash firmware đầu tiên 
 - Cài đặt Arduino IDE và gói hỗ trợ ESP8266 [Hướng dẫn cài đặt](../basic/install.md)
 - Cài đặt thư viện Websocket cho ESP8266 [arduinoWebSockets](https://github.com/Links2004/arduinoWebSockets)
@@ -80,9 +80,26 @@ Căn cứ trên yêu cầu và mạch nguyên lý bên dưới, chung ta cần n
 
 Khi bạn thực hiện bước này xong, kể từ lần sau trở đi bạn không cần phải kết nối vật lý đến Open Plug, có thể nạp những firmware sau này thông qua WiFi. Tất nhiên, các đoạn code sau này của bạn phải đảm bảo logic OTA hoạt động đúng.
 
+Sử dụng cổng UART2TTL để nạp 
+![UART 2 TTL](images/openplug/ft232.jpg)
+```
+USB2UART_GND ------> SmartNode_GPIO0
+USB2UAR_GND -----> SmartNode_GND
+USB2UAR_RXD -----> SmartNode_TX
+USB2UAR_TXD -----> SmartNode_RX
+```
+
+!!! note "Notes"
+    Hình chụp đấu đối thực tế sẽ được cung cấp sau
+
 ## Nạp Ứng dụng thông qua OTA 
 
 ```
 git clone https://github.com/esp8266vn/smart-plug-slack
 ```
+
+!!! warning "Quan trọng"
+    Bởi vì chip trên Open Plug là `ESP8285` nên bộ nhớ chỉ có 1Mbytes Flash, trong khi dung lượng của Sketch này gần 400Kbytes. Vậy cần thêm 400Kbytes để dùng làm nơi lưu trữ. Chỉ được chọn vùng nhớ SPIFFS 64Kbytes mà thôi 
+    ![Settings](images/openplug/settings.png)
+
 
