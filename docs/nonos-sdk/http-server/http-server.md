@@ -494,8 +494,8 @@ function led_off() {
 </body>
 </html>
 ```
-"Chú ý"
-    header và message body được ngăn cách bởi một empty line chỉ gồm kí tự "\r\n" nếu không có dòng này thì nội dung    mà client nhận được có thể không đúng.
+Chú ý:
+    Header và message body được ngăn cách bởi một empty line chỉ gồm kí tự "\r\n" nếu không có dòng này thì nội dung    mà client nhận được có thể không đúng.
 
 Để cập nhật trạng thái của LED thì mình dùng kỹ thuật `ajax`
 Khi nhấn vào nút `on` sự kiện `onclick` được kích hoạt và hàm `led_on()` sẽ được gọi và gửi một `get request` có dạng như sau `GET /led_on HTTP/1.1` để yêu cầu server set on LED
