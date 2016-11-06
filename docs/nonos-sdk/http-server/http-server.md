@@ -370,7 +370,7 @@ ip:192.168.1.21,mask:255.255.255.0,gw:192.168.1.1
 ```
 - như vậy địa chỉ IP mà esp8266 được cấp là `192.168.1.21`
 - lúc này bạn mở trình duyệt web lên và truy cập vào địa chỉ `192.168.1.21:8000` thì sẽ truy cập được vào 1 webserver như sau
-![](images/http-server.jpeg)
+![](../images/http-server.jpeg)
 - khi click vào nút on thì LED trên board sẽ sáng, khi click vào nút off thì LED sẽ tắt
 ## Gợi ý
 
