@@ -106,4 +106,6 @@ git clone https://github.com/esp8266vn/smart-plug-slack
     Bởi vì chip trên Open Plug là `ESP8285` nên bộ nhớ chỉ có 1Mbytes Flash, trong khi dung lượng của Sketch này gần 400Kbytes. Vậy cần thêm 400Kbytes để dùng làm nơi lưu trữ. Chỉ được chọn vùng nhớ SPIFFS 64Kbytes mà thôi 
     ![Settings](images/openplug/settings.png)
 
-
+## Link hữu ích  
+- [http://noduino.org](http://noduino.org) 
+- Mua hàng tại [IoT Maker Việt Nam](https://iotmaker.vn/wireless/wi-fi/noduino-esp8285-wifi-open-plug/)
