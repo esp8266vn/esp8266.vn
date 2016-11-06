@@ -388,7 +388,7 @@ khi có một client truy cập vào địa chỉ của webserver thì browser s
 ```
 GET / HTTP/1.1
 ```
-ngay khi nhận được request này server sẽ gửi lại một http response có chứa nội dung là file html của webserver
+Ngay khi nhận được request này server sẽ gửi lại một http response có chứa nội dung là file html của webserver
 
 ```
 HTTP/1.1 200 OK
@@ -438,20 +438,20 @@ function led_off() {
 </html>
 ```
 
-chú ý là http response này gồm 2 phần là 
-Status line : trả về http version, status code
+Chú ý là http response này gồm 3 phần là 
+`Status line` : trả về http version, status code
 ```
 HTTP/1.1 200 OK
 ```
 
-Header : chứa message length, message type
+`Header` : chứa message length, message type
 ```
 Content-Length: 200
 Content-Type: text/html
 Connection: Closed
 ```
 
-Mesage body: chứa nội dung mà server muốn gửi cho client thông thường là nội dung file html,js,php... được request
+`Mesage body`: chứa nội dung mà server muốn gửi cho client thông thường là nội dung file html,js,php... được request
 ```html
 <!DOCTYPE html>
 <html>
