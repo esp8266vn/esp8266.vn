@@ -493,6 +493,10 @@ function led_off() {
 !!! warning "Chú ý"
     header và message body được ngăn cách bởi một empty line chỉ gồm kí tự "\r\n" nếu không có dòng này thì nội dung    mà client nhận được có thể không đúng.
 
+khi nhấn vào nút `on` sự kiện `onclick` được kích hoạt và hàm `led_on()` sẽ được gọi và gửi một `get request` có dạng như sau `GET /led_on HTTP/1.1` để yêu cầu server set on LED
+
+tương tự khi nhấn nút `off` hàm `led_off()` sẽ gửi request `GET /led_off HTTP/1.1` để yêu cầu server tắt LED
+
 - trong chương trình này ngay sau khi được cấp IP thành công esp8266 được cấu hình hoạt động như một tcp server bằng cách gọi hàm `user_tcpserver_init` trong hàm `user_esp_platform_check_ip`
 
 ```c
