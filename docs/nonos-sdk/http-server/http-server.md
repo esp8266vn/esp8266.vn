@@ -362,33 +362,33 @@ user_init(void)
 ```
 
 ## Kết quả
-- khi chương trình bắt đầu chạy trên terminal sẽ in ra địa chỉ IP của esp8266 như sau
+Khi chương trình bắt đầu chạy trên terminal sẽ in ra địa chỉ IP của esp8266 như sau
 ```bash
 connected with yourssid, channel 13
 dhcp client start...
 ip:192.168.1.21,mask:255.255.255.0,gw:192.168.1.1
 ```
-- như vậy địa chỉ IP mà esp8266 được cấp là `192.168.1.21`
-- lúc này bạn mở trình duyệt web lên và truy cập vào địa chỉ `192.168.1.21:8000` thì sẽ truy cập được vào 1 webserver như sau
+Như vậy địa chỉ IP mà esp8266 được cấp là `192.168.1.21`
+Lúc này bạn mở trình duyệt web lên và truy cập vào địa chỉ `192.168.1.21:8000` thì sẽ truy cập được vào 1 webserver như sau
 
 
 ![](../images/http-server.jpeg)
 
-- khi click vào nút on thì LED trên board sẽ sáng, khi click vào nút off thì LED sẽ tắt
+khi click vào nút on thì LED trên board sẽ sáng, khi click vào nút off thì LED sẽ tắt
 
 ## Gợi ý
-- Để có thể hiểu cách hoạt động của đoạn chương trình trên mình xin đề nghị các bạn đọc qua về các khái niệm http protocol, http request, http response những thông tin này có thể dễ dàng tìm thấy ở trang https://www.tutorialspoint.com/
-- Về cơ bản thì http server cũng chỉ là một `tcp server` nhưng sẽ giao tiếp với client thông qua `http response` và `http request`. Mỗi khi client muốn thông báo điều gì cho server thì sẽ gửi một `http request` cho server và server sẽ trả lời lại bằng một `http response`.
-- Dưới đây là cách mà client và server trao đổi thông tin
+Để có thể hiểu cách hoạt động của đoạn chương trình trên mình xin đề nghị các bạn đọc qua về các khái niệm http protocol, http request, http response những thông tin này có thể dễ dàng tìm thấy ở trang https://www.tutorialspoint.com/
+Về cơ bản thì http server cũng chỉ là một `tcp server` nhưng sẽ giao tiếp với client thông qua `http response` và `http request`. Mỗi khi client muốn thông báo điều gì cho server thì sẽ gửi một `http request` cho server và server sẽ trả lời lại bằng một `http response`.
+Dưới đây là cách mà client và server trao đổi thông tin
 
 ![](../images/http_server_client.png)
 
-- khi có một client truy cập vào địa chỉ của webserver thì browser sẽ gửi cho server một http request như sau
+khi có một client truy cập vào địa chỉ của webserver thì browser sẽ gửi cho server một http request như sau
 
 ```
 GET / HTTP/1.1
 ```
-- ngay khi nhận được request này server sẽ gửi lại một http response có chứa nội dung là file html của webserver
+ngay khi nhận được request này server sẽ gửi lại một http response có chứa nội dung là file html của webserver
 
 ```
 HTTP/1.1 200 OK
@@ -439,19 +439,19 @@ function led_off() {
 ```
 
 chú ý là http response này gồm 2 phần là 
-- Status line : trả về http version, status code
+Status line : trả về http version, status code
 ```
 HTTP/1.1 200 OK
 ```
 
-- Header : chứa message length, message type
+Header : chứa message length, message type
 ```
 Content-Length: 200
 Content-Type: text/html
 Connection: Closed
 ```
 
-- Message body: chứa nội dung mà server muốn gửi cho client thông thường là nội dung file html,js,php... được request
+Mesage body: chứa nội dung mà server muốn gửi cho client thông thường là nội dung file html,js,php... được request
 ```html
 <!DOCTYPE html>
 <html>
@@ -494,15 +494,15 @@ function led_off() {
 </body>
 </html>
 ```
-!!! warning "Chú ý"
+"Chú ý"
     header và message body được ngăn cách bởi một empty line chỉ gồm kí tự "\r\n" nếu không có dòng này thì nội dung    mà client nhận được có thể không đúng.
 
 Để cập nhật trạng thái của LED thì mình dùng kỹ thuật `ajax`
-khi nhấn vào nút `on` sự kiện `onclick` được kích hoạt và hàm `led_on()` sẽ được gọi và gửi một `get request` có dạng như sau `GET /led_on HTTP/1.1` để yêu cầu server set on LED
+Khi nhấn vào nút `on` sự kiện `onclick` được kích hoạt và hàm `led_on()` sẽ được gọi và gửi một `get request` có dạng như sau `GET /led_on HTTP/1.1` để yêu cầu server set on LED
 
-tương tự khi nhấn nút `off` hàm `led_off()` sẽ gửi request `GET /led_off HTTP/1.1` để yêu cầu server tắt LED
+Tương tự khi nhấn nút `off` hàm `led_off()` sẽ gửi request `GET /led_off HTTP/1.1` để yêu cầu server tắt LED
 
-- như vậy phía esp8266 sẽ cần được cấu hình như 1 `tcp server` lắng nghe và xử lý các `http request`
+Như vậy phía esp8266 sẽ cần được cấu hình như 1 `tcp server` lắng nghe và xử lý các `http request`
 ```c
 /******************************************************************************
     * FunctionName : user_tcpserver_init
@@ -526,14 +526,14 @@ user_tcpserver_init(uint32 port)
 }
 ```
 
-chú ý :
+Chú ý :
 
 ```c
 espconn_regist_connectcb(&esp_conn, tcp_server_listen); 
 ```
-có nghĩa là hàm `tcp_server_listen` sẽ được gọi sau khi đã kết nối tcp thành công
+Có nghĩa là hàm `tcp_server_listen` sẽ được gọi sau khi đã kết nối tcp thành công
 
-trong hàm `tcp_server_listen` lại cấu hình tiếp 4 hàm call back
+Trong hàm `tcp_server_listen` lại cấu hình tiếp 4 hàm call back
 
 ```c
 LOCAL void ICACHE_FLASH_ATTR
@@ -555,7 +555,7 @@ tcp_server_listen(void *arg)
 `tcp_server_discon_cb`: được gọi khi tcp bị disconnect
 `tcp_server_sent_cb`: được gọi khi dữ liệu được gửi thành công
 
-như vậy chúng ta sẽ xủ lý `http request ` trong hàm `tcp_server_recv_cb` như trong đoạn code bên dưới
+Như vậy chúng ta sẽ xủ lý `http request ` trong hàm `tcp_server_recv_cb` như trong đoạn code bên dưới
 
 ```c
 /******************************************************************************
@@ -591,7 +591,4 @@ tcp_server_recv_cb(void *arg, char *pusrdata, unsigned short length)
         http_response(pespconn, 200, NULL);
     }
 }
-```
-
-!!! warning "Cảnh báo"
-    
+``` 
