@@ -109,3 +109,4 @@ git clone https://github.com/esp8266vn/smart-plug-slack
 ## Link hữu ích  
 - [http://noduino.org](http://noduino.org) 
 - Mua hàng tại [IoT Maker Việt Nam](https://iotmaker.vn/wireless/wi-fi/noduino-esp8285-wifi-open-plug/)
+- Cám ơn tác giả [https://github.com/urish/arduino-slack-bot](https://github.com/urish/arduino-slack-bot)
