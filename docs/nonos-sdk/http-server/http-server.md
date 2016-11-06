@@ -379,13 +379,17 @@ ip:192.168.1.21,mask:255.255.255.0,gw:192.168.1.1
 ## Gợi ý
 - Để có thể hiểu cách hoạt động của đoạn chương trình trên mình xin đề nghị các bạn đọc qua về các khái niệm http protocol, http request, http response những thông tin này có thể dễ dàng tìm thấy ở trang https://www.tutorialspoint.com/
 - Về cơ bản thì http server cũng chỉ là một `tcp server` nhưng sẽ giao tiếp với client thông qua `http response` và `http request`. Mỗi khi client muốn thông báo điều gì cho server thì sẽ gửi một `http request` cho server và server sẽ trả lời lại bằng một `http response`.
+- Dưới đây là cách mà client và server trao đổi thông tin
+
+![](../images/http_server_client.png)
 
 - khi có một client truy cập vào địa chỉ của webserver thì browser sẽ gửi cho server một http request như sau
 
 ```
 GET / HTTP/1.1
 ```
-- ngay khi nhận được request này server sẽ gửi lại một http response như sau
+- ngay khi nhận được request này server sẽ gửi lại một http response có chứa nội dung là file html của webserver
+
 ```
 HTTP/1.1 200 OK
 Content-Length: 200
@@ -496,6 +500,7 @@ function led_off() {
 khi nhấn vào nút `on` sự kiện `onclick` được kích hoạt và hàm `led_on()` sẽ được gọi và gửi một `get request` có dạng như sau `GET /led_on HTTP/1.1` để yêu cầu server set on LED
 
 tương tự khi nhấn nút `off` hàm `led_off()` sẽ gửi request `GET /led_off HTTP/1.1` để yêu cầu server tắt LED
+
 
 - trong chương trình này ngay sau khi được cấp IP thành công esp8266 được cấu hình hoạt động như một tcp server bằng cách gọi hàm `user_tcpserver_init` trong hàm `user_esp_platform_check_ip`
 
