@@ -10,6 +10,7 @@ markdown_extensions:
         permalink: '#'
     - admonition
     - smarty
+    - custom_span_class
 repo_name: GitHub
 repo_url: https://github.com/esp8266vn/esp8266.vn
 google_analytics: ['UA-60470603-4', 'esp8266.vn']
@@ -102,6 +103,7 @@ pages:
       - Các dự án:
         - Danh sách:                  arduino/projects/list.md
         - Smartconfig & react-native: arduino/projects/smartconfig-react-native.md
+        - Smart Plug & Slack Bot:     arduino/projects/smartplug-slack.md
     - ESP8266 Micropython:
       - Giới thiệu:                   micropython/micropython.md
       - Cơ bản:
