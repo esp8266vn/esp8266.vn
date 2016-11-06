@@ -660,7 +660,590 @@
           <div role="main">
             <div class="section">
               
-                
+                <div class="toc">
+<ul>
+<li><a href="#ieu-khien-led-qua-webserver">Điều khiển LED qua webserver</a><ul>
+<li><a href="#lay-du-an-ve-tu-github">Lấy dự án về từ Github</a></li>
+<li><a href="#so-o-file">Sơ đồ file</a></li>
+<li><a href="#ma-nguon">Mã nguồn</a></li>
+<li><a href="#ket-qua">Kết quả</a></li>
+<li><a href="#goi-y">Gợi ý</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="ieu-khien-led-qua-webserver">Điều khiển LED qua webserver<a class="headerlink" href="#ieu-khien-led-qua-webserver" title="Permanent link">#</a></h1>
+<p>Tổ chức file căn cứ theo bài <a href="./compile-first-time.md">Biên dịch dự án đầu tiên</a>, toàn bộ cấu trúc file, <strong>Makefile, user_config.h, rf_init.c</strong> giữ nguyên, chỉ thay đổi nội dung file <code>main.c</code>. </p>
+<div class="admonition note">
+<p class="admonition-title">Nội dung</p>
+<p>Tạo một webserver cho phép người dùng bật tắt LED từ xa</p>
+</div>
+<h2 id="lay-du-an-ve-tu-github">Lấy dự án về từ Github<a class="headerlink" href="#lay-du-an-ve-tu-github" title="Permanent link">#</a></h2>
+<pre><code class="bash">git clone https://github.com/esp8266vn/esp-iot-http-server.git
+cd esp-iot-http-server &amp;&amp; make
+</code></pre>
+
+<h2 id="so-o-file">Sơ đồ file<a class="headerlink" href="#so-o-file" title="Permanent link">#</a></h2>
+<pre><code>esp-iot-led-blink
+    |-- Makefile
+    |-- main.c
+    |-- rf_init.c
+    `-- user_config.h
+</code></pre>
+
+<h2 id="ma-nguon">Mã nguồn<a class="headerlink" href="#ma-nguon" title="Permanent link">#</a></h2>
+<pre><code class="c">#include &quot;ets_sys.h&quot;
+#include &quot;osapi.h&quot;
+#include &quot;user_interface.h&quot;
+#include &quot;espconn.h&quot;
+#include &quot;mem.h&quot;
+
+LOCAL struct espconn esp_conn;
+LOCAL esp_tcp esptcp;
+
+#define SERVER_LOCAL_PORT         8000
+
+char *index_html =
+&quot;&lt;!DOCTYPE html&gt;\r\n&quot;
+&quot;&lt;html&gt;\r\n&quot;
+&quot;&lt;body&gt;\r\n&quot;
+&quot;\r\n&quot;
+&quot;&lt;h1&gt;ESP8266 HTTP server demo &lt;/h1&gt;\r\n&quot;
+&quot;&lt;button type='button' onclick='led_on()'&gt;ON&lt;/button&gt;&lt;br&gt;\r\n&quot;
+&quot;&lt;br&gt;\r\n&quot;
+&quot;&lt;button type='button' onclick='led_off()'&gt;OFF&lt;/button&gt;&lt;br&gt;\r\n&quot;
+&quot; \r\n&quot;
+&quot;&lt;script&gt;\r\n&quot;
+
+&quot;function led_on() {\r\n&quot;
+&quot;  var xhttp;\r\n&quot;
+&quot;  if (window.XMLHttpRequest) {\r\n&quot;
+&quot;    // code for modern browsers\r\n&quot;
+&quot;    xhttp = new XMLHttpRequest();\r\n&quot;
+&quot;    } else {\r\n&quot;
+&quot;    // code for IE6, IE5\r\n&quot;
+&quot;    xhttp = new ActiveXObject(\&quot;Microsoft.XMLHTTP\&quot;);\r\n&quot;
+&quot;  }\r\n&quot;
+&quot;  xhttp.open(\&quot;GET\&quot;, 'led_on', true);\r\n&quot;
+&quot;  xhttp.send();\r\n&quot;
+&quot;}\r\n&quot;
+
+&quot;function led_off() {\r\n&quot;
+&quot;  var xhttp;\r\n&quot;
+&quot;  if (window.XMLHttpRequest) {\r\n&quot;
+&quot;    // code for modern browsers\r\n&quot;
+&quot;    xhttp = new XMLHttpRequest();\r\n&quot;
+&quot;    } else {\r\n&quot;
+&quot;    // code for IE6, IE5\r\n&quot;
+&quot;    xhttp = new ActiveXObject(\&quot;Microsoft.XMLHTTP\&quot;);\r\n&quot;
+&quot;  }\r\n&quot;
+&quot;  xhttp.open(\&quot;GET\&quot;, 'led_off', true);\r\n&quot;
+&quot;  xhttp.send();\r\n&quot;
+&quot;}\r\n&quot;
+
+&quot;&lt;/script&gt;\r\n&quot;
+&quot;\r\n&quot;
+&quot;&lt;/body&gt;\r\n&quot;
+&quot;&lt;/html&gt;\r\n&quot;;
+
+/******************************************************************************
+    * FunctionName : led_init
+    * Description     : led initialization.
+    * Parameters         : none
+    * Returns         : none
+*******************************************************************************/
+void ICACHE_FLASH_ATTR
+led_init(void)
+{
+    WRITE_PERI_REG(PAD_XPD_DCDC_CONF, (READ_PERI_REG(PAD_XPD_DCDC_CONF) &amp; 0xffffffbc) | (uint32_t)0x1);  
+    WRITE_PERI_REG(RTC_GPIO_CONF, (READ_PERI_REG(RTC_GPIO_CONF) &amp; (uint32_t)0xfffffffe) | (uint32_t)0x0);
+    WRITE_PERI_REG(RTC_GPIO_ENABLE, (READ_PERI_REG(RTC_GPIO_ENABLE) &amp; (uint32_t)0xfffffffe) | (uint32_t)0x1);
+}
+
+/******************************************************************************
+    * FunctionName : led_set
+    * Description     : set led state according to led_value value.
+    * Parameters         : led_value - led state to be set
+    * Returns         : none
+*******************************************************************************/
+void ICACHE_FLASH_ATTR
+led_set(uint8_t led_value)
+{
+    WRITE_PERI_REG(RTC_GPIO_OUT, (READ_PERI_REG(RTC_GPIO_OUT) &amp; (uint32_t)0xfffffffe)| (uint32_t)(led_value &amp; 1));
+}
+
+/******************************************************************************
+    * FunctionName : http_response
+    * Description     : send the html body with the html header.
+    * Parameters         :  pespconn - espconn of the http server
+    *                       error - status code
+    *                       html_txt - the buffer which contents the html file
+    * Returns         : none
+*******************************************************************************/
+LOCAL void ICACHE_FLASH_ATTR
+http_response(struct espconn *pespconn, int error, char *html_txt)
+{
+    char *buffer = NULL;
+    int html_length = 0;
+    buffer = (char *)os_malloc(256 * sizeof(char));
+    if(buffer != NULL)
+    {
+        if(html_txt != NULL)
+        {
+            html_length = os_strlen(html_txt);
+        }
+        else
+        {
+            html_length = 0;
+        }
+
+        os_sprintf(buffer, &quot;HTTP/1.1 %d OK\r\n&quot;
+                            &quot;Content-Length: %d\r\n&quot;
+                            &quot;Content-Type: text/html\r\n&quot;
+                            &quot;Connection: Closed\r\n&quot;
+                            &quot;\r\n&quot;
+        ,error, html_length);
+
+        if(html_length &gt; 0)
+        {
+            buffer = (char *)os_realloc(buffer, (256 + html_length) *sizeof(char));
+            os_strcat(buffer, html_txt);
+        }
+
+        espconn_sent(pespconn, buffer, strlen(buffer));
+        os_free(buffer);
+    }
+}
+
+/******************************************************************************
+    * FunctionName : tcp_server_sent_cb
+    * Description     : data sent callback.
+    * Parameters         : arg -- Additional argument to pass to the callback function
+    * Returns         : none
+*******************************************************************************/
+LOCAL void ICACHE_FLASH_ATTR
+tcp_server_sent_cb(void *arg)
+{
+    //data sent successfully
+
+    os_printf(&quot;tcp sent cb \r\n&quot;);
+}
+
+
+/******************************************************************************
+    * FunctionName : tcp_server_recv_cb
+    * Description     : receive callback.
+    * Parameters         : arg -- Additional argument to pass to the callback function
+    * Returns         : none
+*******************************************************************************/
+LOCAL void ICACHE_FLASH_ATTR
+tcp_server_recv_cb(void *arg, char *pusrdata, unsigned short length)
+{
+    char *ptr = 0;
+    //received some data from tcp connection
+
+    struct espconn *pespconn = arg;
+    // os_printf(&quot;tcp recv : %s \r\n&quot;, pusrdata);
+    ptr = (char *)os_strstr(pusrdata, &quot;\r\n&quot;);
+    ptr[0] = '\0';
+    if (os_strcmp(pusrdata, &quot;GET / HTTP/1.1&quot;) == 0)
+    {
+        http_response(pespconn, 200, index_html);
+    }
+    else if (os_strcmp(pusrdata, &quot;GET /led_on HTTP/1.1&quot;) == 0)
+    {
+        os_printf(&quot;led_on\r\n&quot;);
+        led_set(0);
+        http_response(pespconn, 200, NULL);
+    } 
+    else if (os_strcmp(pusrdata, &quot;GET /led_off HTTP/1.1&quot;) == 0)
+    {
+        os_printf(&quot;led_off\r\n&quot;);
+        led_set(1);
+        http_response(pespconn, 200, NULL);
+    }
+}
+
+/******************************************************************************
+    * FunctionName : tcp_server_discon_cb
+    * Description     : disconnect callback.
+    * Parameters         : arg -- Additional argument to pass to the callback function
+    * Returns         : none
+*******************************************************************************/
+LOCAL void ICACHE_FLASH_ATTR
+tcp_server_discon_cb(void *arg)
+{
+    //tcp disconnect successfully
+
+    os_printf(&quot;tcp disconnect succeed !!! \r\n&quot;);
+}
+
+/******************************************************************************
+    * FunctionName : tcp_server_recon_cb
+    * Description     : reconnect callback, error occured in TCP connection.
+    * Parameters         : arg -- Additional argument to pass to the callback function
+    * Returns         : none
+*******************************************************************************/
+LOCAL void ICACHE_FLASH_ATTR
+tcp_server_recon_cb(void *arg, sint8 err)
+{
+    //error occured , tcp connection broke. 
+
+    os_printf(&quot;reconnect callback, error code %d !!! \r\n&quot;,err);
+}
+
+/******************************************************************************
+    * FunctionName : tcp_server_listen
+    * Description     : TCP server listened a connection successfully
+    * Parameters         : arg -- Additional argument to pass to the callback function
+    * Returns         : none
+*******************************************************************************/
+LOCAL void ICACHE_FLASH_ATTR
+tcp_server_listen(void *arg)
+{
+    struct espconn *pesp_conn = arg;
+    os_printf(&quot;tcp_server_listen !!! \r\n&quot;);
+
+    espconn_regist_recvcb(pesp_conn, tcp_server_recv_cb);
+    espconn_regist_reconcb(pesp_conn, tcp_server_recon_cb);
+    espconn_regist_disconcb(pesp_conn, tcp_server_discon_cb);
+
+    espconn_regist_sentcb(pesp_conn, tcp_server_sent_cb);
+}
+
+/******************************************************************************
+    * FunctionName : user_tcpserver_init
+    * Description     : parameter initialize as a TCP server
+    * Parameters         : port -- server port
+    * Returns         : none
+*******************************************************************************/
+void ICACHE_FLASH_ATTR
+user_tcpserver_init(uint32 port)
+{
+    esp_conn.type = ESPCONN_TCP;
+    esp_conn.state = ESPCONN_NONE;
+    esp_conn.proto.tcp = &amp;esptcp;
+    esp_conn.proto.tcp-&gt;local_port = port;
+    espconn_regist_connectcb(&amp;esp_conn, tcp_server_listen);
+
+    sint8 ret = espconn_accept(&amp;esp_conn);
+
+    os_printf(&quot;espconn_accept [%d] !!! \r\n&quot;, ret);
+
+}
+LOCAL os_timer_t test_timer;
+
+/******************************************************************************
+    * FunctionName : user_esp_platform_check_ip
+    * Description     : check whether get ip addr or not
+    * Parameters         : none
+    * Returns         : none
+*******************************************************************************/
+void ICACHE_FLASH_ATTR
+user_esp_platform_check_ip(void)
+{
+    struct ip_info ipconfig;
+
+    //disarm timer first
+    os_timer_disarm(&amp;test_timer);
+
+    //get ip info of ESP8266 station
+    wifi_get_ip_info(STATION_IF, &amp;ipconfig);
+
+    if (wifi_station_get_connect_status() == STATION_GOT_IP &amp;&amp; ipconfig.ip.addr != 0) {
+
+            os_printf(&quot;got ip !!! \r\n&quot;);
+            user_tcpserver_init(SERVER_LOCAL_PORT);
+
+    } else {
+
+        if ((wifi_station_get_connect_status() == STATION_WRONG_PASSWORD ||
+                wifi_station_get_connect_status() == STATION_NO_AP_FOUND ||
+                wifi_station_get_connect_status() == STATION_CONNECT_FAIL)) {
+
+            os_printf(&quot;connect fail !!! \r\n&quot;);
+
+        } else {
+
+            //re-arm timer to check ip
+            os_timer_setfn(&amp;test_timer, (os_timer_func_t *)user_esp_platform_check_ip, NULL);
+            os_timer_arm(&amp;test_timer, 100, 0);
+        }
+    }
+}
+
+/******************************************************************************
+    * FunctionName : user_set_station_config
+    * Description     : set the router info which ESP8266 station will connect to 
+    * Parameters         : none
+    * Returns         : none
+*******************************************************************************/
+void ICACHE_FLASH_ATTR
+user_set_station_config(void)
+{
+    // Wifi configuration
+    char ssid[32] = &quot;yourssid&quot;;
+    char password[64] = &quot;yourpassword&quot;;
+    struct station_config stationConf;
+
+    os_memset(stationConf.ssid, 0, 32);
+    os_memset(stationConf.password, 0, 64);
+    //need not mac address
+    stationConf.bssid_set = 0;
+
+    //Set ap settings
+    os_memcpy(&amp;stationConf.ssid, ssid, 32);
+    os_memcpy(&amp;stationConf.password, password, 64);
+    wifi_station_set_config(&amp;stationConf);
+
+    //set a timer to check whether got ip from router succeed or not.
+    os_timer_disarm(&amp;test_timer);
+    os_timer_setfn(&amp;test_timer, (os_timer_func_t *)user_esp_platform_check_ip, NULL);
+    os_timer_arm(&amp;test_timer, 100, 0);
+}
+
+/******************************************************************************
+    * FunctionName : user_init
+    * Description     : entry of user application, init user function here
+    * Parameters         : none
+    * Returns         : none
+*******************************************************************************/
+void ICACHE_FLASH_ATTR
+user_init(void)
+{
+    led_init();
+    led_set(1);
+    uart_div_modify(0, UART_CLK_FREQ / 115200);
+    os_printf(&quot;SDK version:%s\n&quot;, system_get_sdk_version());
+
+    //Set the module to station mode
+    wifi_set_opmode(STATION_MODE);
+
+    // ESP8266 connect to router.
+    user_set_station_config();
+}
+
+
+</code></pre>
+
+<h2 id="ket-qua">Kết quả<a class="headerlink" href="#ket-qua" title="Permanent link">#</a></h2>
+<p>Khi chương trình bắt đầu chạy trên terminal sẽ in ra địa chỉ IP của esp8266 như sau</p>
+<pre><code class="bash">connected with yourssid, channel 13
+dhcp client start...
+ip:192.168.1.21,mask:255.255.255.0,gw:192.168.1.1
+</code></pre>
+
+<p>Như vậy địa chỉ IP mà esp8266 được cấp là <code>192.168.1.21</code>
+Lúc này bạn mở trình duyệt web lên và truy cập vào địa chỉ <code>192.168.1.21:8000</code> thì sẽ truy cập được vào 1 webserver như sau</p>
+<p><img alt="" src="../../images/http-server.jpeg" /></p>
+<p>khi click vào nút on thì LED trên board sẽ sáng, khi click vào nút off thì LED sẽ tắt</p>
+<h2 id="goi-y">Gợi ý<a class="headerlink" href="#goi-y" title="Permanent link">#</a></h2>
+<p>Để có thể hiểu cách hoạt động của đoạn chương trình trên mình xin đề nghị các bạn đọc qua về các khái niệm http protocol, http request, http response những thông tin này có thể dễ dàng tìm thấy ở trang https://www.tutorialspoint.com/
+Về cơ bản thì http server cũng chỉ là một <code>tcp server</code> nhưng sẽ giao tiếp với client thông qua <code>http response</code> và <code>http request</code>. Mỗi khi client muốn thông báo điều gì cho server thì sẽ gửi một <code>http request</code> cho server và server sẽ trả lời lại bằng một <code>http response</code>.
+Dưới đây là cách mà client và server trao đổi thông tin</p>
+<p><img alt="" src="../../images/http_server_client.png" /></p>
+<p>khi có một client truy cập vào địa chỉ của webserver thì browser sẽ gửi cho server một http request như sau</p>
+<pre><code>GET / HTTP/1.1
+</code></pre>
+
+<p>Ngay khi nhận được request này server sẽ gửi lại một http response có chứa nội dung là file html của webserver</p>
+<pre><code>HTTP/1.1 200 OK
+Content-Length: 200
+Content-Type: text/html
+Connection: Closed
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;ESP8266 HTTP server demo &lt;/h1&gt;
+&lt;button type='button' onclick='led_on()'&gt;ON&lt;/button&gt;&lt;br&gt;
+&lt;br&gt;
+&lt;button type='button' onclick='led_off()'&gt;OFF&lt;/button&gt;&lt;br&gt;
+
+&lt;script&gt;
+
+function led_on(){
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+  }
+  xhttp.open(&quot;GET&quot;, 'led_on', true);
+  xhttp.send();
+}
+
+function led_off() {
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+  }
+  xhttp.open(&quot;GET&quot;, 'led_off', true);
+  xhttp.send();
+}
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Chú ý là http response này gồm 3 phần là 
+<code>Status line</code> : trả về http version, status code</p>
+<pre><code>HTTP/1.1 200 OK
+</code></pre>
+
+<p><code>Header</code> : chứa message length, message type</p>
+<pre><code>Content-Length: 200
+Content-Type: text/html
+Connection: Closed
+</code></pre>
+
+<p><code>Mesage body</code>: chứa nội dung mà server muốn gửi cho client thông thường là nội dung file html,js,php&hellip; được request</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h1&gt;ESP8266 HTTP server demo &lt;/h1&gt;
+&lt;button type='button' onclick='led_on()'&gt;ON&lt;/button&gt;&lt;br&gt;
+&lt;br&gt;
+&lt;button type='button' onclick='led_off()'&gt;OFF&lt;/button&gt;&lt;br&gt;
+
+&lt;script&gt;
+
+function led_on(){
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+  }
+  xhttp.open(&quot;GET&quot;, 'led_on', true);
+  xhttp.send();
+}
+
+function led_off() {
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+  }
+  xhttp.open(&quot;GET&quot;, 'led_off', true);
+  xhttp.send();
+}
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Chú ý:
+    Header và message body được ngăn cách bởi một empty line chỉ gồm kí tự &ldquo;\r\n&rdquo; nếu không có dòng này thì nội dung    mà client nhận được có thể không đúng.</p>
+<p>Để cập nhật trạng thái của LED thì mình dùng kỹ thuật <code>ajax</code>
+Khi nhấn vào nút <code>on</code> sự kiện <code>onclick</code> được kích hoạt và hàm <code>led_on()</code> sẽ được gọi và gửi một <code>get request</code> có dạng như sau <code>GET /led_on HTTP/1.1</code> để yêu cầu server set on LED</p>
+<p>Tương tự khi nhấn nút <code>off</code> hàm <code>led_off()</code> sẽ gửi request <code>GET /led_off HTTP/1.1</code> để yêu cầu server tắt LED</p>
+<p>Như vậy phía esp8266 sẽ cần được cấu hình như 1 <code>tcp server</code> lắng nghe và xử lý các <code>http request</code></p>
+<pre><code class="c">/******************************************************************************
+    * FunctionName : user_tcpserver_init
+    * Description     : parameter initialize as a TCP server
+    * Parameters         : port -- server port
+    * Returns         : none
+*******************************************************************************/
+void ICACHE_FLASH_ATTR
+user_tcpserver_init(uint32 port)
+{
+    esp_conn.type = ESPCONN_TCP;
+    esp_conn.state = ESPCONN_NONE;
+    esp_conn.proto.tcp = &amp;esptcp;
+    esp_conn.proto.tcp-&gt;local_port = port;
+    espconn_regist_connectcb(&amp;esp_conn, tcp_server_listen);
+
+    sint8 ret = espconn_accept(&amp;esp_conn);
+
+    os_printf(&quot;espconn_accept [%d] !!! \r\n&quot;, ret);
+
+}
+</code></pre>
+
+<p>Chú ý :</p>
+<pre><code class="c">espconn_regist_connectcb(&amp;esp_conn, tcp_server_listen); 
+</code></pre>
+
+<p>Có nghĩa là hàm <code>tcp_server_listen</code> sẽ được gọi sau khi đã kết nối tcp thành công</p>
+<p>Trong hàm <code>tcp_server_listen</code> lại cấu hình tiếp 4 hàm call back</p>
+<pre><code class="c">LOCAL void ICACHE_FLASH_ATTR
+tcp_server_listen(void *arg)
+{
+    struct espconn *pesp_conn = arg;
+    os_printf(&quot;tcp_server_listen !!! \r\n&quot;);
+
+    espconn_regist_recvcb(pesp_conn, tcp_server_recv_cb);
+    espconn_regist_reconcb(pesp_conn, tcp_server_recon_cb);
+    espconn_regist_disconcb(pesp_conn, tcp_server_discon_cb);
+
+    espconn_regist_sentcb(pesp_conn, tcp_server_sent_cb);
+}
+</code></pre>
+
+<p><code>tcp_server_recv_cb</code>: được gọi khi nhận được dữ liệu
+<code>tcp_server_recon_cb</code>:  được gọi khi xảy ra lỗi cần reconnect lại đường truyền tcp
+<code>tcp_server_discon_cb</code>: được gọi khi tcp bị disconnect
+<code>tcp_server_sent_cb</code>: được gọi khi dữ liệu được gửi thành công</p>
+<p>Như vậy chúng ta sẽ xủ lý <code>http request</code> trong hàm <code>tcp_server_recv_cb</code> như trong đoạn code bên dưới</p>
+<pre><code class="c">/******************************************************************************
+    * FunctionName : tcp_server_recv_cb
+    * Description     : receive callback.
+    * Parameters         : arg -- Additional argument to pass to the callback function
+    * Returns         : none
+*******************************************************************************/
+LOCAL void ICACHE_FLASH_ATTR
+tcp_server_recv_cb(void *arg, char *pusrdata, unsigned short length)
+{
+    char *ptr = 0;
+    //received some data from tcp connection
+
+    struct espconn *pespconn = arg;
+    // os_printf(&quot;tcp recv : %s \r\n&quot;, pusrdata);
+    ptr = (char *)os_strstr(pusrdata, &quot;\r\n&quot;);
+    ptr[0] = '\0';
+    if (os_strcmp(pusrdata, &quot;GET / HTTP/1.1&quot;) == 0)
+    {
+        http_response(pespconn, 200, index_html);
+    }
+    else if (os_strcmp(pusrdata, &quot;GET /led_on HTTP/1.1&quot;) == 0)
+    {
+        os_printf(&quot;led_on\r\n&quot;);
+        led_set(0);
+        http_response(pespconn, 200, NULL);
+    } 
+    else if (os_strcmp(pusrdata, &quot;GET /led_off HTTP/1.1&quot;) == 0)
+    {
+        os_printf(&quot;led_off\r\n&quot;);
+        led_set(1);
+        http_response(pespconn, 200, NULL);
+    }
+}
+</code></pre>
+
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<ol>
+<li><a href="http://www.tutorialspoint.com/http/http_requests">http://www.tutorialspoint.com/http/http_requests</a></li>
+<li><a href="https://www.tutorialspoint.com/http/http_responses.htm">https://www.tutorialspoint.com/http/http_responses.htm</a></li>
+<li><a href="http://www.w3schools.com/xml/ajax_intro.asp">http://www.w3schools.com/xml/ajax_intro.asp</a></li>
+<li><a href="https://espressif.com/en/products/hardware/esp8266ex/resources">https://espressif.com/en/products/hardware/esp8266ex/resources</a></li>
+</ol>
               
             </div>
           </div>
