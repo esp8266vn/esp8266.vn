@@ -373,7 +373,9 @@ ip:192.168.1.21,mask:255.255.255.0,gw:192.168.1.1
 
 
 ![](../images/http-server.jpeg)
+
 - khi click vào nút on thì LED trên board sẽ sáng, khi click vào nút off thì LED sẽ tắt
+
 ## Gợi ý
 
 
