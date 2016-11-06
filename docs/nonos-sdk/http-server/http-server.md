@@ -362,19 +362,238 @@ user_init(void)
 ```
 
 ## Kết quả
-- khi chương trình bắt đầu chạy trên terminal sẽ in ra địa chỉ IP của esp8266 như sau
+Khi chương trình bắt đầu chạy trên terminal sẽ in ra địa chỉ IP của esp8266 như sau
 ```bash
 connected with yourssid, channel 13
 dhcp client start...
 ip:192.168.1.21,mask:255.255.255.0,gw:192.168.1.1
 ```
-- như vậy địa chỉ IP mà esp8266 được cấp là `192.168.1.21`
-- lúc này bạn mở trình duyệt web lên và truy cập vào địa chỉ `192.168.1.21:8000` thì sẽ truy cập được vào 1 webserver như sau
-![](images/http-server.jpeg)
-- khi click vào nút on thì LED trên board sẽ sáng, khi click vào nút off thì LED sẽ tắt
+Như vậy địa chỉ IP mà esp8266 được cấp là `192.168.1.21`
+Lúc này bạn mở trình duyệt web lên và truy cập vào địa chỉ `192.168.1.21:8000` thì sẽ truy cập được vào 1 webserver như sau
+
+
+![](../images/http-server.jpeg)
+
+khi click vào nút on thì LED trên board sẽ sáng, khi click vào nút off thì LED sẽ tắt
+
 ## Gợi ý
+Để có thể hiểu cách hoạt động của đoạn chương trình trên mình xin đề nghị các bạn đọc qua về các khái niệm http protocol, http request, http response những thông tin này có thể dễ dàng tìm thấy ở trang https://www.tutorialspoint.com/
+Về cơ bản thì http server cũng chỉ là một `tcp server` nhưng sẽ giao tiếp với client thông qua `http response` và `http request`. Mỗi khi client muốn thông báo điều gì cho server thì sẽ gửi một `http request` cho server và server sẽ trả lời lại bằng một `http response`.
+Dưới đây là cách mà client và server trao đổi thông tin
 
+![](../images/http_server_client.png)
 
+khi có một client truy cập vào địa chỉ của webserver thì browser sẽ gửi cho server một http request như sau
 
-!!! warning "Cảnh báo"
+```
+GET / HTTP/1.1
+```
+Ngay khi nhận được request này server sẽ gửi lại một http response có chứa nội dung là file html của webserver
 
+```
+HTTP/1.1 200 OK
+Content-Length: 200
+Content-Type: text/html
+Connection: Closed
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>ESP8266 HTTP server demo </h1>
+<button type='button' onclick='led_on()'>ON</button><br>
+<br>
+<button type='button' onclick='led_off()'>OFF</button><br>
+ 
+<script>
+
+function led_on(){
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xhttp.open("GET", 'led_on', true);
+  xhttp.send();
+}
+
+function led_off() {
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xhttp.open("GET", 'led_off', true);
+  xhttp.send();
+}
+
+</script>
+</body>
+</html>
+```
+
+Chú ý là http response này gồm 3 phần là 
+`Status line` : trả về http version, status code
+```
+HTTP/1.1 200 OK
+```
+
+`Header` : chứa message length, message type
+```
+Content-Length: 200
+Content-Type: text/html
+Connection: Closed
+```
+
+`Mesage body`: chứa nội dung mà server muốn gửi cho client thông thường là nội dung file html,js,php... được request
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>ESP8266 HTTP server demo </h1>
+<button type='button' onclick='led_on()'>ON</button><br>
+<br>
+<button type='button' onclick='led_off()'>OFF</button><br>
+ 
+<script>
+
+function led_on(){
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xhttp.open("GET", 'led_on', true);
+  xhttp.send();
+}
+
+function led_off() {
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    // code for modern browsers
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xhttp.open("GET", 'led_off', true);
+  xhttp.send();
+}
+
+</script>
+</body>
+</html>
+```
+Chú ý:
+    Header và message body được ngăn cách bởi một empty line chỉ gồm kí tự "\r\n" nếu không có dòng này thì nội dung    mà client nhận được có thể không đúng.
+
+Để cập nhật trạng thái của LED thì mình dùng kỹ thuật `ajax`
+Khi nhấn vào nút `on` sự kiện `onclick` được kích hoạt và hàm `led_on()` sẽ được gọi và gửi một `get request` có dạng như sau `GET /led_on HTTP/1.1` để yêu cầu server set on LED
+
+Tương tự khi nhấn nút `off` hàm `led_off()` sẽ gửi request `GET /led_off HTTP/1.1` để yêu cầu server tắt LED
+
+Như vậy phía esp8266 sẽ cần được cấu hình như 1 `tcp server` lắng nghe và xử lý các `http request`
+```c
+/******************************************************************************
+    * FunctionName : user_tcpserver_init
+    * Description     : parameter initialize as a TCP server
+    * Parameters         : port -- server port
+    * Returns         : none
+*******************************************************************************/
+void ICACHE_FLASH_ATTR
+user_tcpserver_init(uint32 port)
+{
+    esp_conn.type = ESPCONN_TCP;
+    esp_conn.state = ESPCONN_NONE;
+    esp_conn.proto.tcp = &esptcp;
+    esp_conn.proto.tcp->local_port = port;
+    espconn_regist_connectcb(&esp_conn, tcp_server_listen);
+    
+    sint8 ret = espconn_accept(&esp_conn);
+        
+    os_printf("espconn_accept [%d] !!! \r\n", ret);
+    
+}
+```
+
+Chú ý :
+
+```c
+espconn_regist_connectcb(&esp_conn, tcp_server_listen); 
+```
+Có nghĩa là hàm `tcp_server_listen` sẽ được gọi sau khi đã kết nối tcp thành công
+
+Trong hàm `tcp_server_listen` lại cấu hình tiếp 4 hàm call back
+
+```c
+LOCAL void ICACHE_FLASH_ATTR
+tcp_server_listen(void *arg)
+{
+    struct espconn *pesp_conn = arg;
+    os_printf("tcp_server_listen !!! \r\n");
+    
+    espconn_regist_recvcb(pesp_conn, tcp_server_recv_cb);
+    espconn_regist_reconcb(pesp_conn, tcp_server_recon_cb);
+    espconn_regist_disconcb(pesp_conn, tcp_server_discon_cb);
+        
+    espconn_regist_sentcb(pesp_conn, tcp_server_sent_cb);
+}
+```
+
+`tcp_server_recv_cb`: được gọi khi nhận được dữ liệu
+`tcp_server_recon_cb`:  được gọi khi xảy ra lỗi cần reconnect lại đường truyền tcp
+`tcp_server_discon_cb`: được gọi khi tcp bị disconnect
+`tcp_server_sent_cb`: được gọi khi dữ liệu được gửi thành công
+
+Như vậy chúng ta sẽ xủ lý `http request ` trong hàm `tcp_server_recv_cb` như trong đoạn code bên dưới
+
+```c
+/******************************************************************************
+    * FunctionName : tcp_server_recv_cb
+    * Description     : receive callback.
+    * Parameters         : arg -- Additional argument to pass to the callback function
+    * Returns         : none
+*******************************************************************************/
+LOCAL void ICACHE_FLASH_ATTR
+tcp_server_recv_cb(void *arg, char *pusrdata, unsigned short length)
+{
+    char *ptr = 0;
+    //received some data from tcp connection
+    
+    struct espconn *pespconn = arg;
+    // os_printf("tcp recv : %s \r\n", pusrdata);
+    ptr = (char *)os_strstr(pusrdata, "\r\n");
+    ptr[0] = '\0';
+    if (os_strcmp(pusrdata, "GET / HTTP/1.1") == 0)
+    {
+        http_response(pespconn, 200, index_html);
+    }
+    else if (os_strcmp(pusrdata, "GET /led_on HTTP/1.1") == 0)
+    {
+        os_printf("led_on\r\n");
+        led_set(0);
+        http_response(pespconn, 200, NULL);
+    } 
+    else if (os_strcmp(pusrdata, "GET /led_off HTTP/1.1") == 0)
+    {
+        os_printf("led_off\r\n");
+        led_set(1);
+        http_response(pespconn, 200, NULL);
+    }
+}
+``` 
+##References
+1. [http://www.tutorialspoint.com/http/http_requests](http://www.tutorialspoint.com/http/http_requests)
+2. [https://www.tutorialspoint.com/http/http_responses.htm](https://www.tutorialspoint.com/http/http_responses.htm)
+3. [http://www.w3schools.com/xml/ajax_intro.asp](http://www.w3schools.com/xml/ajax_intro.asp)
+4. [https://espressif.com/en/products/hardware/esp8266ex/resources](https://espressif.com/en/products/hardware/esp8266ex/resources)
