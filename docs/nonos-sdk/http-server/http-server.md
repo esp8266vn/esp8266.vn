@@ -35,7 +35,8 @@ esp-iot-led-blink
     
 LOCAL struct espconn esp_conn;
 LOCAL esp_tcp esptcp;
-
+    
+#define SERVER_LOCAL_PORT         8000
 
 char *index_html =
 "<!DOCTYPE html>\r\n"
@@ -225,30 +226,7 @@ tcp_server_recon_cb(void *arg, sint8 err)
     
     os_printf("reconnect callback, error code %d !!! \r\n",err);
 }
-    
-LOCAL void tcp_server_multi_send(void)
-{
-    struct espconn *pesp_conn = &esp_conn;
-    
-    remot_info *premot = NULL;
-    uint8 count = 0;
-    sint8 value = ESPCONN_OK;
-    if (espconn_get_connection_info(pesp_conn,&premot,0) == ESPCONN_OK){
-            char *pbuf = "tcp_server_multi_send\n";
-            for (count = 0; count < pesp_conn->link_cnt; count ++){
-            pesp_conn->proto.tcp->remote_port = premot[count].remote_port;
-                
-            pesp_conn->proto.tcp->remote_ip[0] = premot[count].remote_ip[0];
-            pesp_conn->proto.tcp->remote_ip[1] = premot[count].remote_ip[1];
-            pesp_conn->proto.tcp->remote_ip[2] = premot[count].remote_ip[2];
-            pesp_conn->proto.tcp->remote_ip[3] = premot[count].remote_ip[3];
-    
-            espconn_sent(pesp_conn, pbuf, os_strlen(pbuf));
-            }
-    }
-}
-    
-    
+
 /******************************************************************************
     * FunctionName : tcp_server_listen
     * Description     : TCP server listened a connection successfully
@@ -339,8 +317,8 @@ void ICACHE_FLASH_ATTR
 user_set_station_config(void)
 {
     // Wifi configuration
-    char ssid[32] = "lau2";
-    char password[64] = "nganta1997";
+    char ssid[32] = "yourssid";
+    char password[64] = "yourpassword";
     struct station_config stationConf;
 
     os_memset(stationConf.ssid, 0, 32);
@@ -378,8 +356,6 @@ user_init(void)
     
     // ESP8266 connect to router.
     user_set_station_config();
-    user_tcpserver_init(8000);
-    
 }
 
 
