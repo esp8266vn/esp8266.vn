@@ -687,7 +687,7 @@
 </ul>
 <h2 id="can-chuan-bi">Cần chuẩn bị<a class="headerlink" href="#can-chuan-bi" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="http://noduino.org">Noduino OpenPlug</a> - bạn có thể mua ở Việt Nam tại: iotmaker.vn (Trong trường hợp bạn mua tại <a href="https://iotmaker.vn">iotmaker.vn</a> plug đã được nạp sẵn firmware hỗ trợ OTA và smartconfig, có thể bỏ qua bước Đấu nối dây và nạp firmware hỗ trợ OTA)</li>
+<li><a href="http://noduino.org">Noduino OpenPlug</a> - bạn có thể mua ở Việt Nam tại: <a href="https://iotmaker.vn"><span class="btn btn-lg btn-outline">iotmaker.vn</span></a> (Trong trường hợp bạn mua tại <a href="https://iotmaker.vn">iotmaker.vn</a> plug đã được nạp sẵn firmware hỗ trợ OTA và smartconfig, có thể bỏ qua bước Đấu nối dây và nạp firmware hỗ trợ OTA)</li>
 <li>Mạch USB to TTL cho việc flash firmware đầu tiên </li>
 <li>Cài đặt Arduino IDE và gói hỗ trợ ESP8266 <a href="../../basic/install/">Hướng dẫn cài đặt</a></li>
 <li>Cài đặt thư viện Websocket cho ESP8266 <a href="https://github.com/Links2004/arduinoWebSockets">arduinoWebSockets</a></li>
@@ -766,9 +766,27 @@
 </ul>
 <h2 id="au-noi-day-va-nap-firmware-ho-tro-ota-cho-open-plug">Đấu nối dây và nạp firmware hỗ trợ OTA cho Open Plug<a class="headerlink" href="#au-noi-day-va-nap-firmware-ho-tro-ota-cho-open-plug" title="Permanent link">#</a></h2>
 <p>Khi bạn thực hiện bước này xong, kể từ lần sau trở đi bạn không cần phải kết nối vật lý đến Open Plug, có thể nạp những firmware sau này thông qua WiFi. Tất nhiên, các đoạn code sau này của bạn phải đảm bảo logic OTA hoạt động đúng.</p>
+<p>Sử dụng cổng UART2TTL để nạp 
+<img alt="UART 2 TTL" src="../images/openplug/ft232.jpg" /></p>
+<pre><code>USB2UART_GND ------&gt; SmartNode_GPIO0
+USB2UAR_GND -----&gt; SmartNode_GND
+USB2UAR_RXD -----&gt; SmartNode_TX
+USB2UAR_TXD -----&gt; SmartNode_RX
+</code></pre>
+
+<div class="admonition note">
+<p class="admonition-title">Notes</p>
+<p>Hình chụp đấu đối thực tế sẽ được cung cấp sau</p>
+</div>
 <h2 id="nap-ung-dung-thong-qua-ota">Nạp Ứng dụng thông qua OTA<a class="headerlink" href="#nap-ung-dung-thong-qua-ota" title="Permanent link">#</a></h2>
 <pre><code>git clone https://github.com/esp8266vn/smart-plug-slack
 </code></pre>
+
+<div class="admonition warning">
+<p class="admonition-title">Quan trọng</p>
+<p>Bởi vì chip trên Open Plug là <code>ESP8285</code> nên bộ nhớ chỉ có 1Mbytes Flash, trong khi dung lượng của Sketch này gần 400Kbytes. Vậy cần thêm 400Kbytes để dùng làm nơi lưu trữ. Chỉ được chọn vùng nhớ SPIFFS 64Kbytes mà thôi 
+<img alt="Settings" src="../images/openplug/settings.png" /></p>
+</div>
               
             </div>
           </div>
