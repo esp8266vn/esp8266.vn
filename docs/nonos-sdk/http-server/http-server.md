@@ -497,49 +497,101 @@ function led_off() {
 !!! warning "Chú ý"
     header và message body được ngăn cách bởi một empty line chỉ gồm kí tự "\r\n" nếu không có dòng này thì nội dung    mà client nhận được có thể không đúng.
 
+Để cập nhật trạng thái của LED thì mình dùng kỹ thuật `ajax`
 khi nhấn vào nút `on` sự kiện `onclick` được kích hoạt và hàm `led_on()` sẽ được gọi và gửi một `get request` có dạng như sau `GET /led_on HTTP/1.1` để yêu cầu server set on LED
 
 tương tự khi nhấn nút `off` hàm `led_off()` sẽ gửi request `GET /led_off HTTP/1.1` để yêu cầu server tắt LED
 
-
-- trong chương trình này ngay sau khi được cấp IP thành công esp8266 được cấu hình hoạt động như một tcp server bằng cách gọi hàm `user_tcpserver_init` trong hàm `user_esp_platform_check_ip`
-
+- như vậy phía esp8266 sẽ cần được cấu hình như 1 `tcp server` lắng nghe và xử lý các `http request`
 ```c
+/******************************************************************************
+    * FunctionName : user_tcpserver_init
+    * Description     : parameter initialize as a TCP server
+    * Parameters         : port -- server port
+    * Returns         : none
+*******************************************************************************/
 void ICACHE_FLASH_ATTR
-user_esp_platform_check_ip(void)
+user_tcpserver_init(uint32 port)
 {
-    struct ip_info ipconfig;
+    esp_conn.type = ESPCONN_TCP;
+    esp_conn.state = ESPCONN_NONE;
+    esp_conn.proto.tcp = &esptcp;
+    esp_conn.proto.tcp->local_port = port;
+    espconn_regist_connectcb(&esp_conn, tcp_server_listen);
     
-    //disarm timer first
-    os_timer_disarm(&test_timer);
-    
-    //get ip info of ESP8266 station
-    wifi_get_ip_info(STATION_IF, &ipconfig);
-    
-    if (wifi_station_get_connect_status() == STATION_GOT_IP && ipconfig.ip.addr != 0) {
-    
-            os_printf("got ip !!! \r\n");
-            user_tcpserver_init(SERVER_LOCAL_PORT);
-    
-    } else {
+    sint8 ret = espconn_accept(&esp_conn);
         
-        if ((wifi_station_get_connect_status() == STATION_WRONG_PASSWORD ||
-                wifi_station_get_connect_status() == STATION_NO_AP_FOUND ||
-                wifi_station_get_connect_status() == STATION_CONNECT_FAIL)) {
-                    
-            os_printf("connect fail !!! \r\n");
-                
-        } else {
-            
-            //re-arm timer to check ip
-            os_timer_setfn(&test_timer, (os_timer_func_t *)user_esp_platform_check_ip, NULL);
-            os_timer_arm(&test_timer, 100, 0);
-        }
-    }
+    os_printf("espconn_accept [%d] !!! \r\n", ret);
+    
 }
 ```
 
-- trong hàm `user_tcpserver_init` có 3 hàm callback được config 
+chú ý :
+
+```c
+espconn_regist_connectcb(&esp_conn, tcp_server_listen); 
+```
+có nghĩa là hàm `tcp_server_listen` sẽ được gọi sau khi đã kết nối tcp thành công
+
+trong hàm `tcp_server_listen` lại cấu hình tiếp 4 hàm call back
+
+```c
+LOCAL void ICACHE_FLASH_ATTR
+tcp_server_listen(void *arg)
+{
+    struct espconn *pesp_conn = arg;
+    os_printf("tcp_server_listen !!! \r\n");
+    
+    espconn_regist_recvcb(pesp_conn, tcp_server_recv_cb);
+    espconn_regist_reconcb(pesp_conn, tcp_server_recon_cb);
+    espconn_regist_disconcb(pesp_conn, tcp_server_discon_cb);
+        
+    espconn_regist_sentcb(pesp_conn, tcp_server_sent_cb);
+}
+```
+
+..* tcp_server_recv_cb: được gọi khi nhận được dữ liệu
+..* tcp_server_recon_cb:  được gọi khi xảy ra lỗi cần reconnect lại đường truyền tcp
+..* tcp_server_discon_cb: được gọi khi tcp bị disconnect
+..* tcp_server_sent_cb: được gọi khi dữ liệu được gửi thành công
+
+như vậy chúng ta sẽ xủ lý `http request ` trong hàm `tcp_server_recv_cb` như trong đoạn code bên dưới
+
+```c
+/******************************************************************************
+    * FunctionName : tcp_server_recv_cb
+    * Description     : receive callback.
+    * Parameters         : arg -- Additional argument to pass to the callback function
+    * Returns         : none
+*******************************************************************************/
+LOCAL void ICACHE_FLASH_ATTR
+tcp_server_recv_cb(void *arg, char *pusrdata, unsigned short length)
+{
+    char *ptr = 0;
+    //received some data from tcp connection
+    
+    struct espconn *pespconn = arg;
+    // os_printf("tcp recv : %s \r\n", pusrdata);
+    ptr = (char *)os_strstr(pusrdata, "\r\n");
+    ptr[0] = '\0';
+    if (os_strcmp(pusrdata, "GET / HTTP/1.1") == 0)
+    {
+        http_response(pespconn, 200, index_html);
+    }
+    else if (os_strcmp(pusrdata, "GET /led_on HTTP/1.1") == 0)
+    {
+        os_printf("led_on\r\n");
+        led_set(0);
+        http_response(pespconn, 200, NULL);
+    } 
+    else if (os_strcmp(pusrdata, "GET /led_off HTTP/1.1") == 0)
+    {
+        os_printf("led_off\r\n");
+        led_set(1);
+        http_response(pespconn, 200, NULL);
+    }
+}
+```
 
 !!! warning "Cảnh báo"
     
