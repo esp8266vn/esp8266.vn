@@ -8,6 +8,10 @@ Dự án này sẽ thực hiện việc lập trình lại Smart Plug bán sẵn
 - Có thể cấu hình kết nối WiFi bằng smartconfig
 - Có thể cập nhật firmware từ xa OTA thông qua Arduino IDE
 
+Video demo mô phỏng ứng dụng: 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hjNZVuSrc7c" frameborder="0" allowfullscreen></iframe>
+
 ## Cần chuẩn bị
 - [Noduino OpenPlug](http://noduino.org) - bạn có thể mua ở Việt Nam tại: [!!btn btn-lg btn-outline|iotmaker.vn!!](https://iotmaker.vn) (Trong trường hợp bạn mua tại [iotmaker.vn](https://iotmaker.vn) plug đã được nạp sẵn firmware hỗ trợ OTA và smartconfig, có thể bỏ qua bước Đấu nối dây và nạp firmware hỗ trợ OTA)
 - Mạch USB to TTL cho việc flash firmware đầu tiên 
