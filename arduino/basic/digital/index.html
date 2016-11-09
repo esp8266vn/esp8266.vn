@@ -663,9 +663,14 @@
                 <div class="toc">
 <ul>
 <li><a href="#digital-io">Digital IO</a></li>
+<li><a href="#vi-du">Ví dụ</a><ul>
+<li><a href="#en-led">Đèn LED</a></li>
+<li><a href="#nut-nhan-interrupt">Nút nhấn &amp; interrupt</a></li>
+</ul>
+</li>
 </ul>
 </div>
-<h2 id="digital-io">Digital IO<a class="headerlink" href="#digital-io" title="Permanent link">#</a></h2>
+<h1 id="digital-io">Digital IO<a class="headerlink" href="#digital-io" title="Permanent link">#</a></h1>
 <p>Tên chân trong Arduino (Pin number) giống với thứ tự chân của ESP8266. <code>pinMode</code>, <code>digitalRead</code>, và <code>digitalWrite</code> đều sử dụng Pin Number như nhau, ví dụ như đọc GPIO2, gọi hàm <code>digitalRead(2)</code>.</p>
 <p>Chân GPIO0..15 có thể là <code>INPUT</code>, <code>OUTPUT</code>, hay <code>INPUT_PULLUP</code>.
 Chân GPIO16 có thể là <code>INPUT</code>, <code>OUTPUT</code> hay <code>INPUT_PULLDOWN_16</code>. Khi khởi động, tất cả các chân sẽ được cấu hình là <code>INPUT</code>.</p>
@@ -678,6 +683,43 @@ Chân GPIO16 có thể là <code>INPUT</code>, <code>OUTPUT</code> hay <code>INP
 </div>
 <p>Ngắt GPIO hỗ trợ thông qua các hàm  <code>attachInterrupt</code>, <code>detachInterrupt</code> 
 Ngắt GPIO có thể gán cho bất kỳ GPIO nào, ngoại trừ <code>GPIO16</code>. Đều hỗ trợ các ngắt tiêu chuẩn của Arduino như: <code>CHANGE</code>, <code>RISING</code>, <code>FALLING</code>.</p>
+<h1 id="vi-du">Ví dụ<a class="headerlink" href="#vi-du" title="Permanent link">#</a></h1>
+<h2 id="en-led">Đèn LED<a class="headerlink" href="#en-led" title="Permanent link">#</a></h2>
+<pre><code class="cpp">int ledPin = 16;                 // LED connected to digital pin 13
+
+void setup()
+{
+  pinMode(ledPin, OUTPUT);      // sets the digital pin as output
+}
+
+void loop()
+{
+  digitalWrite(ledPin, HIGH);   // sets the LED on
+  delay(1000);                  // waits for a second
+  digitalWrite(ledPin, LOW);    // sets the LED off
+  delay(1000);                  // waits for a second
+}
+</code></pre>
+
+<h2 id="nut-nhan-interrupt">Nút nhấn &amp; interrupt<a class="headerlink" href="#nut-nhan-interrupt" title="Permanent link">#</a></h2>
+<pre><code class="cpp">const byte ledPin = 16;
+const byte interruptPin = 0;
+volatile byte state = LOW;
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  pinMode(interruptPin, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(interruptPin), blink, CHANGE);
+}
+
+void loop() {
+  digitalWrite(ledPin, state);
+}
+
+void blink() {
+  state = !state;
+}
+</code></pre>
               
             </div>
           </div>
