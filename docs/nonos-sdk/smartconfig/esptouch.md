@@ -31,5 +31,5 @@ Và file cho iOS
 ```
 Esptouch success, bssid = xxxx, InnetAddress = 192.168.xx.xx
 ```
+
 - Ngược lại sẽ có thông báo Esptouch fail.
-- 
