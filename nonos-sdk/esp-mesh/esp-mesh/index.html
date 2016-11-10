@@ -660,15 +660,49 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="gioi-thieu">Giới thiệu<a class="headerlink" href="#gioi-thieu" title="Permanent link">#</a></h1>
-<p>Trong quá trình phát triển IoT thường đòi hỏi việc tăng số lượng node kết nối với Internet.Nhược điểm lớn nhất là số lượng node có thể trực tiếp kết nối tới router bị giới hạn nhỏ hơn 32 node. Để khắc phục điểm này thì Espressif đã phát triển giao thức ESP-MESH. Trong giao thức này node có thể tạo ra mạng để chuyển tiếp gói tin, nhờ đó mà một số lượng lớn node có thể kết nối Internet mà không cần phải cải tiến, nâng cấp router.</p>
+                <div class="toc">
+<ul>
+<li><a href="#gioi-thieu">Giới thiệu</a></li>
+<li><a href="#mot-so-inh-nghia">Một số định nghĩa</a></li>
+<li><a href="#cau-truc-mang">Cấu trúc mạng</a><ul>
+<li><a href="#so-o-mang-mesh">Sơ đồ mạng mesh</a></li>
+<li><a href="#cac-node-trong-mang">Các node trong mạng</a></li>
+</ul>
+</li>
+<li><a href="#cac-header-trong-mesh">Các header trong Mesh</a></li>
+<li><a href="#cau-truc-goi-tin">Cấu trúc gói tin</a></li>
+<li><a href="#vi-du-goi-tin-gui-nhan">Ví dụ gói tin gửi/ nhận</a><ul>
+<li><a href="#goi-tin-request">Gói tin request</a></li>
+</ul>
+</li>
+<li><a href="#goi-tin-response">Gói tin response</a></li>
+<li><a href="#cau-truc-du-lieu">Cấu trúc dữ liệu</a></li>
+<li><a href="#chuong-trinh">Chương trình</a><ul>
+<li><a href="#device">Device</a></li>
+<li><a href="#mobile-hoac-server">Mobile hoặc Server</a></li>
+</ul>
+</li>
+<li><a href="#lay-topology">Lấy topology</a></li>
+<li><a href="#phan-tich-phan-hoi-tu-topology">Phân tích phản hồi từ topology</a></li>
+<li><a href="#tham-khao">Tham khảo</a></li>
+</ul>
+</div>
+<h1 id="gioi-thieu">Giới thiệu<a class="headerlink" href="#gioi-thieu" title="Permanent link">#</a></h1>
+<p><img alt="Mesh Info" src="../../images/mesh-info.png" />
+Trong quá trình phát triển IoT thường đòi hỏi việc tăng số lượng node kết nối với Internet.Nhược điểm lớn nhất là số lượng node có thể trực tiếp kết nối tới router bị giới hạn nhỏ hơn 32 node. Để khắc phục điểm này thì Espressif đã phát triển giao thức ESP-MESH. Trong giao thức này node có thể tạo ra mạng để chuyển tiếp gói tin, nhờ đó mà một số lượng lớn node có thể kết nối Internet mà không cần phải cải tiến, nâng cấp router.</p>
 <h1 id="mot-so-inh-nghia">Một số định nghĩa<a class="headerlink" href="#mot-so-inh-nghia" title="Permanent link">#</a></h1>
 <ul>
 <li>IOT Espressif App: ứng dụng của Espressif dùng để điều khiển từ xa các thiết bị Wifi</li>
 <li>ESP-Touch: công nghệ để kết nối Wifi device với router</li>
 <li>Smart Config Mode cho ESP-Touch: cấu hình cho Wifi device dùng ESP-Touch thông qua Mode Smart Config.</li>
-<li>Local Device: thiết bị được người dùng cấu hình kết nối với router thông qua ESP-Touch mà không kích hoạt trên server, chỉ có thể điều khiển thông qua mạng cục bộ</li>
-<li>Cloud Device: giống như Local Device nhưng được kích hoạt trên server, có thể điều khiển ở mọi nơi có mạng internet.</li>
+<li>
+<p>Local Device: thiết bị được người dùng cấu hình kết nối với router thông qua ESP-Touch mà không kích hoạt trên server, chỉ có thể điều khiển thông qua mạng cục bộ
+<img alt="Local NetWork" src="../../images/local-network.png" /></p>
+</li>
+<li>
+<p>Cloud Device: giống như Local Device nhưng được kích hoạt trên server, có thể điều khiển ở mọi nơi có mạng internet.
+<img alt="Cloud NetWork" src="../../images/cloud-network.png" /></p>
+</li>
 </ul>
 <h1 id="cau-truc-mang">Cấu trúc mạng<a class="headerlink" href="#cau-truc-mang" title="Permanent link">#</a></h1>
 <p>Mạng Mesh hỗ trợ chức năng auto-networking. Khi người dùng thiết lập mạng mesh thông qua ESP-Touch thì thiết bị sẽ tự động tìm các Wifi AP gần kề.</p>
@@ -796,6 +830,557 @@
 </tr>
 </tbody>
 </table>
+<h1 id="cau-truc-goi-tin">Cấu trúc gói tin<a class="headerlink" href="#cau-truc-goi-tin" title="Permanent link">#</a></h1>
+<p>Mạng mesh được định nghĩa bởi cấu trúc trong mesh_option_type</p>
+<pre><code>    enum mesh_option_type {
+    M_O_FLOW_REQ = 0,   //flow request option
+    M_O_FLOW_RESP,      //flow response option
+    M_O_ROUTER_SPREAD,  //router information spread option
+    M_O_ROUTE_ADD,      //route table update (node joins mesh) option
+    M_O_ROUTE_DEL,      //route table update (node exits mesh) option
+    M_O_TOPO_REQ,       //topology request option
+    M_O_TOPO_RESP,      //topology response option
+    M_O_MCAST_GRP,      //group list of mcast
+    M_O_MESH_FRAG,      //mesh management fragmentation option
+    M_O_USR_FRAG,       //user data fragmentation
+    M_O_USR_OPTION,     //user option
+    };
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Tên trường</th>
+<th>Độ dài</th>
+<th>Mô tả</th>
+<th>Định dạng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M_O_FLOW_REQ</td>
+<td>2 Bytes</td>
+<td>Dùng cho flow request</td>
+<td>otype</td>
+</tr>
+<tr>
+<td>M_O_FLOW_RESP</td>
+<td>6 Bytes</td>
+<td>Dùng cho phản hồi tới flow</td>
+<td>otype</td>
+</tr>
+<tr>
+<td>M_O_ROUTER_SPREAD</td>
+<td>106 Bytes</td>
+<td>Dùng spread thông tin từ router</td>
+<td>otype</td>
+</tr>
+<tr>
+<td>M_O_ROUTE_ADD</td>
+<td>6*n+2Bytes</td>
+<td>Dùng để cập nhật bảng định tuyến khi có node mới tham gia vào mạng</td>
+<td>otype</td>
+</tr>
+<tr>
+<td>M_O_ROUTE_DEL</td>
+<td>6*n+2Bytes</td>
+<td>Dùng để cập nhật bảng định tuyến khi có node rời mạng</td>
+<td>otype</td>
+</tr>
+<tr>
+<td>M_O_TOPO_REQ</td>
+<td>8 Bytes</td>
+<td>Sử dụng để lấy topo của mạng mesh</td>
+<td>otype</td>
+</tr>
+<tr>
+<td>M_O_TOPO_RESP</td>
+<td>6*n+2Bytes</td>
+<td>Sử dụng để nhận phản hồi topo của mạng mesh</td>
+<td>otype</td>
+</tr>
+</tbody>
+</table>
+<h1 id="vi-du-goi-tin-gui-nhan">Ví dụ gói tin gửi/ nhận<a class="headerlink" href="#vi-du-goi-tin-gui-nhan" title="Permanent link">#</a></h1>
+<h3 id="goi-tin-request">Gói tin request<a class="headerlink" href="#goi-tin-request" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>e</th>
+<th>f</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00000000h</td>
+<td>04</td>
+<td>01</td>
+<td>14</td>
+<td>00</td>
+<td>18</td>
+<td>FE</td>
+<td>34</td>
+<td>A5</td>
+<td>3B</td>
+<td>AD</td>
+<td>18</td>
+<td>FE</td>
+<td>34</td>
+<td>A2</td>
+<td>C7</td>
+<td>76</td>
+</tr>
+<tr>
+<td>00000010h</td>
+<td>04</td>
+<td>00</td>
+<td>00</td>
+<td>02</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Mô tả</p>
+<table>
+<thead>
+<tr>
+<th>Tên trường</th>
+<th>Giá trị</th>
+<th>Mô tả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>head.ver</td>
+<td>00</td>
+<td>Phiên bản hiện tại của mesh là 00</td>
+</tr>
+<tr>
+<td>head.O</td>
+<td>1</td>
+<td>Có option trong gói tin</td>
+</tr>
+<tr>
+<td>head.flags.FP</td>
+<td>0</td>
+<td>Không có piggyback flow permit</td>
+</tr>
+<tr>
+<td>head.flags.FR</td>
+<td>0</td>
+<td>Không có piggyback flow request</td>
+</tr>
+<tr>
+<td>head.flags.resv</td>
+<td>000</td>
+<td>Dự phòng</td>
+</tr>
+<tr>
+<td>head.proto.D</td>
+<td>1</td>
+<td>Upwards</td>
+</tr>
+<tr>
+<td>head.proto.P2P</td>
+<td>0</td>
+<td>Không có gói từ node tới node</td>
+</tr>
+<tr>
+<td>head.proto.protocol</td>
+<td>000000</td>
+<td>Gói tin quản lý mesh</td>
+</tr>
+<tr>
+<td>head.len</td>
+<td>0x0014</td>
+<td>Chiều dài của gói tin là 20 byte</td>
+</tr>
+<tr>
+<td>head.dst_addr</td>
+<td>18 FE 34 A5 3B AD</td>
+<td>Địa chỉ MAC của destination device</td>
+</tr>
+<tr>
+<td>head.src_addr</td>
+<td>18 FE 34 A2 C7 76</td>
+<td>Địa chỉ MAC của source device</td>
+</tr>
+<tr>
+<td>head.ot_len</td>
+<td>0x0004</td>
+<td>Chiều dài của option là 0x0004</td>
+</tr>
+<tr>
+<td>head.option_list[0].otype</td>
+<td>0x00</td>
+<td>M_FLOW_REQ</td>
+</tr>
+<tr>
+<td>head.option_list[0].olen</td>
+<td>0x02</td>
+<td>Option length là 0x02</td>
+</tr>
+</tbody>
+</table>
+<h1 id="goi-tin-response">Gói tin response<a class="headerlink" href="#goi-tin-response" title="Permanent link">#</a></h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>e</th>
+<th>f</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00000000h</td>
+<td>04</td>
+<td>00</td>
+<td>18</td>
+<td>00</td>
+<td>18</td>
+<td>FE</td>
+<td>34</td>
+<td>A2</td>
+<td>C7</td>
+<td>76</td>
+<td>18</td>
+<td>FE</td>
+<td>34</td>
+<td>A5</td>
+<td>3B</td>
+<td>AD</td>
+</tr>
+<tr>
+<td>00000010h</td>
+<td>08</td>
+<td>00</td>
+<td>01</td>
+<td>06</td>
+<td>01</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Mô tả</p>
+<table>
+<thead>
+<tr>
+<th>Tên trường</th>
+<th>Giá trị</th>
+<th>Mô tả</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>head.ver</td>
+<td>00</td>
+<td>Phiên bản hiện tại của mesh là 00</td>
+</tr>
+<tr>
+<td>head.O</td>
+<td>1</td>
+<td>Có option trong gói tin</td>
+</tr>
+<tr>
+<td>head.flags.FP</td>
+<td>0</td>
+<td>Không có piggyback flow permit</td>
+</tr>
+<tr>
+<td>head.flags.FR</td>
+<td>0</td>
+<td>Không có piggyback flow request</td>
+</tr>
+<tr>
+<td>head.flags.resv</td>
+<td>000</td>
+<td>Dự phòng</td>
+</tr>
+<tr>
+<td>head.proto.D</td>
+<td>0</td>
+<td>Downwards.</td>
+</tr>
+<tr>
+<td>head.proto.P2P</td>
+<td>0</td>
+<td>Không có gói từ node tới node</td>
+</tr>
+<tr>
+<td>head.proto.protocol</td>
+<td>000000</td>
+<td>Gói tin quản lý mesh</td>
+</tr>
+<tr>
+<td>head.len</td>
+<td>0x0015</td>
+<td>Chiều dài của gói tin là 21 byte</td>
+</tr>
+<tr>
+<td>head.dst_addr</td>
+<td>18 FE 34 A2 C7 76</td>
+<td>Địa chỉ MAC của destination device</td>
+</tr>
+<tr>
+<td>head.src_addr</td>
+<td>18 FE 34 A5 3B AD</td>
+<td>Địa chỉ MAC của source device</td>
+</tr>
+<tr>
+<td>head.ot_len</td>
+<td>0x0008</td>
+<td>Chiều dài của option là 0x0008</td>
+</tr>
+<tr>
+<td>head.option_list[0].otype</td>
+<td>0x01</td>
+<td>M_FLOW_RESP</td>
+</tr>
+<tr>
+<td>head.option_list[0].olen</td>
+<td>0x06</td>
+<td>Option length là 0x06</td>
+</tr>
+<tr>
+<td>head.option_list[0].ovalue</td>
+<td>0x01</td>
+<td>Option value là 0x00000001, flow capacity là 0x00000001.</td>
+</tr>
+</tbody>
+</table>
+<h1 id="cau-truc-du-lieu">Cấu trúc dữ liệu<a class="headerlink" href="#cau-truc-du-lieu" title="Permanent link">#</a></h1>
+<ul>
+<li>Định dạng mesh header </li>
+</ul>
+<pre><code>struct mesh_header_format {
+    uint8_t ver: 2; // version of mesh
+    uint8_t oe: 1; // option flag
+    uint8_t fp: 1; // piggyback flow permit in packet
+    uint8_t fr: 1; // piggyback flow request in packet
+    uint8_t rsv: 3; // reserved
+    struct {
+        uint8_t d: 1; // direction, 1:upwards, 0:downwards
+        uint8_t p2p: 1; // node to node packet
+        uint8_t protocol: 6; // protocol used by user data
+    } proto;
+    uint16_t len; // packet total length
+    (mesh header included)
+    uint8_t dst_addr[ESP_MESH_ADDR_LEN]; // destination address
+    uint8_t src_addr[ESP_MESH_ADDR_LEN]; // source address
+    struct mesh_header_option_header_type option[0]; // mesh option
+} __packed;
+</code></pre>
+
+<ul>
+<li>Định dạng mesh Option header </li>
+</ul>
+<pre><code>struct mesh_header_option_header_type {
+    uint16_t ot_len; // option total length
+    struct mesh_header_option_format olist[0]; // option list
+} __packed;
+</code></pre>
+
+<ul>
+<li>Định dạng mesh Option </li>
+</ul>
+<pre><code>struct mesh_header_option_format {
+    uint8_t otype; // option type
+    uint8_t olen; // current option length
+    uint8_t ovalue[0]; // option value
+} __packed;
+</code></pre>
+
+<ul>
+<li>Định dạng mesh Option Fragmentation</li>
+</ul>
+<pre><code>struct mesh_header_option_frag_format {
+    uint16_t id; // identity of fragmentation
+    struct {
+        uint16_t resv: 1; // reserved
+        uint16_t mf: 1; // more fragmentation
+        uint16_t idx: 14; // fragmentation offset
+    } offset;
+} __packed;
+</code></pre>
+
+<ul>
+<li>Định dạng Mesh Callback</li>
+</ul>
+<pre><code>typedef void (* espconn_mesh_callback)(int8_t result);
+</code></pre>
+
+<ul>
+<li>Định dạng Mesh Scan Callback</li>
+</ul>
+<pre><code>typedef void (* espconn_mesh_scan_callback)(void *arg, int8_t
+status);
+</code></pre>
+
+<ul>
+<li>Định dạng Mesh Scan User Callback</li>
+</ul>
+<pre><code>typedef void (* espconn_mesh_usr_callback)(void *arg);
+</code></pre>
+
+<div class="admonition note">
+<p class="admonition-title">Lưu ý</p>
+<p>Các API của packet có thể tham khảo tại <a href="http://www.espressif.com/en/support/download/documents#overlay=en/admin/content">API</a></p>
+</div>
+<h1 id="chuong-trinh">Chương trình<a class="headerlink" href="#chuong-trinh" title="Permanent link">#</a></h1>
+<h2 id="device">Device<a class="headerlink" href="#device" title="Permanent link">#</a></h2>
+<h2 id="mobile-hoac-server">Mobile hoặc Server<a class="headerlink" href="#mobile-hoac-server" title="Permanent link">#</a></h2>
+<pre><code>void controller_entrance(Parameter list)
+{
+    /*Add your codes to check status*/
+    /*Add your codes to build control packet*/
+    uint8_t json_control_data[] = {/*Add your codes*/};
+    uint16_t control_data_len = sizeof(json_control_data)
+                                struct mesh_header_format * mesh_header = NULL;
+    /* src_addr should be the combination of IP and port of
+    Mobile or Server. You can set the address to zero, then the
+    root device will fill in the section. If you fill in the
+    section by yourself, please make sure the value is right.*/
+    uint8_t src_addr[] = {0, 0, 0, 0, 0, 0},
+                         dst_addr[] = {xx, xx, xx, xx, xx, xx};
+    mesh_header = (struct mesh_header_format
+                   *)espconn_mesh_create_packet(dst_addr, src_addr, false, true,
+                           M_PROTO_JSON, control_data_len,
+                           false, 0, false, 0, false, 0, 0);
+    if (!mesh_header)
+    {
+        printf(“alloc resp packet fail\n”);
+        return;
+    }
+    if (espconn_mesh_set_usr_data(mesh_header,
+                                  resp_json_packet_body, resp_data_len))
+    {
+        printf(“set user data fail\n”);
+        free(mesh_header);
+        return;
+    }
+// sent control packet
+    espconn_mesh_sent(esp, mesh_header, mesh_header-&gt;len);
+    free(mesh_header);
+}
+</code></pre>
+
+<h1 id="lay-topology">Lấy topology<a class="headerlink" href="#lay-topology" title="Permanent link">#</a></h1>
+<pre><code>void topology_entrance(Parameter list)
+{
+    /*Add your codes to check status*/
+    /*Add your codes to build getting topology packet*/
+    bool res;
+    struct mesh_header_format *mesh_header = NULL;
+    struct mesh_header_option_format *topo_option = NULL;
+    uint8_t src_addr[] = {0, 0, 0, 0, 0, 0};
+    uint8_t dst_addr[] = {xx, xx, xx, xx, xx, xx}; // MAC address of root
+    device
+    uint8_t dev_mac[6] = {xx, xx, xx, xx, xx, xx}; // zero represents
+    topology of all devices
+    uint16_t ot_len = sizeof(*topo_option) + sizeof(struct
+                      mesh_header_option_header_type) + sizeof(dev_mac);
+    mesh_header = (struct mesh_header_format
+                   *)espconn_mesh_create_packet(
+                      dst_addr, src_addr, false, true, M_PROTO_NONE, 0,
+                      true, ot_len, false, 0, false, 0, 0);
+    if (!mesh_header) {
+        printf(“alloc resp packet fail\n”);
+        return;
+    }
+    topo_option = (struct mesh_header_option_format
+                   *)espconn_mesh_create_option(
+                      M_O_TOPO_REQ, dev_mac, sizeof(dev_mac));
+    if (!topo_option) {
+        printf(“alloc topo option fail\n”);
+        free(mesh_header);
+        return;
+    }
+    res = espconn_mesh_add_option(mesh_header, topo_option);
+    free(topo_option);
+    if (res) {
+        printf(“add topo option fail\n”);
+        free(mesh_header);
+        return;
+    }
+// send packet of getting topology
+    espconn_mesh_sent(esp, mesh_header, mesh_header-&gt;len);
+    free(mesh_header);
+}
+</code></pre>
+
+<h1 id="phan-tich-phan-hoi-tu-topology">Phân tích phản hồi từ topology<a class="headerlink" href="#phan-tich-phan-hoi-tu-topology" title="Permanent link">#</a></h1>
+<pre><code>void topology_parser_entrance(uint8_t *topo_resp, uint16_t len)
+{
+    /*Add your codes to check parameter*/
+    uint16_t oidx = 1;
+    struct mesh_header_format *mesh_header = NULL;
+    struct mesh_header_option_format *topo_option = NULL;
+    mesh_header = (struct mesh_header_format *)topo_resp;
+    if (!mesh_header-&gt;oe) {
+        printf(“no option exist\n”);
+        return;
+    }
+    /* you need parse all the options one by one in the packet header
+    */
+    while (espconn_mesh_get_option(mesh_header, M_O_TOPO_RESP,
+                                   oidx++, &amp;topo_option)) {
+        uint16_t dev_count = topo_option-&gt;olen / 6;
+        process_dev_list(topo_option-&gt;ovalue, dev_count);
+    }
+}
+</code></pre>
+
 <h1 id="tham-khao">Tham khảo<a class="headerlink" href="#tham-khao" title="Permanent link">#</a></h1>
 <ul>
 <li><a href="https://espressif.com/en/products/software/esp-mesh/overview">ESP-MESH</a></li>

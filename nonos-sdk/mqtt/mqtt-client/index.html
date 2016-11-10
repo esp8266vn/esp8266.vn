@@ -662,10 +662,44 @@
               
                 <div class="toc">
 <ul>
-<li><a href="#su-dung-thu-vien-mqtt-voi-esp8266">Sử dụng thư viện MQTT với ESP8266</a></li>
+<li><a href="#su-dung-thu-vien-mqtt-voi-esp8266">Sử dụng thư viện MQTT với ESP8266</a><ul>
+<li><a href="#lay-du-an-ve-tu-github">Lấy dự án về từ Github</a></li>
+<li><a href="#so-o-file">Sơ đồ file</a></li>
+<li><a href="#ma-nguon">Mã nguồn</a></li>
+<li><a href="#publish-va-subcribe-tin-nhan">Publish và subcribe tin nhắn</a></li>
+<li><a href="#ket-qua">Kết quả</a></li>
+<li><a href="#tham-khao">Tham khảo</a></li>
+</ul>
+</li>
 </ul>
 </div>
 <h1 id="su-dung-thu-vien-mqtt-voi-esp8266">Sử dụng thư viện MQTT với ESP8266<a class="headerlink" href="#su-dung-thu-vien-mqtt-voi-esp8266" title="Permanent link">#</a></h1>
+<p>Tổ chức file căn cứ theo bài <a href="./compile-first-time.md">Biên dịch dự án đầu tiên</a>, toàn bộ cấu trúc file, <strong>Makefile, user_config.h, rf_init.c</strong> giữ nguyên, chỉ thay đổi nội dung file <code>main.c</code>. </p>
+<div class="admonition note">
+<p class="admonition-title">Nội dung</p>
+<p>Sử dụng MQTT cho ESP8266</p>
+</div>
+<h2 id="lay-du-an-ve-tu-github">Lấy dự án về từ Github<a class="headerlink" href="#lay-du-an-ve-tu-github" title="Permanent link">#</a></h2>
+<pre><code class="bash">git clone https://github.com/tuanpmt/esp_mqtt.git
+</code></pre>
+
+<h2 id="so-o-file">Sơ đồ file<a class="headerlink" href="#so-o-file" title="Permanent link">#</a></h2>
+<pre><code>
+</code></pre>
+
+<h2 id="ma-nguon">Mã nguồn<a class="headerlink" href="#ma-nguon" title="Permanent link">#</a></h2>
+<h2 id="publish-va-subcribe-tin-nhan">Publish và subcribe tin nhắn<a class="headerlink" href="#publish-va-subcribe-tin-nhan" title="Permanent link">#</a></h2>
+<pre><code>/* TRUE if success */
+BOOL MQTT_Subscribe(MQTT_Client *client, char* topic, uint8_t qos);
+
+BOOL MQTT_Publish(MQTT_Client *client, const char* topic, const char* data, int data_length, int qos, int retain);
+</code></pre>
+
+<h2 id="ket-qua">Kết quả<a class="headerlink" href="#ket-qua" title="Permanent link">#</a></h2>
+<h2 id="tham-khao">Tham khảo<a class="headerlink" href="#tham-khao" title="Permanent link">#</a></h2>
+<p><a href="https://github.com/eadf/esp_mqtt_lcd">MQTT LCD</a>
+<a href="https://github.com/mcollina/mosca">MQTT Broker for test</a></p>
+<p><a href="https://chrome.google.com/webstore/detail/mqttlens/hemojaaeigabkbcookmlgmdigohjobjm?hl=en">MQTT Client for test</a></p>
               
             </div>
           </div>

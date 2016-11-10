@@ -660,7 +660,16 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="gioi-thieu">Giới thiệu<a class="headerlink" href="#gioi-thieu" title="Permanent link">#</a></h1>
+                <div class="toc">
+<ul>
+<li><a href="#gioi-thieu">Giới thiệu</a></li>
+<li><a href="#cac-chuc-nang-chinh">Các chức năng chính</a></li>
+<li><a href="#mo-ta">Mô tả</a></li>
+<li><a href="#chuong-trinh">Chương trình</a></li>
+<li><a href="#tham-khao">Tham khảo</a></li>
+</ul>
+</div>
+<h1 id="gioi-thieu">Giới thiệu<a class="headerlink" href="#gioi-thieu" title="Permanent link">#</a></h1>
 <ul>
 <li>ESP-NOW là một giao thức được phát triển bởi Espressif cho phép nhiều thiết bị có thể kết nối với nhau mà không cần dùng Wifi. Các thiết bị sau khi kết nối được với nhau sẽ là peer-to-peer, và không yêu cầu bắt tay.</li>
 <li>ESP-NOW có thể được xem là một công nghệ được sử dụng cho ESP8266 để truyền các gói dữ liệu với tốc độ cao, nó được ứng dụng trong các thiết bị chiếu sáng thông minh, điều khiển từ xa các cảm biến,&hellip;</li>
@@ -758,8 +767,115 @@
 <td>Kênh để local device và peer kết nối với nhau</td>
 <td></td>
 </tr>
+<tr>
+<td># Hoạt động</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
 </table>
+<ol>
+<li>
+<p>Thiết lập hàm sending callback
+Việc sử dụng hàm sending callback để thông báo việc truyền nhận là thành công hay thất bại, cần phải thực hiện theo các bước sau nếu sử dụng các hàm này</p>
+</li>
+<li>
+<p>Với kiểu unicast</p>
+<ul>
+<li>Nếu lớp application không nhạn được gói tin nhưng hàm callback trả về success thì nguyên nhân có thể do:<ul>
+<li>Tấn công từ các thiết bị khác</li>
+<li>Thiết lập mã hóa Key bị lỗi</li>
+<li>Gói tin bị mất trong lớp application</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Lưu ý</p>
+<p>Việc bắt tay để đảm bảo tăng tỉ lệ thành công của việc truyền nhận</p>
+<ul>
+<li>Nếu lớp ứng dụng nhận được gói tin nhưng hàm callback trả về failure thì nguyên nhân:<ul>
+<li>Channel đang bận hoặc không nhận được ACK.</li>
+</ul>
+</li>
+</ul>
+</div>
+<ul>
+<li>
+<p>Với kiểu multicast (bao gồm cả broadcast)</p>
+<ul>
+<li>Nếu hàm callback trả về success nghĩa là gói tin đã được gửi đi thành công</li>
+<li>Nếu hàm callback trả về failure, nghĩa là gói tin chưa gửi được</li>
+</ul>
+</li>
+<li>
+<p>Thiết lập hàm receiving callback
+Hàm reciecing callback được sử dụng để thông báo tới lớp ứng dụng là gói tin gửi đi đã được nhận bởi peer
+Hàm này sẽ trả lại địa chỉa MAC của peer và payload của gói tin</p>
+</li>
+<li>
+<p>Nếu Key được mã hóa thì API cấu hình PMK(KOK) sẽ được gọi để cấu hình
+Nếu PMK chưa được cấu hình thì sẽ sử dụng PMK mặc định.</p>
+</li>
+<li>
+<p>Lựa chọn giao thức cho device
+Thông thường Station interface được cài đặt cho CONTROLLER, SoftAP interface cho SLAVE và COMBO.</p>
+</li>
+<li>
+<p>Lựa chọn Key cho device. Gọi hàm add peer.</p>
+</li>
+<li>
+<p>Gọi hàm gửi để trả về payload. </p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Lưu ý</p>
+<p>Tham khảo thêm các thông tin về API của ESP-NOW tại <a href="http://www.espressif.com/en/support/download/documents">SDK API Guide</a></p>
+</div>
+<h1 id="chuong-trinh">Chương trình<a class="headerlink" href="#chuong-trinh" title="Permanent link">#</a></h1>
+<pre><code>void ICACHE_FLASH_ATTR simple_cb(u8 *macaddr, u8 *data, u8 len)
+{
+    int i;
+    u8 ack_buf[16];
+    u8 recv_buf[17];
+    os_printf(&quot;now from[&quot;);
+    for (i = 0; i &lt; 6; i++)
+        os_printf(&quot;%02X, &quot;, macaddr[i]);
+    os_printf(&quot; len: %d]:&quot;, len);
+    os_bzero(recv_buf, 17);
+    os_memcpy(recv_buf, data, len &lt; 17 ? len : 16);
+    if (os_strncmp(data, &quot;ACK&quot;, 3) == 0)
+        return;
+    os_sprintf(ack_buf, &quot;ACK[%08x]&quot;, ack_count++);
+    esp_now_send(macaddr, ack_buf, os_strlen(ack_buf));
+}
+void user_init(void)
+{
+    u8 key[16] = {0x33, 0x44, 0x33, 0x44, 0x33, 0x44, 0x33, 0x44,
+                  0x33, 0x44, 0x33, 0x44, 0x33, 0x44, 0x33, 0x44
+                 };
+    u8 da1[6] = {0x18, 0xfe, 0x34, 0x97, 0xd5, 0xb1};
+    u8 da2[6] = {0x1a, 0xfe, 0x34, 0x97, 0xd5, 0xb1};
+    if (esp_now_init() == 0) {
+        os_printf(&quot;esp_now init ok\n&quot;);
+        esp_now_register_recv_cb(simple_cb);
+        esp_now_set_self_role(1);
+        esp_now_add_peer(da1, 1, key, 16);
+        esp_now_add_peer(da2, 2, key, 16)
+    } else {
+        os_printf(&quot;esp_now init failed\n&quot;);
+    }
+}
+void ICACHE_FLASH_ATTR demo_send(u8 *mac_addr, u8 *data, u8 len)
+{
+    esp_now_send(NULL, data, len);/* Vi du nay se gui toi 2 thiet bi duoc them vao boi ham esp_now_add_peer() */
+//esp_now_send(mac_addr, data, len); /* gui toi dia chi mac mac_addr */
+}
+</code></pre>
+
 <h1 id="tham-khao">Tham khảo<a class="headerlink" href="#tham-khao" title="Permanent link">#</a></h1>
 <ul>
 <li>Có thể xem thêm các tài liệu mô tả về <a href="https://espressif.com/en/products/software/esp-now/resources">ESP-NOW</a> của Espressif</li>
