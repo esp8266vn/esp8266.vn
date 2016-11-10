@@ -23,8 +23,9 @@ User App1 và User App2 được tạo ra trong quá trình biên dịch và n�
 File flash.bin và irom0text.bin sẽ được kết hợp với user1.bin(hoặc user2.bin) để cập nhật. Một file user.bin sẽ được backup lại trong quá trình cập nhật fail
 File bootloader (boot.bin) sẽ kiểm tra cờ trong thông số System để xác định là sẽ thực hiện User App1(user1.bin) hay User App2(user2.bin)
 
-**Ví dụ**
+**Ví dụ:**
 Dưới đây là ví dụ minh họa về các bước của FOTA
+
 1. Đầu tiên là nạp file boot.bin và user1.bin (phiên bản v1.0.0) xuống ESP8266. Cờ của vùng system param sẽ chọn user1.bin là mặc định. Sau khi khởi động hệ thống sẽ tự động nhảy vào user1.bin
 2. Upload 2 file user1.bin và user2.bin (phiên bản 1.0.1) lên cloud hoặc server riêng
 3. Server sẽ gửi tin nhắn xuống ESP là đã có update mới. Nếu ESP nhận được tin nhắn này sẽ kiểm tra cờ đầu tiên, cờ này sẽ đặt là user1, sau đó tải user2.bin của v1.0.1 xuống flash ở vùng từ 260KB~496KB để cập nhật.
@@ -52,6 +53,7 @@ Cách làm tương tự như với 512KB Flash nhưng cách phân chia các phâ
 
 # Hoạt động
 ![Operation](../images/operation.png)
+
 1. Khi hoạt động thì ESP sẽ gửi thông tin về phiên bản hiện tại lên server và server sẽ lưu thông tin này lại
 2. Hoạt động bình thường
 3. Khi có một firmware mới được up lên server. Server sẽ gửi thông báo tới ESP
