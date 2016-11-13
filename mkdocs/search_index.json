@@ -1296,6 +1296,166 @@
             "title": "\u0110\u01b0\u1eddng d\u1eabn:"
         },
         {
+            "location": "/arduino/esp8266-hardware/",
+            "text": "Ph\u1ea7n c\u1ee9ng h\u1ed7 tr\u1ee3\n#\n\n\n\n\n\n\nPh\u1ea7n c\u1ee9ng h\u1ed7 tr\u1ee3\n\n\nAdafruit HUZZAH ESP8266 (ESP-12)\n\n\nESPresso Lite 1.0\n\n\nESPresso Lite 2.0\n\n\nPhoenix 1.0\n\n\nPhoenix 2.0\n\n\nNodeMCU 0.9\n\n\nPin mapping\n\n\n\n\n\n\nNodeMCU 1.0\n\n\nOlimex MOD-WIFI-ESP8266-DEV\n\n\nOlimex MOD-WIFI-ESP8266\n\n\nOlimex ESP8266-EVB\n\n\nSparkFun ESP8266 Thing\n\n\nSweetPea ESP-210\n\n\nESPino\n\n\nWifInfo\n\n\nGeneric ESP8266 modules\n\n\nSerial Adapter\n\n\nMinimal Hardware Setup for Bootloading and Usage\n\n\nESP to Serial\n\n\nMinimal Hardware Setup for Bootloading only\n\n\nMinimal Hardware Setup for Running only\n\n\n\n\n\n\nMinimal\n\n\nImproved Stability\n\n\nBoot Messages and Modes\n\n\nrst cause\n\n\nboot mode\n\n\n\n\n\n\nGeneric ESP8285 modules\n\n\nWeMos D1\n\n\nWeMos D1 mini\n\n\nESPino (WROOM-02 Module) by ThaiEasyElec\n\n\n\n\n\n\n\n\n\n\nAdafruit HUZZAH ESP8266 (ESP-12)\n#\n\n\nTODO: add notes\n\n\nESPresso Lite 1.0\n#\n\n\nESPresso Lite 1.0 (beta version) is an Arduino-compatible Wi-Fi development board powered by Espressif System\u2019s own ESP8266 WROOM-02 module. It has breadboard-friendly breakout pins with in-built LED, two reset/flash buttons and a user programmable button . The operating voltage is 3.3VDC, regulated with 800mA maximum current. Special distinctive features include on-board I2C pads that allow direct connection to OLED LCD and sensor boards.\n\n\nESPresso Lite 2.0\n#\n\n\nESPresso Lite 2.0 is an Arduino-compatible Wi-Fi development board based on an earlier V1 (beta version). Re-designed together with Cytron Technologies, the newly-revised ESPresso Lite V2.0 features the auto-load/auto-program function, eliminating the previous need to reset the board manually before flashing a new program. It also feature two user programmable side buttons and a reset button. The special distinctive features of on-board pads for I2C sensor and actuator is retained.\n\n\nPhoenix 1.0\n#\n\n\nProduct page: http://www.espert.co\n\n\nPhoenix 2.0\n#\n\n\nProduct page: http://www.espert.co\n\n\nNodeMCU 0.9\n#\n\n\nPin mapping\n#\n\n\nPin numbers written on the board itself do not correspond to ESP8266 GPIO pin numbers. Constants are defined to make using this board easier:\n\n\nstatic const uint8_t D0   = 16;\nstatic const uint8_t D1   = 5;\nstatic const uint8_t D2   = 4;\nstatic const uint8_t D3   = 0;\nstatic const uint8_t D4   = 2;\nstatic const uint8_t D5   = 14;\nstatic const uint8_t D6   = 12;\nstatic const uint8_t D7   = 13;\nstatic const uint8_t D8   = 15;\nstatic const uint8_t D9   = 3;\nstatic const uint8_t D10  = 1;\n\n\n\n\nIf you want to use NodeMCU pin 5, use D5 for pin number, and it will be translated to \u2018real\u2019 GPIO pin 14.\n\n\nNodeMCU 1.0\n#\n\n\nThis module is sold under many names for around $6.50 on AliExpress and it\u2019s one of the cheapest, fully integrated ESP8266 solutions.\n\n\nIt\u2019s an open hardware design with an ESP-12E core and 4 MB of SPI flash.\n\n\nAcording to the manufacturer, \u201cwith a micro USB cable, you can connect NodeMCU devkit to your laptop and flash it without any trouble\u201d. This is more or less true: the board comes with a CP2102 onboard USB to serial adapter which just works, well, the majority of the time. Sometimes flashing fails and you have to reset the board by holding down FLASH + RST, then releasing FLASH, then releasing RST. This forces the CP2102 device to power cycle and to be re-numbered by Linux.\n\n\nThe board also features a NCP1117 voltage regulator, a blue LED on GPIO16 and a 220k/100k Ohm voltage divider on the ADC input pin.\n\n\nFull pinout and PDF schematics can be found \nhere\n\n\nOlimex MOD-WIFI-ESP8266-DEV\n#\n\n\nThis board comes with 2 MB of SPI flash and optional accessories (e.g. evaluation board ESP8266-EVB or BAT-BOX for batteries).\n\n\nThe basic module has three solder jumpers that allow you to switch the operating mode between SDIO, UART and FLASH.\n\n\nThe board is shipped for FLASH operation mode, with jumpers TD0JP=0, IO0JP=1, IO2JP=1.\n\n\nSince jumper IO0JP is tied to GPIO0, which is PIN 21, you\u2019ll have to ground it before programming with a USB to serial adapter and reset the board by power cycling it.\n\n\nUART pins for programming and serial I/O are GPIO1 (TXD, pin 3) and GPIO3 (RXD, pin 4).\n\n\nYou can find the board schematics \nhere\n\n\nOlimex MOD-WIFI-ESP8266\n#\n\n\nThis is a stripped down version of the above. Behaves identically in terms of jumpers but has less pins readily available for I/O. Still 2 MB of SPI flash.\n\n\nOlimex ESP8266-EVB\n#\n\n\nIt\u2019s a Olimex MOD-WIFI-ESP8266-DEV module installed on the headers of a development board which features some breakout connectors, a button (GPIO0) and a relay (GPIO5).\n\n\nProgramming is pretty straightforward: the board is supported in the Arduino IDE after \ninstalling it via the Board Manager\n. To download a program you just have to connect GND/RX/TX from a serial/USB adapter to the UEXT connector and press the only button before applying power to enter UART mode.\n\n\nDon\u2019t connect 5V from the serial/USB adapter to the board or you won\u2019t be able to power cycle it for UART mode.\n\n\nYou can find the board schematics \nhere\n.\n\n\nThis guide\n is also useful for the first setup, since it contains the UEXT connector pinout.\n\n\nBoard variants include:\n * ESP8266-EVB-BAT: comes with built-in LiPo charger and step-up converter\n * ESP8266-EVB-BAT-BOX: as above, but enclosd in a plastic box (non-weatherproof)\n\n\nSparkFun ESP8266 Thing\n#\n\n\nProduct page: https://www.sparkfun.com/products/13231\n\n\nTODO: add notes\n\n\nSweetPea ESP-210\n#\n\n\nTODO: add notes\n\n\nESPino\n#\n\n\nESPino integrates the ESP-12 module with a 3.3v regulator, CP2104 USB-Serial bridge and a micro USB connector for easy programming. It is designed for fitting in a breadboard and has an RGB Led and two buttons for easy prototyping.\n\n\nFor more information about the hardware, pinout diagram and programming procedures, please see the \ndatasheet\n.\n\n\nProduct page: http://www.espino.io/en\n\n\nWifInfo\n#\n\n\nWifInfo integrates the ESP-12 or ESP-07+Ext antenna module with a 3.3v regulator and the hardware to be able to measure French telemetry issue from ERDF powering meter serial output. It has a USB connector for powering, an RGB WS2812 Led, 4 pins I2C connector to fit OLED or sensor, and two buttons + FTDI connector and auto reset feature.\n\n\nFor more information, please see WifInfo related \nblog\n entries, \ngithub\n and \ncommunity\n forum.\n\n\nGeneric ESP8266 modules\n#\n\n\nThese modules come in different form factors and pinouts. See the page at ESP8266 community wiki for more info:\n\nESP8266 Module Family\n.\n\n\nUsually these modules have no bootstapping resistors on board, insufficient decoupling capacitors, no voltage regulator, no reset circuit, and no USB-serial adapter. This makes using them somewhat tricky, compared to development boards which add these features.\n\n\nIn order to use these modules, make sure to observe the following:\n\n\n\n\n\n\nProvide sufficient power to the module.\n For stable use of the ESP8266 a power supply with 3.3V and >= 250mA is required. Using the power available from USB to Serial adapter is not recommended, these adapters typically do not supply enough current to run ESP8266 reliably in every situation. An external supply or regulator along with filtering capacitors is preferred.\n\n\n\n\n\n\nConnect bootstapping resistors\n to GPIO0, GPIO2, GPIO15 according to the schematics below.\n\n\n\n\n\n\nPut ESP8266 into bootloader mode\n before uploading code.\n\n\n\n\n\n\nSerial Adapter\n#\n\n\nThere are many different USB to Serial adapters / boards.\nTo be able to put ESP8266 into bootloader mode using serial handshaking lines, you need the adapter which breaks out RTS and DTR outputs. CTS and DSR are not useful for upload (they are inputs). Make sure the adapter can work with 3.3V IO voltage: it should have a jumper or a switch to select between 5V and 3.3V, or be marked as 3.3V only.\n\n\nAdapters based around the following ICs should work:\n\n\n\n\nFT232RL\n\n\nCP2102\n\n\nCH340G\n\n\n\n\nPL2303-based adapters are known not to work on Mac OS X. See https://github.com/igrr/esptool-ck/issues/9 for more info.\n\n\nMinimal Hardware Setup for Bootloading and Usage\n#\n\n\n\n\n\n\n\n\nPIN\n\n\nResistor\n\n\nSerial Adapter\n\n\n\n\n\n\n\n\n\n\nVCC\n\n\n\n\nVCC (3.3V)\n\n\n\n\n\n\nGND\n\n\n\n\nGND\n\n\n\n\n\n\nTX or GPIO2*\n\n\n\n\nRX\n\n\n\n\n\n\nRX\n\n\n\n\nTX\n\n\n\n\n\n\nGPIO0\n\n\nPullUp\n\n\nDTR\n\n\n\n\n\n\nReset*\n\n\nPullUp\n\n\nRTS\n\n\n\n\n\n\nGPIO15*\n\n\nPullDown\n\n\n\n\n\n\n\n\nCH_PD\n\n\nPullUp\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nGPIO15 is also named MTDO\n\n\nReset is also named RSBT or REST (adding PullUp improves the stability of the module)\n\n\nGPIO2 is alternative TX for the boot loader mode\n\n\nDirectly connecting a pin to VCC or GND is not a substitute for a PullUp or PullDown resistor, doing this can break upload management and the serial console, instability has also been noted in some cases.\n\n\n\n\nESP to Serial\n#\n\n\n\n\nMinimal Hardware Setup for Bootloading only\n#\n\n\nESPxx Hardware\n\n\n\n\n\n\n\n\nPIN\n\n\nResistor\n\n\nSerial Adapter\n\n\n\n\n\n\n\n\n\n\nVCC\n\n\n\n\nVCC (3.3V)\n\n\n\n\n\n\nGND\n\n\n\n\nGND\n\n\n\n\n\n\nTX or GPIO2\n\n\n\n\nRX\n\n\n\n\n\n\nRX\n\n\n\n\nTX\n\n\n\n\n\n\nGPIO0\n\n\n\n\nGND\n\n\n\n\n\n\nReset\n\n\n\n\nRTS*\n\n\n\n\n\n\nGPIO15\n\n\nPullDown\n\n\n\n\n\n\n\n\nCH_PD\n\n\nPullUp\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nif no RTS is used a manual power toggle is needed\n\n\n\n\nMinimal Hardware Setup for Running only\n#\n\n\nESPxx Hardware\n\n\n\n\n\n\n\n\nPIN\n\n\nResistor\n\n\nPower supply\n\n\n\n\n\n\n\n\n\n\nVCC\n\n\n\n\nVCC (3.3V)\n\n\n\n\n\n\nGND\n\n\n\n\nGND\n\n\n\n\n\n\nGPIO0\n\n\nPullUp\n\n\n\n\n\n\n\n\nGPIO15\n\n\nPullDown\n\n\n\n\n\n\n\n\nCH_PD\n\n\nPullUp\n\n\n\n\n\n\n\n\n\n\nMinimal\n#\n\n\n\n\nImproved Stability\n#\n\n\n\n\nBoot Messages and Modes\n#\n\n\nThe ESP module checks at every boot the Pins 0, 2 and 15.\nbased on them its boots in different modes:\n\n\n\n\n\n\n\n\nGPIO15\n\n\nGPIO0\n\n\nGPIO2\n\n\nMode\n\n\n\n\n\n\n\n\n\n\n0V\n\n\n0V\n\n\n3.3V\n\n\nUart Bootloader\n\n\n\n\n\n\n0V\n\n\n3.3V\n\n\n3.3V\n\n\nBoot sketch (SPI flash)\n\n\n\n\n\n\n3.3V\n\n\nx\n\n\nx\n\n\nSDIO mode (not used for Arduino)\n\n\n\n\n\n\n\n\nat startup the ESP prints out the current boot mode example:\n\n\nrst cause:2, boot mode:(3,6)\n\n\n\n\nnote:\n - GPIO2 is used as TX output and the internal Pullup is enabled on boot.\n\n\nrst cause\n#\n\n\n\n\n\n\n\n\nNumber\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n0\n\n\nunknown\n\n\n\n\n\n\n1\n\n\nnormal boot\n\n\n\n\n\n\n2\n\n\nreset pin\n\n\n\n\n\n\n3\n\n\nsoftware reset\n\n\n\n\n\n\n4\n\n\nwatchdog reset\n\n\n\n\n\n\n\n\nboot mode\n#\n\n\nthe first value respects the pin setup of the Pins 0, 2 and 15.\n\n\n\n\n\n\n\n\nNumber\n\n\nGPIO15\n\n\nGPIO0\n\n\nGPIO2\n\n\nMode\n\n\n\n\n\n\n\n\n\n\n0\n\n\n0V\n\n\n0V\n\n\n0V\n\n\nNot valid\n\n\n\n\n\n\n1\n\n\n0V\n\n\n0V\n\n\n3.3V\n\n\nUart\n\n\n\n\n\n\n2\n\n\n0V\n\n\n3.3V\n\n\n0V\n\n\nNot valid\n\n\n\n\n\n\n3\n\n\n0V\n\n\n3.3V\n\n\n3.3V\n\n\nFlash\n\n\n\n\n\n\n4\n\n\n3.3V\n\n\n0V\n\n\n0V\n\n\nSDIO\n\n\n\n\n\n\n5\n\n\n3.3V\n\n\n0V\n\n\n3.3V\n\n\nSDIO\n\n\n\n\n\n\n6\n\n\n3.3V\n\n\n3.3V\n\n\n0V\n\n\nSDIO\n\n\n\n\n\n\n7\n\n\n3.3V\n\n\n3.3V\n\n\n3.3V\n\n\nSDIO\n\n\n\n\n\n\n\n\nnote:\n - number = ((GPIO15 << 2) | (GPIO0 << 1) | GPIO2);\n\n\nGeneric ESP8285 modules\n#\n\n\nESP8285 (\ndatasheet\n) is a multi-chip package which contains ESP8266 and 1MB flash.\nAll points related to bootstrapping resistors and recommended circuits listed above apply to ESP8285 as well.\n\n\nNote that since ESP8285 has SPI flash memory internally connected in DOUT mode, pins 9 and 10 may be used as GPIO / I2C / PWM pins.\n\n\nWeMos D1\n#\n\n\nProduct page: \nhttp://wemos.cc\n\n\nWeMos D1 mini\n#\n\n\nProduct page: \nhttp://wemos.cc\n\n\nESPino (WROOM-02 Module) by ThaiEasyElec\n#\n\n\nESPino by ThaiEasyElec using WROOM-02 module from Espressif Systems with 4 MB Flash.\n\n\nWe will update an English description soon.\n\n\n\n\nProduct page: \nhttp://thaieasyelec.com/products/wireless-modules/wifi-modules/espino-wifi-development-board-detail.html\n\n\nSchematics: \nwww.thaieasyelec.com/downloads/ETEE052/ETEE052_ESPino_Schematic.pdf\n\n\nDimensions: \nhttp://thaieasyelec.com/downloads/ETEE052/ETEE052_ESPino_Dimension.pdf\n\n\nPinouts: \nhttp://thaieasyelec.com/downloads/ETEE052/ETEE052_ESPino_User_Manual_TH_v1_0_20160204.pdf\n (Please see pg. 8)",
+            "title": "Ph\u1ea7n c\u1ee9ng ESP8266 Arduino"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#phan-cung-ho-tro",
+            "text": "Ph\u1ea7n c\u1ee9ng h\u1ed7 tr\u1ee3  Adafruit HUZZAH ESP8266 (ESP-12)  ESPresso Lite 1.0  ESPresso Lite 2.0  Phoenix 1.0  Phoenix 2.0  NodeMCU 0.9  Pin mapping    NodeMCU 1.0  Olimex MOD-WIFI-ESP8266-DEV  Olimex MOD-WIFI-ESP8266  Olimex ESP8266-EVB  SparkFun ESP8266 Thing  SweetPea ESP-210  ESPino  WifInfo  Generic ESP8266 modules  Serial Adapter  Minimal Hardware Setup for Bootloading and Usage  ESP to Serial  Minimal Hardware Setup for Bootloading only  Minimal Hardware Setup for Running only    Minimal  Improved Stability  Boot Messages and Modes  rst cause  boot mode    Generic ESP8285 modules  WeMos D1  WeMos D1 mini  ESPino (WROOM-02 Module) by ThaiEasyElec",
+            "title": "Ph\u1ea7n c\u1ee9ng h\u1ed7 tr\u1ee3"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#adafruit-huzzah-esp8266-esp-12",
+            "text": "TODO: add notes",
+            "title": "Adafruit HUZZAH ESP8266 (ESP-12)"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#espresso-lite-10",
+            "text": "ESPresso Lite 1.0 (beta version) is an Arduino-compatible Wi-Fi development board powered by Espressif System\u2019s own ESP8266 WROOM-02 module. It has breadboard-friendly breakout pins with in-built LED, two reset/flash buttons and a user programmable button . The operating voltage is 3.3VDC, regulated with 800mA maximum current. Special distinctive features include on-board I2C pads that allow direct connection to OLED LCD and sensor boards.",
+            "title": "ESPresso Lite 1.0"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#espresso-lite-20",
+            "text": "ESPresso Lite 2.0 is an Arduino-compatible Wi-Fi development board based on an earlier V1 (beta version). Re-designed together with Cytron Technologies, the newly-revised ESPresso Lite V2.0 features the auto-load/auto-program function, eliminating the previous need to reset the board manually before flashing a new program. It also feature two user programmable side buttons and a reset button. The special distinctive features of on-board pads for I2C sensor and actuator is retained.",
+            "title": "ESPresso Lite 2.0"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#phoenix-10",
+            "text": "Product page: http://www.espert.co",
+            "title": "Phoenix 1.0"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#phoenix-20",
+            "text": "Product page: http://www.espert.co",
+            "title": "Phoenix 2.0"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#nodemcu-09",
+            "text": "",
+            "title": "NodeMCU 0.9"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#pin-mapping",
+            "text": "Pin numbers written on the board itself do not correspond to ESP8266 GPIO pin numbers. Constants are defined to make using this board easier:  static const uint8_t D0   = 16;\nstatic const uint8_t D1   = 5;\nstatic const uint8_t D2   = 4;\nstatic const uint8_t D3   = 0;\nstatic const uint8_t D4   = 2;\nstatic const uint8_t D5   = 14;\nstatic const uint8_t D6   = 12;\nstatic const uint8_t D7   = 13;\nstatic const uint8_t D8   = 15;\nstatic const uint8_t D9   = 3;\nstatic const uint8_t D10  = 1;  If you want to use NodeMCU pin 5, use D5 for pin number, and it will be translated to \u2018real\u2019 GPIO pin 14.",
+            "title": "Pin mapping"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#nodemcu-10",
+            "text": "This module is sold under many names for around $6.50 on AliExpress and it\u2019s one of the cheapest, fully integrated ESP8266 solutions.  It\u2019s an open hardware design with an ESP-12E core and 4 MB of SPI flash.  Acording to the manufacturer, \u201cwith a micro USB cable, you can connect NodeMCU devkit to your laptop and flash it without any trouble\u201d. This is more or less true: the board comes with a CP2102 onboard USB to serial adapter which just works, well, the majority of the time. Sometimes flashing fails and you have to reset the board by holding down FLASH + RST, then releasing FLASH, then releasing RST. This forces the CP2102 device to power cycle and to be re-numbered by Linux.  The board also features a NCP1117 voltage regulator, a blue LED on GPIO16 and a 220k/100k Ohm voltage divider on the ADC input pin.  Full pinout and PDF schematics can be found  here",
+            "title": "NodeMCU 1.0"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#olimex-mod-wifi-esp8266-dev",
+            "text": "This board comes with 2 MB of SPI flash and optional accessories (e.g. evaluation board ESP8266-EVB or BAT-BOX for batteries).  The basic module has three solder jumpers that allow you to switch the operating mode between SDIO, UART and FLASH.  The board is shipped for FLASH operation mode, with jumpers TD0JP=0, IO0JP=1, IO2JP=1.  Since jumper IO0JP is tied to GPIO0, which is PIN 21, you\u2019ll have to ground it before programming with a USB to serial adapter and reset the board by power cycling it.  UART pins for programming and serial I/O are GPIO1 (TXD, pin 3) and GPIO3 (RXD, pin 4).  You can find the board schematics  here",
+            "title": "Olimex MOD-WIFI-ESP8266-DEV"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#olimex-mod-wifi-esp8266",
+            "text": "This is a stripped down version of the above. Behaves identically in terms of jumpers but has less pins readily available for I/O. Still 2 MB of SPI flash.",
+            "title": "Olimex MOD-WIFI-ESP8266"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#olimex-esp8266-evb",
+            "text": "It\u2019s a Olimex MOD-WIFI-ESP8266-DEV module installed on the headers of a development board which features some breakout connectors, a button (GPIO0) and a relay (GPIO5).  Programming is pretty straightforward: the board is supported in the Arduino IDE after  installing it via the Board Manager . To download a program you just have to connect GND/RX/TX from a serial/USB adapter to the UEXT connector and press the only button before applying power to enter UART mode.  Don\u2019t connect 5V from the serial/USB adapter to the board or you won\u2019t be able to power cycle it for UART mode.  You can find the board schematics  here .  This guide  is also useful for the first setup, since it contains the UEXT connector pinout.  Board variants include:\n * ESP8266-EVB-BAT: comes with built-in LiPo charger and step-up converter\n * ESP8266-EVB-BAT-BOX: as above, but enclosd in a plastic box (non-weatherproof)",
+            "title": "Olimex ESP8266-EVB"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#sparkfun-esp8266-thing",
+            "text": "Product page: https://www.sparkfun.com/products/13231  TODO: add notes",
+            "title": "SparkFun ESP8266 Thing"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#sweetpea-esp-210",
+            "text": "TODO: add notes",
+            "title": "SweetPea ESP-210"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#espino",
+            "text": "ESPino integrates the ESP-12 module with a 3.3v regulator, CP2104 USB-Serial bridge and a micro USB connector for easy programming. It is designed for fitting in a breadboard and has an RGB Led and two buttons for easy prototyping.  For more information about the hardware, pinout diagram and programming procedures, please see the  datasheet .  Product page: http://www.espino.io/en",
+            "title": "ESPino"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#wifinfo",
+            "text": "WifInfo integrates the ESP-12 or ESP-07+Ext antenna module with a 3.3v regulator and the hardware to be able to measure French telemetry issue from ERDF powering meter serial output. It has a USB connector for powering, an RGB WS2812 Led, 4 pins I2C connector to fit OLED or sensor, and two buttons + FTDI connector and auto reset feature.  For more information, please see WifInfo related  blog  entries,  github  and  community  forum.",
+            "title": "WifInfo"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#generic-esp8266-modules",
+            "text": "These modules come in different form factors and pinouts. See the page at ESP8266 community wiki for more info: ESP8266 Module Family .  Usually these modules have no bootstapping resistors on board, insufficient decoupling capacitors, no voltage regulator, no reset circuit, and no USB-serial adapter. This makes using them somewhat tricky, compared to development boards which add these features.  In order to use these modules, make sure to observe the following:    Provide sufficient power to the module.  For stable use of the ESP8266 a power supply with 3.3V and >= 250mA is required. Using the power available from USB to Serial adapter is not recommended, these adapters typically do not supply enough current to run ESP8266 reliably in every situation. An external supply or regulator along with filtering capacitors is preferred.    Connect bootstapping resistors  to GPIO0, GPIO2, GPIO15 according to the schematics below.    Put ESP8266 into bootloader mode  before uploading code.",
+            "title": "Generic ESP8266 modules"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#serial-adapter",
+            "text": "There are many different USB to Serial adapters / boards.\nTo be able to put ESP8266 into bootloader mode using serial handshaking lines, you need the adapter which breaks out RTS and DTR outputs. CTS and DSR are not useful for upload (they are inputs). Make sure the adapter can work with 3.3V IO voltage: it should have a jumper or a switch to select between 5V and 3.3V, or be marked as 3.3V only.  Adapters based around the following ICs should work:   FT232RL  CP2102  CH340G   PL2303-based adapters are known not to work on Mac OS X. See https://github.com/igrr/esptool-ck/issues/9 for more info.",
+            "title": "Serial Adapter"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#minimal-hardware-setup-for-bootloading-and-usage",
+            "text": "PIN  Resistor  Serial Adapter      VCC   VCC (3.3V)    GND   GND    TX or GPIO2*   RX    RX   TX    GPIO0  PullUp  DTR    Reset*  PullUp  RTS    GPIO15*  PullDown     CH_PD  PullUp       Note  GPIO15 is also named MTDO  Reset is also named RSBT or REST (adding PullUp improves the stability of the module)  GPIO2 is alternative TX for the boot loader mode  Directly connecting a pin to VCC or GND is not a substitute for a PullUp or PullDown resistor, doing this can break upload management and the serial console, instability has also been noted in some cases.",
+            "title": "Minimal Hardware Setup for Bootloading and Usage"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#esp-to-serial",
+            "text": "",
+            "title": "ESP to Serial"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#minimal-hardware-setup-for-bootloading-only",
+            "text": "ESPxx Hardware     PIN  Resistor  Serial Adapter      VCC   VCC (3.3V)    GND   GND    TX or GPIO2   RX    RX   TX    GPIO0   GND    Reset   RTS*    GPIO15  PullDown     CH_PD  PullUp       Note  if no RTS is used a manual power toggle is needed",
+            "title": "Minimal Hardware Setup for Bootloading only"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#minimal-hardware-setup-for-running-only",
+            "text": "ESPxx Hardware     PIN  Resistor  Power supply      VCC   VCC (3.3V)    GND   GND    GPIO0  PullUp     GPIO15  PullDown     CH_PD  PullUp",
+            "title": "Minimal Hardware Setup for Running only"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#minimal",
+            "text": "",
+            "title": "Minimal"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#improved-stability",
+            "text": "",
+            "title": "Improved Stability"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#boot-messages-and-modes",
+            "text": "The ESP module checks at every boot the Pins 0, 2 and 15.\nbased on them its boots in different modes:     GPIO15  GPIO0  GPIO2  Mode      0V  0V  3.3V  Uart Bootloader    0V  3.3V  3.3V  Boot sketch (SPI flash)    3.3V  x  x  SDIO mode (not used for Arduino)     at startup the ESP prints out the current boot mode example:  rst cause:2, boot mode:(3,6)  note:\n - GPIO2 is used as TX output and the internal Pullup is enabled on boot.",
+            "title": "Boot Messages and Modes"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#rst-cause",
+            "text": "Number  Description      0  unknown    1  normal boot    2  reset pin    3  software reset    4  watchdog reset",
+            "title": "rst cause"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#boot-mode",
+            "text": "the first value respects the pin setup of the Pins 0, 2 and 15.     Number  GPIO15  GPIO0  GPIO2  Mode      0  0V  0V  0V  Not valid    1  0V  0V  3.3V  Uart    2  0V  3.3V  0V  Not valid    3  0V  3.3V  3.3V  Flash    4  3.3V  0V  0V  SDIO    5  3.3V  0V  3.3V  SDIO    6  3.3V  3.3V  0V  SDIO    7  3.3V  3.3V  3.3V  SDIO     note:\n - number = ((GPIO15 << 2) | (GPIO0 << 1) | GPIO2);",
+            "title": "boot mode"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#generic-esp8285-modules",
+            "text": "ESP8285 ( datasheet ) is a multi-chip package which contains ESP8266 and 1MB flash.\nAll points related to bootstrapping resistors and recommended circuits listed above apply to ESP8285 as well.  Note that since ESP8285 has SPI flash memory internally connected in DOUT mode, pins 9 and 10 may be used as GPIO / I2C / PWM pins.",
+            "title": "Generic ESP8285 modules"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#wemos-d1",
+            "text": "Product page:  http://wemos.cc",
+            "title": "WeMos D1"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#wemos-d1-mini",
+            "text": "Product page:  http://wemos.cc",
+            "title": "WeMos D1 mini"
+        },
+        {
+            "location": "/arduino/esp8266-hardware/#espino-wroom-02-module-by-thaieasyelec",
+            "text": "ESPino by ThaiEasyElec using WROOM-02 module from Espressif Systems with 4 MB Flash.  We will update an English description soon.   Product page:  http://thaieasyelec.com/products/wireless-modules/wifi-modules/espino-wifi-development-board-detail.html  Schematics:  www.thaieasyelec.com/downloads/ETEE052/ETEE052_ESPino_Schematic.pdf  Dimensions:  http://thaieasyelec.com/downloads/ETEE052/ETEE052_ESPino_Dimension.pdf  Pinouts:  http://thaieasyelec.com/downloads/ETEE052/ETEE052_ESPino_User_Manual_TH_v1_0_20160204.pdf  (Please see pg. 8)",
+            "title": "ESPino (WROOM-02 Module) by ThaiEasyElec"
+        },
+        {
             "location": "/arduino/basic/install/",
             "text": "Arduino c\u01a1 b\u1ea3n\n\n\nC\u00e0i \u0111\u1eb7t v\u1edbi Boards Manager\n\n\nChu\u1ea9n b\u1ecb\n\n\nH\u01b0\u1edbng d\u1eabn\n\n\n\n\n\n\nS\u1eed d\u1ee5ng git version\n\n\nChu\u1ea9n b\u1ecb\n\n\nH\u01b0\u1edbng d\u1eabn\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nArduino c\u01a1 b\u1ea3n\n#\n\n\nC\u00f3 th\u1ec3 t\u00ecm th\u1ea5y h\u01b0\u1edbng d\u1eabn c\u00e0i \u0111\u1eb7t Ti\u1ebfng Anh v\u00e0 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt t\u1ea1i \nhttps://github.com/esp8266/Arduino\n\n\nC\u00e0i \u0111\u1eb7t v\u1edbi Boards Manager\n#\n\n\nPh\u01b0\u01a1ng \u00e1n khuy\u00ean d\u00f9ng cho ng\u01b0\u1eddi d\u00f9ng kh\u00f4ng chuy\u00ean \n\n\nChu\u1ea9n b\u1ecb\n#\n\n\n\n\nArduino 1.6.8, t\u1ea3i t\u1eeb \nArduino website\n.\n\n\nK\u1ebft n\u1ed1i Internet\n\n\n\n\nH\u01b0\u1edbng d\u1eabn\n#\n\n\n\n\nM\u1edf ch\u01b0\u01a1ng tr\u00ecnh Arduino v\u00e0 c\u1eeda s\u1ed5 Preferences.\n\n\nEnter \nhttp://arduino.esp8266.com/stable/package_esp8266com_index.json\n v\u00e0o \nAdditional Board Manager URLs\n. B\u1ea1n c\u00f3 th\u1ec3 th\u00eam nhi\u1ec1u URL, c\u00e1ch nhau b\u1eb1ng d\u1ea5u ph\u1ea9y.\n\n\nM\u1edf Boards Manager t\u1eeb Tools > Board menu v\u00e0 t\u00ecm \nesp8266\n platform.\n\n\nCh\u1ecdn phi\u00ean b\u1ea3n b\u1ea1n c\u1ea7n t\u1eeb c\u1eeda s\u1ed5 Drop-down.\n\n\nClick n\u00fat \ninstall\n.\n\n\n\u0110\u1eebng qu\u00ean ch\u1ecdn lo\u1ea1i ESP8266 board t\u1eeb Tools > Board menu sau khi c\u00e0i \u0111\u1eb7t.\n\n\n\n\nB\u1ea1n c\u00f3 1 l\u1ef1a ch\u1ecdn kh\u00e1c c\u00e0i \u0111\u1eb7t b\u1ea3n \nstaging\n boards manager t\u1eeb link:\n\nhttp://arduino.esp8266.com/staging/package_esp8266com_index.json\n. Phi\u00ean b\u1ea3n n\u00e0y c\u00f3 nh\u1eefng t\u00ednh n\u0103ng m\u1edbi h\u01a1n, tuy nhi\u00ean ch\u01b0a th\u1eadt s\u1ef1 \u0111\u01b0\u1ee3c ki\u1ec3m tra k\u1ef9.\n\n\nS\u1eed d\u1ee5ng git version\n#\n\n\nPh\u01b0\u01a1ng \u00e1n c\u00e0i \u0111\u1eb7t n\u00e0y khuy\u00ean d\u00f9ng cho nh\u1eefng ng\u01b0\u1eddi c\u00f3 th\u1ec3 \u0111\u00f3ng g\u00f3p v\u00e0o d\u1ef1 \u00e1n Arduino cho ESP8266 v\u00e0 developers.\n\n\nChu\u1ea9n b\u1ecb\n#\n\n\n\n\nArduino 1.6.8 (hay m\u1edbi h\u01a1n, n\u1ebfu b\u1ea1n bi\u1ebft b\u1ea1n \u0111ang l\u00e0m g\u00ec)\n\n\ngit\n\n\npython 2.7\n\n\nterminal, console, or command prompt (ph\u1ee5 thu\u1ed9c h\u1ec7 \u0111i\u1ec1u h\u00e0nh c\u1ee7a b\u1ea1n)\n\n\nK\u1ebft n\u1ed1i Internet\n\n\n\n\nH\u01b0\u1edbng d\u1eabn\n#\n\n\n\n\nM\u1edf \nconsole\n v\u00e0 cd \u0111\u1ebfn th\u01b0 m\u1ee5c Arduino. N\u00f3 c\u00f3 th\u1ec3 l\u00e0 th\u01b0 m\u1ee5c \nsketchbook\n (th\u01b0\u1eddng l\u00e0 \n<Documents>/Arduino\n), hay th\u01b0 m\u1ee5c c\u1ee7a \u1ee8ng d\u1ee5ng Arduino, t\u00f9y b\u1ea1n ch\u1ecdn.\n\n\nClone repository n\u00e0y \u0111\u1ebfn th\u01b0 m\u1ee5c \nhardware/esp8266com/esp8266\n. Ho\u1eb7c b\u1ea1n c\u00f3 th\u1ec3 clone v\u00e0o n\u01a1i n\u00e0o \u0111\u00f3 v\u00e0 t\u1ea1o symlink b\u1eb1ng \nln -s\n, n\u1ebfu H\u1ec7 \u0111i\u1ec1u h\u00e0nh h\u1ed7 tr\u1ee3.\n\n\n\n\ncd hardware\nmkdir esp8266com\ncd esp8266com\ngit clone https://github.com/esp8266/Arduino.git esp8266\n\n\n\n\nC\u1ea5u tr\u00fac d\u1ef1 \u00e1n sau khi b\u1ea1n th\u1ef1c hi\u1ec7n xong:\n\n\nArduino\n    |- hardware\n    |- esp8266com\n        |- esp8266\n            |- bootloaders\n            |- cores\n            |- doc\n            |- libraries\n            |- package\n            |- tests\n            |- tools\n            |- variants\n            |- platform.txt\n            |- programmers.txt\n            |- README.md\n            |- boards.txt\n            `- LICENSE\n\n\n\n\n\n\nT\u1ea3i binary tools\n\n\n\n\ncd esp8266/tools\npython get.py\n\n\n\n\n\n\nKh\u1edfi \u0111\u1ed9ng l\u1ea1i Arduino",
             "title": "C\u00e0i \u0111\u1eb7t"
@@ -1819,166 +1979,6 @@
             "location": "/arduino/ota/using-http-server/#advanced-updater_1",
             "text": "For advanced update management a script needs to run at the server side, for example a PHP script.\nAt every update request the ESP sends some information in HTTP headers to the server.  Example header data:      [HTTP_USER_AGENT] => ESP8266-http-Update\n    [HTTP_X_ESP8266_STA_MAC] => 18:FE:AA:AA:AA:AA\n    [HTTP_X_ESP8266_AP_MAC] => 1A:FE:AA:AA:AA:AA\n    [HTTP_X_ESP8266_FREE_SPACE] => 671744\n    [HTTP_X_ESP8266_SKETCH_SIZE] => 373940\n    [HTTP_X_ESP8266_SKETCH_MD5] => a56f8ef78a0bebd812f62067daf1408a\n    [HTTP_X_ESP8266_CHIP_SIZE] => 4194304\n    [HTTP_X_ESP8266_SDK_VERSION] => 1.3.0\n    [HTTP_X_ESP8266_VERSION] => DOOR-7-g14f53a19  With this information the script now can check if an update is needed. It is also possible to deliver different binaries based on the MAC address for example.  Script example:  <?PHP\n\nheader('Content-type: text/plain; charset=utf8', true);\n\nfunction check_header($name, $value = false) {\n    if(!isset($_SERVER[$name])) {\n        return false;\n    }\n    if($value && $_SERVER[$name] != $value) {\n        return false;\n    }\n    return true;\n}\n\nfunction sendFile($path) {\n    header($_SERVER[\"SERVER_PROTOCOL\"].' 200 OK', true, 200);\n    header('Content-Type: application/octet-stream', true);\n    header('Content-Disposition: attachment; filename='.basename($path));\n    header('Content-Length: '.filesize($path), true);\n    header('x-MD5: '.md5_file($path), true);\n    readfile($path);\n}\n\nif(!check_header('HTTP_USER_AGENT', 'ESP8266-http-Update')) {\n    header($_SERVER[\"SERVER_PROTOCOL\"].' 403 Forbidden', true, 403);\n    echo \"only for ESP8266 updater!\\n\";\n    exit();\n}\n\nif(\n    !check_header('HTTP_X_ESP8266_STA_MAC') ||\n    !check_header('HTTP_X_ESP8266_AP_MAC') ||\n    !check_header('HTTP_X_ESP8266_FREE_SPACE') ||\n    !check_header('HTTP_X_ESP8266_SKETCH_SIZE') ||\n    !check_header('HTTP_X_ESP8266_SKETCH_MD5') ||\n    !check_header('HTTP_X_ESP8266_CHIP_SIZE') ||\n    !check_header('HTTP_X_ESP8266_SDK_VERSION')\n) {\n    header($_SERVER[\"SERVER_PROTOCOL\"].' 403 Forbidden', true, 403);\n    echo \"only for ESP8266 updater! (header)\\n\";\n    exit();\n}\n\n$db = array(\n    \"18:FE:AA:AA:AA:AA\" => \"DOOR-7-g14f53a19\",\n    \"18:FE:AA:AA:AA:BB\" => \"TEMP-1.0.0\"\n);\n\nif(!isset($db[$_SERVER['HTTP_X_ESP8266_STA_MAC']])) {\n    header($_SERVER[\"SERVER_PROTOCOL\"].' 500 ESP MAC not configured for updates', true, 500);\n}\n\n$localBinary = \"./bin/\".$db[$_SERVER['HTTP_X_ESP8266_STA_MAC']].\".bin\";\n\n// Check if version has been set and does not match, if not, check if\n// MD5 hash between local binary and ESP8266 binary do not match if not.\n// then no update has been found.\nif((!check_header('HTTP_X_ESP8266_SDK_VERSION') && $db[$_SERVER['HTTP_X_ESP8266_STA_MAC']] != $_SERVER['HTTP_X_ESP8266_VERSION'])\n    || $_SERVER[\"HTTP_X_ESP8266_SKETCH_MD5\"] != md5_file($localBinary)) {\n    sendFile($localBinary);\n} else {\n    header($_SERVER[\"SERVER_PROTOCOL\"].' 304 Not Modified', true, 304);\n}\n\nheader($_SERVER[\"SERVER_PROTOCOL\"].' 500 no version for ESP MAC', true, 500);",
             "title": "Advanced updater"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/",
-            "text": "Ph\u1ea7n c\u1ee9ng h\u1ed7 tr\u1ee3\n#\n\n\n\n\n\n\nPh\u1ea7n c\u1ee9ng h\u1ed7 tr\u1ee3\n\n\nAdafruit HUZZAH ESP8266 (ESP-12)\n\n\nESPresso Lite 1.0\n\n\nESPresso Lite 2.0\n\n\nPhoenix 1.0\n\n\nPhoenix 2.0\n\n\nNodeMCU 0.9\n\n\nPin mapping\n\n\n\n\n\n\nNodeMCU 1.0\n\n\nOlimex MOD-WIFI-ESP8266-DEV\n\n\nOlimex MOD-WIFI-ESP8266\n\n\nOlimex ESP8266-EVB\n\n\nSparkFun ESP8266 Thing\n\n\nSweetPea ESP-210\n\n\nESPino\n\n\nWifInfo\n\n\nGeneric ESP8266 modules\n\n\nSerial Adapter\n\n\nMinimal Hardware Setup for Bootloading and Usage\n\n\nESP to Serial\n\n\nMinimal Hardware Setup for Bootloading only\n\n\nMinimal Hardware Setup for Running only\n\n\n\n\n\n\nMinimal\n\n\nImproved Stability\n\n\nBoot Messages and Modes\n\n\nrst cause\n\n\nboot mode\n\n\n\n\n\n\nGeneric ESP8285 modules\n\n\nWeMos D1\n\n\nWeMos D1 mini\n\n\nESPino (WROOM-02 Module) by ThaiEasyElec\n\n\n\n\n\n\n\n\n\n\nAdafruit HUZZAH ESP8266 (ESP-12)\n#\n\n\nTODO: add notes\n\n\nESPresso Lite 1.0\n#\n\n\nESPresso Lite 1.0 (beta version) is an Arduino-compatible Wi-Fi development board powered by Espressif System\u2019s own ESP8266 WROOM-02 module. It has breadboard-friendly breakout pins with in-built LED, two reset/flash buttons and a user programmable button . The operating voltage is 3.3VDC, regulated with 800mA maximum current. Special distinctive features include on-board I2C pads that allow direct connection to OLED LCD and sensor boards.\n\n\nESPresso Lite 2.0\n#\n\n\nESPresso Lite 2.0 is an Arduino-compatible Wi-Fi development board based on an earlier V1 (beta version). Re-designed together with Cytron Technologies, the newly-revised ESPresso Lite V2.0 features the auto-load/auto-program function, eliminating the previous need to reset the board manually before flashing a new program. It also feature two user programmable side buttons and a reset button. The special distinctive features of on-board pads for I2C sensor and actuator is retained.\n\n\nPhoenix 1.0\n#\n\n\nProduct page: http://www.espert.co\n\n\nPhoenix 2.0\n#\n\n\nProduct page: http://www.espert.co\n\n\nNodeMCU 0.9\n#\n\n\nPin mapping\n#\n\n\nPin numbers written on the board itself do not correspond to ESP8266 GPIO pin numbers. Constants are defined to make using this board easier:\n\n\nstatic const uint8_t D0   = 16;\nstatic const uint8_t D1   = 5;\nstatic const uint8_t D2   = 4;\nstatic const uint8_t D3   = 0;\nstatic const uint8_t D4   = 2;\nstatic const uint8_t D5   = 14;\nstatic const uint8_t D6   = 12;\nstatic const uint8_t D7   = 13;\nstatic const uint8_t D8   = 15;\nstatic const uint8_t D9   = 3;\nstatic const uint8_t D10  = 1;\n\n\n\n\nIf you want to use NodeMCU pin 5, use D5 for pin number, and it will be translated to \u2018real\u2019 GPIO pin 14.\n\n\nNodeMCU 1.0\n#\n\n\nThis module is sold under many names for around $6.50 on AliExpress and it\u2019s one of the cheapest, fully integrated ESP8266 solutions.\n\n\nIt\u2019s an open hardware design with an ESP-12E core and 4 MB of SPI flash.\n\n\nAcording to the manufacturer, \u201cwith a micro USB cable, you can connect NodeMCU devkit to your laptop and flash it without any trouble\u201d. This is more or less true: the board comes with a CP2102 onboard USB to serial adapter which just works, well, the majority of the time. Sometimes flashing fails and you have to reset the board by holding down FLASH + RST, then releasing FLASH, then releasing RST. This forces the CP2102 device to power cycle and to be re-numbered by Linux.\n\n\nThe board also features a NCP1117 voltage regulator, a blue LED on GPIO16 and a 220k/100k Ohm voltage divider on the ADC input pin.\n\n\nFull pinout and PDF schematics can be found \nhere\n\n\nOlimex MOD-WIFI-ESP8266-DEV\n#\n\n\nThis board comes with 2 MB of SPI flash and optional accessories (e.g. evaluation board ESP8266-EVB or BAT-BOX for batteries).\n\n\nThe basic module has three solder jumpers that allow you to switch the operating mode between SDIO, UART and FLASH.\n\n\nThe board is shipped for FLASH operation mode, with jumpers TD0JP=0, IO0JP=1, IO2JP=1.\n\n\nSince jumper IO0JP is tied to GPIO0, which is PIN 21, you\u2019ll have to ground it before programming with a USB to serial adapter and reset the board by power cycling it.\n\n\nUART pins for programming and serial I/O are GPIO1 (TXD, pin 3) and GPIO3 (RXD, pin 4).\n\n\nYou can find the board schematics \nhere\n\n\nOlimex MOD-WIFI-ESP8266\n#\n\n\nThis is a stripped down version of the above. Behaves identically in terms of jumpers but has less pins readily available for I/O. Still 2 MB of SPI flash.\n\n\nOlimex ESP8266-EVB\n#\n\n\nIt\u2019s a Olimex MOD-WIFI-ESP8266-DEV module installed on the headers of a development board which features some breakout connectors, a button (GPIO0) and a relay (GPIO5).\n\n\nProgramming is pretty straightforward: the board is supported in the Arduino IDE after \ninstalling it via the Board Manager\n. To download a program you just have to connect GND/RX/TX from a serial/USB adapter to the UEXT connector and press the only button before applying power to enter UART mode.\n\n\nDon\u2019t connect 5V from the serial/USB adapter to the board or you won\u2019t be able to power cycle it for UART mode.\n\n\nYou can find the board schematics \nhere\n.\n\n\nThis guide\n is also useful for the first setup, since it contains the UEXT connector pinout.\n\n\nBoard variants include:\n * ESP8266-EVB-BAT: comes with built-in LiPo charger and step-up converter\n * ESP8266-EVB-BAT-BOX: as above, but enclosd in a plastic box (non-weatherproof)\n\n\nSparkFun ESP8266 Thing\n#\n\n\nProduct page: https://www.sparkfun.com/products/13231\n\n\nTODO: add notes\n\n\nSweetPea ESP-210\n#\n\n\nTODO: add notes\n\n\nESPino\n#\n\n\nESPino integrates the ESP-12 module with a 3.3v regulator, CP2104 USB-Serial bridge and a micro USB connector for easy programming. It is designed for fitting in a breadboard and has an RGB Led and two buttons for easy prototyping.\n\n\nFor more information about the hardware, pinout diagram and programming procedures, please see the \ndatasheet\n.\n\n\nProduct page: http://www.espino.io/en\n\n\nWifInfo\n#\n\n\nWifInfo integrates the ESP-12 or ESP-07+Ext antenna module with a 3.3v regulator and the hardware to be able to measure French telemetry issue from ERDF powering meter serial output. It has a USB connector for powering, an RGB WS2812 Led, 4 pins I2C connector to fit OLED or sensor, and two buttons + FTDI connector and auto reset feature.\n\n\nFor more information, please see WifInfo related \nblog\n entries, \ngithub\n and \ncommunity\n forum.\n\n\nGeneric ESP8266 modules\n#\n\n\nThese modules come in different form factors and pinouts. See the page at ESP8266 community wiki for more info:\n\nESP8266 Module Family\n.\n\n\nUsually these modules have no bootstapping resistors on board, insufficient decoupling capacitors, no voltage regulator, no reset circuit, and no USB-serial adapter. This makes using them somewhat tricky, compared to development boards which add these features.\n\n\nIn order to use these modules, make sure to observe the following:\n\n\n\n\n\n\nProvide sufficient power to the module.\n For stable use of the ESP8266 a power supply with 3.3V and >= 250mA is required. Using the power available from USB to Serial adapter is not recommended, these adapters typically do not supply enough current to run ESP8266 reliably in every situation. An external supply or regulator along with filtering capacitors is preferred.\n\n\n\n\n\n\nConnect bootstapping resistors\n to GPIO0, GPIO2, GPIO15 according to the schematics below.\n\n\n\n\n\n\nPut ESP8266 into bootloader mode\n before uploading code.\n\n\n\n\n\n\nSerial Adapter\n#\n\n\nThere are many different USB to Serial adapters / boards.\nTo be able to put ESP8266 into bootloader mode using serial handshaking lines, you need the adapter which breaks out RTS and DTR outputs. CTS and DSR are not useful for upload (they are inputs). Make sure the adapter can work with 3.3V IO voltage: it should have a jumper or a switch to select between 5V and 3.3V, or be marked as 3.3V only.\n\n\nAdapters based around the following ICs should work:\n\n\n\n\nFT232RL\n\n\nCP2102\n\n\nCH340G\n\n\n\n\nPL2303-based adapters are known not to work on Mac OS X. See https://github.com/igrr/esptool-ck/issues/9 for more info.\n\n\nMinimal Hardware Setup for Bootloading and Usage\n#\n\n\n\n\n\n\n\n\nPIN\n\n\nResistor\n\n\nSerial Adapter\n\n\n\n\n\n\n\n\n\n\nVCC\n\n\n\n\nVCC (3.3V)\n\n\n\n\n\n\nGND\n\n\n\n\nGND\n\n\n\n\n\n\nTX or GPIO2*\n\n\n\n\nRX\n\n\n\n\n\n\nRX\n\n\n\n\nTX\n\n\n\n\n\n\nGPIO0\n\n\nPullUp\n\n\nDTR\n\n\n\n\n\n\nReset*\n\n\nPullUp\n\n\nRTS\n\n\n\n\n\n\nGPIO15*\n\n\nPullDown\n\n\n\n\n\n\n\n\nCH_PD\n\n\nPullUp\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nGPIO15 is also named MTDO\n\n\nReset is also named RSBT or REST (adding PullUp improves the stability of the module)\n\n\nGPIO2 is alternative TX for the boot loader mode\n\n\nDirectly connecting a pin to VCC or GND is not a substitute for a PullUp or PullDown resistor, doing this can break upload management and the serial console, instability has also been noted in some cases.\n\n\n\n\nESP to Serial\n#\n\n\n\n\nMinimal Hardware Setup for Bootloading only\n#\n\n\nESPxx Hardware\n\n\n\n\n\n\n\n\nPIN\n\n\nResistor\n\n\nSerial Adapter\n\n\n\n\n\n\n\n\n\n\nVCC\n\n\n\n\nVCC (3.3V)\n\n\n\n\n\n\nGND\n\n\n\n\nGND\n\n\n\n\n\n\nTX or GPIO2\n\n\n\n\nRX\n\n\n\n\n\n\nRX\n\n\n\n\nTX\n\n\n\n\n\n\nGPIO0\n\n\n\n\nGND\n\n\n\n\n\n\nReset\n\n\n\n\nRTS*\n\n\n\n\n\n\nGPIO15\n\n\nPullDown\n\n\n\n\n\n\n\n\nCH_PD\n\n\nPullUp\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nif no RTS is used a manual power toggle is needed\n\n\n\n\nMinimal Hardware Setup for Running only\n#\n\n\nESPxx Hardware\n\n\n\n\n\n\n\n\nPIN\n\n\nResistor\n\n\nPower supply\n\n\n\n\n\n\n\n\n\n\nVCC\n\n\n\n\nVCC (3.3V)\n\n\n\n\n\n\nGND\n\n\n\n\nGND\n\n\n\n\n\n\nGPIO0\n\n\nPullUp\n\n\n\n\n\n\n\n\nGPIO15\n\n\nPullDown\n\n\n\n\n\n\n\n\nCH_PD\n\n\nPullUp\n\n\n\n\n\n\n\n\n\n\nMinimal\n#\n\n\n\n\nImproved Stability\n#\n\n\n\n\nBoot Messages and Modes\n#\n\n\nThe ESP module checks at every boot the Pins 0, 2 and 15.\nbased on them its boots in different modes:\n\n\n\n\n\n\n\n\nGPIO15\n\n\nGPIO0\n\n\nGPIO2\n\n\nMode\n\n\n\n\n\n\n\n\n\n\n0V\n\n\n0V\n\n\n3.3V\n\n\nUart Bootloader\n\n\n\n\n\n\n0V\n\n\n3.3V\n\n\n3.3V\n\n\nBoot sketch (SPI flash)\n\n\n\n\n\n\n3.3V\n\n\nx\n\n\nx\n\n\nSDIO mode (not used for Arduino)\n\n\n\n\n\n\n\n\nat startup the ESP prints out the current boot mode example:\n\n\nrst cause:2, boot mode:(3,6)\n\n\n\n\nnote:\n - GPIO2 is used as TX output and the internal Pullup is enabled on boot.\n\n\nrst cause\n#\n\n\n\n\n\n\n\n\nNumber\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\n0\n\n\nunknown\n\n\n\n\n\n\n1\n\n\nnormal boot\n\n\n\n\n\n\n2\n\n\nreset pin\n\n\n\n\n\n\n3\n\n\nsoftware reset\n\n\n\n\n\n\n4\n\n\nwatchdog reset\n\n\n\n\n\n\n\n\nboot mode\n#\n\n\nthe first value respects the pin setup of the Pins 0, 2 and 15.\n\n\n\n\n\n\n\n\nNumber\n\n\nGPIO15\n\n\nGPIO0\n\n\nGPIO2\n\n\nMode\n\n\n\n\n\n\n\n\n\n\n0\n\n\n0V\n\n\n0V\n\n\n0V\n\n\nNot valid\n\n\n\n\n\n\n1\n\n\n0V\n\n\n0V\n\n\n3.3V\n\n\nUart\n\n\n\n\n\n\n2\n\n\n0V\n\n\n3.3V\n\n\n0V\n\n\nNot valid\n\n\n\n\n\n\n3\n\n\n0V\n\n\n3.3V\n\n\n3.3V\n\n\nFlash\n\n\n\n\n\n\n4\n\n\n3.3V\n\n\n0V\n\n\n0V\n\n\nSDIO\n\n\n\n\n\n\n5\n\n\n3.3V\n\n\n0V\n\n\n3.3V\n\n\nSDIO\n\n\n\n\n\n\n6\n\n\n3.3V\n\n\n3.3V\n\n\n0V\n\n\nSDIO\n\n\n\n\n\n\n7\n\n\n3.3V\n\n\n3.3V\n\n\n3.3V\n\n\nSDIO\n\n\n\n\n\n\n\n\nnote:\n - number = ((GPIO15 << 2) | (GPIO0 << 1) | GPIO2);\n\n\nGeneric ESP8285 modules\n#\n\n\nESP8285 (\ndatasheet\n) is a multi-chip package which contains ESP8266 and 1MB flash.\nAll points related to bootstrapping resistors and recommended circuits listed above apply to ESP8285 as well.\n\n\nNote that since ESP8285 has SPI flash memory internally connected in DOUT mode, pins 9 and 10 may be used as GPIO / I2C / PWM pins.\n\n\nWeMos D1\n#\n\n\nProduct page: \nhttp://wemos.cc\n\n\nWeMos D1 mini\n#\n\n\nProduct page: \nhttp://wemos.cc\n\n\nESPino (WROOM-02 Module) by ThaiEasyElec\n#\n\n\nESPino by ThaiEasyElec using WROOM-02 module from Espressif Systems with 4 MB Flash.\n\n\nWe will update an English description soon.\n\n\n\n\nProduct page: \nhttp://thaieasyelec.com/products/wireless-modules/wifi-modules/espino-wifi-development-board-detail.html\n\n\nSchematics: \nwww.thaieasyelec.com/downloads/ETEE052/ETEE052_ESPino_Schematic.pdf\n\n\nDimensions: \nhttp://thaieasyelec.com/downloads/ETEE052/ETEE052_ESPino_Dimension.pdf\n\n\nPinouts: \nhttp://thaieasyelec.com/downloads/ETEE052/ETEE052_ESPino_User_Manual_TH_v1_0_20160204.pdf\n (Please see pg. 8)",
-            "title": "Ph\u1ea7n c\u1ee9ng h\u1ed7 tr\u1ee3"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#phan-cung-ho-tro",
-            "text": "Ph\u1ea7n c\u1ee9ng h\u1ed7 tr\u1ee3  Adafruit HUZZAH ESP8266 (ESP-12)  ESPresso Lite 1.0  ESPresso Lite 2.0  Phoenix 1.0  Phoenix 2.0  NodeMCU 0.9  Pin mapping    NodeMCU 1.0  Olimex MOD-WIFI-ESP8266-DEV  Olimex MOD-WIFI-ESP8266  Olimex ESP8266-EVB  SparkFun ESP8266 Thing  SweetPea ESP-210  ESPino  WifInfo  Generic ESP8266 modules  Serial Adapter  Minimal Hardware Setup for Bootloading and Usage  ESP to Serial  Minimal Hardware Setup for Bootloading only  Minimal Hardware Setup for Running only    Minimal  Improved Stability  Boot Messages and Modes  rst cause  boot mode    Generic ESP8285 modules  WeMos D1  WeMos D1 mini  ESPino (WROOM-02 Module) by ThaiEasyElec",
-            "title": "Ph\u1ea7n c\u1ee9ng h\u1ed7 tr\u1ee3"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#adafruit-huzzah-esp8266-esp-12",
-            "text": "TODO: add notes",
-            "title": "Adafruit HUZZAH ESP8266 (ESP-12)"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#espresso-lite-10",
-            "text": "ESPresso Lite 1.0 (beta version) is an Arduino-compatible Wi-Fi development board powered by Espressif System\u2019s own ESP8266 WROOM-02 module. It has breadboard-friendly breakout pins with in-built LED, two reset/flash buttons and a user programmable button . The operating voltage is 3.3VDC, regulated with 800mA maximum current. Special distinctive features include on-board I2C pads that allow direct connection to OLED LCD and sensor boards.",
-            "title": "ESPresso Lite 1.0"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#espresso-lite-20",
-            "text": "ESPresso Lite 2.0 is an Arduino-compatible Wi-Fi development board based on an earlier V1 (beta version). Re-designed together with Cytron Technologies, the newly-revised ESPresso Lite V2.0 features the auto-load/auto-program function, eliminating the previous need to reset the board manually before flashing a new program. It also feature two user programmable side buttons and a reset button. The special distinctive features of on-board pads for I2C sensor and actuator is retained.",
-            "title": "ESPresso Lite 2.0"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#phoenix-10",
-            "text": "Product page: http://www.espert.co",
-            "title": "Phoenix 1.0"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#phoenix-20",
-            "text": "Product page: http://www.espert.co",
-            "title": "Phoenix 2.0"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#nodemcu-09",
-            "text": "",
-            "title": "NodeMCU 0.9"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#pin-mapping",
-            "text": "Pin numbers written on the board itself do not correspond to ESP8266 GPIO pin numbers. Constants are defined to make using this board easier:  static const uint8_t D0   = 16;\nstatic const uint8_t D1   = 5;\nstatic const uint8_t D2   = 4;\nstatic const uint8_t D3   = 0;\nstatic const uint8_t D4   = 2;\nstatic const uint8_t D5   = 14;\nstatic const uint8_t D6   = 12;\nstatic const uint8_t D7   = 13;\nstatic const uint8_t D8   = 15;\nstatic const uint8_t D9   = 3;\nstatic const uint8_t D10  = 1;  If you want to use NodeMCU pin 5, use D5 for pin number, and it will be translated to \u2018real\u2019 GPIO pin 14.",
-            "title": "Pin mapping"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#nodemcu-10",
-            "text": "This module is sold under many names for around $6.50 on AliExpress and it\u2019s one of the cheapest, fully integrated ESP8266 solutions.  It\u2019s an open hardware design with an ESP-12E core and 4 MB of SPI flash.  Acording to the manufacturer, \u201cwith a micro USB cable, you can connect NodeMCU devkit to your laptop and flash it without any trouble\u201d. This is more or less true: the board comes with a CP2102 onboard USB to serial adapter which just works, well, the majority of the time. Sometimes flashing fails and you have to reset the board by holding down FLASH + RST, then releasing FLASH, then releasing RST. This forces the CP2102 device to power cycle and to be re-numbered by Linux.  The board also features a NCP1117 voltage regulator, a blue LED on GPIO16 and a 220k/100k Ohm voltage divider on the ADC input pin.  Full pinout and PDF schematics can be found  here",
-            "title": "NodeMCU 1.0"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#olimex-mod-wifi-esp8266-dev",
-            "text": "This board comes with 2 MB of SPI flash and optional accessories (e.g. evaluation board ESP8266-EVB or BAT-BOX for batteries).  The basic module has three solder jumpers that allow you to switch the operating mode between SDIO, UART and FLASH.  The board is shipped for FLASH operation mode, with jumpers TD0JP=0, IO0JP=1, IO2JP=1.  Since jumper IO0JP is tied to GPIO0, which is PIN 21, you\u2019ll have to ground it before programming with a USB to serial adapter and reset the board by power cycling it.  UART pins for programming and serial I/O are GPIO1 (TXD, pin 3) and GPIO3 (RXD, pin 4).  You can find the board schematics  here",
-            "title": "Olimex MOD-WIFI-ESP8266-DEV"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#olimex-mod-wifi-esp8266",
-            "text": "This is a stripped down version of the above. Behaves identically in terms of jumpers but has less pins readily available for I/O. Still 2 MB of SPI flash.",
-            "title": "Olimex MOD-WIFI-ESP8266"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#olimex-esp8266-evb",
-            "text": "It\u2019s a Olimex MOD-WIFI-ESP8266-DEV module installed on the headers of a development board which features some breakout connectors, a button (GPIO0) and a relay (GPIO5).  Programming is pretty straightforward: the board is supported in the Arduino IDE after  installing it via the Board Manager . To download a program you just have to connect GND/RX/TX from a serial/USB adapter to the UEXT connector and press the only button before applying power to enter UART mode.  Don\u2019t connect 5V from the serial/USB adapter to the board or you won\u2019t be able to power cycle it for UART mode.  You can find the board schematics  here .  This guide  is also useful for the first setup, since it contains the UEXT connector pinout.  Board variants include:\n * ESP8266-EVB-BAT: comes with built-in LiPo charger and step-up converter\n * ESP8266-EVB-BAT-BOX: as above, but enclosd in a plastic box (non-weatherproof)",
-            "title": "Olimex ESP8266-EVB"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#sparkfun-esp8266-thing",
-            "text": "Product page: https://www.sparkfun.com/products/13231  TODO: add notes",
-            "title": "SparkFun ESP8266 Thing"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#sweetpea-esp-210",
-            "text": "TODO: add notes",
-            "title": "SweetPea ESP-210"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#espino",
-            "text": "ESPino integrates the ESP-12 module with a 3.3v regulator, CP2104 USB-Serial bridge and a micro USB connector for easy programming. It is designed for fitting in a breadboard and has an RGB Led and two buttons for easy prototyping.  For more information about the hardware, pinout diagram and programming procedures, please see the  datasheet .  Product page: http://www.espino.io/en",
-            "title": "ESPino"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#wifinfo",
-            "text": "WifInfo integrates the ESP-12 or ESP-07+Ext antenna module with a 3.3v regulator and the hardware to be able to measure French telemetry issue from ERDF powering meter serial output. It has a USB connector for powering, an RGB WS2812 Led, 4 pins I2C connector to fit OLED or sensor, and two buttons + FTDI connector and auto reset feature.  For more information, please see WifInfo related  blog  entries,  github  and  community  forum.",
-            "title": "WifInfo"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#generic-esp8266-modules",
-            "text": "These modules come in different form factors and pinouts. See the page at ESP8266 community wiki for more info: ESP8266 Module Family .  Usually these modules have no bootstapping resistors on board, insufficient decoupling capacitors, no voltage regulator, no reset circuit, and no USB-serial adapter. This makes using them somewhat tricky, compared to development boards which add these features.  In order to use these modules, make sure to observe the following:    Provide sufficient power to the module.  For stable use of the ESP8266 a power supply with 3.3V and >= 250mA is required. Using the power available from USB to Serial adapter is not recommended, these adapters typically do not supply enough current to run ESP8266 reliably in every situation. An external supply or regulator along with filtering capacitors is preferred.    Connect bootstapping resistors  to GPIO0, GPIO2, GPIO15 according to the schematics below.    Put ESP8266 into bootloader mode  before uploading code.",
-            "title": "Generic ESP8266 modules"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#serial-adapter",
-            "text": "There are many different USB to Serial adapters / boards.\nTo be able to put ESP8266 into bootloader mode using serial handshaking lines, you need the adapter which breaks out RTS and DTR outputs. CTS and DSR are not useful for upload (they are inputs). Make sure the adapter can work with 3.3V IO voltage: it should have a jumper or a switch to select between 5V and 3.3V, or be marked as 3.3V only.  Adapters based around the following ICs should work:   FT232RL  CP2102  CH340G   PL2303-based adapters are known not to work on Mac OS X. See https://github.com/igrr/esptool-ck/issues/9 for more info.",
-            "title": "Serial Adapter"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#minimal-hardware-setup-for-bootloading-and-usage",
-            "text": "PIN  Resistor  Serial Adapter      VCC   VCC (3.3V)    GND   GND    TX or GPIO2*   RX    RX   TX    GPIO0  PullUp  DTR    Reset*  PullUp  RTS    GPIO15*  PullDown     CH_PD  PullUp       Note  GPIO15 is also named MTDO  Reset is also named RSBT or REST (adding PullUp improves the stability of the module)  GPIO2 is alternative TX for the boot loader mode  Directly connecting a pin to VCC or GND is not a substitute for a PullUp or PullDown resistor, doing this can break upload management and the serial console, instability has also been noted in some cases.",
-            "title": "Minimal Hardware Setup for Bootloading and Usage"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#esp-to-serial",
-            "text": "",
-            "title": "ESP to Serial"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#minimal-hardware-setup-for-bootloading-only",
-            "text": "ESPxx Hardware     PIN  Resistor  Serial Adapter      VCC   VCC (3.3V)    GND   GND    TX or GPIO2   RX    RX   TX    GPIO0   GND    Reset   RTS*    GPIO15  PullDown     CH_PD  PullUp       Note  if no RTS is used a manual power toggle is needed",
-            "title": "Minimal Hardware Setup for Bootloading only"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#minimal-hardware-setup-for-running-only",
-            "text": "ESPxx Hardware     PIN  Resistor  Power supply      VCC   VCC (3.3V)    GND   GND    GPIO0  PullUp     GPIO15  PullDown     CH_PD  PullUp",
-            "title": "Minimal Hardware Setup for Running only"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#minimal",
-            "text": "",
-            "title": "Minimal"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#improved-stability",
-            "text": "",
-            "title": "Improved Stability"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#boot-messages-and-modes",
-            "text": "The ESP module checks at every boot the Pins 0, 2 and 15.\nbased on them its boots in different modes:     GPIO15  GPIO0  GPIO2  Mode      0V  0V  3.3V  Uart Bootloader    0V  3.3V  3.3V  Boot sketch (SPI flash)    3.3V  x  x  SDIO mode (not used for Arduino)     at startup the ESP prints out the current boot mode example:  rst cause:2, boot mode:(3,6)  note:\n - GPIO2 is used as TX output and the internal Pullup is enabled on boot.",
-            "title": "Boot Messages and Modes"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#rst-cause",
-            "text": "Number  Description      0  unknown    1  normal boot    2  reset pin    3  software reset    4  watchdog reset",
-            "title": "rst cause"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#boot-mode",
-            "text": "the first value respects the pin setup of the Pins 0, 2 and 15.     Number  GPIO15  GPIO0  GPIO2  Mode      0  0V  0V  0V  Not valid    1  0V  0V  3.3V  Uart    2  0V  3.3V  0V  Not valid    3  0V  3.3V  3.3V  Flash    4  3.3V  0V  0V  SDIO    5  3.3V  0V  3.3V  SDIO    6  3.3V  3.3V  0V  SDIO    7  3.3V  3.3V  3.3V  SDIO     note:\n - number = ((GPIO15 << 2) | (GPIO0 << 1) | GPIO2);",
-            "title": "boot mode"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#generic-esp8285-modules",
-            "text": "ESP8285 ( datasheet ) is a multi-chip package which contains ESP8266 and 1MB flash.\nAll points related to bootstrapping resistors and recommended circuits listed above apply to ESP8285 as well.  Note that since ESP8285 has SPI flash memory internally connected in DOUT mode, pins 9 and 10 may be used as GPIO / I2C / PWM pins.",
-            "title": "Generic ESP8285 modules"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#wemos-d1",
-            "text": "Product page:  http://wemos.cc",
-            "title": "WeMos D1"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#wemos-d1-mini",
-            "text": "Product page:  http://wemos.cc",
-            "title": "WeMos D1 mini"
-        },
-        {
-            "location": "/arduino/arduino-esp8266-hardware/#espino-wroom-02-module-by-thaieasyelec",
-            "text": "ESPino by ThaiEasyElec using WROOM-02 module from Espressif Systems with 4 MB Flash.  We will update an English description soon.   Product page:  http://thaieasyelec.com/products/wireless-modules/wifi-modules/espino-wifi-development-board-detail.html  Schematics:  www.thaieasyelec.com/downloads/ETEE052/ETEE052_ESPino_Schematic.pdf  Dimensions:  http://thaieasyelec.com/downloads/ETEE052/ETEE052_ESPino_Dimension.pdf  Pinouts:  http://thaieasyelec.com/downloads/ETEE052/ETEE052_ESPino_User_Manual_TH_v1_0_20160204.pdf  (Please see pg. 8)",
-            "title": "ESPino (WROOM-02 Module) by ThaiEasyElec"
         },
         {
             "location": "/arduino/projects/list/",
