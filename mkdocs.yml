@@ -72,6 +72,7 @@ pages:
         - Task notification:          freertos-sdk/basic/task-notification.md
     - ESP8266 Arduino:
       - Giới thiệu:                   arduino/arduino.md
+      - Phần cứng ESP8266 Arduino:    arduino/esp8266-hardware.md
       - Cơ bản:
         - Cài đặt:                    arduino/basic/install.md
         - Digital:                    arduino/basic/digital.md
@@ -99,7 +100,6 @@ pages:
         - Sử dụng Arduino IDE:        arduino/ota/using-arduino-ide.md
         - Sử dụng trình duyệt:        arduino/ota/using-web-browser.md
         - Sử dụng HTTP Server:        arduino/ota/using-http-server.md
-      - Phần cứng hỗ trợ:             arduino/arduino-esp8266-hardware.md
       - Các dự án:
         - Danh sách:                  arduino/projects/list.md
         - Smartconfig & react-native: arduino/projects/smartconfig-react-native.md
