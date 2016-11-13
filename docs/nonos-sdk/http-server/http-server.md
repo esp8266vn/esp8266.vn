@@ -2,7 +2,7 @@
 
 # Điều khiển LED qua webserver
 
-Tổ chức file căn cứ theo bài [Biên dịch dự án đầu tiên](./compile-first-time.md), toàn bộ cấu trúc file, **Makefile, user_config.h, rf_init.c** giữ nguyên, chỉ thay đổi nội dung file `main.c`. 
+Tổ chức file căn cứ theo bài [Biên dịch dự án đầu tiên](../basic/compile-first-time.md), toàn bộ cấu trúc file, **Makefile, user_config.h, rf_init.c** giữ nguyên, chỉ thay đổi nội dung file `main.c`. 
 
 !!! note "Nội dung"
     Tạo một webserver cho phép người dùng bật tắt LED từ xa

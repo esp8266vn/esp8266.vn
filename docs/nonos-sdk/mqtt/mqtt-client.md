@@ -2,7 +2,7 @@
 
 # Sử dụng thư viện MQTT với ESP8266
 
-Tổ chức file căn cứ theo bài [Biên dịch dự án đầu tiên](./compile-first-time.md), toàn bộ cấu trúc file, **Makefile, user_config.h, rf_init.c** giữ nguyên, chỉ thay đổi nội dung file `main.c`. 
+Tổ chức file căn cứ theo bài [Biên dịch dự án đầu tiên](../basic/compile-first-time.md), toàn bộ cấu trúc file, **Makefile, user_config.h, rf_init.c** giữ nguyên, chỉ thay đổi nội dung file `main.c`. 
 
 !!! note "Nội dung"
     Sử dụng MQTT cho ESP8266

@@ -4,7 +4,7 @@ site_description: ESP8266 Việt Nam
 #theme: readthedocs
 site_author: Tuan PM
 theme_dir: readthedocshm
-copyright: Copyright &copy; 2016 <a href="https://esp8266.vn">ESP8266 Viet Nam</a>
+copyright: Copyright &copy; 2016 <a href="https://esp8266.vn">ESP8266 Viet Nam</a> - Tài trợ bởi <a href="https://iotmaker.vn">IoT Maker Viet Nam</a>
 markdown_extensions:
     - toc:
         permalink: '#'
