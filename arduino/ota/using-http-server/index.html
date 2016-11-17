@@ -661,15 +661,15 @@
             <div class="section">
               
                 <h1 id="http-server">HTTP Server<a class="headerlink" href="#http-server" title="Permanent link">#</a></h1>
-<p><code>ESPhttpUpdate</code> class can check for updates and download a binary file from HTTP web server.
-It is possible to download updates from every IP or domain address on the network or Internet.</p>
-<h4 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h4>
+<p>Class <code>ESPhttpUpdate</code> có thể kiểm cập nhật và tài Binary từ HTTP Webserver.
+Hoàn toàn có thể tải từ IP hay domain thông qua mạng Internet.</p>
+<h4 id="yeu-cau">Yêu cầu<a class="headerlink" href="#yeu-cau" title="Permanent link">#</a></h4>
 <ul>
-<li>web server</li>
+<li>Web Server</li>
 </ul>
 <h4 id="arduino-code">Arduino code<a class="headerlink" href="#arduino-code" title="Permanent link">#</a></h4>
-<h5 id="simple-updater">Simple updater<a class="headerlink" href="#simple-updater" title="Permanent link">#</a></h5>
-<p>Simple updater downloads the file every time the function is called.</p>
+<h5 id="cap-nhat-on-gian">Cập nhật đơn giản<a class="headerlink" href="#cap-nhat-on-gian" title="Permanent link">#</a></h5>
+<p>Chỉ cần thực hiện hàm sau sẽ tải file firmware và cập nhật.</p>
 <pre><code class="cpp">ESPhttpUpdate.update(&quot;192.168.0.2&quot;, 80, &quot;/arduino.bin&quot;);
 </code></pre>
 
@@ -695,7 +695,7 @@ switch(ret) {
 </code></pre>
 
 <h2 id="server-request-handling">Server request handling<a class="headerlink" href="#server-request-handling" title="Permanent link">#</a></h2>
-<h3 id="simple-updater_1">Simple updater<a class="headerlink" href="#simple-updater_1" title="Permanent link">#</a></h3>
+<h3 id="simple-updater">Simple updater<a class="headerlink" href="#simple-updater" title="Permanent link">#</a></h3>
 <p>For the simple updater the server only needs to deliver the binary file for update.</p>
 <h3 id="advanced-updater_1">Advanced updater<a class="headerlink" href="#advanced-updater_1" title="Permanent link">#</a></h3>
 <p>For advanced update management a script needs to run at the server side, for example a PHP script.
