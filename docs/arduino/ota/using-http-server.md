@@ -1,17 +1,17 @@
 
 # HTTP Server
 
-```ESPhttpUpdate``` class can check for updates and download a binary file from HTTP web server.
-It is possible to download updates from every IP or domain address on the network or Internet.
+Class `ESPhttpUpdate` có thể kiểm cập nhật và tài Binary từ HTTP Webserver.
+Hoàn toàn có thể tải từ IP hay domain thông qua mạng Internet.
 
-#### Requirements
- - web server
+#### Yêu cầu
+ - Web Server
 
 #### Arduino code
 
-##### Simple updater
+##### Cập nhật đơn giản
 
-Simple updater downloads the file every time the function is called.
+Chỉ cần thực hiện hàm sau sẽ tải file firmware và cập nhật.
 
 ```cpp
 ESPhttpUpdate.update("192.168.0.2", 80, "/arduino.bin");
