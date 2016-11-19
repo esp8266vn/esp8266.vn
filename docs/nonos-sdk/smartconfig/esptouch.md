@@ -20,8 +20,8 @@ Tổ chức file căn cứ theo bài [Makefile cho các dự án phức tạp](.
 ## Lấy dự án về từ Github 
 
 ```bash
-https://github.com/esp8266vn/esp8266-nonos-smart-config-fota.git
-cd sp8266-nonos-smart-config-fota && make
+https://github.com/esp8266vn/esp8266-nonos-smart-config.git
+cd sp8266-nonos-smart-config && make
 make flash
 ```
 
