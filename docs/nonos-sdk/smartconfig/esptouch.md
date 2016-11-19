@@ -38,10 +38,8 @@ make flash
 │   ├── esp8266-nonos-app.a
 │   ├── esp8266-nonos-app.out
 │   └── user
-│       ├── fota.o
 │       ├── rfinit.o
 │       ├── sc.o
-│       ├── user_json.o
 │       ├── user_main.o
 │       └── wps.o
 ├── driver
@@ -52,7 +50,6 @@ make flash
 ├── firmware
 │   ├── esp8266-nonos-app0x00000.bin
 │   └── esp8266-nonos-app0x10000.bin
-├── fota-flow.md
 ├── include
 │   ├── driver
 │   │   ├── key.h
@@ -68,14 +65,10 @@ make flash
 ├── README.md
 ├── SublimeAStyleFormatter.sublime-settings
 └── user
-    ├── fota.c
-    ├── fota.h
     ├── Makefile
     ├── rfinit.c
     ├── sc.c
     ├── sc.h
-    ├── user_json.c
-    ├── user_json.h
     ├── user_main.c
     ├── wps.c
     └── wps.h
@@ -85,195 +78,93 @@ make flash
 ```
 
 ## Mã nguồn
-Phần cấu hình cho Smartconfig được thực hiện tại 2 file là `sc.c` và `sc.h`
+Chương trình chính sẽ gọi phần cấu hình cho Smartconfig sau khi nút nhấn FLASH trên NodeMCU được nhấn thông qua hàm `sc_start` (nằm ở 2 file là `sc.c` và `sc.h`)
 
 ```
-#include "ets_sys.h"
 #include "osapi.h"
-#include "ip_addr.h"
-#include "espconn.h"
-#include "mem.h"
-
-
 #include "user_interface.h"
-#include "smartconfig.h"
-#include "airkiss.h"
 
+#include "driver/key.h"
+#include "driver/uart.h"
 #include "driver/led.h"
+#include "wps.h"
+#include "sc.h"
+
+#define KEY_NUM        1
+
+#define KEY_IO_MUX     PERIPHS_IO_MUX_MTCK_U
+#define KEY_IO_NUM     0
+#define KEY_IO_FUNC    FUNC_GPIO0
 
 
-#define DEVICE_TYPE     "gh_9e2cff3dfa51" //wechat public number
-#define DEVICE_ID       "122475" //model ID
-
-#define DEFAULT_LAN_PORT  12476
-uint32_t sc_run = 0;
-LOCAL esp_udp ssdp_udp;
-LOCAL struct espconn pssdpudpconn;
-LOCAL os_timer_t ssdp_time_serv;
-
-uint8_t  lan_buf[200];
-uint16_t lan_buf_len;
-uint8    udp_sent_cnt = 0;
-
-const airkiss_config_t akconf =
-{
-  (airkiss_memset_fn)&memset,
-  (airkiss_memcpy_fn)&memcpy,
-  (airkiss_memcmp_fn)&memcmp,
-  0,
-};
+LOCAL struct keys_param keys;
+LOCAL struct single_key_param *single_key;
 
 LOCAL void ICACHE_FLASH_ATTR
-airkiss_wifilan_time_callback(void)
+short_press(void)
 {
-  uint16 i;
-  airkiss_lan_ret_t ret;
-
-  if ((udp_sent_cnt++) > 30) {
-    udp_sent_cnt = 0;
-    os_timer_disarm(&ssdp_time_serv);//s
-    //return;
-  }
-
-  ssdp_udp.remote_port = DEFAULT_LAN_PORT;
-  ssdp_udp.remote_ip[0] = 255;
-  ssdp_udp.remote_ip[1] = 255;
-  ssdp_udp.remote_ip[2] = 255;
-  ssdp_udp.remote_ip[3] = 255;
-  lan_buf_len = sizeof(lan_buf);
-  ret = airkiss_lan_pack(AIRKISS_LAN_SSDP_NOTIFY_CMD,
-                         DEVICE_TYPE, DEVICE_ID, 0, 0, lan_buf, &lan_buf_len, &akconf);
-  if (ret != AIRKISS_LAN_PAKE_READY) {
-    INFO("[SC] Pack lan packet error!");
-    return;
-  }
-
-  ret = espconn_sendto(&pssdpudpconn, lan_buf, lan_buf_len);
-  if (ret != 0) {
-    INFO("[SC] UDP send error!");
-  }
-  INFO("[SC] Finish send notify!\n");
+  INFO("[KEY] Short press, run smartconfig\r\n");
+  led_blink(1, 1);
+  sc_start();
 }
 
 LOCAL void ICACHE_FLASH_ATTR
-airkiss_wifilan_recv_callbk(void *arg, char *pdata, unsigned short len)
+long_press(void)
 {
-  uint16 i;
-  remot_info* pcon_info = NULL;
-
-  airkiss_lan_ret_t ret = airkiss_lan_recv(pdata, len, &akconf);
-  airkiss_lan_ret_t packret;
-
-  switch (ret) {
-  case AIRKISS_LAN_SSDP_REQ:
-    espconn_get_connection_info(&pssdpudpconn, &pcon_info, 0);
-    INFO("[SC] remote ip: %d.%d.%d.%d \r\n", pcon_info->remote_ip[0], pcon_info->remote_ip[1],
-              pcon_info->remote_ip[2], pcon_info->remote_ip[3]);
-    INFO("[SC] remote port: %d \r\n", pcon_info->remote_port);
-
-    pssdpudpconn.proto.udp->remote_port = pcon_info->remote_port;
-    os_memcpy(pssdpudpconn.proto.udp->remote_ip, pcon_info->remote_ip, 4);
-    ssdp_udp.remote_port = DEFAULT_LAN_PORT;
-
-    lan_buf_len = sizeof(lan_buf);
-    packret = airkiss_lan_pack(AIRKISS_LAN_SSDP_RESP_CMD,
-                               DEVICE_TYPE, DEVICE_ID, 0, 0, lan_buf, &lan_buf_len, &akconf);
-
-    if (packret != AIRKISS_LAN_PAKE_READY) {
-      INFO("[SC] Pack lan packet error!");
-      return;
-    }
-
-    INFO("\r\n\r\n");
-    for (i = 0; i < lan_buf_len; i++)
-      INFO("%c", lan_buf[i]);
-    INFO("\r\n\r\n");
-
-    packret = espconn_sendto(&pssdpudpconn, lan_buf, lan_buf_len);
-    if (packret != 0) {
-      INFO("[SC] LAN UDP Send err!");
-    }
-    os_timer_disarm(&ssdp_time_serv);//s
-    break;
-  default:
-    INFO("[SC] Pack is not ssdq req!%d\r\n", ret);
-    break;
-  }
-}
-
-void ICACHE_FLASH_ATTR
-airkiss_start_discover(void)
-{
-  ssdp_udp.local_port = DEFAULT_LAN_PORT;
-  pssdpudpconn.type = ESPCONN_UDP;
-  pssdpudpconn.proto.udp = &(ssdp_udp);
-  espconn_regist_recvcb(&pssdpudpconn, airkiss_wifilan_recv_callbk);
-  espconn_create(&pssdpudpconn);
-
-  os_timer_disarm(&ssdp_time_serv);
-  os_timer_setfn(&ssdp_time_serv, (os_timer_func_t *)airkiss_wifilan_time_callback, NULL);
-  os_timer_arm(&ssdp_time_serv, 1000, 1);//1s
+  INFO("[KEY] Long press, run wps\r\n");
+  led_blink(5, 5);
 }
 
 
-void ICACHE_FLASH_ATTR
-smartconfig_done(sc_status status, void *pdata)
+void ICACHE_FLASH_ATTR print_info()
 {
-  switch (status) {
-  case SC_STATUS_WAIT:
-    INFO("[SC] SC_STATUS_WAIT\n");
-    break;
-  case SC_STATUS_FIND_CHANNEL:
-    INFO("[SC] SC_STATUS_FIND_CHANNEL\n");
-    break;
-  case SC_STATUS_GETTING_SSID_PSWD:
-    INFO("[SC] SC_STATUS_GETTING_SSID_PSWD\n");
-    sc_type *type = pdata;
-    if (*type == SC_TYPE_ESPTOUCH) {
-      INFO("[SC] SC_TYPE:SC_TYPE_ESPTOUCH\n");
-    } else {
-      INFO("[SC] SC_TYPE:SC_TYPE_AIRKISS\n");
-    }
-    break;
-  case SC_STATUS_LINK:
-    INFO("[SC] SC_STATUS_LINK\n");
-    struct station_config *sta_conf = pdata;
+  INFO("\r\n\r\n[INFO] BOOTUP...\r\n");
+  INFO("[INFO] SDK: %s\r\n", system_get_sdk_version());
+  INFO("[INFO] Chip ID: %08X\r\n", system_get_chip_id());
+  INFO("[INFO] Memory info:\r\n");
+  system_print_meminfo();
 
-    wifi_station_set_config(sta_conf);
-    wifi_station_disconnect();
-    wifi_station_connect();
-    led_blink(1, 0);
-    break;
-  case SC_STATUS_LINK_OVER:
-    INFO("[SC] SC_STATUS_LINK_OVER\n");
-    if (pdata != NULL) {
-      //SC_TYPE_ESPTOUCH
-      uint8 phone_ip[4] = {0};
-
-      os_memcpy(phone_ip, (uint8*)pdata, 4);
-      INFO("[SC] Phone ip: %d.%d.%d.%d\n", phone_ip[0], phone_ip[1], phone_ip[2], phone_ip[3]);
-    } else {
-      //SC_TYPE_AIRKISS - support airkiss v2.0
-      airkiss_start_discover();
-    }
-    smartconfig_stop();
-    sc_run = 0;
-    break;
-  }
+  INFO("[INFO] -------------------------------------------\n");
+  INFO("[INFO] Build time: %s\n", BUID_TIME);
+  INFO("[INFO] -------------------------------------------\n");
 
 }
 
 
-
-void ICACHE_FLASH_ATTR
-sc_start(void)
+void ICACHE_FLASH_ATTR app_init()
 {
-  smartconfig_set_type(SC_TYPE_ESPTOUCH_AIRKISS); //SC_TYPE_ESPTOUCH,SC_TYPE_AIRKISS,SC_TYPE_ESPTOUCH_AIRKISS
-  if(sc_run)
-    smartconfig_stop();
-  smartconfig_start(smartconfig_done);
-  sc_run = 1;
-  INFO("[SC] Started\r\n");
+  // const fota_info fota_conenction = {
+  //   .host = "test.vidieukhien.net",
+  //   .port = "80",
+  //   .security = 0,
+  //   .device_id = "device_id",
+  //   .access_key = "access_key",
+  //   .version = "version",
+  //   .path = "/fota.json?dev={device_id|%X}&token={access_key|%s}&version={version:%s}"
+  // };
+
+  uart_init(BIT_RATE_115200, BIT_RATE_115200);
+
+  print_info();
+
+  single_key = key_init_single(KEY_IO_NUM, KEY_IO_MUX, KEY_IO_FUNC,
+                                        long_press, short_press);
+
+  keys.key_num = KEY_NUM;
+  keys.single_key = &single_key;
+
+  key_init(&keys);
+  led_init();
+  led_blink(10, 10); //1 second on, 1 second off
+
+  wifi_set_opmode_current(STATION_MODE);
+
+}
+
+void ICACHE_FLASH_ATTR user_init(void)
+{
+  system_init_done_cb(app_init);
+
 }
 
 ```
@@ -409,15 +300,19 @@ mode : sta(60:01:94:0a:8b:7a)
 add if0
 ```
 
+- Mở phần mềm IOT_Espressift_EspTouch trên điện thoại đã kết nối wifi, nhập mật khẩu tại Password sau đó ấn confirm
+
+![IOT_Espressift_EspTouch](../images/esp-touch.png)
+
 - Tiếp tục ấn nút Flash trên NodeMCU sau đó ấn nút Confirm trên SmartPhone.
+
+![IOT_Espressift_EspTouch](../images/esp-touch-done.png)
 
 # Kết quả
 - Nếu thành công sẽ có thông báo trên smartphone về địa chỉ IP của ESP8266 như sau
 ```
 Esptouch success, bssid = xxxx, InnetAddress = 192.168.xx.xx
 ```
-
-<<<<<<< HEAD
 - Ngược lại sẽ có thông báo Esptouch fail.
 - Kết quả logfile sẽ được ghi lại trên máy tính như sau
 
@@ -469,81 +364,13 @@ T|Head Len : 84
 [SC] SC_STATUS_GETTING_SSID_PSWD
 [SC] SC_TYPE:SC_TYPE_ESPTOUCH
 T|SYNC STATUS
-T|64-4
-T|192-5
-T|168-6
-T|1-7
-T|0-9
-T|9-10
-T|0-11
-T|5-12
-T|2-13
-T|6-14
-T|3-15
-T|3-16
-T|8-17
-T|9-18
-T|@-19
-T|29-0
-T|243-2
-T|201-3
-T|64-4
-T|192-5
-T|168-6
-T|0-9
-T|9-10
-T|0-11
-T|5-12
-T|2-13
-T|6-14
-T|3-15
-T|3-16
-T|8-17
-T|9-18
-T|@-19
-T|29-0
-T|11-1
-T|SCAN SSID: ten_wifi
-T|all lenth: 29,pswd lenth: 11
-T|SCAN CRC SSID: 1
-T|201-3
-T|64-4
-T|192-5
-T|168-6
-T|1-7
-T|14-8
-T|0-29-2
-T|1-11-1
-T|2-243-1
-T|3-201-2
-T|4-64-3
-T|5-192-3
-T|6-168-3
-T|7-1-2
-T|8-14-1
-T|9-0-2
-T|10-9-2
-T|11-0-2
-T|12-5-2
-T|13-2-2
-T|14-6-2
-T|15-3-2
-T|16-3-2
-T|17-8-2
-T|18-9-2
-T|19-@-2
+xxxxx
 T|pswd: mat_khau_wifi
 T|ssid: ten_wifi
 T|bssid: 00 16 01 04 6d d2 
 [SC] SC_STATUS_LINK
 scandone
-state: 0 -> 2 (b0)
-state: 2 -> 3 (0)
-state: 3 -> 5 (10)
-add 0
-aid 4
-cnt 
-
+xxxxx
 connected with ten_wifi, channel 2
 dhcp client start...
 pm open,type:2 0
@@ -553,6 +380,3 @@ ip:192.168.1.xx,mask:255.255.255.0,gw:192.168.1.1
 free heap:39984
 
 ```
-=======
-- Ngược lại sẽ có thông báo Esptouch fail.
->>>>>>> origin/master
