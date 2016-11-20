@@ -689,6 +689,270 @@ Ban đầu không thể kết nối với ESP8266, nhưng thông qua giao thức
 </tbody>
 </table>
 <p>Length bao gồm SSID và thông tin key cho ESP8266</p>
+<h1 id="chuong-trinh">Chương trình<a class="headerlink" href="#chuong-trinh" title="Permanent link">#</a></h1>
+<p>Tổ chức file căn cứ theo bài <a href="../../basic/complex-makefile/">Makefile cho các dự án phức tạp</a>, toàn bộ cấu trúc file, <strong>Makefile, user_config.h, rf_init.c</strong> giữ nguyên, thay đổi nội dung file <code>main.c</code> và thêm một số thư mục cần thiết. </p>
+<div class="admonition note">
+<p class="admonition-title">Nội dung</p>
+<p>Smartconfig cho ESP8266 thông qua Smartphone</p>
+</div>
+<h2 id="lay-du-an-ve-tu-github">Lấy dự án về từ Github<a class="headerlink" href="#lay-du-an-ve-tu-github" title="Permanent link">#</a></h2>
+<pre><code class="bash">https://github.com/esp8266vn/esp8266-nonos-smart-config.git
+cd sp8266-nonos-smart-config &amp;&amp; make
+make flash
+</code></pre>
+
+<h2 id="so-o-file">Sơ đồ file<a class="headerlink" href="#so-o-file" title="Permanent link">#</a></h2>
+<pre><code>├── assets
+│   └── fota-flow.png
+├── build
+│   ├── driver
+│   │   ├── key.o
+│   │   ├── led.o
+│   │   └── uart.o
+│   ├── esp8266-nonos-app.a
+│   ├── esp8266-nonos-app.out
+│   └── user
+│       ├── rfinit.o
+│       ├── sc.o
+│       ├── user_main.o
+│       └── wps.o
+├── driver
+│   ├── key.c
+│   ├── led.c
+│   ├── Makefile
+│   └── uart.c
+├── firmware
+│   ├── esp8266-nonos-app0x00000.bin
+│   └── esp8266-nonos-app0x10000.bin
+├── include
+│   ├── driver
+│   │   ├── key.h
+│   │   ├── led.h
+│   │   ├── uart.h
+│   │   └── uart_register.h
+│   └── user_config.h
+├── ld
+│   ├── eagle.rom.addr.v6.ld
+│   ├── with-espboot-flash-at-0x2000-size-1M.ld
+│   └── without-bootloader.ld
+├── Makefile
+├── README.md
+├── SublimeAStyleFormatter.sublime-settings
+└── user
+    ├── Makefile
+    ├── rfinit.c
+    ├── sc.c
+    ├── sc.h
+    ├── user_main.c
+    ├── wps.c
+    └── wps.h
+
+10 directories, 41 files
+
+</code></pre>
+
+<h2 id="ma-nguon">Mã nguồn<a class="headerlink" href="#ma-nguon" title="Permanent link">#</a></h2>
+<p>Chương trình chính sẽ gọi phần cấu hình cho Smartconfig sau khi nút nhấn FLASH trên NodeMCU được nhấn thông qua hàm <code>sc_start</code> (nằm ở 2 file là <code>sc.c</code> và <code>sc.h</code>)</p>
+<pre><code>#include &quot;osapi.h&quot;
+#include &quot;user_interface.h&quot;
+
+#include &quot;driver/key.h&quot;
+#include &quot;driver/uart.h&quot;
+#include &quot;driver/led.h&quot;
+#include &quot;wps.h&quot;
+#include &quot;sc.h&quot;
+
+#define KEY_NUM        1
+
+#define KEY_IO_MUX     PERIPHS_IO_MUX_MTCK_U
+#define KEY_IO_NUM     0
+#define KEY_IO_FUNC    FUNC_GPIO0
+
+
+LOCAL struct keys_param keys;
+LOCAL struct single_key_param *single_key;
+
+LOCAL void ICACHE_FLASH_ATTR
+short_press(void)
+{
+  INFO(&quot;[KEY] Short press, run smartconfig\r\n&quot;);
+  led_blink(1, 1);
+  sc_start();
+}
+
+LOCAL void ICACHE_FLASH_ATTR
+long_press(void)
+{
+  INFO(&quot;[KEY] Long press, run wps\r\n&quot;);
+  led_blink(5, 5);
+}
+
+
+void ICACHE_FLASH_ATTR print_info()
+{
+  INFO(&quot;\r\n\r\n[INFO] BOOTUP...\r\n&quot;);
+  INFO(&quot;[INFO] SDK: %s\r\n&quot;, system_get_sdk_version());
+  INFO(&quot;[INFO] Chip ID: %08X\r\n&quot;, system_get_chip_id());
+  INFO(&quot;[INFO] Memory info:\r\n&quot;);
+  system_print_meminfo();
+
+  INFO(&quot;[INFO] -------------------------------------------\n&quot;);
+  INFO(&quot;[INFO] Build time: %s\n&quot;, BUID_TIME);
+  INFO(&quot;[INFO] -------------------------------------------\n&quot;);
+
+}
+
+
+void ICACHE_FLASH_ATTR app_init()
+{
+  // const fota_info fota_conenction = {
+  //   .host = &quot;test.vidieukhien.net&quot;,
+  //   .port = &quot;80&quot;,
+  //   .security = 0,
+  //   .device_id = &quot;device_id&quot;,
+  //   .access_key = &quot;access_key&quot;,
+  //   .version = &quot;version&quot;,
+  //   .path = &quot;/fota.json?dev={device_id|%X}&amp;token={access_key|%s}&amp;version={version:%s}&quot;
+  // };
+
+  uart_init(BIT_RATE_115200, BIT_RATE_115200);
+
+  print_info();
+
+  single_key = key_init_single(KEY_IO_NUM, KEY_IO_MUX, KEY_IO_FUNC,
+                                        long_press, short_press);
+
+  keys.key_num = KEY_NUM;
+  keys.single_key = &amp;single_key;
+
+  key_init(&amp;keys);
+  led_init();
+  led_blink(10, 10); //1 second on, 1 second off
+
+  wifi_set_opmode_current(STATION_MODE);
+
+}
+
+void ICACHE_FLASH_ATTR user_init(void)
+{
+  system_init_done_cb(app_init);
+
+}
+
+</code></pre>
+
+<h1 id="cac-ham-cau-truc-dung-trong-smartconfig">Các hàm/ cấu trúc dùng trong SmartConfig<a class="headerlink" href="#cac-ham-cau-truc-dung-trong-smartconfig" title="Permanent link">#</a></h1>
+<h2 id="ham-smartconfig_start">Hàm smartconfig_start<a class="headerlink" href="#ham-smartconfig_start" title="Permanent link">#</a></h2>
+<p>Hàm dùng để cấu hình thiết bị và kết nối nó tới AP</p>
+<div class="admonition note">
+<p class="admonition-title">Lưu ý</p>
+<ul>
+<li>Hàm chỉ được gọi trong mode Station</li>
+<li>Gọi hàm <code>smartconfig_stop</code> để kết thúc quá trình SmartConfig trước khi gọi các hàm khác</li>
+</ul>
+</div>
+<p>Định nghĩa</p>
+<pre><code>bool smartconfig_start(sc_callback_t cb, uint8 log)
+</code></pre>
+
+<p>Thông số</p>
+<p>Giá trị trả về</p>
+<table>
+<thead>
+<tr>
+<th>TRUE</th>
+<th>Thành công</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FALSE</td>
+<td>Thất bại</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ham-smartconfig_stop">Hàm smartconfig_stop<a class="headerlink" href="#ham-smartconfig_stop" title="Permanent link">#</a></h2>
+<p>Hàm dùng để dừng quá trình Smart Config và giải phóng bộ nhớ được tạo ra bởi hàm  <code>smartconfig_start</code></p>
+<div class="admonition note">
+<p class="admonition-title">Lưu ý</p>
+<p>Sau khi kết nối được thiết lập thì người dùng có thể gọi hàm giải phóng bộ nhớ</p>
+</div>
+<p>Định nghĩa</p>
+<pre><code>bool smartconfig_set_type(sc_type type)
+</code></pre>
+
+<p>Thông số </p>
+<pre><code>typedef enum {
+ SC_TYPE_ESPTOUCH = 0,
+ SC_TYPE_AIRKISS,
+ SC_TYPE_ESPTOUCH_AIRKISS,
+ } sc_type; 
+</code></pre>
+
+<p>Giá trị trả về</p>
+<table>
+<thead>
+<tr>
+<th>TRUE</th>
+<th>Thành công</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FALSE</td>
+<td>Thất bại</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ham-smartconfig_set_type">Hàm smartconfig_set_type<a class="headerlink" href="#ham-smartconfig_set_type" title="Permanent link">#</a></h2>
+<p>Hàm dùng để thiết lập kiểu protocol của <code>smartconfig_start</code></p>
+<div class="admonition note">
+<p class="admonition-title">Lưu ý</p>
+<p>Phải gọi hàm này trước hàm <code>smartconfig_start</code></p>
+</div>
+<p>Định nghĩa</p>
+<pre><code>bool smartconfig_stop(void)
+</code></pre>
+
+<p>Thông số 
+NULL</p>
+<p>Giá trị trả về</p>
+<table>
+<thead>
+<tr>
+<th>TRUE</th>
+<th>Thành công</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FALSE</td>
+<td>Thất bại</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cau-truc">Cấu trúc<a class="headerlink" href="#cau-truc" title="Permanent link">#</a></h2>
+<p>Có 2 kiểu cấu trúc cho sc_status và sc_type</p>
+<pre><code>typedef enum {
+SC_STATUS_WAIT = 0,
+SC_STATUS_FIND_CHANNEL = 0,
+SC_STATUS_GETTING_SSID_PSWD,
+SC_STATUS_LINK,
+SC_STATUS_LINK_OVER,
+} sc_status; 
+</code></pre>
+
+<pre><code>typedef enum {
+SC_TYPE_ESPTOUCH = 0,
+SC_TYPE_AIRKISS,
+SC_TYPE_ESPTOUCH_AIRKISS,
+} sc_type;
+</code></pre>
+
+<div class="admonition note">
+<p class="admonition-title">Lưu ý</p>
+<p>SC_STATUS_FIND_CHANNEL được dùng để hiển thị trạng thái khi tìm channel</p>
+</div>
 <h1 id="phan-mem-cho-android-va-ios">Phần mềm cho android và iOS<a class="headerlink" href="#phan-mem-cho-android-va-ios" title="Permanent link">#</a></h1>
 <p>Có thể tải file apk dành cho android tại 
 <a href="https://espressif.com/sites/default/files/apks/esptouchandroid-apk_v0.3.4.3_0.rar">ESP-Touch Android</a></p>
@@ -699,10 +963,37 @@ Ban đầu không thể kết nối với ESP8266, nhưng thông qua giao thức
 <h1 id="hoat-ong">Hoạt động<a class="headerlink" href="#hoat-ong" title="Permanent link">#</a></h1>
 <ul>
 <li>Kích hoạt chức năng Smart Config bằng cách lập trình và nạp firmware cho ESP</li>
-<li>Kết nối smartphone với router </li>
+<li>Kết nối smartphone với router (kết nối smartphone với mạng wifi hiện có)</li>
 <li>Mở ESP-TOUCH App đã cài đặt trên smartphone</li>
 <li>Kiểm tra SSID (tương ứng với tên Wifi) và mật khẩu (ở đây là mật khẩu wifi của bạn) để kết nối tới thiết bị.</li>
+<li>Thực hiện ấn nút trong thời gian ngắn trên NodeMCU sau đó thả ra sẽ có thông báo</li>
 </ul>
+<pre><code>[INFO] BOOTUP...
+[INFO] SDK: 2.0.0(656edbf)
+[INFO] Chip ID: 000A8B7A
+[INFO] Memory info:
+data  : 0x3ffe8000 ~ 0x3ffe880c, len: 2060
+rodata: 0x3ffe8810 ~ 0x3ffe9ff0, len: 6112
+bss   : 0x3ffe9ff0 ~ 0x3fff0858, len: 26728
+heap  : 0x3fff0858 ~ 0x3fffc000, len: 47016
+[INFO] -------------------------------------------
+[INFO] Build time: 2016-Th11-18_16:55:45_ICT
+[INFO] -------------------------------------------
+bcn 0
+del if1
+usl
+mode : sta(60:01:94:0a:8b:7a)
+add if0
+</code></pre>
+
+<ul>
+<li>Mở phần mềm IOT_Espressift_EspTouch trên điện thoại đã kết nối wifi, nhập mật khẩu tại Password sau đó ấn confirm</li>
+</ul>
+<p><img alt="IOT_Espressift_EspTouch" src="../../images/esp-touch.png" /></p>
+<ul>
+<li>Tiếp tục ấn nút Flash trên NodeMCU sau đó ấn nút Confirm trên SmartPhone.</li>
+</ul>
+<p><img alt="IOT_Espressift_EspTouch" src="../../images/esp-touch-done.png" /></p>
 <h1 id="ket-qua">Kết quả<a class="headerlink" href="#ket-qua" title="Permanent link">#</a></h1>
 <ul>
 <li>Nếu thành công sẽ có thông báo trên smartphone về địa chỉ IP của ESP8266 như sau</li>
@@ -712,7 +1003,71 @@ Ban đầu không thể kết nối với ESP8266, nhưng thông qua giao thức
 
 <ul>
 <li>Ngược lại sẽ có thông báo Esptouch fail.</li>
+<li>Kết quả logfile sẽ được ghi lại trên máy tính như sau</li>
 </ul>
+<pre><code>[INFO] BOOTUP...
+[INFO] SDK: 2.0.0(656edbf)
+[INFO] Chip ID: 000A8B7A
+[INFO] Memory info:
+data  : 0x3ffe8000 ~ 0x3ffe880c, len: 2060
+rodata: 0x3ffe8810 ~ 0x3ffe9ff0, len: 6112
+bss   : 0x3ffe9ff0 ~ 0x3fff0858, len: 26728
+heap  : 0x3fff0858 ~ 0x3fffc000, len: 47016
+[INFO] -------------------------------------------
+[INFO] Build time: 2016-Th11-18_16:55:45_ICT
+[INFO] -------------------------------------------
+bcn 0
+del if1
+usl
+mode : sta(60:01:94:0a:8b:7a)
+add if0
+[KEY] Short press, run smartconfig
+SC version: V2.5.4
+[SC] Started
+scandone
+scandone
+[SC] SC_STATUS_FIND_CHANNEL
+00:16:01:04:6d:d2: 599
+00:16:01:04:6d:d2: 598
+00:16:01:04:6d:d2: 597
+00:16:01:04:6d:d2: 596
+T|once 1 84
+00:16:01:04:6d:d2: 599
+00:16:01:04:6d:d2: 598
+00:16:01:04:6d:d2: 597
+00:16:01:04:6d:d2: 596
+T|once 2 84
+iBssid 00:16:01:04:6d:
+buf 00:16:01:04:6d:
+save, rssi:-81 00:16:01:04:6d:d2:
+iCh lock
+00:16:01:04:6d:d2: 598
+00:16:01:04:6d:d2: 597
+rigtt,rssi:-81 00:16:01:04:6d:d2:
+
+TYPE: ESPTOUCH
+T|sniffer on ch:2
+T|AP MAC: 00 16 01 04 6d d2
+T|Head Len : 84
+[SC] SC_STATUS_GETTING_SSID_PSWD
+[SC] SC_TYPE:SC_TYPE_ESPTOUCH
+T|SYNC STATUS
+xxxxx
+T|pswd: mat_khau_wifi
+T|ssid: ten_wifi
+T|bssid: 00 16 01 04 6d d2 
+[SC] SC_STATUS_LINK
+scandone
+xxxxx
+connected with ten_wifi, channel 2
+dhcp client start...
+pm open,type:2 0
+ip:192.168.1.xx,mask:255.255.255.0,gw:192.168.1.1
+[SC] SC_STATUS_LINK_OVER
+[SC] Phone ip: 192.168.1.xx
+free heap:39984
+
+</code></pre>
               
             </div>
           </div>
