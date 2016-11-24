@@ -92,6 +92,8 @@ pages:
         - SSDP:                       arduino/libraries/ssdp.md
         - DNS Server:                 arduino/libraries/dns-server.md
         - Servo:                      arduino/libraries/servo.md
+        - WiFiManager:                arduino/libraries/wifi-manager.md
+        - Smartconfig & WPS:          arduino/libraries/smartconfig-wps.md
         - Thư viện hữu ích khác:      arduino/libraries/others.md
       - Filesystem:
         - Flash Layout:               arduino/filesystem/flash-layout.md
