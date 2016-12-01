@@ -1,18 +1,51 @@
-# Sử dụng thư viện WiFiManager
+#Thư viện WiFiManager
 
 Thư viện ManagerWifi hỗ trợ ESP8266 mở 1 webserver + 1 access point(AP), để user có thể kết nối vào và cấu hình wifi password.
 
-#Cách tải thư viên ManagerWifi:
+Access point là một điểm truy cập mạng không dây,có khả năng truyền và nhận dữ liệu thông qua kết nốt Wifi.
+
+#Nguyên lý làm việc của thư viên Wifi manarger
+
+Khi khởi động,ESP sẽ ở chế độ Station(điểm thu sóng) và thử kết nối với các Access Point(điểm phát sóng) đã lưu trước đó.
+
+Nếu không thể kết nối,ESP sẽ chuyển qua chế độ AP Và tạo một Webserve.Bạn có thể kết nối vào AP vừa được tạo và cấu hình Wifi cho ESP của bạn.
+
+##Ví dụ Auto connect ứng dụng thư viện Wifimanager sử dụng board iot-Wifi-Uno và phần mềm Arduino IDE
+
+##*Chuẩn bị
+Boar iot-wifi-uno. [https://iotmaker.vn/](https://iotmaker.vn/).
+
+Arduino IDE 1.6.8, tải từ [Arduino website](https://www.arduino.cc/en/Main/OldSoftwareReleases#previous).
+
+##*Hướng dẫn
+
+
+###1.Tải thư viên ManagerWifi:
 
 Mở ARDUINO vào Sketch -> Include Library -> Manager Libraries.
-Tìm kiếm thư viện esp8266wifi và bấm install.
+Tìm kiếm thư viện WIFIManager và bấm install.
 
 ![Managerwifi](../images/manager4.png)
 
-#Thư viện Manager làm việc như thế nào?
-##Ví dụ Auto connect sử dụng thư viện Managerwifi và ESP8266MOD AI THINKER.
+###2.Cài đặt board Generic ESP8266 MOdule:
 
-Sau khi cài đặt thư viện bạn sử dụng ARDUINO IDE nạp chương trình sau vào AI THINKER:
+Vào File->Preferences.
+
+Trong ô Additional Boards Manager URLS paste Link sau:
+```cpp
+http://arduino.esp8266.com/stable/package_esp8266com_index.json
+```
+![Managerwifi](../images/manager2.png)
+
+Vào Tool->Board->Board Manager.Tìm và cài đặt như hình 
+Sau đó trong Tool -> Board tìm và chọn Board Generic ESP8266 Module
+
+![Managerwifi](../images/manager3.png)
+
+
+###3.Nạp code cho iot-wifi-uno
+
+Sau khi cài đặt thư viện và Board,tiến hành nạp chương trình sau vào Board iot-wifi-uno.
 ```cpp
 #include <ESP8266WiFi.h>          //https://github.com/esp8266/Arduino
 
@@ -34,9 +67,9 @@ void loop() {
     
 }
 ```
-Khi khởi động,ESP sẽ ở chế độ Station(thu sóng) và cố để kết nối với các Access Point(điểm phát sóng) đã lưu trước đó.
+###4.Kết nối với AP và cấu hình wifi:
 
-Nếu không thể kết nối,ESP sẽ chuyển sang chế độ Asccess Point và thiết lập 1 DNS và WebServer (IP mặc định là: 192.168.4.1).Bạn kêt nối với AP này:
+Sau khi reset Board,trong Wifi của bạn sẽ xuất hiện 1 AP mới.Hãy chọn và kết nối như trong hình.
 
 ![Managerwifi](../images/manager6.png)
 
@@ -56,21 +89,11 @@ Sử dụng thiết bị có thể kết nối wifi kết nối vào Access Poin
 Chọn Configure WIFI sau đó chọn tên Wifi bạn muốn ESP truy cập,nhập mật khẩu vào bấm SAVE.
 ![Managerwifi](../images/manager8.png)
 
+Sau đó,ESP sẽ tự động kết nối vào mạng Wifi bạn vừa chọn.
+
 Như vậy ESP của bạn đã được kết nối với Wifi.
 
-Để chắc chắn,có thể kiểm tra sử kết nối sử dụng phần mềm `wireless network watcher`
+Để chắc chắn,có thể kiểm tra sử kết nối sử dụng phần mềm [`Wireless network watcher](http://taimienphi.vn/download-wireless-network-watcher-8128)
 
 ![Managerwifi](../images/manager9.png)
-
-
-
-
-
-
-
-
-
-
-
-
 
