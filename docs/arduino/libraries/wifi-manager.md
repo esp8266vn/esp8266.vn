@@ -1,19 +1,19 @@
 #Thư viện WiFiManager
 
-Thư viện WIFIManager hỗ trợ ESP8266 mở 1 Webserver + 1 Access Point(AP), để user có thể kết nối vào và cấu hình wifi password.
+Thư viện WIFIManager hỗ trợ ESP8266 mở 1 Webserver + 1 Access Point(AP), để user có thể kết nối vào và cấu hình Wifi password.
 
 Access Point là một điểm truy cập mạng không dây,có khả năng truyền và nhận dữ liệu thông qua kết nối Wifi.
 
-#Nguyên lý làm việc của thư viên WIFIManarger
+#Nguyên lý làm việc của thư viên WIFIManager
 
 Khi khởi động ,ESP sẽ ở chế độ Station(điểm thu sóng) và thử kết nối với các Access Point(điểm phát sóng) đã lưu trước đó.
 
-Nếu không thể kết nối,ESP sẽ chuyển qua chế độ AP và tạo một Webserve . Bạn có thể kết nối vào AP vừa được tạo và cấu hình Wifi cho ESP của bạn.
+Nếu không thể kết nối,ESP sẽ chuyển qua chế độ AP và tạo một Webserver . Bạn có thể kết nối vào AP vừa được tạo và cấu hình Wifi cho ESP của bạn.
 
 ##Ví dụ ứng dụng thư viện WIFIManager sử dụng board iot-Wifi-uno
 
 ##Chuẩn bị
-Boar iot-wifi-uno. [https://iotmaker.vn/](https://iotmaker.vn/).
+Board iot-wifi-uno. [https://github.com/iotmakervn/iot-wifi-uno-hw](https://github.com/iotmakervn/iot-wifi-uno-hw).
 
 Arduino IDE 1.6.8, tải từ [Arduino website](https://www.arduino.cc/en/Main/OldSoftwareReleases#previous).
 
@@ -37,8 +37,7 @@ http://arduino.esp8266.com/stable/package_esp8266com_index.json
 ```
 ![Managerwifi](../images/manager2.png)
 
-Vào Tool->Board->Board Manager . Tìm và cài đặt như hình 
-Sau đó trong Tool -> Board tìm và chọn Board Generic ESP8266 Module
+Vào Tool->Board->Board Manager . Tìm và cài đặt như hình sau đó trong Tool -> Board tìm và chọn Board Generic ESP8266 Module
 
 ![Managerwifi](../images/manager3.png)
 
@@ -78,10 +77,11 @@ có thể cài đặt password cho AP bằng cách thay lệnh:
 Bằng lệnh
 
 ``` cpp wifiManager.autoConnect("AutoConnectAP", "password")```
+
 (password là mật khẩu bạn đặt cho AP)
 
 
-Sử dụng thiết bị có thể kết nối wifi kết nối vào AP vừa được tạo.Bằng cách trên cửa sổ trình duyệt gõ địa chỉ ```192.168.4.1```.Sẽ hiện ra một cửa sổ cấu hình.
+Sử dụng thiết bị có thể kết nối wifi kết nối vào AP vừa được tạo bằng cách trên cửa sổ trình duyệt gõ địa chỉ ```192.168.4.1```.Sẽ hiện ra một cửa sổ cấu hình.
 
 ![Managerwifi](../images/manager7.png)
 
