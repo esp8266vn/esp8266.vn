@@ -1,33 +1,33 @@
 #Thư viện WiFiManager
 
-Thư viện ManagerWifi hỗ trợ ESP8266 mở 1 webserver + 1 access point(AP), để user có thể kết nối vào và cấu hình wifi password.
+Thư viện WIFIManager hỗ trợ ESP8266 mở 1 Webserver + 1 Access Point(AP), để user có thể kết nối vào và cấu hình wifi password.
 
-Access point là một điểm truy cập mạng không dây,có khả năng truyền và nhận dữ liệu thông qua kết nốt Wifi.
+Access Point là một điểm truy cập mạng không dây,có khả năng truyền và nhận dữ liệu thông qua kết nối Wifi.
 
-#Nguyên lý làm việc của thư viên Wifi manarger
+#Nguyên lý làm việc của thư viên WIFIManarger
 
-Khi khởi động,ESP sẽ ở chế độ Station(điểm thu sóng) và thử kết nối với các Access Point(điểm phát sóng) đã lưu trước đó.
+Khi khởi động ,ESP sẽ ở chế độ Station(điểm thu sóng) và thử kết nối với các Access Point(điểm phát sóng) đã lưu trước đó.
 
-Nếu không thể kết nối,ESP sẽ chuyển qua chế độ AP Và tạo một Webserve.Bạn có thể kết nối vào AP vừa được tạo và cấu hình Wifi cho ESP của bạn.
+Nếu không thể kết nối,ESP sẽ chuyển qua chế độ AP và tạo một Webserve . Bạn có thể kết nối vào AP vừa được tạo và cấu hình Wifi cho ESP của bạn.
 
-##Ví dụ Auto connect ứng dụng thư viện Wifimanager sử dụng board iot-Wifi-Uno và phần mềm Arduino IDE
+##Ví dụ ứng dụng thư viện WIFIManager sử dụng board iot-Wifi-uno
 
-##*Chuẩn bị
+##Chuẩn bị
 Boar iot-wifi-uno. [https://iotmaker.vn/](https://iotmaker.vn/).
 
 Arduino IDE 1.6.8, tải từ [Arduino website](https://www.arduino.cc/en/Main/OldSoftwareReleases#previous).
 
-##*Hướng dẫn
+##Hướng dẫn
 
 
-###1.Tải thư viên ManagerWifi:
+###1.Tải thư viện WIFIManager:
 
-Mở ARDUINO vào Sketch -> Include Library -> Manager Libraries.
-Tìm kiếm thư viện WIFIManager và bấm install.
+Mở  Arduino vào Sketch -> Include Library -> Manager Libraries.
+Tìm kiếm thư viện WIFIManager và bấm Install.
 
 ![Managerwifi](../images/manager4.png)
 
-###2.Cài đặt board Generic ESP8266 MOdule:
+###2.Cài đặt board Generic ESP8266 Module:
 
 Vào File->Preferences.
 
@@ -37,22 +37,19 @@ http://arduino.esp8266.com/stable/package_esp8266com_index.json
 ```
 ![Managerwifi](../images/manager2.png)
 
-Vào Tool->Board->Board Manager.Tìm và cài đặt như hình 
+Vào Tool->Board->Board Manager . Tìm và cài đặt như hình 
 Sau đó trong Tool -> Board tìm và chọn Board Generic ESP8266 Module
 
 ![Managerwifi](../images/manager3.png)
 
+###3.Nạp code cho iot-wifi-uno:
 
-###3.Nạp code cho iot-wifi-uno
-
-Sau khi cài đặt thư viện và Board,tiến hành nạp chương trình sau vào Board iot-wifi-uno.
+Sau khi cài đặt thư viện và Board,tiến hành nạp chương trình sau vào Board iot-wifi-uno bằng Arduino IDE
 ```cpp
-#include <ESP8266WiFi.h>          //https://github.com/esp8266/Arduino
-
-//needed for library
+#include <ESP8266WiFi.h>  
 #include <DNSServer.h>
 #include <ESP8266WebServer.h>
-#include <WiFiManager.h>         //https://github.com/tzapu/WiFiManager
+#include <WiFiManager.h>         
 
 
 void setup() {
@@ -69,7 +66,7 @@ void loop() {
 ```
 ###4.Kết nối với AP và cấu hình wifi:
 
-Sau khi reset Board,trong Wifi của bạn sẽ xuất hiện 1 AP mới.Hãy chọn và kết nối như trong hình.
+Sau khi reset Board,trong Wifi của bạn sẽ xuất hiện 1 AP mới . Hãy chọn và kết nối như trong hình.
 
 ![Managerwifi](../images/manager6.png)
 
@@ -84,16 +81,14 @@ Bằng lệnh
 (password là mật khẩu bạn đặt cho AP)
 
 
-Sử dụng thiết bị có thể kết nối wifi kết nối vào Access Point vừa được tạo.Bằng cách trên cửa sổ trình duyệt gõ địa chỉ ```192.168.4.1```.Sẽ hiện ra một cửa sổ cấu hình.
-![Managerwifi](../images/manager7.png)
-Chọn Configure WIFI sau đó chọn tên Wifi bạn muốn ESP truy cập,nhập mật khẩu vào bấm SAVE.
-![Managerwifi](../images/manager8.png)
+Sử dụng thiết bị có thể kết nối wifi kết nối vào AP vừa được tạo.Bằng cách trên cửa sổ trình duyệt gõ địa chỉ ```192.168.4.1```.Sẽ hiện ra một cửa sổ cấu hình.
 
-Sau đó,ESP sẽ tự động kết nối vào mạng Wifi bạn vừa chọn.
+![Managerwifi](../images/manager7.png)
+
+Chọn Configure WIFI sau đó chọn tên Wifi bạn muốn ESP truy cập,nhập mật khẩu vào bấm SAVE.
+
+![Managerwifi](../images/manager8.jpeg)
+
+Nếu bạn nhập mật khẩu đúng ESP sẽ tự động kết nối vào mạng Wifi bạn vừa chọn.
 
 Như vậy ESP của bạn đã được kết nối với Wifi.
-
-Để chắc chắn,có thể kiểm tra sử kết nối sử dụng phần mềm [`Wireless network watcher](http://taimienphi.vn/download-wireless-network-watcher-8128)
-
-![Managerwifi](../images/manager9.png)
-
