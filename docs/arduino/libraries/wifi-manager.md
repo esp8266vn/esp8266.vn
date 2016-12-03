@@ -13,7 +13,9 @@ Nếu không thể kết nối,ESP sẽ chuyển qua chế độ AP và tạo m�
 ##Ví dụ ứng dụng thư viện WIFIManager sử dụng board iot-Wifi-uno
 
 ##Chuẩn bị
+
 Board iot-wifi-uno. [https://github.com/iotmakervn/iot-wifi-uno-hw](https://github.com/iotmakervn/iot-wifi-uno-hw).
+
 
 Arduino IDE 1.6.8, tải từ [Arduino website](https://www.arduino.cc/en/Main/OldSoftwareReleases#previous).
 
@@ -81,7 +83,7 @@ Bằng lệnh
 (password là mật khẩu bạn đặt cho AP)
 
 
-Sử dụng thiết bị có thể kết nối wifi kết nối vào AP vừa được tạo bằng cách trên cửa sổ trình duyệt gõ địa chỉ ```192.168.4.1```.Sẽ hiện ra một cửa sổ cấu hình.
+Sử dụng thiết bị có thể kết nối wifi kết nối vào AP vừa được tạo.Bằng cách trên cửa sổ trình duyệt gõ địa chỉ ```192.168.4.1```.Sẽ hiện ra một cửa sổ cấu hình.
 
 ![Managerwifi](../images/manager7.png)
 

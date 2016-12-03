@@ -106,6 +106,7 @@ pages:
         - Danh sách:                  arduino/projects/list.md
         - Smartconfig & react-native: arduino/projects/smartconfig-react-native.md
         - Smart Plug & Slack Bot:     arduino/projects/smartplug-slack.md
+        - Đo nhiệt độ & độ ẩm (Thingspeak): arduino/projects/thingspeak.md
     - ESP8266 Micropython:
       - Giới thiệu:                   micropython/micropython.md
       - Cơ bản:
