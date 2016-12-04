@@ -673,14 +673,14 @@
             <div class="section">
               
                 <h1 id="thu-vien-wifimanager">Thư viện WiFiManager<a class="headerlink" href="#thu-vien-wifimanager" title="Permanent link">#</a></h1>
-<p>Thư viện WIFIManager hỗ trợ ESP8266 mở 1 Webserver + 1 Access Point(AP), để user có thể kết nối vào và cấu hình wifi password.</p>
+<p>Thư viện WIFIManager hỗ trợ ESP8266 mở 1 Webserver + 1 Access Point(AP), để user có thể kết nối vào và cấu hình Wifi password.</p>
 <p>Access Point là một điểm truy cập mạng không dây,có khả năng truyền và nhận dữ liệu thông qua kết nối Wifi.</p>
-<h1 id="nguyen-ly-lam-viec-cua-thu-vien-wifimanarger">Nguyên lý làm việc của thư viên WIFIManarger<a class="headerlink" href="#nguyen-ly-lam-viec-cua-thu-vien-wifimanarger" title="Permanent link">#</a></h1>
+<h1 id="nguyen-ly-lam-viec-cua-thu-vien-wifimanager">Nguyên lý làm việc của thư viên WIFIManager<a class="headerlink" href="#nguyen-ly-lam-viec-cua-thu-vien-wifimanager" title="Permanent link">#</a></h1>
 <p>Khi khởi động ,ESP sẽ ở chế độ Station(điểm thu sóng) và thử kết nối với các Access Point(điểm phát sóng) đã lưu trước đó.</p>
-<p>Nếu không thể kết nối,ESP sẽ chuyển qua chế độ AP và tạo một Webserve . Bạn có thể kết nối vào AP vừa được tạo và cấu hình Wifi cho ESP của bạn.</p>
+<p>Nếu không thể kết nối,ESP sẽ chuyển qua chế độ AP và tạo một Webserver . Bạn có thể kết nối vào AP vừa được tạo và cấu hình Wifi cho ESP của bạn.</p>
 <h2 id="vi-du-ung-dung-thu-vien-wifimanager-su-dung-board-iot-wifi-uno">Ví dụ ứng dụng thư viện WIFIManager sử dụng board iot-Wifi-uno<a class="headerlink" href="#vi-du-ung-dung-thu-vien-wifimanager-su-dung-board-iot-wifi-uno" title="Permanent link">#</a></h2>
 <h2 id="chuan-bi">Chuẩn bị<a class="headerlink" href="#chuan-bi" title="Permanent link">#</a></h2>
-<p>Boar iot-wifi-uno. <a href="https://iotmaker.vn/">https://iotmaker.vn/</a>.</p>
+<p>Board iot-wifi-uno. <a href="https://github.com/iotmakervn/iot-wifi-uno-hw">https://github.com/iotmakervn/iot-wifi-uno-hw</a>.</p>
 <p>Arduino IDE 1.6.8, tải từ <a href="https://www.arduino.cc/en/Main/OldSoftwareReleases#previous">Arduino website</a>.</p>
 <h2 id="huong-dan">Hướng dẫn<a class="headerlink" href="#huong-dan" title="Permanent link">#</a></h2>
 <h3 id="1tai-thu-vien-wifimanager">1.Tải thư viện WIFIManager:<a class="headerlink" href="#1tai-thu-vien-wifimanager" title="Permanent link">#</a></h3>
@@ -694,8 +694,7 @@ Tìm kiếm thư viện WIFIManager và bấm Install.</p>
 </code></pre>
 
 <p><img alt="Managerwifi" src="../../images/manager2.png" /></p>
-<p>Vào Tool-&gt;Board-&gt;Board Manager . Tìm và cài đặt như hình 
-Sau đó trong Tool -&gt; Board tìm và chọn Board Generic ESP8266 Module</p>
+<p>Vào Tool-&gt;Board-&gt;Board Manager . Tìm và cài đặt như hình sau đó trong Tool -&gt; Board tìm và chọn Board Generic ESP8266 Module</p>
 <p><img alt="Managerwifi" src="../../images/manager3.png" /></p>
 <h3 id="3nap-code-cho-iot-wifi-uno">3.Nạp code cho iot-wifi-uno:<a class="headerlink" href="#3nap-code-cho-iot-wifi-uno" title="Permanent link">#</a></h3>
 <p>Sau khi cài đặt thư viện và Board,tiến hành nạp chương trình sau vào Board iot-wifi-uno bằng Arduino IDE</p>
@@ -725,8 +724,8 @@ void loop() {
 có thể cài đặt password cho AP bằng cách thay lệnh:</p>
 <p><code>cpp wifiManager.autoConnect("AutoConnectAP")</code></p>
 <p>Bằng lệnh</p>
-<p><code>cpp wifiManager.autoConnect("AutoConnectAP", "password")</code>
-(password là mật khẩu bạn đặt cho AP)</p>
+<p><code>cpp wifiManager.autoConnect("AutoConnectAP", "password")</code></p>
+<p>(password là mật khẩu bạn đặt cho AP)</p>
 <p>Sử dụng thiết bị có thể kết nối wifi kết nối vào AP vừa được tạo.Bằng cách trên cửa sổ trình duyệt gõ địa chỉ <code>192.168.4.1</code>.Sẽ hiện ra một cửa sổ cấu hình.</p>
 <p><img alt="Managerwifi" src="../../images/manager7.png" /></p>
 <p>Chọn Configure WIFI sau đó chọn tên Wifi bạn muốn ESP truy cập,nhập mật khẩu vào bấm SAVE.</p>
