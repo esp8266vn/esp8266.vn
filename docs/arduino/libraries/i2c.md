@@ -4,7 +4,7 @@ Thư viện `Wire` hiện tại chỉ hổ trợ chế độ master lên đến 
 #### Sau đây mình sẽ demo một số ví dụ dùng thư viện i2c để hiển thị lên GLCD (LCD OLED SSD1306)
 ### Trước hết chúng ta sẽ tiến hành cài đặt thư viện lên Arduino IDE
 
-- ####Thư viện `Wire.h`.
+- #### Thư viện `Wire.h`.
  Thư viện này sẽ có sẵn trong Arduino IDE. Khi sử dụng ta chỉ cần include nó ra là được. Mình sẽ giới thiệu thêm cho các bạn một số hàm của nó:
 
 
@@ -32,12 +32,12 @@ Ghi dữ liệu lên thiết bị "Slave", được gọi giữa beginTransmissi
 Được sử dụng bởi thiết bị "Master" để yêu cầu dữ liệu từ thiết bị "Slave". 
 {address}: là địa chỉ của thiết bị "Slave". (quantity): số lượng bytes yêu cầu.
 
-- ####Thư viện BRZO I2c. 
+- #### Thư viện BRZO I2c. 
 
 Đây là thư viện hỗ trợ kết nối hiển thị trên OLED. Nó được xây dựng cho thư viện`Wire.h`.
 Thư viện này được viết cho cả hai loại GLCD là OLED SSD1306 và SH1106, ở đây mình sử dụng SSD1360. Bạn có thể tải về và  tham khảo một số hàm của nó ở địa chỉ [http://github.com/squix78/esp8266-oled-ssd1306](http://github.com/squix78/esp8266-oled-ssd1306). 
 
-###Việc cài đặt thư viện cơ bản đã xong, bây giờ mình sẽ giới thiệu cho các bạn một chút về lắp phần cứng
+### Việc cài đặt thư viện cơ bản đã xong, bây giờ mình sẽ giới thiệu cho các bạn một chút về lắp phần cứng
 
 ở đây mình sử dụng bo NodeMCU 0.9 (ESP8266 v12).
 ![Pin Functions](../images/NodeMCU.jpg) 
