@@ -682,6 +682,32 @@
               
                 <h1 id="smartconfig">Smartconfig<a class="headerlink" href="#smartconfig" title="Permanent link">#</a></h1>
 <h1 id="wps">WPS<a class="headerlink" href="#wps" title="Permanent link">#</a></h1>
+<h1 id="demo-mot-vi-du-ung-dung-smartconfig-trong-cau-hinh-thong-tin-thiet-bi">Demo một ví dụ ứng dụng smartconfig trong cấu hình thông tin thiết bị.<a class="headerlink" href="#demo-mot-vi-du-ung-dung-smartconfig-trong-cau-hinh-thong-tin-thiet-bi" title="Permanent link">#</a></h1>
+<p>Ta sẽ viết một chương trình cho phép cấu hình thông tin (username, password) cho module Esp8266 sau khi nhấn nút Flash thông qua phần mềm Esp8266 Smartconfig trên Smartphone Android.</p>
+<p>&ndash; Việc cần làm đầu tiên là bạn kiểm tra xem trong thư viện Arduino IDE đã có thư viện WiFi Manager và ESP8266WiFi chưa. Nếu chưa có thì bạn có thể include nó một cách dễ dàng từ Sketch-&gt; include library -&gt; manager library, gõ tên các thư viện này và tiến hành cài đặt. </p>
+<p>&ndash; Cài đặt phần mềm Esp8266: Nếu bạn có điện thoại Android bạn có thể vào CH Play để tải.</p>
+<p>&ndash; Viết code chương trình cho phép smartconfig sau khi nhấn nút flash.</p>
+<p>```</p>
+<pre><code>#include &lt;ESP8266WiFi.h&gt;;
+const int buttonPin = D3;
+const int pinled = D0;
+int buttonState = 0;
+
+void setup() {
+    pinMode(buttonPin, INPUT);
+    pinmode(pinled, OUTPUT)
+    WiFi.mode(WIFI_AP_STA);
+    delay(500);
+}
+
+void loop() {
+    buttonState = digitalRead(buttonPin);
+    if (buttonState == LOW) {
+    digitalWrite(pinled,HIGH)
+    WiFi.beginSmartConfig();
+    }
+}
+</code></pre>
               
             </div>
           </div>

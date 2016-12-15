@@ -680,7 +680,179 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="thingspeak">Thingspeak<a class="headerlink" href="#thingspeak" title="Permanent link">#</a></h1>
+                <h1 id="o-nhiet-o-o-am-hien-thi-len-thingspeak-voi-http">Đo nhiệt độ độ ẩm hiển thị lên ThingSpeak với HTTP<a class="headerlink" href="#o-nhiet-o-o-am-hien-thi-len-thingspeak-voi-http" title="Permanent link">#</a></h1>
+<p>Đặt vấn đề: Trong thời đại kỷ nguyên kết nối như hiện nay thì việc đọc dữ liệu từ các thiết bị (cảm biến,&hellip;) gửi lên các serve là điều tối cơ bản mà một nhà phát triền cần có. Bài viết này sẽ đề cập tới vấn đề nói trên, đó là đọc và gửi các dữ liệu từ cảm biến DHT22 bằng board WiFi Uno lên Thingspeak với HTTP.</p>
+<h3 id="chuan-bi-cac-phan-cung-can-thiet">Chuẩn bị các phần cứng cần thiết<a class="headerlink" href="#chuan-bi-cac-phan-cung-can-thiet" title="Permanent link">#</a></h3>
+<ul>
+<li>Board WiFi Uno.</li>
+<li>LCD OLED.</li>
+<li>DHT22 sensor.</li>
+</ul>
+<p><img src="../images-thingspeak/connect-part.png" alt="" height="500" width="500"></p>
+<div class="admonition note">
+<p class="admonition-title">Lưu ý</p>
+<p>Chân chân số 3 của cảm biến có thể nối xưống mass hoặc để vậy không kết nối nó.
+Nếu cần thiết, có thể mắc thêm một điện trở 10k vào chân 1 (VCC) và chân 2 (OUTPUT).</p>
+</div>
+<h3 id="cai-mot-so-thu-vien-can-thiet">Cài một số thư viện cần thiết.<a class="headerlink" href="#cai-mot-so-thu-vien-can-thiet" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p>Thư viện cho DHT 22 :
+<a href="https://github.com/ngoc-emg/DHT-sensor-library">https://github.com/ngoc-emg/DHT-sensor-library</a>.</p>
+</li>
+<li>
+<p>Thư viện cho OLED SSD 1306, tham khảo một bài viết ở:
+<a href="https://github.com/esp8266vn/esp8266.vn/blob/master/docs/arduino/libraries/i2c.md">https://github.com/esp8266vn/esp8266.vn/blob/master/docs/arduino/libraries/i2c.md</a>. Bài viết này có trình bày cách thêm các thư viện cần thiết cũng như các kết nối khá rõ.</p>
+</li>
+<li>
+<p>Về phần WiFi, sử dụng thư viện ESP8266WiFi, bạn có thể tải trực tiếp trên web hoặc vài libraries manager để cập nhật nó.</p>
+</li>
+</ul>
+<h3 id="tao-mot-tai-khoan-tren-thingspeak">Tạo một tài khoản trên ThingSpeak.<a class="headerlink" href="#tao-mot-tai-khoan-tren-thingspeak" title="Permanent link">#</a></h3>
+<p>Có khá nhiều địa chỉ web cho phép theo dõi dữ liệu các cảm biến thông qua Internet như Google, Thingspeak&hellip; ở đây chúng ta sẽ làm trên Thingspeak.
+Bạn tạo một tài khoản Thingspeak, chọn một Chanel, đặt tên và cài đặt cho nó như sau:</p>
+<p><img src="../images-thingspeak/thingspeak.png" alt="-" height="600" width="600"></p>
+<p><img src="../images-thingspeak/thingspeak1.png" alt="-" height="600" width="600"></p>
+<div class="admonition warning">
+<p class="admonition-title"> Chú ý </p>
+<p>Tiếp theo là một phần khá quan trọng. Bạn phải lấy được cho mình một API key, ghi lại nó để sau này dùng cho việc gửi dữ liệu lên Thingspeak.</p>
+</div>
+<p><img src="../images-thingspeak/thingspeak2.png" alt="-" height="600" width="600"> </p>
+<h3 id="code-chuong-trinh">Code chương trình.<a class="headerlink" href="#code-chuong-trinh" title="Permanent link">#</a></h3>
+<p>Trong code bên dưới, cần chú ý thay đổi SSID với password là tên, password một mạng không dây (WiFi) nơi bạn sử dụng. API key là mã đã đề cập với các bạn trong phần trước. Điền nó vào trong code!</p>
+<pre><code>// Declare DHT
+#include &quot;DHT.h&quot;
+#define DHTPIN D2
+#define DHTTYPE DHT22
+DHT dht(DHTPIN, DHTTYPE);
+float t;
+float h;
+float f;
+// Declare Oled LCD
+#include &lt;Wire.h&gt;
+#include &quot;SSD1306.h&quot;
+SSD1306  display(0x3c, D3, D5);
+#define DEMO_DURATION 3000
+typedef void (*Demo)(void);
+int demoMode = 0;
+int counter = 1;
+// Declare WiFi
+#include &lt;ESP8266WiFi.h&gt;
+const char* ssid     = &quot;ZoKa&quot;;
+const char* password = &quot;Dinhmenh@24&quot;;
+const char* host = &quot;api.thingspeak.com&quot;;
+const char* writeAPIKey = &quot;VXYYDIYKV4G5IRY7&quot;;
+/////////////////////////////////////////////////////////////
+void setup() {
+    //Setup DHT
+    Serial.begin(115200);
+    Serial.println(&quot;DHTxx test!&quot;);
+    dht.begin();
+    // Setup Oled LCD
+    display.init();
+    display.flipScreenVertically();
+    // Setup WiFi
+    WiFi.begin(ssid, password);
+    while (WiFi.status() != WL_CONNECTED) {
+        delay(500);
+    }   
+}
+///////////////////////////////////////////////////////////
+void readsensor() {
+    delay(2000);
+    h = dht.readHumidity();
+    t = dht.readTemperature();
+    f = dht.readTemperature(true);  
+}
+/////////////////////////////////////////////////////////////
+void display_temp() {
+    display.setTextAlignment(TEXT_ALIGN_CENTER);
+    display.setFont(ArialMT_Plain_16);
+    display.drawString(64, 16, &quot;Temperature&quot;);
+    display.drawString(64, 32, String(t));
+    display.drawString(95, 32, &quot;*C&quot;);
+}
+////////////////////////////////////////////////////////////
+void display_humi() {
+    display.setTextAlignment(TEXT_ALIGN_CENTER);
+    display.setFont(ArialMT_Plain_16);
+    display.drawString(64, 16, &quot;Humidity&quot;);
+    display.drawString(64, 32, String(h));
+    display.drawString(95, 32, &quot;%&quot;);
+}
+////////////////////////////////////////////////////////////
+void Thingspeak() {
+    WiFiClient client;
+    const int httpPort = 80;
+    if (!client.connect(host, httpPort)) {
+            return;
+    }
+    String url = &quot;/update?key=&quot;;
+    url += writeAPIKey;
+    url += &quot;&amp;field1=&quot;;
+    url += String(t);
+    url += &quot;&amp;field2=&quot;;
+    url += String(h);
+    url += &quot;\r\n&quot;;
+ // Request to the server
+    client.print(String(&quot;GET &quot;) + url + &quot; HTTP/1.1\r\n&quot; +
+               &quot;Host: &quot; + host + &quot;\r\n&quot; +
+               &quot;Connection: close\r\n\r\n&quot;);
+    delay(1000);
+}
+////////////////////////////////////////////////////////////
+Demo demos[] = {display_temp, display_humi};
+int demoLength = (sizeof(demos) / sizeof(Demo));
+long timeSinceLastModeSwitch = 0;
+/////////////////////////////////////////////////////////////
+void loop() {
+    readsensor();
+    display.clear();
+    demos[demoMode]();
+    display.setTextAlignment(TEXT_ALIGN_RIGHT);
+    display.drawString(10, 128, String(millis()));
+    display.display();
+    if (millis() - timeSinceLastModeSwitch &gt; DEMO_DURATION) {
+        demoMode = (demoMode + 1)  % demoLength;
+        imeSinceLastModeSwitch = millis();
+    }
+    counter++;
+    delay(10);
+    Thingspeak();
+}
+</code></pre>
+
+<h3 id="muc-ich-cua-bai-huong-dan-nay">Mục đích của bài hướng dẫn này.<a class="headerlink" href="#muc-ich-cua-bai-huong-dan-nay" title="Permanent link">#</a></h3>
+<p>Sau khi code xong thì hệ hệ thống này sẽ có khả năng:</p>
+<ul>
+<li>
+<p>Đọc được các giá trị của cảm biến.</p>
+</li>
+<li>
+<p>Hiển thị các thông số nhiệt độ lên LCD Oled.</p>
+</li>
+<li>
+<p>Cập nhật các dữ liệu cảm biến lên Web.</p>
+</li>
+</ul>
+<p>Bên dưới là các hình ảnh hoạt động hệ thống !</p>
+<p><img src="../images-thingspeak/demo.jpg" alt="-" height="600" width="600"> </p>
+<p><img src="../images-thingspeak/demo1.jpg" alt="-" height="600" width="600"> </p>
+<p><img src="../images-thingspeak/thingspeak3.png" alt="-" height="600" width="600"> </p>
+<h3 id="mot-so-link-huu-ich">Một số link hữu ích:<a class="headerlink" href="#mot-so-link-huu-ich" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p>Bài viết tham khảo
+<a href="http://www.instructables.com/id/Send-sensor-data-DHT11-BMP180-to-ThingSpeak-with-a/step4/Using-just-the-ESP8266/">http://www.instructables.com/id/Send-sensor-data-DHT11-BMP180-to-ThingSpeak-with-a/step4/Using-just-the-ESP8266/</a></p>
+</li>
+<li>
+<p>Cám ơn tác giả 
+<a href="http://file.ebook777.com/002/Home%20Automation%20With%20the%20ESP8266%20-%20Marco%20Schwartz.pdf">http://file.ebook777.com/002/Home%20Automation%20With%20the%20ESP8266%20-%20Marco%20Schwartz.pdf</a></p>
+</li>
+<li>
+<p>Mua hàng tại IoT Maker Việt Nam <a href="https://iotmaker.vn">https://iotmaker.vn</a></p>
+</li>
+</ul>
               
             </div>
           </div>
