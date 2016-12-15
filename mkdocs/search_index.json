@@ -2206,6 +2206,131 @@
             "title": "Thingspeak"
         },
         {
+            "location": "/arduino/projects/blynkled/",
+            "text": "S\u1eed d\u1ee5ng \u1ee9ng d\u1ee5ng Blynk \u0111i\u1ec1u khi\u1ec3n Led\n#\n\n\nGi\u1edbi thi\u1ec7u v\u1ec1 Blynk\n#\n\n\n\n\nPh\u1ea7n m\u1ec1m Blynk l\u00e0 m\u1ed9t ph\u1ea7n m\u1ec1m \u0111\u01b0\u1ee3c thi\u1ebft k\u1ebf tr\u00ean n\u1ec1n t\u1ea3ng Android v\u00e0 iOS cho ph\u00e9p\n t\u1ef1 t\u1ea1o \u1ee9ng d\u1ee5ng k\u1ebft n\u1ed1i v\u1edbi c\u00e1c board Arduino, Raspberry v\u00e0 c\u00e1c bo m\u1ea1ch kh\u00e1c \u0111\u1ec3 \u0111i\u1ec3u khi\u1ec3n ch\u00fang.\n\n\nBlynk gi\u00fap \u0111i\u1ec1u khi\u1ec3n thi\u1ebft b\u1ecb t\u1eeb xa qua internet, thu th\u1eadp d\u1eef li\u1ec7u c\u1ee7a c\u1ea3m bi\u1ebfn, \u1ea3o h\u00f3a vi\u1ec7c giao ti\u1ebfp v\u00e0 th\u1ef1c hi\u1ec7n nhi\u1ec1u vi\u1ec7c kh\u00e1c.\n\n\nNguy\u00ean l\u00fd ho\u1ea1t \u0111\u1ed9ng\n#\n\n\n\n\nNguy\u00ean l\u00fd l\u00e0m vi\u1ec7c l\u00e0 khi nh\u1ea5n n\u00fat \u0111i\u1ec1u khi\u1ec3n, l\u1ec7nh s\u1ebd \u0111\u01b0\u1ee3c truy\u1ec1n v\u1ec1 server c\u1ee7a Blynk.Sau \u0111\u00f3, Blynk g\u1eedi l\u1ec7nh v\u1ec1 module \u0111i\u1ec1u khi\u1ec3n, module sau khi ch\u1ea1y l\u1ec7nh s\u1ebd g\u1eedi l\u1ea1i k\u1ebft qu\u1ea3 theo quy tr\u00ecnh ng\u01b0\u1ee3c l\u1ea1i t\u1eeb thi\u1ebft b\u1ecb g\u1eedi v\u1ec1 server r\u1ed3i t\u1eeb server g\u1eedi v\u1ec1 \u0111i\u1ec7n tho\u1ea1i.\n\n\nV\u00ed d\u1ee5 s\u1eed d\u1ee5ng Blynk \u0111\u1ec3 \u0111i\u1ec1u khi\u1ec3n Led\n#\n\n\nChu\u1ea9n b\u1ecb:\n#\n\n\n\n\n\n\nBoard ESP8266 NodeMCU\n\n\n\n\n\n\n1 Led + tr\u1edf 10k\n\n\n\n\n\n\nArduino IDE 1.6.8, t\u1ea3i t\u1eeb \nArduino website\n.\n\n\n\n\n\n\nSmartphone androi ho\u1eb7c iOS\n\n\n\n\n\n\nH\u01b0\u1edbng d\u1eabn\n#\n\n\n1.T\u1ea3i \u1ee9ng d\u1ee5ng Blynk\n#\n\n\nT\u1ea3i \u1ee9ng d\u1ee5ng t\u1ea1i trang ch\u1ee7 \u1ee9ng d\u1ee5ng \nhttp://www.blynk.cc/\n. Ho\u1eb7c t\u00ecm v\u00e0 c\u00e0i \u0111\u1eb7t Blynk tr\u00ean Google Play ho\u1eb7c App Store.\n\n\n2.T\u1ea3i th\u01b0 vi\u1ec7n Blynk cho Arduino IDE\n#\n\n\nT\u1ea3i th\u01b0 vi\u1ec7n t\u1ea1i \u0111\u1ecba ch\u1ec9:\nhttps://github.com/blynkkk/blynk-library\n.\nSau khi t\u1ea3i m\u1edf Arduino Ide ->Sketch->Include Library -> Add .zip library v\u00e0 t\u00ecm \u0111\u1ebfn file.zip b\u1ea1n m\u1edbi t\u1ea3i v\u1ec1 ->OK.\n\n\n3.K\u1ebft n\u1ed1i m\u1ea1ch \u0111i\u1ec7n:\n#\n\n\nN\u1ed1i m\u1ea1ch \u0111\u1ecbnh theo s\u01a1 \u0111\u1ed3 sau:\n\n\n\n\n4.T\u1ea1o d\u1ef1 \u00e1n tr\u00ean Blynk:\n#\n\n\n\n\n\n\nL\u00e0m theo h\u01b0\u1edbng d\u1eabn sau:\n#\n\n\n\n\n\n\nNh\u1eadp \u0111\u1ecba ch\u1ec9 E-mail v\u00e0 m\u1eadt kh\u1ea9u \u0111\u1ec3 t\u1ea1o t\u00e0i kho\u1ea3n Blynk\n\n\n\n\nT\u1ea1o 1 Project m\u1edbi\n\n\n\n\nThi\u1ebft l\u1eadp t\u00ean project,Board s\u1eed d\u1ee5ng v\u00e0 ki\u1ec3u k\u1ebft n\u1ed1i ->Create\n\n\n\n\nT\u1ea1o m\u1ed9t n\u00fat nh\u1ea5n\n\n\n\n\n\n\n\n\nTrong \u0111\u00f3:\n\n\n5 : T\u00ean button.\n\n\n6 : Ch\u00e2n truy\u1ec1n nh\u1eadn gi\u1eef li\u1ec7u c\u1ee7a Board.\n\n\n7 : Ch\u1ecdn ki\u1ec3u n\u00fat nh\u1ea5n c\u00f3 nh\u1edb ho\u1eb7c kh\u00f4ng nh\u1edb.\n\n\nX\u00e1c \u0111\u1ecbnh \nAuthToken\n c\u1ee7a Project\n\n\n\n\n\n\n\n\n\n\nNh\u1ea5n v\u00e0o E-mail \u0111\u1ec3 Blynk g\u1eedi AuthToken c\u1ee7a Project v\u00e0o E-mail \u0111\u0103ng k\u00ed t\u00e0i kho\u1ea3n ho\u1eb7c copy AuthToken.\n\n\n5.N\u1ea1p ch\u01b0\u01a1ng tr\u00ecnh\n#\n\n\nM\u1edf Arduino IDE v\u00e0 Upload ch\u01b0\u01a1ng tr\u00ecnh sau:\n\n\n#define BLYNK_PRINT Serial    \n#include <ESP8266WiFi.h>\n#include <BlynkSimpleEsp8266.h>\n\nchar auth[] = \"YourAuthToken\";    //AuthToken v\u1eeba copy b\u00ean Blynk Project\nchar ssid[] = \"YourNetworkName\";  //T\u00ean wifi mu\u1ed1n truy c\u1eadp\nchar pass[] = \"YourPassword\";     //M\u1eadt kh\u1ea9u(N\u1ebfu wifi kh\u00f4ng c\u00f3 m\u1eadt kh\u1ea9u th\u00ec \u0111\u1ec3 \"\" )\n\nvoid setup()\n{\n  Serial.begin(9600);\n  Blynk.begin(auth, ssid, pass);\n}\n\nvoid loop()\n{\n  Blynk.run();\n}\n\n\n\n\n6.\u0110i\u1ec3u khi\u1ec3n b\u1eadt t\u1eaft led b\u1eb1ng Blynk:\n#\n\n\nM\u1edf Project Led trong Blynk.B\u1ea5m n\u00fat Play v\u00e0 b\u1eadt t\u1eaft n\u00fat nh\u1ea5n \u0111\u1ec3 b\u1eadt t\u1eaft led.",
+            "title": "\u1ee8ng d\u1ee5ng Blynk \u0111i\u1ec1u khi\u1ec3n Led"
+        },
+        {
+            "location": "/arduino/projects/blynkled/#su-dung-ung-dung-blynk-ieu-khien-led",
+            "text": "",
+            "title": "S\u1eed d\u1ee5ng \u1ee9ng d\u1ee5ng Blynk \u0111i\u1ec1u khi\u1ec3n Led"
+        },
+        {
+            "location": "/arduino/projects/blynkled/#gioi-thieu-ve-blynk",
+            "text": "Ph\u1ea7n m\u1ec1m Blynk l\u00e0 m\u1ed9t ph\u1ea7n m\u1ec1m \u0111\u01b0\u1ee3c thi\u1ebft k\u1ebf tr\u00ean n\u1ec1n t\u1ea3ng Android v\u00e0 iOS cho ph\u00e9p\n t\u1ef1 t\u1ea1o \u1ee9ng d\u1ee5ng k\u1ebft n\u1ed1i v\u1edbi c\u00e1c board Arduino, Raspberry v\u00e0 c\u00e1c bo m\u1ea1ch kh\u00e1c \u0111\u1ec3 \u0111i\u1ec3u khi\u1ec3n ch\u00fang.  Blynk gi\u00fap \u0111i\u1ec1u khi\u1ec3n thi\u1ebft b\u1ecb t\u1eeb xa qua internet, thu th\u1eadp d\u1eef li\u1ec7u c\u1ee7a c\u1ea3m bi\u1ebfn, \u1ea3o h\u00f3a vi\u1ec7c giao ti\u1ebfp v\u00e0 th\u1ef1c hi\u1ec7n nhi\u1ec1u vi\u1ec7c kh\u00e1c.",
+            "title": "Gi\u1edbi thi\u1ec7u v\u1ec1 Blynk"
+        },
+        {
+            "location": "/arduino/projects/blynkled/#nguyen-ly-hoat-ong",
+            "text": "Nguy\u00ean l\u00fd l\u00e0m vi\u1ec7c l\u00e0 khi nh\u1ea5n n\u00fat \u0111i\u1ec1u khi\u1ec3n, l\u1ec7nh s\u1ebd \u0111\u01b0\u1ee3c truy\u1ec1n v\u1ec1 server c\u1ee7a Blynk.Sau \u0111\u00f3, Blynk g\u1eedi l\u1ec7nh v\u1ec1 module \u0111i\u1ec1u khi\u1ec3n, module sau khi ch\u1ea1y l\u1ec7nh s\u1ebd g\u1eedi l\u1ea1i k\u1ebft qu\u1ea3 theo quy tr\u00ecnh ng\u01b0\u1ee3c l\u1ea1i t\u1eeb thi\u1ebft b\u1ecb g\u1eedi v\u1ec1 server r\u1ed3i t\u1eeb server g\u1eedi v\u1ec1 \u0111i\u1ec7n tho\u1ea1i.",
+            "title": "Nguy\u00ean l\u00fd ho\u1ea1t \u0111\u1ed9ng"
+        },
+        {
+            "location": "/arduino/projects/blynkled/#vi-du-su-dung-blynk-e-ieu-khien-led",
+            "text": "",
+            "title": "V\u00ed d\u1ee5 s\u1eed d\u1ee5ng Blynk \u0111\u1ec3 \u0111i\u1ec1u khi\u1ec3n Led"
+        },
+        {
+            "location": "/arduino/projects/blynkled/#chuan-bi",
+            "text": "Board ESP8266 NodeMCU    1 Led + tr\u1edf 10k    Arduino IDE 1.6.8, t\u1ea3i t\u1eeb  Arduino website .    Smartphone androi ho\u1eb7c iOS",
+            "title": "Chu\u1ea9n b\u1ecb:"
+        },
+        {
+            "location": "/arduino/projects/blynkled/#huong-dan",
+            "text": "",
+            "title": "H\u01b0\u1edbng d\u1eabn"
+        },
+        {
+            "location": "/arduino/projects/blynkled/#1tai-ung-dung-blynk",
+            "text": "T\u1ea3i \u1ee9ng d\u1ee5ng t\u1ea1i trang ch\u1ee7 \u1ee9ng d\u1ee5ng  http://www.blynk.cc/ . Ho\u1eb7c t\u00ecm v\u00e0 c\u00e0i \u0111\u1eb7t Blynk tr\u00ean Google Play ho\u1eb7c App Store.",
+            "title": "1.T\u1ea3i \u1ee9ng d\u1ee5ng Blynk"
+        },
+        {
+            "location": "/arduino/projects/blynkled/#2tai-thu-vien-blynk-cho-arduino-ide",
+            "text": "T\u1ea3i th\u01b0 vi\u1ec7n t\u1ea1i \u0111\u1ecba ch\u1ec9: https://github.com/blynkkk/blynk-library .\nSau khi t\u1ea3i m\u1edf Arduino Ide ->Sketch->Include Library -> Add .zip library v\u00e0 t\u00ecm \u0111\u1ebfn file.zip b\u1ea1n m\u1edbi t\u1ea3i v\u1ec1 ->OK.",
+            "title": "2.T\u1ea3i th\u01b0 vi\u1ec7n Blynk cho Arduino IDE"
+        },
+        {
+            "location": "/arduino/projects/blynkled/#3ket-noi-mach-ien",
+            "text": "N\u1ed1i m\u1ea1ch \u0111\u1ecbnh theo s\u01a1 \u0111\u1ed3 sau:",
+            "title": "3.K\u1ebft n\u1ed1i m\u1ea1ch \u0111i\u1ec7n:"
+        },
+        {
+            "location": "/arduino/projects/blynkled/#4tao-du-an-tren-blynk",
+            "text": "",
+            "title": "4.T\u1ea1o d\u1ef1 \u00e1n tr\u00ean Blynk:"
+        },
+        {
+            "location": "/arduino/projects/blynkled/#lam-theo-huong-dan-sau",
+            "text": "Nh\u1eadp \u0111\u1ecba ch\u1ec9 E-mail v\u00e0 m\u1eadt kh\u1ea9u \u0111\u1ec3 t\u1ea1o t\u00e0i kho\u1ea3n Blynk   T\u1ea1o 1 Project m\u1edbi   Thi\u1ebft l\u1eadp t\u00ean project,Board s\u1eed d\u1ee5ng v\u00e0 ki\u1ec3u k\u1ebft n\u1ed1i ->Create   T\u1ea1o m\u1ed9t n\u00fat nh\u1ea5n     Trong \u0111\u00f3:  5 : T\u00ean button.  6 : Ch\u00e2n truy\u1ec1n nh\u1eadn gi\u1eef li\u1ec7u c\u1ee7a Board.  7 : Ch\u1ecdn ki\u1ec3u n\u00fat nh\u1ea5n c\u00f3 nh\u1edb ho\u1eb7c kh\u00f4ng nh\u1edb.  X\u00e1c \u0111\u1ecbnh  AuthToken  c\u1ee7a Project      Nh\u1ea5n v\u00e0o E-mail \u0111\u1ec3 Blynk g\u1eedi AuthToken c\u1ee7a Project v\u00e0o E-mail \u0111\u0103ng k\u00ed t\u00e0i kho\u1ea3n ho\u1eb7c copy AuthToken.",
+            "title": "L\u00e0m theo h\u01b0\u1edbng d\u1eabn sau:"
+        },
+        {
+            "location": "/arduino/projects/blynkled/#5nap-chuong-trinh",
+            "text": "M\u1edf Arduino IDE v\u00e0 Upload ch\u01b0\u01a1ng tr\u00ecnh sau:  #define BLYNK_PRINT Serial    \n#include <ESP8266WiFi.h>\n#include <BlynkSimpleEsp8266.h>\n\nchar auth[] = \"YourAuthToken\";    //AuthToken v\u1eeba copy b\u00ean Blynk Project\nchar ssid[] = \"YourNetworkName\";  //T\u00ean wifi mu\u1ed1n truy c\u1eadp\nchar pass[] = \"YourPassword\";     //M\u1eadt kh\u1ea9u(N\u1ebfu wifi kh\u00f4ng c\u00f3 m\u1eadt kh\u1ea9u th\u00ec \u0111\u1ec3 \"\" )\n\nvoid setup()\n{\n  Serial.begin(9600);\n  Blynk.begin(auth, ssid, pass);\n}\n\nvoid loop()\n{\n  Blynk.run();\n}",
+            "title": "5.N\u1ea1p ch\u01b0\u01a1ng tr\u00ecnh"
+        },
+        {
+            "location": "/arduino/projects/blynkled/#6ieu-khien-bat-tat-led-bang-blynk",
+            "text": "M\u1edf Project Led trong Blynk.B\u1ea5m n\u00fat Play v\u00e0 b\u1eadt t\u1eaft n\u00fat nh\u1ea5n \u0111\u1ec3 b\u1eadt t\u1eaft led.",
+            "title": "6.\u0110i\u1ec3u khi\u1ec3n b\u1eadt t\u1eaft led b\u1eb1ng Blynk:"
+        },
+        {
+            "location": "/arduino/projects/blynkdht22/",
+            "text": "\u0110o nhi\u1ec7t \u0111\u1ed9 v\u00e0 \u0111\u1ed9 \u1ea9m s\u1eed d\u1ee5ng Blynk\n#\n\n\nChu\u1ea9n b\u1ecb:\n#\n\n\n\n\n\n\nBoard ESP8266 NodeMCU\n\n\n\n\n\n\nC\u1ea3m bi\u1ebfn DHT22\n\n\n\n\n\n\nTr\u1edf 10k\n\n\n\n\n\n\nArduino IDE 1.6.8, t\u1ea3i t\u1eeb \nArduino website\n.\n\n\n\n\n\n\nSmartphone Androi ho\u1eb7c ios\n\n\n\n\n\n\nH\u01b0\u1edbng d\u1eabn\n#\n\n\n1.T\u1ea3i \u1ee9ng d\u1ee5ng Blynk v\u00e0 th\u01b0 vi\u1ec7n Blynk:\n#\n\n\nTham kh\u1ea3o \n\u1ee8ng d\u1ee5ng Blynk \u0111i\u1ec1u khi\u1ec3n Led\n\n\n2.T\u1ea3i th\u01b0 vi\u1ec7n DHT cho Arduino IDE:\n#\n\n\nhttps://github.com/adafruit/DHT-sensor-library\nT\u1ea3i th\u01b0 vi\u1ec7n t\u1ea1i \u0111\u1ecba ch\u1ec9:\nhttps://github.com/adafruit/DHT-sensor-library\n\nSau khi t\u1ea3i m\u1edf Arduino Ide ->Sketch->Include Library -> Add .zip library v\u00e0 t\u00ecm \u0111\u1ebfn file.zip b\u1ea1n m\u1edbi t\u1ea3i v\u1ec1 ->OK.\n\n\n3.K\u1ebft n\u1ed1i m\u1ea1ch \u0111i\u1ec7n:\n#\n\n\nN\u1ed1i m\u1ea1ch \u0111i\u1ec7n theo s\u01a1 \u0111\u1ed3 sau:\n\n\n\n\n4.T\u1ea1o Project tr\u00ean Blynk\n#\n\n\n\n\n\n\nL\u00e0m theo h\u01b0\u1edbng d\u1eabn sau\n#\n\n\n\n\n\n\nCh\u1ecdn Create new project,\u0111\u1eb7t t\u00ean,ch\u1ecdn Board s\u1eed d\u1ee5ng v\u00e0 ki\u1ec3u k\u1ebft n\u1ed1i->Create\n\n\n\n\nT\u1ea1o Gauqe\n\n\nB\u1ea5m v\u00e0o n\u00fat + t\u1ea1i g\u00f3c tr\u00ean b\u00ean tr\u00e1i v\u00e0 ch\u1ecdn Gauqe\n\n\n\n\n\u0110\u1eb7t t\u00ean v\u00e0 thi\u1ebft l\u1eadp th\u00f4ng s\u1ed1 cho Gauqe\n\n\n\n\nT\u01b0\u01a1ng t\u1ef1 t\u1ea1o th\u00eam 1 Gauqe v\u00e0 thi\u1ebft l\u1eadp th\u00f4ng s\u1ed1\n\n\n\n\nH\u00ecnh \u1ea3nh 2 Gauqe sau khi t\u1ea1o\n\n\n\n\nX\u00e1c \u0111\u1ecbnh \nAuthToken\n c\u1ee7a project:Tham kh\u1ea3o \n\u1ee8ng d\u1ee5ng Blynk \u0111i\u1ec1u khi\u1ec3n Led\n\n\n5 N\u1ea1p ch\u01b0\u01a1ng tr\u00ecnh\n#\n\n\nM\u1edf Arduino IDE v\u00e0 Upload ch\u01b0\u01a1ng tr\u00ecnh\n\n\n#define BLYNK_PRINT Serial    // Comment this out to disable prints and save space\n#include <SPI.h>\n#include <ESP8266WiFi.h>\n#include <BlynkSimpleEsp8266.h>\n#include <SimpleTimer.h>\n#include <DHT.h>\n\n// You should get Auth Token in the Blynk App.\n// Go to the Project Settings (nut icon).\nchar auth[] = \"AuthToken\";     \n\n// Your WiFi credentials.\n// Set password to \"\" for open networks.\nchar ssid[] = \"YourWifiname\";\nchar pass[] = \"YourWifipassword\";\n\n#define DHTPIN 2          // What digital pin we're connected to\n\n// Uncomment whatever type you're using!\n//#define DHTTYPE DHT11     // DHT 11\n#define DHTTYPE DHT22   // DHT 22, AM2302, AM2321\n//#define DHTTYPE DHT21   // DHT 21, AM2301\n\nDHT dht(DHTPIN, DHTTYPE);\nSimpleTimer timer;\n\n// This function sends Arduino's up time every second to Virtual Pin (5).\n// In the app, Widget's reading frequency should be set to PUSH. This means\n// that you define how often to send data to Blynk App.\nvoid sendSensor()\n{\n  float h = dht.readHumidity();\n  float t = dht.readTemperature(); // or dht.readTemperature(true) for Fahrenheit\n\n  if (isnan(h) || isnan(t)) {\n    Serial.println(\"Failed to read from DHT sensor!\");\n    return;\n  }\n  // You can send any value at any time.\n  // Please don't send more that 10 values per second.\n  Blynk.virtualWrite(V5, h);\n  Blynk.virtualWrite(V6, t);\n}\n\nvoid setup()\n{\n  Serial.begin(9600); // See the connection status in Serial Monitor\n  Blynk.begin(auth, ssid, pass);\n\n  dht.begin();\n\n  // Setup a function to be called every second\n  timer.setInterval(1000L, sendSensor);\n}\n\nvoid loop()\n{\n  Blynk.run(); // Initiates Blynk\n  timer.run(); // Initiates SimpleTimer\n}\n\n\n\n\n6.\u0110o nhi\u1ec7t \u0111\u1ed9,\u0111\u1ed9 \u1ea9m tr\u00ean Blynk\n#\n\n\nM\u1edf Project dht22 trong Blynk.B\u1ea5m Play.Thu \u0111\u01b0\u1ee3c k\u1ebft qu\u1ea3 nh\u01b0 h\u00ecnh:",
+            "title": "\u1ee8ng d\u1ee5ng Blynk \u0111o nhi\u1ec7t \u0111\u1ed9,\u0111\u1ed9 \u1ea9m"
+        },
+        {
+            "location": "/arduino/projects/blynkdht22/#o-nhiet-o-va-o-am-su-dung-blynk",
+            "text": "",
+            "title": "\u0110o nhi\u1ec7t \u0111\u1ed9 v\u00e0 \u0111\u1ed9 \u1ea9m s\u1eed d\u1ee5ng Blynk"
+        },
+        {
+            "location": "/arduino/projects/blynkdht22/#chuan-bi",
+            "text": "Board ESP8266 NodeMCU    C\u1ea3m bi\u1ebfn DHT22    Tr\u1edf 10k    Arduino IDE 1.6.8, t\u1ea3i t\u1eeb  Arduino website .    Smartphone Androi ho\u1eb7c ios",
+            "title": "Chu\u1ea9n b\u1ecb:"
+        },
+        {
+            "location": "/arduino/projects/blynkdht22/#huong-dan",
+            "text": "",
+            "title": "H\u01b0\u1edbng d\u1eabn"
+        },
+        {
+            "location": "/arduino/projects/blynkdht22/#1tai-ung-dung-blynk-va-thu-vien-blynk",
+            "text": "Tham kh\u1ea3o  \u1ee8ng d\u1ee5ng Blynk \u0111i\u1ec1u khi\u1ec3n Led",
+            "title": "1.T\u1ea3i \u1ee9ng d\u1ee5ng Blynk v\u00e0 th\u01b0 vi\u1ec7n Blynk:"
+        },
+        {
+            "location": "/arduino/projects/blynkdht22/#2tai-thu-vien-dht-cho-arduino-ide",
+            "text": "https://github.com/adafruit/DHT-sensor-library\nT\u1ea3i th\u01b0 vi\u1ec7n t\u1ea1i \u0111\u1ecba ch\u1ec9: https://github.com/adafruit/DHT-sensor-library \nSau khi t\u1ea3i m\u1edf Arduino Ide ->Sketch->Include Library -> Add .zip library v\u00e0 t\u00ecm \u0111\u1ebfn file.zip b\u1ea1n m\u1edbi t\u1ea3i v\u1ec1 ->OK.",
+            "title": "2.T\u1ea3i th\u01b0 vi\u1ec7n DHT cho Arduino IDE:"
+        },
+        {
+            "location": "/arduino/projects/blynkdht22/#3ket-noi-mach-ien",
+            "text": "N\u1ed1i m\u1ea1ch \u0111i\u1ec7n theo s\u01a1 \u0111\u1ed3 sau:",
+            "title": "3.K\u1ebft n\u1ed1i m\u1ea1ch \u0111i\u1ec7n:"
+        },
+        {
+            "location": "/arduino/projects/blynkdht22/#4tao-project-tren-blynk",
+            "text": "",
+            "title": "4.T\u1ea1o Project tr\u00ean Blynk"
+        },
+        {
+            "location": "/arduino/projects/blynkdht22/#lam-theo-huong-dan-sau",
+            "text": "Ch\u1ecdn Create new project,\u0111\u1eb7t t\u00ean,ch\u1ecdn Board s\u1eed d\u1ee5ng v\u00e0 ki\u1ec3u k\u1ebft n\u1ed1i->Create   T\u1ea1o Gauqe  B\u1ea5m v\u00e0o n\u00fat + t\u1ea1i g\u00f3c tr\u00ean b\u00ean tr\u00e1i v\u00e0 ch\u1ecdn Gauqe   \u0110\u1eb7t t\u00ean v\u00e0 thi\u1ebft l\u1eadp th\u00f4ng s\u1ed1 cho Gauqe   T\u01b0\u01a1ng t\u1ef1 t\u1ea1o th\u00eam 1 Gauqe v\u00e0 thi\u1ebft l\u1eadp th\u00f4ng s\u1ed1   H\u00ecnh \u1ea3nh 2 Gauqe sau khi t\u1ea1o   X\u00e1c \u0111\u1ecbnh  AuthToken  c\u1ee7a project:Tham kh\u1ea3o  \u1ee8ng d\u1ee5ng Blynk \u0111i\u1ec1u khi\u1ec3n Led",
+            "title": "L\u00e0m theo h\u01b0\u1edbng d\u1eabn sau"
+        },
+        {
+            "location": "/arduino/projects/blynkdht22/#5-nap-chuong-trinh",
+            "text": "M\u1edf Arduino IDE v\u00e0 Upload ch\u01b0\u01a1ng tr\u00ecnh  #define BLYNK_PRINT Serial    // Comment this out to disable prints and save space\n#include <SPI.h>\n#include <ESP8266WiFi.h>\n#include <BlynkSimpleEsp8266.h>\n#include <SimpleTimer.h>\n#include <DHT.h>\n\n// You should get Auth Token in the Blynk App.\n// Go to the Project Settings (nut icon).\nchar auth[] = \"AuthToken\";     \n\n// Your WiFi credentials.\n// Set password to \"\" for open networks.\nchar ssid[] = \"YourWifiname\";\nchar pass[] = \"YourWifipassword\";\n\n#define DHTPIN 2          // What digital pin we're connected to\n\n// Uncomment whatever type you're using!\n//#define DHTTYPE DHT11     // DHT 11\n#define DHTTYPE DHT22   // DHT 22, AM2302, AM2321\n//#define DHTTYPE DHT21   // DHT 21, AM2301\n\nDHT dht(DHTPIN, DHTTYPE);\nSimpleTimer timer;\n\n// This function sends Arduino's up time every second to Virtual Pin (5).\n// In the app, Widget's reading frequency should be set to PUSH. This means\n// that you define how often to send data to Blynk App.\nvoid sendSensor()\n{\n  float h = dht.readHumidity();\n  float t = dht.readTemperature(); // or dht.readTemperature(true) for Fahrenheit\n\n  if (isnan(h) || isnan(t)) {\n    Serial.println(\"Failed to read from DHT sensor!\");\n    return;\n  }\n  // You can send any value at any time.\n  // Please don't send more that 10 values per second.\n  Blynk.virtualWrite(V5, h);\n  Blynk.virtualWrite(V6, t);\n}\n\nvoid setup()\n{\n  Serial.begin(9600); // See the connection status in Serial Monitor\n  Blynk.begin(auth, ssid, pass);\n\n  dht.begin();\n\n  // Setup a function to be called every second\n  timer.setInterval(1000L, sendSensor);\n}\n\nvoid loop()\n{\n  Blynk.run(); // Initiates Blynk\n  timer.run(); // Initiates SimpleTimer\n}",
+            "title": "5 N\u1ea1p ch\u01b0\u01a1ng tr\u00ecnh"
+        },
+        {
+            "location": "/arduino/projects/blynkdht22/#6o-nhiet-oo-am-tren-blynk",
+            "text": "M\u1edf Project dht22 trong Blynk.B\u1ea5m Play.Thu \u0111\u01b0\u1ee3c k\u1ebft qu\u1ea3 nh\u01b0 h\u00ecnh:",
+            "title": "6.\u0110o nhi\u1ec7t \u0111\u1ed9,\u0111\u1ed9 \u1ea9m tr\u00ean Blynk"
+        },
+        {
             "location": "/micropython/micropython/",
             "text": "ESP8266 Micropython\n#\n\n\n\n\nmicropython\n l\u00e0 tr\u00ecnh th\u00f4ng d\u1ecbch Python3 \u0111\u01b0\u1ee3c thi\u1ebft k\u1ebf cho c\u00e1c d\u00f2ng chip c\u00f3 b\u1ed9 nh\u1edb \u00edt \u1ecfi v\u00e0 c\u00f3 kh\u1ea3 n\u0103ng ho\u1ea1t \u0111\u1ed9ng \u1ed5n \u0111\u1ecbnh.\n\n\nL\u1ee3i th\u1ebf c\u1ee7a \nmicropython\n l\u00e0 s\u1eed d\u1ee5ng ng\u00f4n ng\u1eef b\u1eadc cao, d\u1ec5 d\u00e0ng s\u1eed d\u1ee5ng cho ng\u01b0\u1eddi m\u1edbi b\u1eaft \u0111\u1ea7u. C\u00f3 th\u1ec3 th\u1ef1c thi c\u00e1c l\u1ec7nh tr\u1ef1c ti\u1ebfp ngay tr\u00ean Terminal th\u00f4ng qua REPL ho\u1eb7c qua Web REPL. M\u1ed9t khi \u0111\u00e3 flash firmware h\u1ed7 tr\u1ee3 \nmicropython\n th\u00ec vi\u1ec7c vi\u1ebft firmware b\u1eb1ng python s\u1ebd do tr\u00ecnh th\u00f4ng d\u1ecbch b\u00ean d\u01b0\u1edbi chip \u0111\u1ea3m nhi\u1ec7m. B\u1ea1n c\u00f3 th\u1ec3 thay \u0111\u1ed5i ch\u01b0\u01a1ng tr\u00ecnh m\u00e0 kh\u00f4ng ph\u1ea3i n\u1ea1p l\u1ea1i firmware n\u1eefa.\n\n\nNh\u01b0ng m\u1ed9t kh\u00f3 kh\u0103n l\u00e0 khi mu\u1ed1n b\u1ed5 sung nh\u1eefng t\u00ednh n\u0103ng m\u1edbi, module m\u1edbi kh\u00f4ng s\u1eb5n c\u00f3, th\u00ec c\u1ea7n ph\u1ea3i am hi\u1ec3u v\u1ec1 \nmicropython\n \u0111\u1ec3 c\u00f3 th\u1ec3 vi\u1ebft \u0111\u01b0\u1ee3c module b\u1ed5 sung.\n\n\n\n\nWebsite: \nhttp://www.micropython.org/\n\n\nGithub: \nhttps://github.com/micropython/micropython\n\n\nT\u00e0i li\u1ec7u \nhttp://docs.micropython.org/en/latest/esp8266/esp8266/quickref.html",
             "title": "Gi\u1edbi thi\u1ec7u"
