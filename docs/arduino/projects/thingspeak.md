@@ -1,6 +1,6 @@
 # Đo nhiệt độ độ ẩm hiển thị lên ThingSpeak với HTTP
 
-Đặt vấn đề: Trong thời đại kỷ nguyên kết nối như hiện nay thì việc đọc dữ liệu từ các thiết bị (cảm biến,...) gừi lên các serve là điều tối cơ bản mà một nhà phát triền cần có. Bài viết sau đây của mình sẽ đề cập tới việc đọc và gửi các dữ liệu từ cảm biến DHT22 bằng board WiFi Uno sau đó hiển thị lên Thingspeak với HTTP.
+Đặt vấn đề: Trong thời đại kỷ nguyên kết nối như hiện nay thì việc đọc dữ liệu từ các thiết bị (cảm biến,...) gửi lên các serve là điều tối cơ bản mà một nhà phát triền cần có. Bài viết này sẽ đề cập tới vấn đề nói trên, đó là đọc và gửi các dữ liệu từ cảm biến DHT22 bằng board WiFi Uno lên Thingspeak với HTTP.
 
 ### Chuẩn bị các phần cứng cần thiết
 - Board WiFi Uno.
@@ -8,39 +8,38 @@
 - DHT22 sensor.
 
 <img src="../images-thingspeak/connect-part.png" alt="" height="500" width="500">
- 
+
 !!! note "Lưu ý"
- 	Chân chân số 3 của cảm biến bạn có thể nối xưống mass hoặc để vậy không kết nối nó.
- 	Nếu cần thiết bạn có thể mắc thêm một điện trở 10k vào chân 1 (VCC) và chân 2 (OUTPUT).
+ 	Chân chân số 3 của cảm biến có thể nối xưống mass hoặc để vậy không kết nối nó.
+ 	Nếu cần thiết, có thể mắc thêm một điện trở 10k vào chân 1 (VCC) và chân 2 (OUTPUT).
 
 ### Cài một số thư viện cần thiết.
 
-- Hiện nay có nhiều thư viện hỗ trợ đọc cảm biến DHTxx trên arduino, bạn có thể tải về ở địa chỉ:
+- Thư viện cho DHT 22 :
 [https://github.com/ngoc-emg/DHT-sensor-library](https://github.com/ngoc-emg/DHT-sensor-library).
 
-- Thư viện cho OLED, nếu bạn sử dung OLED SSD 1306 bạn có thể tham khảo bài viết của mình ở 
-[https://github.com/esp8266vn/esp8266.vn/blob/master/docs/arduino/libraries/i2c.md](https://github.com/esp8266vn/esp8266.vn/blob/master/docs/arduino/libraries/i2c.md). Bài viết này mình có trình bày cách thêm các thư viện cần thiết cũng như các kết nối khá rõ.
+- Thư viện cho OLED SSD 1306, tham khảo một bài viết ở:
+[https://github.com/esp8266vn/esp8266.vn/blob/master/docs/arduino/libraries/i2c.md](https://github.com/esp8266vn/esp8266.vn/blob/master/docs/arduino/libraries/i2c.md). Bài viết này có trình bày cách thêm các thư viện cần thiết cũng như các kết nối khá rõ.
 
-- Về phần WiFi, ta cần sử dụng thư viện ESP8266WiFi, bạn có thể tải trực tiếp trên web hoặc vài libraries manager để cập nhật nó.
+- Về phần WiFi, sử dụng thư viện ESP8266WiFi, bạn có thể tải trực tiếp trên web hoặc vài libraries manager để cập nhật nó.
 
 ### Tạo một tài khoản trên ThingSpeak.
-Có khá nhiều địa chỉ web cho phép mình theo dõi dữ liệu các cảm biến thông qua Internet như Google, Thingspeak. ở đây mình chọn Thingspeak:
-Bạn tạo một tài khoản Thingspeak, chọn cho mình một Chanel, đặt tên cho nó và cài đặt cho nó như sau:
+Có khá nhiều địa chỉ web cho phép theo dõi dữ liệu các cảm biến thông qua Internet như Google, Thingspeak... ở đây chúng ta sẽ làm trên Thingspeak.
+Bạn tạo một tài khoản Thingspeak, chọn một Chanel, đặt tên và cài đặt cho nó như sau:
 
 <img src="../images-thingspeak/thingspeak.png" alt="-" height="600" width="600">
 
 <img src="../images-thingspeak/thingspeak1.png" alt="-" height="600" width="600">
 
 !!! warning " Chú ý "
-	 Tiếp theo là một phần khá quan trọng. Bạn phải lấy được cho mình một API key, bạn hãy ghi lại nó để sau này dùng cho việc gửi dữ liệu lên Thingspeak.
+	 Tiếp theo là một phần khá quan trọng. Bạn phải lấy được cho mình một API key, ghi lại nó để sau này dùng cho việc gửi dữ liệu lên Thingspeak.
 
 <img src="../images-thingspeak/thingspeak2.png" alt="-" height="600" width="600"> 
 
--- Như vậy bạn đã chuẩn bị xong một "chỗ" mà mình gửi dữ liệu của cảm biến rồi đấy!
 
 ### Code chương trình.
 
-Trong code bên dưới bạn chú ý thay đổi SSID với password là tên, password một mạng không dây (WiFi) nơi bạn sử dụng. API key là mã mình đã đề cập với các bạn trong phần trước. Điền mã của các bạn vào!
+Trong code bên dưới, cần chú ý thay đổi SSID với password là tên, password một mạng không dây (WiFi) nơi bạn sử dụng. API key là mã đã đề cập với các bạn trong phần trước. Điền nó vào trong code!
 
 ```
 // Declare DHT
@@ -51,7 +50,7 @@ DHT dht(DHTPIN, DHTTYPE);
 float t;
 float h;
 float f;
-// Declare DHT
+// Declare Oled LCD
 #include <Wire.h>
 #include "SSD1306.h"
 SSD1306  display(0x3c, D3, D5);
@@ -71,7 +70,7 @@ void setup() {
   	Serial.begin(115200);
   	Serial.println("DHTxx test!");
   	dht.begin();
-  	// Setup Oled
+  	// Setup Oled LCD
   	display.init();
   	display.flipScreenVertically();
   	// Setup WiFi
@@ -147,7 +146,7 @@ void loop() {
 
 ### Mục đích của bài hướng dẫn này.
 
-Sau khi code xong thì hệ hệ thống của chúng ta sẽ có khả năng:
+Sau khi code xong thì hệ hệ thống này sẽ có khả năng:
 
 - Đọc được các giá trị của cảm biến.
 
@@ -155,15 +154,13 @@ Sau khi code xong thì hệ hệ thống của chúng ta sẽ có khả năng:
 
 - Cập nhật các dữ liệu cảm biến lên Web.
 
-Bên dưới là các hình ảnh hoạt động hệ thống của mình!
+Bên dưới là các hình ảnh hoạt động hệ thống !
 
 <img src="../images-thingspeak/demo.jpg" alt="-" height="600" width="600"> 
 
 <img src="../images-thingspeak/demo1.jpg" alt="-" height="600" width="600"> 
 
 <img src="../images-thingspeak/thingspeak3.png" alt="-" height="600" width="600"> 
-
-Chúc các bạn thực hiện thành công!
 
 ### Một số link hữu ích:
 
