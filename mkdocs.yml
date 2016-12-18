@@ -107,6 +107,8 @@ pages:
         - Smartconfig & react-native: arduino/projects/smartconfig-react-native.md
         - Smart Plug & Slack Bot:     arduino/projects/smartplug-slack.md
         - Đo nhiệt độ & độ ẩm (Thingspeak): arduino/projects/thingspeak.md
+        - Ứng dụng Blynk điều khiển Led:   arduino/projects/blynkled.md 
+        - Ứng dụng Blynk đo nhiệt độ,độ ẩm: arduino/projects/blynkdht22.md              
     - ESP8266 Micropython:
       - Giới thiệu:                   micropython/micropython.md
       - Cơ bản:
