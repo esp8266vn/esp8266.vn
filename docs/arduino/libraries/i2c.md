@@ -1,11 +1,11 @@
 # I2C (Wire library)
 
 Thư viện `Wire` hiện tại chỉ hổ trợ chế độ master lên đến 450KHz. Trước khi sử dụng I2C, chân SDA và SCL cần phải đước thiết lập bằng cách gọi `Wire.begin(int sda, int scl)`, i.e. `Wire.begin(0, 2)` đối với module ESP-01, các module ESP khác mặc định chân 4 (SDA) và 5 (SCL).
-#### Sau đây mình sẽ demo một số ví dụ dùng thư viện i2c để hiển thị lên GLCD (LCD OLED SSD1306)
-### Trước hết chúng ta sẽ tiến hành cài đặt thư viện lên Arduino IDE
+#### Dưới đây là một số ví dụ dùng thư viện i2c để hiển thị lên GLCD (LCD OLED SSD1306)
+### Cài đặt thư viện lên Arduino IDE
 
 - #### Thư viện `Wire.h`.
- Thư viện này sẽ có sẵn trong Arduino IDE. Khi sử dụng ta chỉ cần include nó ra là được. Mình sẽ giới thiệu thêm cho các bạn một số hàm của nó:
+ Thư viện này sẽ có sẵn trong Arduino IDE. Khi sử dụng chỉ cần include nó ra là được. Một số hàm cơ bản của nó của nó:
 
 
 		Wire.begin(address (optional));
@@ -35,21 +35,21 @@ Ghi dữ liệu lên thiết bị "Slave", được gọi giữa beginTransmissi
 - #### Thư viện BRZO I2c. 
 
 Đây là thư viện hỗ trợ kết nối hiển thị trên OLED. Nó được xây dựng cho thư viện`Wire.h`.
-Thư viện này được viết cho cả hai loại GLCD là OLED SSD1306 và SH1106, ở đây mình sử dụng SSD1360. Bạn có thể tải về và  tham khảo một số hàm của nó ở địa chỉ [http://github.com/squix78/esp8266-oled-ssd1306](http://github.com/squix78/esp8266-oled-ssd1306). 
+Thư viện này được viết cho cả hai loại GLCD là OLED SSD1306 và SH1106. Bạn có thể tải về và  tham khảo một số hàm của nó ở địa chỉ [http://github.com/squix78/esp8266-oled-ssd1306](http://github.com/squix78/esp8266-oled-ssd1306). 
 
-### Việc cài đặt thư viện cơ bản đã xong, bây giờ mình sẽ giới thiệu cho các bạn một chút về lắp phần cứng
+### Kết nối phần cứng:
 
-ở đây mình sử dụng bo NodeMCU 0.9 (ESP8266 v12).
+Bo NodeMCU 0.9 (ESP8266 v12).
 ![Pin Functions](../images/NodeMCU.jpg) 
 
-Mình sử dụng chân D3 (GPIO 0) là SDA, chân D5 (GPIO 14) là SCL.
-Ta tiến hành kết nối chân SDA, SCL, GND, VCC (3.3v) của bo NodeMCU tương ứng vào chân SDA, SCL, GND, VCC (3.3v) của module GCLD (OLED SSD 1306). Bạn có thể sử dụng phần mềm Fritzing để thực hiện kết nối nếu chưa có các linh kiện thực tế.
+Sử dụng chân D3 (GPIO 0) là SDA, chân D5 (GPIO 14) là SCL.
+Tiến hành kết nối chân SDA, SCL, GND, VCC (3.3v) của bo NodeMCU tương ứng vào chân SDA, SCL, GND, VCC (3.3v) của module GCLD (OLED SSD 1306). Bạn có thể sử dụng phần mềm Fritzing để thực hiện kết nối nếu chưa có các linh kiện thực tế.
 
 ![Pin Functions](../images/i2c.png)
 
-### Sau khi kết nối xong phần cứng như hình, ta bắt đầu viết code hiển thị trên màn hình LCD
+### Viết chương trình hiển thị lên LCD OLED
 
-Mình sẽ demo cho các bạn 2 đoạn code đơn giản là hiển thị chữ và hình ảnh lên màn hình của GLCD OLED SSD1306
+Dưới đây là 2 đoạn code đơn giản là hiển thị chữ và hình ảnh lên màn hình của GLCD OLED SSD1306
 
 - Hiển thị dòng chữ "iotmaker.vn"
 
@@ -83,18 +83,18 @@ Mình sẽ demo cho các bạn 2 đoạn code đơn giản là hiển thị ch�
 
  ![](../images/demo1.png)
 
- -- ở đây, đã có sẵn thư viện hỗ trợ hiển thị cho LCD, bạn chỉ cần nhập vị trí của cột, dòng, nội dung, size chữ, font chữ mà mình muốn hiển thị vào các hàm tương ứng là được.
+ -- ở đây, đã có sẵn thư viện hỗ trợ hiển thị cho LCD, bạn chỉ cần nhập vị trí của cột, dòng, nội dung, size chữ, font chữ muốn hiển thị vào các hàm tương ứng là được.
 
  - Hiển thị ảnh logo "IOT Maker"
 ![](../images/iot-maker.png)
 
 *Việc hiển thị ảnh lên GLCD sẽ hơi phức tạp hơn một chút so với hiển thị dòng chữ.*
 
--- Đầu tiên bạn sẽ phải chuyển ảnh của mình về định dạng `*.xbm`. Các bạn vào địa chỉ [https://www.online-utility.org/image/convert/to/XBM](https://www.online-utility.org/image/convert/to/XBM) và làm theo hướng dẫn sẽ tạo một file `*.xbm' cho mình. Sau đó, bạn đổi đuôi của file này sang `*.h` để làm file thư viện ảnh trong Arduino IDE.
+-- Đầu tiên, cần chuyển ảnh cần hiển thị về định dạng `*.xbm`.Vào địa chỉ [https://www.online-utility.org/image/convert/to/XBM](https://www.online-utility.org/image/convert/to/XBM) và làm theo hướng dẫn sẽ tạo một file `*.xbm'. Sau đó, đổi đuôi của file này sang `*.h` để làm file thư viện ảnh trong Arduino IDE.
 
-Nếu cần thiết thì bạn cũng nên fit zise ảnh của mình về  128x64. Mình thực hiện việc này ở địa chỉ [http://www.digole.com/tools/PicturetoC_Hex_converter.php](http://www.digole.com/tools/PicturetoC_Hex_converter.php).
+Nếu cần thiết thì nên fit zise ảnh về  128x64. Có một địa chỉ hỗ trợ làm việc này [http://www.digole.com/tools/PicturetoC_Hex_converter.php](http://www.digole.com/tools/PicturetoC_Hex_converter.php).
 
-Vậy là thư viện ảnh của bạn đã sẵn sàng, bây giờ thì bắt đầu code thôi!
+Bên dưới là một số dòng code tham khảo:
 
 ```
 #include <Wire.h>  
@@ -119,10 +119,8 @@ void loop()
 }
 
 ```
--- `iot.h` là tên file thư viện ảnh của mình. Bạn chú ý để nó ở cùng thư mục với file lập trình.
-
- Và đây là thành quả của mình! :). 
+!!! note "Lưu ý:"
+	`iot.h` là tên file thư viện ảnh. Cần chú ý để nó ở cùng thư mục với file lập trình.
 
  ![](../images/demo2.jpg)
 
- Chúc các bạn sẽ thực hiện thành công. Hẹn gặp lại trong các bài viết kế tiếp!

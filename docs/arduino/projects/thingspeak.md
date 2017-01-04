@@ -24,7 +24,7 @@
 - Về phần WiFi, sử dụng thư viện ESP8266WiFi, bạn có thể tải trực tiếp trên web hoặc vài libraries manager để cập nhật nó.
 
 ### Tạo một tài khoản trên ThingSpeak.
-Có khá nhiều địa chỉ web cho phép theo dõi dữ liệu các cảm biến thông qua Internet như Google, Thingspeak... ở đây chúng ta sẽ làm trên Thingspeak.
+Có khá nhiều địa chỉ web cho phép theo dõi dữ liệu các cảm biến thông qua Internet như Google, Thingspeak... Tùy vào mục đích, yêu cầu mà chọn một địa chỉ thích hợp đối với từng người.
 Bạn tạo một tài khoản Thingspeak, chọn một Chanel, đặt tên và cài đặt cho nó như sau:
 
 <img src="../images-thingspeak/thingspeak.png" alt="-" height="600" width="600">
@@ -32,7 +32,7 @@ Bạn tạo một tài khoản Thingspeak, chọn một Chanel, đặt tên và 
 <img src="../images-thingspeak/thingspeak1.png" alt="-" height="600" width="600">
 
 !!! warning " Chú ý "
-	 Tiếp theo là một phần khá quan trọng. Bạn phải lấy được cho mình một API key, ghi lại nó để sau này dùng cho việc gửi dữ liệu lên Thingspeak.
+	 Tiếp theo là một phần khá quan trọng. Cần phải lấy được một API key, tốt nhất nên ghi lại nó để sau này dùng cho việc gửi dữ liệu lên Thingspeak.
 
 <img src="../images-thingspeak/thingspeak2.png" alt="-" height="600" width="600"> 
 
