@@ -3,10 +3,10 @@
 
 <img src="../images/blynk/blynk1.jpg" width="200" height="200" border="0" alt="blynk icon">
 
-Phần mềm Blynk là một phần mềm được thiết kế trên nền tảng Android và iOS cho phép
- tự tạo ứng dụng kết nối với các board Arduino, Raspberry và các bo mạch khác để điểu khiển chúng.
+Blynk là một ứng dụng được thiết kế trên nền tảng Android và iOS cho phép người dùng
+ xây dựng các dự án và kết nối với các board Arduino, Raspberry,...để điểu khiển chúng.
 
-Blynk giúp điều khiển thiết bị từ xa qua internet, thu thập dữ liệu của cảm biến, ảo hóa việc giao tiếp và thực hiện nhiều việc khác.
+Blynk giúp điều khiển thiết bị từ xa qua internet, thu thập dữ liệu của các cảm biến, ảo hóa việc giao tiếp và thực hiện nhiều việc khác.
 #Nguyên lý hoạt động
 
 <img src="../images/blynk/blynk2.png" width="500" height="400" border="0" alt="blynk">
@@ -17,9 +17,9 @@ Nguyên lý làm việc là khi nhấn nút điều khiển, lệnh sẽ đượ
 
 ##Chuẩn bị:
 
-- Board ESP8266 NodeMCU
+- Board NodeMCU v2
 
-- 1 Led + trở 10k
+- 1 Led + 1 trở 10k
 
 - Arduino IDE 1.6.8, tải từ [Arduino website](https://www.arduino.cc/en/Main/OldSoftwareReleases#previous).
 
@@ -30,10 +30,10 @@ Nguyên lý làm việc là khi nhấn nút điều khiển, lệnh sẽ đượ
 Tải ứng dụng tại trang chủ ứng dụng [http://www.blynk.cc/](http://www.blynk.cc/). Hoặc tìm và cài đặt Blynk trên Google Play hoặc App Store.
 ###2.Tải thư viện Blynk cho Arduino IDE
 Tải thư viện tại địa chỉ:[https://github.com/blynkkk/blynk-library](https://github.com/blynkkk/blynk-library).
-Sau khi tải mở Arduino Ide ->Sketch->Include Library -> Add .zip library và tìm đến file.zip bạn mới tải về ->OK.
+Sau khi tải ,mở Arduino IDE ->Sketch->Include Library -> Add .zip library và tìm đến file.zip bạn mới tải về ->OK.
 ###3.Kết nối mạch điện:
 
-Nối mạch định theo sơ đồ sau:
+Nối mạch điện theo sơ đồ sau:
 
 <img src="../images/blynk/blynkled.png" width="700" height="500" border="0" alt="blynk">
 ###4.Tạo dự án trên Blynk:
@@ -62,9 +62,9 @@ Tạo một nút nhấn
 
 Trong đó:
 
-5 : Tên button.
+5 : Tên nút nhấn.
 
-6 : Chân truyền nhận giữ liệu của Board.
+6 : Chân truyền nhận dữ liệu của Board.
 
 7 : Chọn kiểu nút nhấn có nhớ hoặc không nhớ.
 
