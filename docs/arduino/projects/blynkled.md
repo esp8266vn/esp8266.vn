@@ -7,6 +7,7 @@ Blynk là một ứng dụng được thiết kế trên nền tảng Android v�
  xây dựng các dự án và kết nối với các board Arduino, Raspberry,...để điểu khiển chúng.
 
 Blynk giúp điều khiển thiết bị từ xa qua internet, thu thập dữ liệu của các cảm biến, ảo hóa việc giao tiếp và thực hiện nhiều việc khác.
+
 #Nguyên lý hoạt động
 
 <img src="../images/blynk/blynk2.png" width="500" height="400" border="0" alt="blynk">
@@ -30,10 +31,13 @@ Nguyên lý làm việc là khi nhấn nút điều khiển, lệnh sẽ đượ
 Tải ứng dụng tại trang chủ ứng dụng [http://www.blynk.cc/](http://www.blynk.cc/). Hoặc tìm và cài đặt Blynk trên Google Play hoặc App Store.
 ###2.Tải thư viện Blynk cho Arduino IDE
 Tải thư viện tại địa chỉ:[https://github.com/blynkkk/blynk-library](https://github.com/blynkkk/blynk-library).
-Sau khi tải ,mở Arduino IDE ->Sketch->Include Library -> Add .zip library và tìm đến file.zip bạn mới tải về ->OK.
+
+Sau khi tải, mở Arduino IDE ->Sketch->Include Library -> Add .zip library và tìm đến file.zip vừa tải về ->OK.
+
 ###3.Kết nối mạch điện:
 
 Nối mạch điện theo sơ đồ sau:
+
 
 <img src="../images/blynk/blynkled.png" width="700" height="500" border="0" alt="blynk">
 ###4.Tạo dự án trên Blynk:
@@ -61,6 +65,7 @@ Tạo một nút nhấn
 <img src="../images/blynk/led5.jpg" width="400" height="600" border="0" alt="blynk">
 
 Trong đó:
+
 
 5 : Tên nút nhấn.
 

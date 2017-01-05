@@ -23,6 +23,7 @@ Tham khảo [Ứng dụng Blynk điều khiển Led](https://esp8266.vn/arduino/
 Tải thư viện tại địa chỉ:[https://github.com/adafruit/DHT-sensor-library](https://github.com/adafruit/DHT-sensor-library).
 
 Sau khi tải mở Arduino IDE ->Sketch->Include Library -> Add .zip library và tìm đến file.zip mới tải về ->OK.
+
 ###3.Kết nối mạch điện:
 
 Nối mạch điện theo sơ đồ sau:
@@ -124,6 +125,6 @@ void loop()
 }
 ```
 ###6.Đo nhiệt độ,độ ẩm bằng ứng dụng Blynk
-Mở Project dht22 trong Blynk.Bấm Play.Nhiệt độ và độ ẩm sẽ  hiển thì trên 2 Gauge như hình.
+Mở Project dht22 trong Blynk.Bấm Play.Nhiệt độ và độ ẩm sẽ  hiển thì trên 2 Gauge.
 
 <img src="../images/blynk/dht5.jpg" width="500" height="400" border="0" alt="blynk">
