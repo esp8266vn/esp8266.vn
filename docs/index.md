@@ -8,7 +8,7 @@ Websitte được cung cấp dưới dạng tài liệu được tổ chức, h�
 |--------------------------------|-----------------------------------------------------------------------------------------|
 | ![](images/logo-c.png)         | [Kiến thức về lập trình ESP8266 dùng NONOS-SDK](nonos-sdk/nonos-sdk.md)                 |
 | ![](images/logo-freertos.png)  | [Kiến thức về lập trình FreeRTOS với ESP8266 và RTOS-SDK](freertos-sdk/freertos-sdk.md) |
-|  ![](images/logo-arduino.png)  | [Kiến thức về lập trình ESP8266 với Arduino](arduino/arduino.md)                        |
+|  ![](images/logo-arduino.png)  | [Kiến thức về lập trình ESP8266 với Arduino](https://arduino.esp8266.vn)                        |
 | ![](images/logo-upy.jpeg)      | [Kiến thức về lập trình ESP8266 với Micropython](micropython/micropython.md)            |
 | -                              |  [Các dự án ứng dụng thực tiễn](projects/list.md)                                       |
 

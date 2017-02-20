@@ -1,4 +1,8 @@
-[TOC]
+# THÔNG BÁO: 
+
+Toàn bộ nội dung ESP8266 được chuyển sang và tổ chức tại:
+
+## [https://arduino.esp8266.vn](https://arduino.esp8266.vn)
 
 # Arduino core cho ESP8266 WiFi chip
 
