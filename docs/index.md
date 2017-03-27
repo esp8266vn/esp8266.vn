@@ -2,7 +2,12 @@
 
 Websitte được cung cấp dưới dạng tài liệu được tổ chức, hỗ trợ những kiến thức về lập trình phần cứng Internet Of Things sử dụng ESP8266. Không chỉ là những kiến thức về lập trình phần cứng, ESP8266 mà còn hỗ trợ những kiến thức nền tảng, hiểu biết về network, connectivity để có thể phát triển các ứng dụng IoT từ prototype tới production.
 
+!!! note "Quan trọng"
+    Tài liệu liên quan đến lập trình Arduino cho ESP8266 được di chuyển đến 
+    ### [https://arduino.esp8266.vn](https://arduino.esp8266.vn)
+
 ## Nội dung cung cấp
+
 
 | Nội dung        |                |
 |--------------------------------|-----------------------------------------------------------------------------------------|
