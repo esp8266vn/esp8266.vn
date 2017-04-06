@@ -10,7 +10,7 @@
 <img src="../images-thingspeak/connect-part.png" alt="" height="500" width="500">
 
 !!! note "Lưu ý"
- 	Chân chân số 3 của cảm biến có thể nối xưống mass hoặc để vậy không kết nối nó.
+ 	Chân chân số 3 của cảm biến có thể nối xuống mass hoặc để vậy không kết nối nó.
  	Nếu cần thiết, có thể mắc thêm một điện trở 10k vào chân 1 (VCC) và chân 2 (OUTPUT).
 
 ### Cài một số thư viện cần thiết.
@@ -21,25 +21,25 @@
 - Thư viện cho OLED SSD 1306, tham khảo một bài viết ở:
 [https://github.com/esp8266vn/esp8266.vn/blob/master/docs/arduino/libraries/i2c.md](https://github.com/esp8266vn/esp8266.vn/blob/master/docs/arduino/libraries/i2c.md). Bài viết này có trình bày cách thêm các thư viện cần thiết cũng như các kết nối khá rõ.
 
-- Về phần WiFi, sử dụng thư viện ESP8266WiFi, bạn có thể tải trực tiếp trên web hoặc vài libraries manager để cập nhật nó.
+- Về phần WiFi, sử dụng thư viện ESP8266WiFi, bạn có thể tải trực tiếp trên web hoặc vào libraries manager để cập nhật nó.
 
 ### Tạo một tài khoản trên ThingSpeak.
-Có khá nhiều địa chỉ web cho phép theo dõi dữ liệu các cảm biến thông qua Internet như Google, Thingspeak... ở đây chúng ta sẽ làm trên Thingspeak.
-Bạn tạo một tài khoản Thingspeak, chọn một Chanel, đặt tên và cài đặt cho nó như sau:
+Có khá nhiều địa chỉ web cho phép theo dõi dữ liệu các cảm biến thông qua Internet như Google, Thingspeak... Tùy vào mục đích, yêu cầu mà chọn một địa chỉ thích hợp đối với từng người.
+Bạn tạo một tài khoản Thingspeak, chọn một Channel, đặt tên và cài đặt cho nó như sau:
 
 <img src="../images-thingspeak/thingspeak.png" alt="-" height="600" width="600">
 
 <img src="../images-thingspeak/thingspeak1.png" alt="-" height="600" width="600">
 
 !!! warning " Chú ý "
-	 Tiếp theo là một phần khá quan trọng. Bạn phải lấy được cho mình một API key, ghi lại nó để sau này dùng cho việc gửi dữ liệu lên Thingspeak.
+	 Tiếp theo là một phần khá quan trọng. Cần phải lấy được một API key, tốt nhất nên ghi lại nó để sau này dùng cho việc gửi dữ liệu lên Thingspeak.
 
 <img src="../images-thingspeak/thingspeak2.png" alt="-" height="600" width="600"> 
 
 
 ### Code chương trình.
 
-Trong code bên dưới, cần chú ý thay đổi SSID với password là tên, password một mạng không dây (WiFi) nơi bạn sử dụng. API key là mã đã đề cập với các bạn trong phần trước. Điền nó vào trong code!
+Trong code bên dưới, cần chú ý thay đổi SSID với password là tên, password một mạng không dây (WiFi) nơi bạn sử dụng. API key là mã đã được đề cập trong phần trước. Điền nó vào trong code!
 
 ```
 // Declare DHT
@@ -150,9 +150,9 @@ Sau khi code xong thì hệ hệ thống này sẽ có khả năng:
 
 - Đọc được các giá trị của cảm biến.
 
-- Hiển thị các thông số nhiệt độ lên LCD Oled.
+- Hiển thị các thông số nhiệt độ lên LCD OLED.
 
-- Cập nhật các dữ liệu cảm biến lên Web.
+- Cập nhật các dữ liệu cảm biến lên Thingspeak.
 
 Bên dưới là các hình ảnh hoạt động hệ thống !
 
