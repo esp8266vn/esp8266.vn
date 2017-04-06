@@ -1,8 +1,8 @@
-#Đo nhiệt độ và độ ẩm sử dụng Blynk
+#Sử dụng ứng dụng Blynk đo nhiệt độ và độ ẩm 
 
 ##Chuẩn bị:
 
-- Board ESP8266 NodeMCU
+- Board NodeMCU v2
 
 - Cảm biến DHT22
 
@@ -10,18 +10,20 @@
 
 - Arduino IDE 1.6.8, tải từ [Arduino website](https://www.arduino.cc/en/Main/OldSoftwareReleases#previous).
 
-- Smartphone Androi hoặc ios
+- Smartphone Androi hoặc iOS
 
 ##Hướng dẫn
 
 ###1.Tải ứng dụng Blynk và thư viện Blynk:
 
-Tham khảo [Ứng dụng Blynk điều khiển Led](../blynkled.md)
+Tham khảo [Ứng dụng Blynk điều khiển Led](https://esp8266.vn/arduino/projects/blynkled/)
 
 ###2.Tải thư viện DHT cho Arduino IDE:
-https://github.com/adafruit/DHT-sensor-library
-Tải thư viện tại địa chỉ:[https://github.com/adafruit/DHT-sensor-library](https://github.com/adafruit/DHT-sensor-library)
-Sau khi tải mở Arduino Ide ->Sketch->Include Library -> Add .zip library và tìm đến file.zip bạn mới tải về ->OK.
+
+Tải thư viện tại địa chỉ:[https://github.com/adafruit/DHT-sensor-library](https://github.com/adafruit/DHT-sensor-library).
+
+Sau khi tải mở Arduino IDE ->Sketch->Include Library -> Add .zip library và tìm đến file.zip mới tải về ->OK.
+
 ###3.Kết nối mạch điện:
 
 Nối mạch điện theo sơ đồ sau:
@@ -33,29 +35,29 @@ Nối mạch điện theo sơ đồ sau:
 
 - ###Làm theo hướng dẫn sau
 
-Chọn Create new project,đặt tên,chọn Board sử dụng và kiểu kết nối->Create
+Chọn Create new project,đặt tên project,chọn Board sử dụng và kiểu kết nối->Create.
 
 <img src="../images/blynk/dht1.jpg" width="500" height="400" border="0" alt="blynk">
 
-Tạo Gauqe
+Tạo Gauge
 
-Bấm vào nút + tại góc trên bên trái và chọn Gauqe
+Bấm vào nút + tại góc trên bên phải và chọn Gauge
 
 <img src="../images/blynk/dht2.jpg" width="500" height="400" border="0" alt="blynk">
 
-Đặt tên và thiết lập thông số cho Gauqe
+Đặt tên và thiết lập thông số cho Gauge
 
 <img src="../images/blynk/dht3.jpg" width="500" height="400" border="0" alt="blynk">
 
-Tương tự tạo thêm 1 Gauqe và thiết lập thông số
+Tương tự ,tạo thêm 1 Gauge và thiết lập thông số
 
 <img src="../images/blynk/dht4.png" width="500" height="400" border="0" alt="blynk">
 
-Hình ảnh 2 Gauqe sau khi tạo
+Hình ảnh 2 Gauge sau khi tạo
 
 <img src="../images/blynk/dht6.jpg" width="500" height="400" border="0" alt="blynk">
 
-Xác định `AuthToken` của project:Tham khảo [Ứng dụng Blynk điều khiển Led](../blynkled.md)
+Xác định `AuthToken` của project:Tham khảo [Ứng dụng Blynk điều khiển Led](https://esp8266.vn/arduino/projects/blynkled/)
 
 ###5 Nạp chương trình 
  Mở Arduino IDE và Upload chương trình
@@ -122,7 +124,7 @@ void loop()
   timer.run(); // Initiates SimpleTimer
 }
 ```
-###6.Đo nhiệt độ,độ ẩm trên Blynk
-Mở Project dht22 trong Blynk.Bấm Play.Thu được kết quả như hình:
+###6.Đo nhiệt độ,độ ẩm bằng ứng dụng Blynk
+Mở Project dht22 trong Blynk.Bấm Play.Nhiệt độ và độ ẩm sẽ  hiển thì trên 2 Gauge.
 
 <img src="../images/blynk/dht5.jpg" width="500" height="400" border="0" alt="blynk">
